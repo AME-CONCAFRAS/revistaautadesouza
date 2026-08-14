@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jesus e a Maternidade | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Estudando o evangelho</span>
+          <h1>Jesus e a Maternidade</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T18:52:05 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>“Relâmpago fulgurante em noite escura, a palavra do Mestre cindia a noite demorada que tombava sobre Israel, desde há cinco séculos.</p>
+<p>O eco da mensagem, doce e enérgica, se espraiava desde as planuras do Esdrelon até aos altiplanos do Hermon…</p>
+<p>Aqueles que Lhe escutavam o verbo, renovavam-se e a nobre cantilena das Suas palavras prosseguia repercutindo no adito das almas, sendo transferida de boca a ouvido, assinalando o início da comunicação elevada pelo impregnar do amor.</p>
+<p>Aqueles dias, naquelas circunstâncias, jamais se fariam repetir e o conteúdo das Suas palavras nunca mais seria ouvido da forma como foi enunciado e vivido… […].</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/170320171809050-g.jpg" alt="" class="alignright" width="585" height="365" />
+
+<p>Sem que fosse percebida, uma mulher acercou-se de Jesus, e, após fazer-se notar por Ele, desculpou-se da imprudência de perturbá-Lo.</p>
+<p>Sem mais delongas O interrogou:</p>
+<p>– Sei que tu vens de Deus e posso perceber-Te a grandeza que me fascina e emociona… Tenho sede de amor e me encontro corroída pela vérmina da animalidade. Tenho amado e não logrei a honra de fruir o amor. A vida, desde há muitos anos, em que fui dilapidada nos meus sentimentos de mulher, nega-me o que venho procurando: a paz, que parece fugir de mim, onde quer que eu me encontre.</p>
+<p>‘Que fazer, Senhor, para viver a felicidade?’</p>
+<p>Havia na voz da estranha notas características de melancolia e de sofrimento demorado que as palavras não conseguiam exteriorizar.</p>
+<p>O Mestre relanceou o olhar transparente pela paisagem aureolada de paz, e indagou-lhe por sua vez:</p>
+<p>– Que vês em derredor? Examina a terra arrebentando-se em flores, frutos e verdor; o rio cantante, enriquecendo as margens de vida; o húmus discreto renovando o subsolo e os astros fulgurando ao longe…</p>
+<p>Em tudo, a ordem, o amor, a transparência da misericórdia do Pai, ensinando equilíbrio e vida. O que parece caos transforma-se em benção, o que aparenta transtorno se converte em paz, porque em tudo vige a sabedoria do Criador.</p>
+<p>Não relaciones dores nem apresentes mágoas.</p>
+<p>Levanta o olhar para cima e avança para o futuro.</p>
+<p>A criatura, surpreendida pela resposta amorosa, volveu à interrogação:</p>
+<p>– Compreendo, sim, a grandeza da divina criação, não obstante delinqui, e, do meu delito, nasceu-me um filho, que no momento constitui-me motivo de inquietação e desespero…</p>
+<p>Sem permitir-lhe alongar-se, o Senhor prosseguiu, imperturbável:</p>
+<p>– A mulher é sempre mãe.</p>
+<p>A relva que cresce sobre os escombros oculta as suas deformidades e disfarça as suas imperfeições modificando a erma expressão dos destroços.</p>
+<p>Abençoada pela maternidade, que e sempre dádiva do Pai, honrando a vida, um filho, em qualquer circunstância, é uma estrela engastada na carne, com a oportunidade de espalhar claridade pelo caminho.</p>
+<p>Enquanto houver crianças e mães, na Terra, o amor divino estará cantando esperanças para a Humanidade.</p>
+<p>Não há filho do pecado nem do delito, pois que todos eles são dádivas da vida a vida.</p>
+<p>Esquece as circunstâncias da chegada do querubim que te bate à porta do sentimento, e levanta-te com ele, avançando no rumo do infinito dos astros.”</p>
+<p>Uma imensa serenidade vestia a Natureza.</p>
+<p>A mulher-mãe, emocionada, procurou os olhos de Jesus por entre a visão nublada de lágrimas e fundiu-se na luminosidade que deles fluía dúlcida e pura.</p>
+<p>Levantou-se em discreta reverência e preparou-se para sair.</p>
+<p>Não saberia dizer se O ouviu falar ou se O escutou na acústica da alma.</p>
+<p>– Vai, filha, e ama.</p>
+<p>A maternidade é a mais elevada concessão de Nosso Pai, demonstrando que o mal jamais triunfará no mundo; porque enquanto houver um coração, um sentimento maternal, na Terra, o amor ateará o fogo purificador e a esperança de felicidade jamais se fanará…</p>
+<p>No longe do tempo, ecoariam os conceitos do Filho de Maria, a Mãe por Excelência, sustentando a mulher no ministério da maternidade por todo o sempre.”</p>
+<p>Amélia Rodrigues, Há Flores no Meu Caminho, psicografia de Divaldo P. Franco, 2. ed., p. 37-40</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

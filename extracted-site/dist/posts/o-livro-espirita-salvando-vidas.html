@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Livro Espírita salvando vidas | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>O Livro Espírita salvando vidas</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T16:54:47 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>(<strong>Mensagem:</strong> Há um século, de Hilário Silva e Livro Espírita – Apoio e Bênção, de Aurélio. Adaptação para teatro: Nísia Anália)</p>
+<p>(Mostra-se uma faixa, ou a gravação de uma voz bem firme: PARIS – ABRIL DE 1860. Neste momento entra Allan Kardec, algo preocupado, senta-se em seu ambiente de trabalho, lendo algum material e parecendo meditar)</p>
+<p><strong>Narrador 1</strong> – Naquela manhã, Allan Kardec, o codificador da Doutrina Espírita, estava exausto e acabrunhado…<br><strong>Narrador 2</strong> – Muito embora a consolidação da Sociedade Espírita de Paris e a promissora venda de livros, escasseava o dinheiro para a obra gigantesca que os Espíritos superiores lhe haviam colocado nas mãos…<br><strong>Narrador 1</strong> – A pressão aumentava… Cartas sarcásticas avolumavam-se à mesa.<br><strong>Allan Kardec</strong> – (levantando-se) – Senhor, aqui estou, firme na tarefa confiada. Ajuda-me Senhor a vencer todas as dificuldades do caminho.</p>
+<p>(Neste momento, batem à porta, entra Madame Rivail, que vai atender)</p>
+<p><strong>Amélie</strong> – Pois não.<br><strong>Carteiro</strong> – Encomenda para o Sr. Allan Kardec.<br><strong>Amélie</strong> – (recebendo o pacote) – Muito obrigada!<br><strong>Carteiro</strong> – Bom dia. Até logo.<br><strong>Amélie</strong> – Bom trabalho!</p>
+<p>(Dirige-se, carinhosamente ao esposo)</p>
+<p><strong>Amélie</strong> – Querido, chegou esta encomenda para você.<br><strong>Allan Kardec</strong> – Obrigado, vejamos do que se trata…</p>
+<p>(Amele senta-se próximo. Allan Kardec abre o embrulho, detendo-se, primeiramente em uma carta e iniciando a sua leitura. Durante a leitura, afasta-se para um lado do palco, enquanto as partes iniciais vão sendo encenadas, como se fossem quadros vivos.)</p>
+<p><strong>Allan Kardec</strong> – (iniciando a leitura) – “Sr. Allan Kardec: Respeitoso abraço. Com a minha gratidão, remeto-lhe o livro anexo, bem como a sua história, rogando-lhe, antes de tudo, prosseguir em suas tarefas de esclarecimento da Humanidade, pois tenho fortes razões para isso…</p>
+<p>(Kardec vai afastando. Senta-se continuando a ler a carta. Entra o jovem, como cena viva)</p>
+<p><strong>Jovem</strong> – Sou encadernador desde a meninice, trabalhando em grande casa desta capital. Há cerca de dois anos casei-me com aquela que se revelou minha companheira ideal…</p>
+<p>(Coloca-se a música: “Alma Gêmea de minha Alma” ou outra música. A jovem entra e os dois cantam ou dançam juntos. Continuam encenando de acordo com a narrativa da carta. Pode-se colocar somente uma música instrumental,sendo que o jovem desce do palco e encontra Antoinette – que deverá estar no meio do público – vão subindo juntos até o palco)</p>
+<p><strong>Allan Kardec</strong> – (levantando e continuando a leitura) – Nossa vida corria normalmente e tudo era alegria e esperança, quando, no início deste ano, de modo inesperado minha Antoinette partiu desta vida, levada por sorrateira moléstia…</p>
+<p>(Neste momento Antoinette cai ao chão, coloca-se uma pequena parte da música Fio Partido, a jovem deixa um casaco no chão, simulando o corpo físico, levanta-se, afaga o esposo e sai de cena levada por espíritos amigos. O jovem chora em torno da mesma, levanta-se e continua a narrativa)</p>
+<p><strong>Jovem</strong> – (desesperado) – Meu desespero foi indescritível e julguei-me condenado ao desamparo extremo. Sem confiança em Deus, sentindo as necessidades do homem do mundo e vivendo com as dúvidas aflitivas de nosso século, resolvera seguir o caminho de tantos outros ante a fatalidade…</p>
+<p>(Afasta-se, fita um ponto distante e fica parado)</p>
+<p><strong>Allan Kardec</strong> – (levantando e continuando) – A prova da separação vencera-me, e eu não passava, agora, de um trapo humano (…) Minhas forças fugiam. Namorara diversas vezes o “Rio” Sena e acabei planejando o suicídio.<br><strong>Jovem</strong> – (movimentando como se fosse em rumo ao Rio) – seria fácil, não sei nadar. Em madrugada fria, quando as preocupações e o desânimo me dominaram mais fortemente, busquei a ponte Marie.<br><strong>Allan Kardec</strong> – Olhei em torno, contemplando a corrente…E ao fixar a mão direita para atirar-me, toquei um objeto, algo molhado que se destacou da amurada, caindo-me aos pés.</p>
+<p>(O jovem vai falando e dramatizando a cena. No momento em que encontra o livro, coloca-se uma música instrumental, vibrante e ele vai sentando-se como se estivesse lendo)</p>
+<p><strong>Allan Kardec</strong> – Surpreendido, distingui um livro que o orvalho umedecera. Tomei o volume nas mãos e, procurando a luz mortiça de poste vizinho, pude ler… entre irritado e curioso:<br><strong>Jovem</strong> – “ESTA OBRA SALVOU-ME A VIDA. LEIA-A COM ATENÇÃO E TENHA BOM PROVEITO” A. Laurent.<br>Estupefato, li a obra (mostra) “O Livro dos Espíritos” (ler junto com Allan Kardec, ou seja: os dois falam ao mesmo tempo)<br><strong>Allan Kardec</strong> – “O Livro dos Espíritos” – ao qual acrescentei breve mensagem, volume esse que passo às suas mãos abnegadas, autorizando o distinto amigo a fazer dele o que lhe aprouver.</p>
+<p>(Allan Kardec vai terminando de abrir o embrulho, emocionado. Amele se levanta, olha para o público e fala)</p>
+<p><strong>Amélie</strong> – Ali estava um exemplar de “O Livro dos Espíritos”, ricamente encadernado… e na página do frontispício, levemente manchada, leu com emoção não somente a observação a que o missivista se referia, mas também outra, em letra firme:</p>
+<p><strong>Allan Kardec</strong> – “Salvou-me também. Deus abençoe as almas que cooperaram em sua publicação.” – Joseph Perrier.</p>
+<p>(Neste momento, do público algumas pessoas falarão, mostrando O Livro dos Espíritos)</p>
+<p><strong>Personagem 1</strong> – Esta obra salvou-me a vida.<br><strong>Personagem 2</strong> – Esta obra, salvou-me a vida.<br><strong>Personagem 3</strong> – Salvou-me também!<br><strong>Personagem 4</strong> – Salvou-me também!</p>
+<p>(Todos vão se aproximando do palco, posicionando-se no mesmo)</p>
+<p><strong>Narrador 1</strong> – Era preciso continuar…<br><strong>Narrador 2</strong> – Desculpar as injúrias…<br><strong>Narrador 1</strong> – Abraçar o sacrifício…<br><strong>Narrador 2</strong> – Desconhecer as pedradas.</p>
+<p><strong>Allan Kardec</strong> – O mundo necessitava e necessita de renovação e consolo.<br><strong>Amélie</strong> – O notável obreiro da Grande Revelação, respirou longos haustos, e, antes de retomar a caneta para o serviço costumeiro, levou o lenço aos olhos e limpou uma lágrima…<br><strong>Jovem</strong> – E trabalhou, de forma incansável, pelo “Consolador Prometido”.<br><strong>Antoinette</strong> – “Na Terra em convulsão, O Livro Espírita se ergue como bandeira de paz…”<br><strong>Jovem</strong> – Convocando as almas à serenidade em meio às lutas que se agravam a cada dia.</p>
+<p><strong>Personagem 1</strong> – O Livro Espírita é apoio do Bem, onde o Bem possa surgir!<br><strong>Personagem 2</strong> – O Livro Espírita será sempre Bênçãos de paz…<br><strong>Personagem 3</strong> – Renovando possibilidades de crescimento para Deus.<br><strong>Personagem 4</strong> – “Conhecereis a Verdade e a Verdade vos libertará.”</p>
+<p><strong>Todos</strong> – Livro Espírita, Farol Divino, que SALVA VIDAS!</p>
+<p>(Cantar uma música sobre o Livro Espírita ou sobre Allan Kardec ou ainda sobre o Espiritismo, dependendo do tema ser enfatizado. Caso a peça seja apresentado em homenagem ao aniversário de Allan Kardec, fica a sugestão para encerrá-la na frase: “E trabalhou de forma incansável, pelo Consolador Prometido, a qual deverá ser dita por todos os participantes)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

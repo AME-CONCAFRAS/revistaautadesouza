@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mãe &#8211; o melhor presente | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>Mãe &#8211; o melhor presente</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T17:34:36 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália de Araújo Macedo<br><strong>Personagens:</strong> Lambari (palhacinho), Renato, Bebel (boneca), Juju (palhacinha), Palhaça-mãe e o bebê.</p>
+<p><strong>Cenário 1: uma rua.</strong></p>
+<p>(Ao iniciar a peça, entra Lambari, um palhacinho, muito triste, senta-se e começa a chorar)</p>
+<p><strong>Lambari</strong> – Buá… buá… buá…</p>
+<p>(Enquanto ele está chorando, entram o menino Renato, a boneca Bebel e Juju a palhacinha)</p>
+<p><strong>Juju</strong> – Lambari o que aconteceu? Por que você está chorando?<br><strong>Lambari</strong> – (olha para ele como se fosse falar e…) – Buá… buá… buá…<br><strong>Renato</strong> – Ué, Lambari, palhaços foram feitos para sorrir e fazer os outros sorrirem.<br><strong>Lambari</strong> – É?<br><strong>Os três</strong> – É isso mesmo!!!<br><strong>Lambari</strong> – Então… Buá… buá… buá…<br><strong>Bebel</strong> – Já sei! Ele deve estar com dor de ouvido.<br><strong>Lambari</strong> – Não, eu não estou com nenhuma dor de ouvido. Buá… buá… buá…<br><strong>Juju</strong> – Ah! Então é sua meia que está furada. Vamos ver? (os três tiram o sapato de Lambari, fazendo a maior confusão. Em sua meia deverá realmente ter um grande buraco)<br><strong>Lambari</strong> – (olha para eles, faz o maior suspense…) – Minha meia está furada, mas… não é isso não… Buá… buá… buá…<br><strong>Renato</strong> – Olha Lambari, se você não contar o que está acontecendo, não poderemos ajuda-lo.<br><strong>Lambari</strong> – Não?<br><strong>Juju</strong> – Claro que não.<br><strong>Bebel</strong> – Pare de chorar!!!<br><strong>Lambari</strong> – Buá… buá… buá… (pára de uma vez) – Está bem, não vou mais chorar.<br><strong>Os três</strong> – Já era tempo<br><strong>Juju</strong> – Conta pra nós qual a razão da nossa tristeza.<br><strong>Lambari</strong> – É… é… é que domingo é o dia das mães!!!<br><strong>Renato</strong> – E você está triste por isso? Você deveria estar muito feliz…<br><strong>Lambari</strong> – Eu estou feliz… Mas também estou triste!<br><strong>Bebel</strong> – Feliz e triste? Como assim?<br><strong>Lambari</strong> – Eu estou feliz porque será o dia das mães, mas estou triste porque eu gostaria muito de dar um presente pra minha mamãe e não posso, porque não tenho dinheiro. Buá… buá… buá…<br><strong>Renato</strong> – Ah, então é isso?<br><strong>Juju</strong> – Mas, amigo Lambari, você já é um grande presente para sua mãe!<br><strong>Lambari</strong> – (soluçando) – Eu sei, mas eu queria tanto dar-lhe um presente.<br><strong>Bebel</strong> – Ora Lambari, isso é muito fácil.<br><strong>Lambari</strong> – Fácil? Vocês vão dar-se o dinheiro? Oba!!!<br><strong>Renato</strong> – Claro que não!!<br><strong>Juju</strong> – Assim não teria valor nenhum.<br><strong>Bebel</strong> – Seria nós que estaria dando o presente para sua mãe.<br><strong>Lambari</strong> – (pensativo) – É… vocês têm razão. Mas o que eu faço para conseguir o dinheiro?<br><strong>Os três</strong> – que tal você trabalhar?<br><strong>Lambari</strong> – Trabalhar, eu?<br><strong>Juju</strong> – Claro!! Afinal você já está bem grandinho!!<br><strong>Lambari</strong> – É verdade, mas o que posso fazer?<br><strong>Bebel</strong> – Que tal vender picolé?<br><strong>Renato</strong> – É mesmo, está fazendo muito calor…<br><strong>Juju</strong> – Se você for um palhacinho bem alegre, todas as pessoas vão querer comprar picolé de você.<br><strong>Bebel</strong> – Nós vamos lhe ajudar!!!<br><strong>Lambari</strong> – Que ótima idéia, tomara que dê certo.<br><strong>Juju</strong> – Vamos na sorveteria do Sr. Juca, com certeza ele está precisando de alguém para ajuda-lo…<br><strong>Lambari</strong> – Vamos lá pessoal!!!</p>
+<p>(Todos saem de cena, ao som de uma música bem alegre.)</p>
+<p>**Cenário 2 – casa de Lambari<br>**<br>(Entra a mãe de Lambari e começa a costurar. Ao seu lado fica dormindo um bebê palhacinho – boneca)</p>
+<p><strong>Mãe-palhaça</strong> – (olhando para o bebê) – Meu Deus, já está quase na hora da Tatinha acordar para mamar e não temos leite em casa nem dinheiro para comprar.</p>
+<p>(Neste momento Tatinha começa a chorar – som de choro – .A mãe fica tentando acalma-la. Entra Lambari, todo feliz)</p>
+<p><strong>Lambari</strong> – Olá mamãe, olá Tatinha, tudo bem?<br><strong>Mãe</strong> – Tudo bem nada, meu filho, onde você estava?<br><strong>Lambari</strong> – Eu estava trabalhando. Vou juntar dinheiro para…<br><strong>Mãe</strong> – Oh meu filho! Esse dinheiro chegou na hora! A Tatinha está chorando de fome, e não tenho dinheiro para comprar leite.<br><strong>Lambari</strong> – Mas esse dinheiro é para… (olhando a irmãzinha) – Está bem, vou buscar o leite.<br><strong>Mãe</strong> – (muito alegre, abraçando-o) – Filho querido, você é um grande presente para mim. Muito Obrigada!</p>
+<p>(Vão saindo de cena)</p>
+<p><strong>Narrador</strong> – Desta forma, lambari continuou trabalhando todos os dias, após ir à escola. Porém não conseguia juntar o seu dinheiro, pois sempre estava faltando alguma coisa importante em sua casa. Seu pai já havia desencarnado e o que a mãe ganhava, costurando, não estava dando para as despesas. Assim, no sábado antes do dia das mães, vejamos como Lambari estava.</p>
+<p>(Volta o cenário 1. Lambari entra pensativo e senta-se. A seguir entra Renato, Bebel e Juju)</p>
+<p><strong>Juju</strong> – Olá Lambari.<br><strong>Bebel</strong> – O que aconteceu?<br><strong>Lambari</strong> – (começa a chorar) – Buá… buá… buá…<br><strong>Renato</strong> – Acho que ele está realmente com dor de ouvido.<br><strong>Juju</strong> – Ou ainda não costurou a meia<br><strong>Lambari</strong> – não é nada disso!<br><strong>Juju</strong> – Não? Então o que é?<br><strong>Lambari</strong> – É que amanha é o dia das mães e eu não tenho dinheiro para comprar um presente para a mamãe<br><strong>Renato</strong> – Mas… onde você gastou o seu dinheiro?<br><strong>Bebel</strong> – Você gastou?<br><strong>Lambari</strong> – Sim, eu gastei tomo meu dinheirinho…<br><strong>Juju</strong> – Mas por que Lambari?<br><strong>Lambari</strong> – Bem, o primeiro dia eu comprei leite para minha irmãzinha, porque ela estava com fome. No outro dia não tinha arroz, depois faltou sal, açúcar, verduras, faltou… Eu não tinha coragem de dizer à mamãe que eu não tinha dinheiro…<br><strong>Renato</strong> – (emocionado) – Nossa!!! Que coisa linda que você fez! E por que está triste?<br><strong>Lambari</strong> – Ora, porque agora eu não tenho dinheiro para comprar o presente.<br><strong>Juju</strong> – Que é isso, Lambari, você já deu o maior presente que sua mãe poderia ganar.<br><strong>Lambari</strong> – Já? E qual foi?<br><strong>Bebel</strong> – A sua ajuda, a sua cooperação, o seu carinho…<br><strong>Juju</strong> – Isso mesmo, tenho certeza que toda mãe ficaria muito feliz com este presente.<br><strong>Renato</strong> – É verdade! Porque o dia das mães são todos os dias!<br><strong>Lambari</strong> – (todo feliz) – Pensando bem, acho que vocês têm razão, pois desde que passei a ajudar mais minha mãe, tenho notado que ela está mais feliz…</p>
+<p>(Neste momento entra a mãe de Lambari e o abraça)</p>
+<p><strong>Mãe</strong> – Sim, crianças, estava ouvindo a conversa de vocês. Realmente o maio presente para uma mãe é o seu próprio filho. E ver sempre este filho no caminho do bem.<br><strong>Lambari</strong> – (todo feliz) – É mamãe, tenho certeza que o maior e melhor presente de um filho, também é a sua própria mãe!</p>
+<p>(todos se abraçam)</p>
+<p><strong>Renato</strong> – Sabem do que estou me lembrando?<br><strong>Juju</strong> – Do quê?<br><strong>Renato</strong> – Hoje estará acontecendo a festinha, em homenagem ao dia das mães, lá no centro…<br><strong>Bebel</strong> – É mesmo, já está quase na hora…<br><strong>Lambari</strong> – Será que nós podemos ir?<br><strong>Juju</strong> – Claro que sim!<br><strong>Renato</strong> – a festa será para todos nós…<br><strong>Lambari</strong> – Oba, então vamos lá.<br><strong>Mãe</strong> – não quero perder nadinha…</p>
+<p>(Vão saindo de cena, misturando-se ao público, sentando-se a seguir nas cadeiras à frente, para assistirem as apresentações)</p>
+<p><strong>Lambari</strong> – (observando o ambiente) – Que lindo!<br><strong>Renato</strong> – Quanta gente!<br><strong>Mãe</strong> – Vamos assentar que já vai começar.<br><strong>Juju e Bebel</strong> – Vamos rapidinho! Psiu!!! Silêncio</p>
+<p>(Assentam-se. Neste momento inicia-se as apresentações das outras crianças. Após o término de todos as apresentações, Juju levanta-se e fala)</p>
+<p><strong>Juju</strong> – (dirigindo-se para o palco) – Vamos fazer muito silêncio, pois chegou a hora de partirmos o bolo.</p>
+<p>(Neste instante, carrega-se para o cenário, uma caixa enfeitada, como se fosse um bolo. Dentro haverá uma criança)</p>
+<p><strong>Lambari</strong> – (Falando para o público) – Vocês deixam minha mãe partir o bolo? (incentivar a resposta que sim)<br>– Mamãe, mamãe, venha partir o bolo!</p>
+<p>(Todos aplaudem. A mãe de Lambari levanta-se e quando começa a simular que está partindo o bolo, de dentro sairá uma criança, lentamente e fala:)</p>
+<p><strong>Criança</strong> – Maria de Nazaré, mãe de Jesus e de todos nós, neste momento sublime, em que comemoramos o dia das mães, nós te pedimos senhora que ampare, ilumine e guie a todas as mães, encarnadas e desencarnadas do planeta Terra.<br>Que cada uma receba, de suas mãos benditas as luzes para os seus corações.<br>E em especial, recebam mãezinhas, o carinho dos filhos que lhes amam muito. Obrigado por tudo!<br>Que Deus as abençoe, hoje e sempre!!!</p>
+<p>(Neste momento coloca-se uma música sobre mãe e todas as crianças da Evangelização se aproximarão de suas mães abraçando-as carinhosamente)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atributos das leis divinas descritos em O Evangelho segundo o Espiritismo | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Estudando o evangelho</span>
+          <h1>Atributos das leis divinas descritos em O Evangelho segundo o Espiritismo</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2021-02-20T16:57:26 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/religion-3452582_1280.jpg" alt="" class="alignleft" width="535" height="300" />
+
+<p><img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/sol-14_09_2017.jpg" alt="">Dos atributos de Deus, descritos em O Livro dos Espíritos (Livro 1, capítulo 1, pergunta 13), é possível deduzir as características das leis divinas, as quais guardam com eles uma relação de coerência e impossibilidade de contradição. Se diferente fosse, a própria ideia de Deus estaria afetada pela incoerência.</p>
+<p>Com a humilde convicção de que a razão humana é incapaz de conhecer a natureza íntima de Deus (O Livro dos Espíritos, pergunta 10) e nem todas suas perfeições (O Livro dos Espíritos, pergunta 12), será apresentada, abaixo, uma compilação de atributos, e respectivos corolários, da lei de Deus, expostos em _O Evangelho segundo o Espiritismo_¹:<br>Invariável ou imutável em sua essência², no tempo e no espaço³. Fundamento dos deveres para com Deus e com o próximo⁴. É revelável⁵, inexorável⁶, necessária⁷, geratriz de felicidade⁸, onipresente⁹, exata¹⁰, infalível¹¹, contínua¹², impessoal e isonômica e de consequências inevitáveis¹³, providente¹⁴, leve e suave¹⁵, constantemente pura¹⁶, inabalável¹⁷, universal e inteligente¹⁸, de objetivo útil e elevado¹⁹, soberanamente sábia²⁰, previdente e justa e equitativa e misericordiosa²¹, proporcional²², conforme à bondade e justiça de Deus²³, eterna²⁴, irrevogável²⁵, harmônica²⁶, origem e critério de todas as virtudes²⁷.</p>
+<p>Estudar e compreender os atributos das leis de Deus, meditando-os no coração, facilita conformar nossa conduta à lei divina e permite reconhecer serem belas, justas e boas, o que estimula em nós o desejo, a força, a coragem e a alegria de cumpri-las.</p>
+<hr>
+<p>[1] Todas as citações abaixo referem-se a ALLAN KARDEC, O Evangelho segundo o Espiritismo. Taguatinga: Editora Auta de Souza, 2ª ed., abril de 2014, e grafadas assim: capítulo, item, página. Exemplo: 2, 3, 52, ou seja, capítulo 2, item 3, página 52.</p>
+<p>[2] a) “Há duas partes distintas na lei mosaica: a lei de Deus promulgada no monte Sinai e a lei civil, ou disciplinar, estabelecida por Moisés. Uma é invariável; a outra, apropriada aos costumes e ao caráter do povo, modifica-se com o tempo.” (1,2, 43)<br>     b) “Mas, na união dos sexos, ao lado da lei divina material, comum a todos os seres vivos, existe outra lei divina, imutável como todas as leis de Deus, exclusivamente moral: é a lei do amor.” (22,3,270)</p>
+<p>[3] “Essa lei é de todos os tempos e países e possui, por isso mesmo, caráter divino.” (1,2,44)</p>
+<p>[4] “É por isso que se encontra nessa lei o princípio dos deveres para com Deus e com o próximo, base da sua doutrina.” (1,3,44)</p>
+<p>[5] “o Espiritismo é a terceira revelação da lei de Deus (…).” (1,6,45)</p>
+<p>[6] “limitou-se a apresentar, de certo modo, a vida futura como um princípio, uma lei da natureza, da qual ninguém pode escapar.” (2,3,52)</p>
+<p>[7] “a reencarnação aparece como necessidade absoluta, como condição inerente à humanidade; em uma palavra, como lei da natureza” (4,17,72)</p>
+<p>[8] “Então, as pessoas serão felizes porque a lei de Deus imperará na Terra.” (3,19,65)</p>
+<p>[9] a) “Deus pode, portanto, atender certos pedidos, sem revogar a imutabilidade das leis que regem o conjunto, subordinada sempre essa anuência à sua vontade” (27,6,300-301)</p>
+<p>[10] “Não há uma só falta, por mais leve que seja, nem uma única infração à lei, que não produza consequências compulsórias e inevitáveis, mais ou menos desagradáveis” (5,5,79)</p>
+<p>[11] a)“Não há uma só falta, por mais leve que seja, nem uma única infração à lei, que não produza consequências compulsórias e inevitáveis, mais ou menos desagradáveis” (5,5,79)<br>       b) “O ser humano sofre sempre a consequência das suas faltas; não há uma só infração à lei de Deus sem a correspondente reação.” (27,21,307)</p>
+<p>[12] “Conclui-se que, tanto nas pequenas como nas grandes coisas, sempre se exige do ser humano a reparação por transgredir a lei de Deus.” (5,5,79)</p>
+<p>[13] “Mostra-nos os próprios suicidas vindo noticiar a infeliz posição deles e provar que ninguém transgride a lei de Deus, sem causar a reação desta lei, que proíbe ao ser humano abreviar sua encarnação.” (5,17,86-87 )</p>
+<p>[14] “Torturar voluntariamente e martirizar vosso corpo é contrariar a lei de Deus, que vos concede o meio de o sustentar e robustecer.” (5,26,97)</p>
+<p>[15] “Contudo, Jesus estabelece uma condição à sua assistência e à felicidade que promete aos aflitos; essa condição reside na lei que Ele ensina; seu jugo é a observância dessa lei; mas leve é este jugo e suave esta lei, porque impõem, como dever, o amor e a caridade.” (6,2,101)</p>
+<p>[16] “É a esses acréscimos, feitos pelo ser humano à lei de Deus, que Jesus aludiu quando declarou: “Toda planta que meu Pai celestial não plantou será arrancada”. (8,10,123)</p>
+<p>[17] “Deus quis que sua lei fosse posta sobre uma base inabalável, por isso não a estabeleceu sobre a frágil cabeça de uma só pessoa.” (Introdução, p. 26)</p>
+<p>[18] “Empenhada está a ação enérgica; já não mais é o caso de crer de modo instintivo e de obedecer maquinalmente, é necessário seguir a lei inteligente que se revela em sua universalidade.” (8,19,126)</p>
+<p>[19] “O Espiritismo é de ordem divina, porque se apoia sobre as próprias leis da natureza e tende certeza de que tudo o que é de ordem divina manifesta um objetivo elevado e útil.” (1,10,48-49)</p>
+<p>[20] a) “Deus, cujas leis são todas soberanamente sábias, nada faz de inútil.” (4,26,76)<br>       b) “Senhor, destes aos seres humanos leis plenas de sabedoria, que os tornariam felizes, se as obedecessem.” (28,3,314)</p>
+<p>[21] “A lei de Deus é mais previdente. Sempre justa, equitativa e misericordiosa, não fixa duração alguma à reparação, seja ela qual for (…).”(27,21,307)</p>
+<p>[22] “A severidade da expiação é proporcional à gravidade da falta.” (27,21,307)</p>
+<p>[23] “Tal é a lei. Lei imutável e conforme a bondade e a justiça de Deus.” (27,21,308)</p>
+<p>[24] “(…) se deixardes vossos corações buscarem esta benigna Doutrina que vem vos revelar as leis eternas e satisfazer todas as aspirações da vossa alma em relação ao desconhecido.” (21,8,263 )</p>
+<p>[25] “Sem dúvida, há leis naturais imutáveis que Deus não pode revogar conforme o capricho de cada um.” (27,6,300)</p>
+<p>[26] “(…)por sua iniciativa, há eventos que escapam forçosamente à fatalidade e que não destroem a harmonia das leis universais (…).”(27,6,300)</p>
+<p>[27] “Senhor, destes aos seres humanos leis plenas de sabedoria, que os tornariam felizes, se as obedecessem. Com essas leis, fariam reinar entre eles a paz e a justiça; mutuamente se auxiliariam, em vez de se prejudicarem, como fazem; o forte sustentaria o fraco, em lugar de massacrá-lo; evitariam os males que geram abusos e excessos de todos os gêneros. Todas as misérias terrenas surgem da violação das vossas leis, pois nenhuma infração há que seja isenta de consequências fatais.” (28,3,314) Revista Auta de Souza – Espiritismo em Ação</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

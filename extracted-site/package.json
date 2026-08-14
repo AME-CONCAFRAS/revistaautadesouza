@@ -1,0 +1,18 @@
+{
+  "name": "revistaautadesouza-extractor",
+  "version": "1.0.0",
+  "description": "WordPress content extraction and backup tool",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test-connection": "node src/test-connection.js",
+    "extract": "node src/index.js",
+    "build-static": "node src/build-static.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "marked": "^15.0.7",
+    "node-fetch": "^3.3.2",
+    "turndown": "^7.2.0"
+  }
+}

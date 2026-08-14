@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yvonne do Amaral Pereira &#8211; Uma vida dedicada à mediunidade | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Missionários do bem</span>
+          <h1>Yvonne do Amaral Pereira &#8211; Uma vida dedicada à mediunidade</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-22T09:58:06 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Nascimento</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/yvonne_pereira.jpg" alt="" class="alignleft" width="531" height="694" />
+
+<p>“Nasci a 24 de dezembro de 1900.”</p>
+<p>“(…) num sítio nos arredores da Vila de Santa Teresa, município de Valença, Estado do Rio de Janeiro, hoje cidade de Rio das Flores.”</p>
+<p>“Meus pais eram o então pequeno negociante Manoel José Pereira (filho) e sua esposa Elizabeth do Amaral Pereira.”</p>
+<p>“Tive cinco irmãos mais moços do que eu e um mais velho, filho do primeiro matrimônio de minha mãe.”</p>
+<p><strong>Criação</strong></p>
+<p>“Até os dez anos de idade, (…), vivi principalmente, sob os cuidados de minha avó paterna, em vista das anormalidades experimentadas em minha infância com as reminiscências de minha passada existência, anormalidades que não me permitiam viver na casa paterna devido ao fato de minha mãe, rodeada de outros filhos, não dispor de possibilidades para atender aos meus incomodativos complexos trazidos de outras vidas.”</p>
+<p>Yvonne do Amaral Pereira. <em>À luz do consolador</em>. p. 13</p>
+<p><strong>Religião</strong></p>
+<p>“Nasci em ambiente espírita(…).”</p>
+<p>“Recebi, portanto, de meu próprio pai as primeiras lições de doutrina e prática de Espiritismo e Evangelho. Ele fazia, já naquele tempo, reuniões de estudos doutrinários com os filhos, semanalmente, o que a todos nós solidificou na Doutrina Espírita.”</p>
+<p>“Ao completar 12 anos de idade, meu pai pôs em minhas mãos “O Evangelho segundo o Espiritismo” e “O Livro dos Espíritos”, de Allan Kardec, os quais me acompanharam na travessia da vida e que estudo até agora, sem jamais me cansar de sua leitura.”</p>
+<p>Yvonne do Amaral Pereira. <em>À luz do consolador.</em> p. 14-15</p>
+<p><strong>Mediunidade</strong></p>
+<p>“Com um mês de idade, ia sendo enterrada viva devido a um fenômeno de catalepsia, ‘morte aparente’, que sofri, fenômeno que no decorrer de minha existência repetiu-se muitas vezes.”</p>
+<p>“Aos 5 anos eu já via Espíritos e com eles falava, e assim continuei até os dias presentes.”</p>
+<p>“Nunca desenvolvi a mediunidade, ela apresentou-se por si mesma, naturalmente, sem que eu me preocupasse em atrai-la(…)”</p>
+<p>“A primeira vez que me sentei a mesa de sessão prática recebi uma comunicação do Espírito Roberto de Canalejas, tratando de suicídios(…). Antes, porém, já eu me desdobrava em corpo espiritual, pois também esta faculdade apresentou-se na infância.”</p>
+<p>“Como médium psicógrafo trabalhei a vida inteira, desde 1926 até 1980, como receitista, assistida por entidade de grande elevação, como Bezerra de Menezes, Bittencourt Sampaio, Augusto Silva, Charles, Roberto de Canalejas(…)”</p>
+<p>“Fui e até hoje sou médium conselheiro (…), psicoanalista e passista, assistida pelos mesmos Espíritos.”</p>
+<p>“Como médium de incorporação não fui da classe de sonambúlicos, mas falante e tive especialidade para os casos de obsessão e suicidas(…).”</p>
+<p>“Fui igualmente médium de efeitos físicos(materializações).”</p>
+<p>“(…) minhas outras faculdades foram cultivadas com muito amor, perseverança e respeito, tendo eu seguido fielmente as prescrições de ´O Livros dos médiuns´sem nunca sofrer decepções ao obedecê-las.”</p>
+<p>“Segui sempre as orientações dos livros básicos e dos próprios Guias que por mim velavam (…).”</p>
+<p>“Falei na tribuna espírita assistida pelos mentores espiritualistas do ano de 1927 ao ano de 1971, 44 anos (…).”</p>
+<p>“(…) minha maior tarefa no campo espírita foi através da mediunidade, principalmente no setor de receituário e passes para curas (…).”</p>
+<p>“Pratiquei também a literatura mediúnica em livros, crônicas, contos, etc., (…). Colaborei em vários jornais do interior do país e também em ‘Reformador’(…), sob o pseudônimo de ‘Frederico Francisco’, em homenagem ao meu caro amigo Frederico Francisco Chopin.”</p>
+<p>“Diariamente mantinha um significativo trabalho de passes e irradiações beneficentes onde quer que residisse. Eram verdadeiras sessões, que eu realizava a sós com Deus e os meus Guias, durante as quais orava pelos desencarnados e lia trechos de Doutrina Espírita ou de Evangelho oferecidos aos mesmos, pedindo a Jesus que os fizesse ouvi-los e co-participar de minhas preces.”</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/unnamed-1.jpg" alt="" class="alignleft" width="512" height="384" />
+
+<p>“Muitas vezes via-me rodeada dessas entidades durante esse trabalho, vi-as reconfortadas e satisfeitas, e assim consegui dilatar o meu coração em um grande amor por todas elas.”</p>
+<p>“Nos meus quatorze e quinze anos, eu residia nas proximidades do Cemitério Municipal, na cidade fluminense de Barra Mansa, Estado do Rio de Janeiro. Aprazia-me , então, passar as tardes entre os túmulos (…) a título de passeio, a fim de ler na tranquilidade aprazível do local sagrado”.</p>
+<p>“Frequentemente, assim sendo, eu percebia Espíritos sofredores ainda achegados aos próprios despojos carnais, que se decompunham sob a terra. Jamais os temi. Nunca me perturbaram ou causaram dano. Eu os amava e compreendia. Ao Espírito suicida (…) nada surpreende, nada atemoriza, nada desespera(…).”</p>
+<p>Yvonne do Amaral Pereira. <em>À luz do consolador</em>. p. 18</p>
+<h2>Memórias de um suicida</h2>
+<p>“Dentre suas múltiplas especialidades mediúnicas, avultou a psicografia através da qual renomados autores espirituais produziram obras, ao mesmo tempo edificantes e de refinado lavor literário, sobre a ciência e a moral espíritas.<br>Também na imprensa espírita Yvonne A. Pereira serviu com inexcedível zelo, legando com seus artigos, invariavelmente fecundos e belos, um critério seguro para os serviços em tão delicado quão importante setor da seara do Espiritismo Cristão.”<br>Dentre suas obras psicografadas, destacamos o livro <em>Memórias de um Suicida</em>, escrito pelo espírito de Camilo Cândido Botelho, sob orientação do Espírito Léon Denis. Ele “descreve a sua dolorosa experiência no plano espiritual após a desencarnação resultante de suicídio, transmitindo valiosos ensinamentos, especialmente aos que se deixam avassalar pela ideia de pôr termo à existência física.”  </p>
+<p>Camilo Cândido Botelho. <em>Memórias de um Suicida</em>. Psicografia de Yvonne do Amaral Pereira. Editora: Federação Espírita Brasileira.</p>
+<p><strong>Yvonne e sua contribuição na literatura e divulgação Espírita</strong></p>
+<ul>
+<li>Memórias de um Suicida – 1954</li>
+<li>Amor e Ódio- 1956</li>
+<li>A tragédia de Santa Maria – 1957</li>
+<li>Nas voragens do Pecado – 1960</li>
+<li>Ressureição e Vida – 1963</li>
+<li>Dramas da Obsessão – 1964</li>
+<li>O Drama da Bretanha – 1974</li>
+<li>Sublimação – 1974</li>
+<li>O Cavaleiro de Numiers – 1976</li>
+<li>Nas teias do infinito – 1977</li>
+</ul>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

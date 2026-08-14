@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energia e Evolução &#8211; Sistemas e sóis | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Universo e vida</span>
+          <h1>Energia e Evolução &#8211; Sistemas e sóis</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-09T21:43:29 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>No imenso viveiro de forças em tensão, que é o espaço sideral, onde os sóis viajam à velocidade média de cem quilômetros por segundo, os Cristos de Deus, parteiros de mundos e pastores de humanidades, não só vigiam e governam as Vias-Lácteas, como organizam e protegem os ovos cósmicos de que nascem as galáxias. Microscópicos sóis de sistemas atômicos, que são estruturalmente similares aos sistemas solares e aos sistemas anímicos, os complexos núcleos dos átomos primordiais cercam-se de elétrons, cuja poderosa ação, chamada eletricidade, desencadeada pela extrema velocidade de seus movimentos orbitais, gera o que se denomina magnetismo.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/novos-planetas.jpg" alt="" class="alignleft" width="556" height="279" />
+
+<p>Nessas equações de força e luz, eletricidade e magnetismo, o traço de união e de equilíbrio é sempre o Amor Divino, fonte suprema de que toda vida nasce e se alimenta.</p>
+<p>O Universo é o Império Divino dos Raios e das Forças, onde tudo e todos se intercomunicam e se sustentam. As árvores, os animais, a terra, as águas e o ar, tudo, enfim, que circunda o ser humano, o atinge com as suas irradiações e é igualmente atingido pelas irradiações dele.</p>
+<p>Se das profundezas da terra partem raios gama, de um décimo bilionésimo de milímetro, na direção do Sol, o coração que singulta no peito de um homem é um gerador de raios que opera na frequência de uma oscilação por segundo.</p>
+<p>Estrelas gloriosas, semeadas por todos os quadrantes do Espaço, expedem, sem cessar, em todas as direções, uma aluvião de raios cósmicos, da fantástica pequenez de um trilionésimo de milímetro, tão penetrantes e poderosos que nenhuma barreira material pode detê-los.</p>
+<p>Não fossem as radiações solares de luz alaranjada, de 0,0066mm de comprimento, as células vegetais não conseguiriam realizar a síntese de substâncias orgânicas, mediante a fixação do gás carbônico do ar; e sem esse trabalho fundamental, nenhum homem ou animal terrestre viveria, pois todos dependem, para sobreviver, dos alimentos primários que somente os vegetais são capazes de elaborar.</p>
+<p>Trono do Cristo, o Sol controla e alimenta o nosso pequeno planeta, a 150 milhões de quilômetros de distância, que a sua luz percorre em cerca de oito minutos e meio. Para manter sua família planetária, ele gera aproximadamente 83.000 cavalos-vapor, i.e., mais de 61.000.000W de energia, em cada metro quadrado de sua superfície, que envia ao espaço ao seu redor, ao mesmo tempo que converte por volta de 616 milhões de toneladas de hidrogênio em hélio, por segundo.</p>
+<p>É das 3.600.000 por metro quadrado, que o Sol fornece, que são absorvidas, pelas águas de nossos oceanos, rios e lagos, as calorias que se transformam nas nuvens que precipitam as chuvas.</p>
+<p>Tudo isso é, porém, palidíssima imagem do grande sistema anímico de que os nossos Espíritos fazem parte, o grande sistema cujo Sol é Cristo-Jesus, de cujo amor e de cuja força vivemos, no Infinito Império Universal, cuja alma é Deus, o Pai Eterno.</p>
+<p>Consolemo-nos de não ser, nesse sistema, os menos evolvidos, pois mesmo em termos estritamente físicos, a relação é a mesma entre um átomo e um corpo humano e entre este último e o Sol, já que, segundo cálculos razoáveis, o corpo humano é constituído por cerca de dez nonilhões de átomos, o mesmo número de homens que se imagina seriam precisos para povoar, se isso fosse possível, o espaço interno do Sol.</p>
+<p>Foi por essa razão que disse, certa vez, ilustre cientista, que, nos domínios do Universo, está o homem “entre o átomo e as estrelas”.</p>
+<p>Áureo. Universo e vida. Psicografia de Hernani T. Sant’Anna.  5.ed., Cap. 5, item 13.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

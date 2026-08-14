@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O sonho de Aninha | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>O sonho de Aninha</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T16:46:04 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália<br><strong>Personagens:</strong> Narrador, Lucinha, Aninha, Sr. Paulo, D. Zeferina, mamãe</p>
+<p><strong>Cenário 1: Uma casa: sala, quarto e um jardim<br>Cenário 2: Plano Espiritual</strong></p>
+<p>(Inicia-se a peça, com a entrada de uma menina, Aninha, que fica pensativa por alguns segundos, ao som de uma música de acordo com o tema. A seguir entra outra menina, Lucinha.)</p>
+<p><strong>Lucinha:</strong> Olá Aninha, como você está, tudo bem?<br><strong>Aninha:</strong> Tudo bem! Onde você está indo?<br><strong>Lucinha:</strong> Vou comprar um presente para a mamãe, pois domingo é o dia das mães.<br><strong>Aninha:</strong> É mesmo… Estava lembrando da mamãe… seria tão bom se ela ainda estivesse aqui!<br><strong>Lucinha:</strong> É, seria mesmo, pois mãe é um grande tesouro em nossas vidas. Mas, não fique triste, pois a mamãe é como se fosse sua mãe também.<br><strong>Aninha:</strong> Eu sei e a amo muito. Apesar desse amor, ainda sinto muita falta da minha mãe.<br><strong>Lucinha:</strong> Não fique triste. Venha, vamos comigo!!<br><strong>Aninha</strong> – (Quase chorando): Não, depois eu vou… (sai de cena)</p>
+<p>(Lucinha fica pensativa. Nesse momento entra Sr. Paulo, pai de Lucinha.)</p>
+<p><strong>Sr. Paulo:</strong> Olá minha filha, por que você está tão pensativa?<br><strong>Lucinha:</strong> Oi papai, estou com pena da Aninha. Ela está muito triste, porque domingo é o dia das mães e a dela já morreu.<br><strong>Sr. Paulo:</strong> Ora, ora. Você não explicou para ela que a morte não existe? E que a mãe dela está apenas em outro plano chamado plano espiritual?<br><strong>Lucinha:</strong> Papai, ela estava tão triste, que pensei que ela nem me escutaria… E também, ela já sabe um pouco dessa verdade.<br><strong>Sr. Paulo:</strong> Onde ela está?<br><strong>Lucinha:</strong> Foi para o jardim.<br><strong>Sr. Paulo:</strong> Bom, deixa eu ir lá conversar com um pouquinho com ela.<br><strong>Lucinha:</strong> Vai mesmo papai. Ela está precisando de conversar.</p>
+<p>(Os doi saem de cena. Entra Aninha. Cenário de um jardim. Fica em um canto chorando.)</p>
+<p><strong>Narrador</strong> – (Somente voz): Aninha tinha ido para o jardim. A saudade de sua mãezinha parecia muito forte, por isso ela estava muito triste e para aliviar um pouquinho, ela começou a chorar. Quando o Sr. Paulo chegou ao jardim, viu que ela estava chorando.</p>
+<p><strong>Sr. Paulo:</strong> Aninha, Aninha, minha filha, o que aconteceu?<br><strong>Aninha</strong> – (Tentando parar de chorar): Não foi nada, desculpe-me.<br><strong>Sr. Paulo</strong> – (Abraçando-a): Que é isso, minha filha, venha cá, quero conversar com você. Lucinha contou-me o motivo de sua tristeza.<br><strong>Aninha:</strong> Tolice minha.<br><strong>Sr. Paulo:</strong> Não querida, isso não é tolice. É muito natural, todos nós sentimos saudades daqueles que amamos e vivem distantes.<br><strong>Aninha:</strong> Mas mamãe não vive…<br><strong>Sr. Paulo:</strong> Aí é que você se engana, minha filha! Sua mãe vive. A morte não existe. Ela está só fazendo uma viagem, um dia vocês se encontrarão. Sei que você tem dificuldade de aceitar essas verdades, mas, pense um pouco sobre elas.<br><strong>Aninha:</strong> Claro que eu acredito, Sr. Paulo. Só tinha receio de não ser verdade, mas estou com tanta saudade dela. O que posso fazer para encontrá-la?<br><strong>Sr. Paulo:</strong> Primeiro você tem que acabar com essa ideia de que ela não existe. Depois, orar por ela todos os dias e procurar ser uma menina sempre amorosa com todas as pessoas, o que aliás, você já é.<br><strong>Aninha</strong> – (Esperançosa): Mas, será que vou demorar a encontrá-la?<br><strong>Sr. Paulo:</strong> Olha, Aninha, quando nós dormimos podemos encontar com os que amamos e já desencarnaram, se Deus assim permitir. Todas as noites, lembre-se de pedir em suas orações para que isso aconteça…<br><strong>Aninha:</strong> Obrigada, senhor Paulo, você é realmente um pai.<br><strong>Sr. Paulo:</strong> Todos aqui em casa a amamos muito, minha filha.</p>
+<p>(Os dois se abraçam e saem de cena.)</p>
+<p><strong>Narrador:</strong> Aquele dia para Aninha foi muito importante, pois sentiu que o sr. Paulo falava a verdade, principalmente que sua mãe não tinha morrido, mas apenas seu corpo. Essa aceitação, fez com que ela se sentisse mais serena.<br>A noite, ao deitar-se, ela fez uma prece, com muita fé para Jesus, pedindo-lhe permissão para encontrar-se com sua mãezinha. Pediu, com tanta fé, que quando ela dormiu, vejam o que aconteceu…</p>
+<p>**(Cenário 2- Plano Espiritual = organizar uma maneira de vizualizar um local bonito, mais iluminado. Ao som de uma música, que poderá falar de imortalidade ou somente intrumental, entra Aninha, admirada.)<br>**<br><strong>Aninha:</strong> Nossa! Que lugar lindo!</p>
+<p>(De repente entra sua mãe – espírito. Tornar esse momento bem emocionante.)</p>
+<p><strong>Mãe:</strong> Aninha, Aninha, minha filha…<br><strong>Aninha</strong> – (Emocionada a abraça): Mamãe, mamãe! Que saudade!<br><strong>Mãe:</strong> Eu também, minha filha, já estava com muita saudade de você. Mas hoje, graças a Deus, estamos nos reencontrando. Sabe minha querida, ouvi o seu choro. Fiquei muito pensativa e com vontade de dizer-lhe que eu continuava viva, que você precisava ter essa certeza. Queria dizer-lhe que a amava muito, que o meu amor continuava o mesmo. Quando o Sr. Paulo foi conversar com você, me alegrei muito, pois ele disse tudo o que eu estava com vontade de dizer. Minha querida, a mamãe não morreu, nunca pense isso. Estou agora no plano espiritual, onde é nossa vida verdadeira. Estou viva. O que acabou foi somente o meu corpo físico, mas eu, espírito, continuo viva. Gostaria de pedir-lhe para amar a D.Zeferina como sua mãe, ao Sr. Paulo como seu pai, e também a Lucinha como sua irmã. Eles são a nossa família espiritual. Seja sempre uma boa menina. Quando estiver triste, com muita saudade, lembre-se da mãe de Jesus e de todos nós, nossa querida Maria de Nazaré, e ela lhe ajudará.<br>Fique com Deus…</p>
+<p><strong>Aninha:</strong> Ainda está cedo, mamãe…<br><strong>Mãe:</strong> Tenho que ir, minha filha, até breve…<br>(Vai saindo de cena, ao som de uma música. A seguir, Aninha sai pelo outro lado. Volta o cenário de sua casa.)</p>
+<p><strong>Narrador:</strong> Aninha acordou naquele momento, sentou-se na cama e começou a recordar o lindo sonho que teve  a noite. Sonho? Ela bem sabia, que não era apenas um sonho. Era ela, tinha certeza. Havia se encontrado com sua mãezinha. Seu coração estava aliviado e feliz! Lembrou-se então, das últimas palavras de sua mãe: “ame a D.Zeferina como sua mãe…”. Olhou no calendário e lembrou que era domingo, dia das mães! Resolveu então, chamar Lucinha, para abraçarem a D.Zeferina.</p>
+<p>(Entra Aninha, chamando a Lucinha.)</p>
+<p><strong>Aninha:</strong> Lucinha, Lucinha, venha cá.<br><strong>Lucinha:</strong> (Entra assustada) – O que foi? Você está tão alegre!<br><strong>Aninha:</strong> Estou sim! É que hoje é o dia das mães.<br><strong>Lucinha:</strong> Ué, ontem você estava triste por isso.<br><strong>Aninha:</strong> Ontem foi ontem, hoje é hoje!<br><strong>Lucinha:</strong> O que aconteceu?<br><strong>Aninha:</strong> Eu compreendi que a mamãe não morreu. Esta noite eu sonhei que estava conversando com ela. Então ela pediu-me para amar a D.Zeferina como uma mãe. Por isso resolvi chamar você para irmos juntas abraçá-la.<br><strong>Lucinha:</strong> Que notícia boa! Estou feliz por você. Vamos sim, ela e o papai estão tomando café.<br><strong>Aninha:</strong> Você sabe alguma música para cantarmos para ela?<br><strong>Lucinha:</strong> Sei sim. Venha que vou ensinar-lhe.<br><strong>Aninha:</strong> Então vamos.</p>
+<p>(As duas saem de cena. Entram sr. Paulo e D. Zeferina.)</p>
+<p><strong>D. Zeferina:</strong> Como estará Aninha hoje?<br><strong>Sr. Paulo:</strong> Deus ajude que ela esteja mais feliz…</p>
+<p>(Nesse momento, entram Aninha e Lucinha, cantando um música sobre as mães.)</p>
+<p><strong>Aninha:</strong> D. Zeferina, que a Virgem Maria, mãe de todas as mães lhe proteja e transmita-lhe todo o nosso carinho!<br><strong>Lucinha:</strong> Mamãe, muito obrigada por tudo que a senhora tem feito por nós. A senhora é uma grande mãe. Que Maria de Nazaré a proteja sempre.<br><strong>D. Zeferina:</strong> Minhas queiridas filhas, eu é que agradeço. E quanto a você, Aninha, estou muito feliz por vê-la feliz. Muito obrigada a vocês. Mas, eu gostaria que vocês cantassem aquela música novamente. Vocês cantam?</p>
+<p><strong>As duas:</strong> Claro mamãe!!!<br><strong>Aninha:</strong> Vamos cantar para a senhora e para todos as mães presentes, encarnadas e desencarnadas.</p>
+<p>(Nesse momento, entram todos os participantes do teatro, inclusive o narrador e começam a cantar, todos juntos.)</p>
+<p>**– Sugestão de música (de Franklin Heibulth):<br>**<br>Tu és minha alegria<br>Minha ternura em flor<br>Por isso eu canto mamãe<br>Sou teu pequeno e tu és meu amor.</p>
+<p>Quando partires do mundo<br>Ao paraíso no Além<br>Guarde um cantinho pra mim,<br>Pois onde fores eu quero ir também.</p>
+<p>(Teatro escrito em 1984)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

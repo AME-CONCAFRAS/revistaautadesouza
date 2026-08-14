@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bom Samaritano Infantil | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Como fazer na casa espírita</span>
+          <h1>Bom Samaritano Infantil</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-28T16:03:13 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p> <em>“Traziam-lhe até mesmo as criancinhas para que as tocasse; vendo isso, os discípulos as reprovavam. Jesus, porém, chamou-as dizendo: “Deixai as criancinhas virem a mim e não as impeçais, pois delas é o Reino de Deus. Em verdade vos digo, aquele que não receber o Reino de Deus como uma criancinha, não entrará nele”. (Lucas: 18,15-17)</em></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/bom-samaritano-infantil-2-06_11_2017.jpg" alt="" class="alignleft" width="415" height="415" />
+
+<p>“O caminho celeste é o dia que o Pai nos concede, quando aproveitado por nós na prática do bem. Cada hora, desse modo, transforma-se em abençoado trecho dessa estrada divina, que trilharemos até o encontro com a grandeza e a perfeição do Supremo Criador, e cada oportunidade de bom serviço, durante o dia, é um sinal da confiança de Deus, depositada em nós. Quem aproveita o ensejo de ser útil, caminha para o Alto e avança na senda sublime, mas os que fogem ao trabalho edificante perdem o tempo e demoram-se à retaguarda, lutando com os perigosos monstros da preguiça e do mal.” (Veneranda. <em>O caminho oculto</em>. Psicografado por Francisco Cândido Xavier. FEB. 5.ed., cap. 49.) </p>
+<p><strong>JESUS CONVIDA A CRIANÇA À PRÁTICA DO BEM</strong> </p>
+<p>     “Além dessas gigantescas obras nos domínios da experiência material, Jesus, convertendo-se em Mestre Divino das almas, fez ainda muito mais.     Provou ao homem a possibilidade de construir o Reino da paz dentro do próprio coração abrindo a estrada celeste à felicidade de cada um de nós.     Entretanto, o maior embaixador do Céu para a Terra foi igualmente criança. Viveu num lar humilde e pobre, tanto quanto ocorre a milhões de meninos, mas não passou a infância despreocupadamente. Possuiu companheiros carinhosos e brincou junto deles. No entanto, era visto diariamente a trabalhar numa carpintaria modesta. Vivia com disciplina. Tinha deveres para com o serrote, o martelo e os livros.<br>     Por representar o Supremo Poder na Terra, não se movia à vontade, sem ocupações definidas. Nunca se sentiu superior aos pequenos que o cercavam e jamais se dedicou à humilhação dos semelhantes.     Eis por que o jovem mantido à solta, sem obrigações de servir, atender e respeitar, permanece em grande perigo.” (Neio Lúcio. <em>Alvorada Cristã.</em> Psicografado por Francisco Cândido Xavier. FEB.15.ed.,</p>
+<p><strong>OBJETIVOS GERAIS</strong></p>
+<p>• Formar os jovens corações nas diversas áreas de atuação da Casa Espírita.<br>• Estimular a participação do Bom Samaritano Infantil e Bom Samaritano Jovem em Encontros e Congressos Espíritas, tais como: CONCAFRAS e Encontros Fraternos Auta de Souza, etc.<br>• Estimular na criança o gosto pelo estudo da Doutrina Espírita, bem como a aplicação de seus ensinos na sua vida diária.<br>• Formar colaboradores especializados para as tarefas dos Institutos da Casa Espírita.<br>• Formar novas lideranças no bem, a serviço de Jesus.</p>
+<p><strong>O QUE É BOM SAMARITANO INFANTIL?</strong></p>
+<p>A Escola Espírita Bom Samaritano Infantil é um Núcleo de Trabalho do Instituto da criança, cuja tarefa é a formação de Evangelizadores desde a infância, incentivando-os desde cedo na tarefa nobre de evangelizar outras crianças. Este núcleo funciona no mesmo dia da Escola de Evangelização Infantil, sendo que no Centro Espírita ocorre no horário do planejamento das aulas e das visitas domiciliares e no Posto de Assistência, no horário dos cursos para trabalhadores.</p>
+<p><strong>ORGANIZAÇÃO DAS TURMAS</strong></p>
+<p>A Escola Espírita Bom Samaritano Infantil é constituída por 4 cursos de duração anual.<br>As crianças aptas para a Escola do Bom Samaritano Infantil são aquelas aprovadas no 1o Básico do Nível 2, que ingressaram na Escola de Evangelização Infantil no Nível 2 e, também as que são provenientes do Nível 1 e passaram com aprovação no Intermediário.<br>A criança que faz parte dessa escola participa também dos cursos da Escola de Evangelização Espírita Infantil, para que a sua formação doutrinária seja preservada.<br>Sua fase de estágio como auxiliar de sala somente iniciará após 2 anos de curso e sempre no 2o e 3o momentos da aula do Nível I (Trabalhando e Brincando com Jesus) e do Nível II (Parte diversificada e Parte prática). No final do curso do 4o ano, o estágio poderá acontecer na aplicação do Aprendendo com Jesus das aulas especiais.</p>
+<p>O conteúdo aplicado no Núcleo comum do Nível II é essencial para a formação doutrinária dos alunos. Por isso eles devem frequentar as aulas na Escola de Evangelização Infantil junto com os demais colegas, normalmente, até alcançar o grau Superior, onde concluirá a sua formação com o curso Conhece-te a ti mesmo.<br>Conforme já foi explicado, os cursos de formação do Bom Samaritano Infantil são anuais e estão distribuídos na grade curricular abaixo:<br>• 1º Ano – Bom Samaritano Infantil na Escola de Evangelização Infantil<br>• 2º Ano – Criança evangelizando criança de 0 a 5 anos;<br>• 3º Ano – Criança evangelizando criança de 6 a 11 anos;<br>• 4º Ano – Criança Evangelizadora</p>
+<p>CRITÉRIOS DE PARTICIPAÇÃO</p>
+<p>Serão aprovados e promovidos para o curso subsequente os alunos que alcançarem frequência regular, ou seja correspondente a 75% de presença nas aulas.<br>“E quando reprovados repetiríamos a experiência até concordar plenamente o tema com a verdade que esposávamos […].”<br>(Camilo Cândido Botelho. Memórias de um suicida. Psicografado por Yvonne A. Pereira. FEB. 6.ed., p.483.)</p>
+<p>HORÁRIO DE FUNCIONAMENTO</p>
+<p>• Centro Espírita: Curso – 45 minutos e Oficinas – 30 minutos<br>• Posto de Assistência – Curso 45 minutos</p>
+<p>GRADE CURRICULAR</p>
+<p>O Currículo é dividido em 4 cursos anuais com 2 temas semestrais conforme grade curricular abaixo:</p>
+<p>1<strong>o Ano: Curso O Bom Samaritano Infantil</strong></p>
+<p>Tema e Oficinas</p>
+<p>Prática</p>
+<p>1o Semestre</p>
+<p>Tema (cartilha): O Bom Samaritano Infantil</p>
+<p>Auxiliar do 3o momento do Nível I (Brincando com Jesus ou Posto de Higiene) </p>
+<p>Oficinas: elaboração de recursos didáticos para as aulas do Nível I e jogos pedagógicos para as aulas do Brincando com Jesus.</p>
+<p>2o Semestre</p>
+<p>Tema (cartilha): Noções elementares de Evangelização Infantil </p>
+<p>Auxiliar no 3o momento do Nível I (Brincando com Jesus ou Posto de Higiene) ou auxiliar na laborterapia do 2o básico. </p>
+<p>Oficinas  de elaboração de recursos e materiais didáticos para as aulas especiais e laborterapia. </p>
+<p><strong>2o Ano: Criança Evangelizando Criança</strong></p>
+<p>Tema e Oficinas</p>
+<p>Prática</p>
+<p>3o Semestre</p>
+<p>Tema (cartilha): Criança evangelizando criança</p>
+<p>Realizar a prática do curso Conhecer e servir. </p>
+<p>Oficinas: produção de recursos didáticos para contar histórias às crianças de Nível I (0 a 5 anos).</p>
+<p>4o Semestre</p>
+<p>Tema (cartilha): Conhecendo a criança de 0 a 5 anos</p>
+<p>Realizar a prática do curso Conhecer e Servir </p>
+<p>Oficinas: planejamento de aulas e aplicação para o grupo.</p>
+<img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/bom-samaritano-infantil-04_09_2017.jpg" alt="" />
+
+<p>Saiba mais no livro:<strong>Bom Samaritano Infantil_._</strong> Editora Auta de Souza, no site <a href="http://www.editoraautadesouza.com.br/">http://www.editoraautadesouza.com.br</a></p>
+<p>Este livro apresenta outros temas como: A criança com deficiência e A criança em vulnerabilidade Social na Escola de Evangelização Infantil.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

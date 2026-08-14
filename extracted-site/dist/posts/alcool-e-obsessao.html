@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Álcool e obsessão | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Atualidades</span>
+          <h1>Álcool e obsessão</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T19:20:31 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/alcool-02_12_2017.jpg" alt="" class="alignleft" width="463" height="233" />
+
+<p><strong>Caso da obra “Sexo e destino” pelo espírito de André Luiz, psicografia de Chico Xavier.</strong></p>
+<p>“A noite avançava.</p>
+<p>Transpassando estreito corredor, pisamos o recinto doméstico, surpreendendo, no limiar, dois homens desencarnados, a debaterem, com descuidada chocarrice, escabrosos temas de vampirismo.</p>
+<p>[…] Malandros acalentados, mas perigosos, conquanto invisíveis para aqueles junto dos quais se erguiam por ameaça insuspeitada.</p>
+<p>Por semelhantes companhias, fácil apreciar os riscos a que se expunham os moradores daquele ninho de cimento armado, a embutir-se na construção enorme, sem qualquer defesa de espírito.</p>
+<p>Entramos. Na sala principal, um cavalheiro de traços finos, em cuja maneira de escarrapachar-se se adivinhava, para logo, o dono da casa, lia um jornal vespertino com atenção.</p>
+<p>Os atavios do ambiente, apesar de modestos, denunciavam apurado gosto feminino. O mobiliário antigo de linhas quase rudes suavizava-se ao efeito de ligeiros adornos. […] Mas, destoante e agressiva, uma esguia garrafa, contendo uísque, empinava o gargalo sobre o crivo lirial que completava a elegância da mesa nobre, deitando emanações alcoólicas que se casavam ao hálito do amigo derramado no divã.</p>
+<p>Félix encarou-o, manifestando a expressão de quem se atormentava, piedosamente, ao vê-lo, e no-lo indicou:</p>
+<p>— Temos aqui o irmão Cláudio Nogueira, pai de Marina e tronco do lar.</p>
+<p>Fisguei-o, de relance. Figurou-se-me o hospedeiro involuntário um desses homens maduros que se demoram na quadra dos quarenta e cinco janeiros, esgrimindo bravura contra os desbarates do tempo. Rosto primorosamente tratado, em que as linhas firmes repeliam a notícia vaga das rugas, cabelos penteados com distinção, unhas polidas, pijama impecável. Os grandes olhos escuros e móveis pareciam imanizados às letras, pesquisando motivos para trazer um sorriso irônico aos lábios finos. Entre os dedos da mão que descansava à beira do sofá, o cigarro fumegante, quase rente ao tripé anão, sobre o qual um cinzeiro repleto era silenciosa advertência contra o abuso da nicotina.</p>
+<p>Detínhamo-nos, curiosos, na inspeção, quando sobreveio o inopinado.Diante de nós, ambos os desencarnados infelizes, que surpreendêramos à entrada, surgiram de repente, abordaram Cláudio e agiram sem cerimônia.</p>
+<p>Um deles tateou-lhe um dos ombros e gritou, insolente:</p>
+<p>— Beber, meu caro, quero beber!</p>
+<p>A voz escarnecedora agredia-nos a sensibilidade auditiva. Cláudio, porém, não lhe pescava o mínimo som. Mantinha-se atento à leitura. Inalterável. Contudo, se não possuía tímpanos físicos para qualificar a petição, trazia na cabeça a caixa acústica da mente sintonizada com o apelante.</p>
+<p>O assessor inconveniente repetiu a solicitação, algumas vezes, na atitude do hipnotizador que insufla o próprio desejo, reasseverando uma ordem.</p>
+<p>O resultado não se fez demorar. Vimos o paciente desviar-se do artigo político em que se entranhava. Ele próprio não explicaria o súbito desinteresse de que se notava acometido pelo editorial que lhe apresara a atenção.</p>
+<p>Beber! Beber!…</p>
+<p>Cláudio abrigou a sugestão, convicto de que se inclinava para um trago de uísque exclusivamente por si.</p>
+<p>O pensamento se lhe transmudou, rápido, como a usina cuja corrente se desloca de uma direção para outra, por efeito da nova tomada de força.</p>
+<p>Beber, beber!… e a sede de aguardente se lhe articulou na idéia, ganhando forma. A mucosa pituitária se lhe aguçou, como que mais fortemente impregnada do cheiro acre que vagueava no ar.</p>
+<p>O assistente malicioso coçou-lhe brandamente os gorgomilos. O pai de Marina sentiu-se apoquentado. Indefinível secura constringia-lhe o laringe. Ansiava tranqüilizar-se.</p>
+<p>O amigo sagaz percebeu-lhe a adesão tácita e colou-se a ele. De começo, a carícia leve; depois da carícia agasalhada, o abraço envolvente; e depois do abraço de profundidade, a associação recíproca.</p>
+<p>Integraram-se ambos em exótico sucesso de enxertia fluídica.</p>
+<p>Em várias ocasiões, estudara a passagem do Espírito exonerado do envoltório carnal pela matéria espessa. Eu mesmo, quando me afazia, de novo, ao clima da Espiritualidade, após a desencarnação última, analisava impressões ao transpor, maquinalmente, obstáculos e barreiras terrestres, recolhendo, nos exercícios feitos, a sensação de quem rompe nuvens de gases condensados. Ali, no entanto, produzia-se algo semelhante ao encaixe perfeito.</p>
+<p>Cláudio-homem absorvia o desencarnado, a gulsa de sapato que se ajusta ao pé. Fundiram-se os dois, como se morassem eventualmente num só corpo. Altura idêntica. Volume igual. Movimentos em-crônicos. Identificação positiva.</p>
+<p>Levantaram-se a um tempo e giraram integralmente incorporados um ao outro, na área estreita, arrebatando o delgado frasco.</p>
+<p>Não conseguiria especificar, de minha parte, a quem atribuir o impulso inicial de semelhante gesto, se a Cláudio que admitia a instigação ou se ao obsessor que a propunha.</p>
+<p>A talagada rolou através da garganta, que se exprimia por dualidade singular.</p>
+<p>Ambos os dipsômanos estalaram a língua de prazer, em ação simultânea.</p>
+<p>Desmanchou-se a parelha e Cláudio, desembaraçado, se dispunha a sentar, quando o outro colega, que se mantinha a distância, investiu sobre ele e protestou:  </p>
+<p>– eu também, eu também quero!</p>
+<p>Reavivou-se-lhe no ânimo a sugestão que esmorecia.</p>
+<p>Absolutamente passivo diante da incitação que o assaltava, reconstituiu, mecanicamente, a impressão de insaciedade.</p>
+<p>Bastou isso e o vampiro, sorridente, apossou-se dele, repetindo-se o fenômeno da conjugação completa.</p>
+<p>Encarnado e desencarnado a se justaporem. Duas peças conscientes, reunidas em sistema irrepreensível de compensação mútua.</p>
+<p>Abeirei-me de Cláudio para avaliar, com imparcialidade, até onde sofreria ele, mentalmente, aquele processo de fusão. Para logo convenci-me de que continuava livre, no íntimo. Não experimentava qualquer espécie de tortura, a fim de render-se. Hospedava o outro, simplesmente, aceitava-lhe a direção, entregava-se por deliberação própria. Nenhuma simbiose em que se destacasse por vítima.</p>
+<p>Associação implícita, mistura natural.</p>
+<p>Efetuava-se a ocorrência na base da percussão.</p>
+<p>Apelo e resposta. Cordas afinadas no mesmo tom.</p>
+<p>O desencarnado alvitrava, o encarnado aplaudia.</p>
+<p>Num deles, o pedido; no outro, a concessão.</p>
+<p>Condescendendo em ilaquear os próprios sentidos, Cláudio acreditou-se insatisfeito e retrocedeu, sorvendo mais um gole.</p>
+<p>Não me furtei à conta curiosa. Dois goles para três.</p>
+<p>[…]</p>
+<p>Como situar o problema? Se víramos Cláudio aparentemente reduzido à condição de um fantoche, como proceder na aplicação da justiça? Se ao invés de bebedice, estivéssemos diante de um caso criminal? Se a garrafa de uísque fosse arma determinada, para insultar a vida de alguém, como decidir? A culpa seria de Cláudio que se submetia ou dos obsessores que o comandavam?</p>
+<p>O irmão Félix aclarou, tranqüilo:</p>
+<p>— Ora, Neves, você precisa compreender que nos achamos à frente de pessoas bastante livres para decidir e suficientemente lúcidas para raciocinar. No corpo físico ou agindo fora do corpo físico, o Espírito é senhor da constituição de seus atributos. Responsabilidade não é título variável. Tanto vale numa esfera, quanto em outras. Cláudio e os companheiros, na cena que acompanhamos, são três consciências na mesma faixa de escolha e manifestações conseqüentes. Todos somos livres para sugerir ou assimilar isso ou aquilo.Se você fosse instado a compartilhar um roubo, decerto recusaria. E, na hipótese de abraçar a calamidade, em são juízo, não conseguiria desculpar-se.”<br>(André Luiz. Sexo e Destino. Psicografia de Francisco Cândido Xavier. 12. Ed. Cap. 6)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

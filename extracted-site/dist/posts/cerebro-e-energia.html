@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cérebro e energia | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Ciência e espiritismo</span>
+          <h1>Cérebro e energia</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-25T07:38:18 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>Na produção de corrente contínua em eletricidade, possuímos geradores e motores, capazes de criar força eletromotriz e fornecer corrente, no que respeita aos geradores, ou de ceder potência determinada, no que tange aos motores.</p>
+<p>Nas máquinas destinadas a semelhantes serviços, encontramos os enrolamentos em tambor, que podem ser imbricados ou ondulados, com particularidades técnicas variadas.</p>
+<p>Anotando a multiplicidade dos aparelhos dessa espécie, lembremo-nos de que os geradores, em sua maioria, são sempre autoexcitados.</p>
+<p><strong>Gerador “Shunt”</strong></p>
+<p>Observemos um gerador “shunt”, em que o fenômeno da corrente elétrica é mais acessível ao nosso exame.</p>
+<p>Imaginando-se-lhe o interruptor aberto, quando o induzido começa a girar, repararemos que aí se plasma pequena força eletromotriz, em vista da formação de magnetismo residual.</p>
+<p>Essa força, no entanto, não patrocina qualquer corrente circulante no campo.</p>
+<p>Se fechamos, contudo, o interruptor, a força eletromotriz gerada produz uma corrente no campo que, por sua vez, determina a formação de uma força magnetomotriz de sentido idêntico, àquele em que se expressa o magnetismo residual, dilatando o fluxo, até que a força eletromotriz alcance o seu máximo valor, de conformidade com a resistência integral do campo. […]</p>
+<p><strong>Frustração da Corrente Elétrica</strong></p>
+<p>Sempre que a corrente de um gerador não se alteie, a frustração é devida a causas diversas, das quais salientamos as mais importantes:</p>
+<ol>
+<li>Ausência de magnetismo residual, em se tratando de aparelhos novos ou fora de serviço por longo tempo.  </li>
+<li>Ligações invertidas no circuito do campo, de vez que, se precisamos do magnetismo de resíduo para que se produza ação adicional no circuito magnético, é indispensável que o campo “shunt” esteja em ligação com a armadura, de maneira que a corrente excitadora engendre a força eletromotriz que se adicione ao campo residual.  </li>
+<li>Resistência excessiva do circuito do campo, que poderá advir de ligações inconvenientes ou de influência perniciosa dos detritos acumulados na máquina.</li>
+</ol>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/energia-mental-06_09_2017.jpg" alt="" class="alignleft" width="225" height="224" />
+
+<p><strong>Gerador do Cérebro</strong></p>
+<p>Com alguma analogia, encontramos no cérebro um gerador auto-excitado, acrescido em sua contextura íntima de avançados implementos para a geração, excitação, transformação, indução, condução, exteriorização, captação, assimilação e desassimilação da energia mental, qual se um gerador comum desempenhasse, não apenas a função de criar força eletromotriz e consequentes potenciais magnéticos para fornecê-los em certa direção, mas também todo o acervo de recursos dos modernos emissores e receptores de radiotelefonia e televisão, acrescidos de valores ainda ignorados na Terra. […]</p>
+<p>É aí, nesse microcosmo prodigioso, que a matéria mental, ao impulso do Espírito, é manipulada e expressa, em movimento constante, produzindo correntes que se exteriorizam, no espaço e no tempo, conservando mais amplo poder na aura da personalidade em que se exprime, através de ação e reação permanentes, como acontece no gerador comum, em que o fluxo energético atinge valor máximo, segundo a resistência integral do campo, diminuindo de intensidade na curva de saturação. […]</p>
+<p>Nessas províncias-fulcros da individualidade, circulam as correntes mentais constituídas à base dos átomos de matéria da mesma grandeza, qual ocorre na matéria física, em que as correntes elétricas resultam dos átomos físicos excitados, formando, em sua passagem, o consequente resíduo magnético, pelo que depreendemos, sem dificuldade, a existência do eletromagnetismo tanto nos sistemas interatômicos da matéria física, como naqueles em que se evidencia a matéria mental.</p>
+<p><strong>Corrente do Pensamento</strong></p>
+<p>Sendo o pensamento força sutil e inexaurível do Espírito, podemos categorizá-lo, assim, à conta de corrente viva e exteriorizante, com faculdades de auto-excitação e autoplasticização inimagináveis.</p>
+<p>À feição do gerador “shunt”, se a mente jaz desatenciosa, como que mantendo o cérebro em circuito aberto, forma-se, no mundo intracraniano, reduzida força mentocriativa que não determina qualquer corrente circulante no campo individual: mas, se a mente está concentrada, fazendo convergir sobre si mesma as próprias oscilações, a força mentocriativa gerada produz uma corrente no campo da personalidade que, a seu turno, provoca a formação de energia mental de sentido análogo àquele em que se exprime o magnetismo de resíduo, dilatando o fluxo até que a força aludida atinja o seu valor máximo, de acordo com a resistência do campo a que nos referimos. […]</p>
+<p><strong>Negação da Corrente Mental</strong> </p>
+<p>Sempre que a corrente mental ou mentocriativa não possa expandir-se, tal negação se filia a causas diversas, das quais, como acontece na máquina “shunt”, assinalamos as mais expressivas:</p>
+<ol>
+<li>Ausência de magnetismo residual, em se tratando de cérebros primitivos, isto é, de criaturas nos primeiros estágios do pensamento contínuo, no reino hominal, ou de pessoas por largo tempo entregues a profunda e reiterada ociosidade espiritual.  </li>
+<li>Circuitos mentais invertidos, em razão de monoideísmo vicioso, na maioria das vezes agravado por influências obsessivas.  </li>
+<li>Deficiência da aparelhagem orgânica, por motivo de enfermidade ou perturbações temporárias, oriundas do relaxamento da criatura, no trato com o próprio corpo.<br>André Luiz. Mecanismos da Mediunidade. Psicografado por Francisco Cândido Xavier e Waldo Vieira. FEB. 4.ed., cap. 9.</li>
+</ol>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

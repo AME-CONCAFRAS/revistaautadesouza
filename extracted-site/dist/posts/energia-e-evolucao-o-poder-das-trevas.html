@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energia e Evolução &#8211; O poder das Trevas | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Universo e vida</span>
+          <h1>Energia e Evolução &#8211; O poder das Trevas</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-09T21:24:54 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>Espantam-se alguns companheiros de aprendizado com as demonstrações de força do chamado Poder das Trevas, capaz de organizar verdadeiros impérios, em zonas umbralinas e nas regiões subcrostais, de onde consegue atuar organizada e maleficamente sobre pessoas e instituições na Crosta da Terra.</p>
+<p>O espanto, porém, é descabido, não só por motivos de boa lógica, mas, igualmente, por motivos de ordem técnica.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/forest-2044261__340.jpg" alt="" class="alignleft" width="441" height="333" />
+
+<p>Por mais intelectualizados que possam ser os gênios do mal, e por mais sofisticados que sejam os seus recursos tecnológicos, não podem eles, nunca puderam e jamais poderão afrontar a sabedoria e o Poder do Cristo e de seus grandes mensageiros, que controlam, com absoluta segurança, todos os fenômenos ocorrentes no planeta e no sistema de que este é parte.</p>
+<p>Tudo o que as Inteligências rebeladas podem fazer é rigorosamente condicionado aos limites de justiça e tolerância que o Governo da Vida estabelece, no interesse do sumo bem.</p>
+<p>É fora de dúvida que os “Dragões” e seus agentes possuem ciência e tecnologia muito superiores às dos homens encarnados, e, sempre que podem, as utilizam. Entretanto, os Poderes Celestes sabem mais e podem mais do que eles.</p>
+<p>A Treva pode organizar, e organiza, infernos de vasta e aterrorizadora expressão; contudo, sempre que semelhantes quistos ameaçam a estabilidade planetária, a intervenção superior lhes promove a desintegração.</p>
+<p>Os “demônios”, que se arrogam os títulos de “juizes”, e que há muitíssimo tempo utilizam, em larga escala, processos e instrumentais de desintegração que nem a mais moderna ficção científica dos encarnados ainda sequer imagina, realmente conhecem muito mais do que os homens sobre a estrutura e a dinâmica dos átomos e das partículas elementares. Eles sabem consideravelmente mais do que os cientistas e pesquisadores terrenos, acerca de muito mais coisas do que massa, carga, spin, número bariônico, estranheza e vida média de lambdas, sigmas, csis, ômegas, etc., e conseguem verdadeiros “milagres” tecnológicos, a partir de seus conhecimentos práticos avançados sobre ressonâncias e recorrências, usando com mestria léptons, mésons e bárions, além de outras partículas, como o gráviton, que o engenho humano experimentalmente desconhece.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/landscape-1757345_960_720.jpg" alt="" class="alignleft" width="496" height="720" />
+
+<img src="http://www.revistaautadesouza.com/public/imagem/gerenciador/QUEM-SaO-OS-OBSESSORES-2-830x450-02_02_2019.jpg" alt="" />
+
+<p>Apesar disso, os operadores celestes não somente varrem, com frequência, o lixo de saturação que infecta demasiado perigosamente certas regiões do Espaço, aniquilando-o através de interações de partículas com antipartículas atômicas, como se valem de outros recursos, infinitamente mais poderosos, rápidos e decisivos, para além de todas as forças eletromagnéticas e físicoquímicas ao alcance das Trevas.</p>
+<p>Também a capacidade de destruição do homem encarnado permanece sob o rigoroso controle do Poder Celeste. A energia produzida pelas reações nucleares, que os belicistas da Crosta já conseguem utilizar, não vai além de um centésimo da massa total dos reagentes. Eles sabem que o encontro de um pósitron com um elétron de carga negativa resulta na total destruição de ambos, pela transformação de suas massas em dois fótons de altíssima energia. Entretanto, não conseguem pósitrons naturais para essas reações e não são capazes ainda de produzi-los senão à custa de um dispêndio energético praticamente insuportável.</p>
+<p>Assim, as Trevas podem realmente assustar-nos e ferir-nos, sempre que nossos erros voluntários nos colocam ao alcance de sua maldade. Basta, porém, que nossa opacidade reflita um único raio do Amor Divino, para que nenhuma força maligna possa exercer sobre nós qualquer poder.</p>
+<p>Áureo. <em>Universo e Vida</em>. Psicografado por Hernani T. Sant’Anna, 5.ed. Cap. 15</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

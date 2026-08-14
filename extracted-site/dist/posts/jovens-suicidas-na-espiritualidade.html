@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jovens suicidas na espiritualidade | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Galera Jovem</span>
+          <h1>Jovens suicidas na espiritualidade</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-30T11:46:20 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/portrait-787522_640.jpg" alt="" class="alignleft" width="408" height="271" />
+
+<p> “Mais adiante, aproximei-me de uma garota de quatorze anos e, com ternura, fui puxando conversa.</p>
+<p>– Você está bem?</p>
+<p>– Mais ou menos. Hoje estou melhor, o sangramento está diminuindo – mostrou-me o pulso que fora cortado com gilete.</p>
+<p>Nada lhe perguntei, mas ela foi-me relatando o trágico episódio. Vivia, com suas amigas, sob severa vigilância dos pais. Divertiam-se lendo revistas e livros pornográficos sobre sexo e anticoncepcionais, às escondidas. Enfim, a proibição dos pais aguçava-lhes cada vez mais a curiosidade sobre a vida sexual. Brincavam entre si, procurando suprir a falta do contato masculino. Esta garota, vivendo situação conflitante – uma, em que a curiosidade falava mais alto e outra onde lhe apresentavam um Deus que castiga -, temendo a punição, quis fugir de si mesma, por considerar-se indigna. Assim, depois de uma tarde de sexo com suas amigas, resolveu fugir da realidade através do suicídio.</p>
+<p>Abracei-a forte.</p>
+<p>-Por que irmã, não procurou alguém para lhe aconselhar?</p>
+<p>-Quem escuta sem acusar? Todos gostam de atirar pedras, ninguém procura saber porque alguém caiu. Só sabem culpar a fraqueza do próximo.</p>
+<p>Calei-me. Ela estava com a razão. Poucos ouvem e ajudam, muitos ouvem e só sabem criticar. Recordei-me de um local onde o jovem é amado, compreendido e respeitado pelos espíritos e por alguns companheiros; sabemos que existem muitos que não desejam amá-los mas temos a esperança de que um dia esses adultos voltarão a ser crianças. Esperamos, eu e principalmente, Irmã Francisca Thereza. É bem pouco o que os jovens nos pedem: respeito, só isso. Elogiar o seu trabalho, demonstrando-lhes que os amamos, é necessário para o dia de amanhã. Mostrarmo-nos indiferentes é sinal de que não atingimos ainda a faixa de respeito à dignidade alheia. Somos uma falange que espera que cada ser plante um jardim de esperanças para que os Miosótis não deixem de florir.</p>
+<p>– Até outro dia, Sandrinha. Espero que você se restabeleça; voltarei a visita-la. Até.</p>
+<p>– Não, não vás embora, não! Gostei de ti, és tão legal!</p>
+<p>Acariciei-a e ainda permaneci conversando por algum tempo mais” (p. 116)</p>
+<p>MENINO DE DOZE ANOS</p>
+<p>“Quando a deixei, fui direto até um menino que aparentava doze anos. Tinha um orifício feito por bala na fronte. Apesar de já haver sido medicado, o sangue corria em profusão.</p>
+<p>Como vai, camarada?</p>
+<p>Olhou-me com ódio, nada respondendo. Sentei-me ao seu lado, abri o Evangelho como quem nada queria. Ele, meio sem jeito, disse-me:</p>
+<p>– Desculpe-me, amigo, ando meio nervoso. Suicidei-me, pensando ficar livre de tudo e veja o meu estado: cada vez mais preso ao remorso.</p>
+<p>– O que aconteceu com você?</p>
+<p>– Fiquei ‘cheio’ dos velhos, desejei dar uma de vítima para chamar a atenção e olhe o que restou do meu corpo…</p>
+<p>– Mais só por isso?</p>
+<p>– Você acha pouco ser filho único e desprezado pelos pais? Eles só se amavam, em nenhum momento lembravam que eu existia. Meu pai não me queria. Quando minha mãe ficou grávida e depois do meu nascimento, fui sendo desprezado pelo seu ciúme, e cada vez mais me revoltava. Sentia no olhar de meu pai o desejo de que eu saísse de casa. Ele queria viver sozinho com a minha mãe; eu era como um fardo pesado para eles.</p>
+<p>– E sua mãe, não era sua amiga?</p>
+<p>– Que nada! Às vezes, parecia que me amava, mais só a meu pai ela agradava.</p>
+<p>– E aí você resolveu suicidar-se?</p>
+<p>– Queria apenas dar um susto neles, mais acabei acertando em cheio e nada os médicos puderam fazer.</p>
+<p>– E eles, como estão?</p>
+<p>– Na deles. Nem ligaram. Só no inicio ficaram chocados. Não esqueça que eu era demais naquela casa.</p>
+<p>– É inacreditável que existam casais que renegam o próprio filho!</p>
+<p>– Meu amigo, como meu caso, existem muitos aqui. Aquela garota ali, por exemplo, a mãe a odiava e o pai lhe era indiferente.</p>
+<p>Sai, imaginando os lares despreparados para receber um filho.”</p>
+<p>Adolescência, um desafio de pais e educadores. Editora Auta de Souza. p.116-117.</p>
+<p>Quer saber mais sobre o Suicídio, as causas e consequências do suicídio? Leia o Livro ADOLESCÊNCIA, UM DESAFIO PARA PAIS E EDUCADORES, da <a href="http://www.editoraautadesouza.com.br/">Editora Auta de Souza</a>.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

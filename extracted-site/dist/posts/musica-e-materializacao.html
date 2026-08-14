@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Música e Materialização | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Ciência e espiritismo</span>
+          <h1>Música e Materialização</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-25T19:01:04 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/Musica-02_02_2019.jpeg" alt="" class="alignright" width="458" height="459" />
+
+<p><strong>Acontecimento:</strong> Trabalho de Materialização em uma casa espírita</p>
+<p><strong>Personagens:</strong> André Luiz e Alexandre, Irmão Calimério (Entidade responsável pelo trabalho), Alencar (Orientador do aparelho mediúnico para as atividades de materialização propriamente ditas), médium de materialização e trabalhadores encarnados</p>
+<p><strong>Motivo da visita ao trabalho de Materialização</strong></p>
+<p>Em virtude do meu interesse, no estudo dos fenômenos de materialização, não hesitei em solicitar o prestigioso concurso de Alexandre, que se colocou gentilmente ao lado de meus desejos.</p>
+<p>[…] E porque revelasse minha profunda curiosidade científica, o orientador prosseguiu:</p>
+<p>– Trata-se de serviço de elevada responsabilidade, porqüanto, além de exigir todas as possibilidades do aparelho mediúnico, há que movimentar todos os elementos de colaboração dos companheiros encarnados, presentes às reuniões destinadas a esses fins. Se houvesse perfeita compreensão geral, respeito aos dons da vida, e se pudéssemos contar com valores morais espontâneos e legitimamente consolidados no espírito coletivo, essas manifestações seriam as mais naturais possíveis, sem qualquer prejuízo para o médium e assistentes. Acontece, porém, que são muito raros os companheiros encarnados dispostos às condições espirituais que semelhantes trabalhos exigem. Por isso mesmo, na incerteza de colaboração eficiente, as sessões de materialização efetuam-se com grandes riscos para a organização mediúnica e requisitam número dilatado de cooperadores do nosso plano.</p>
+<p><strong>Descrição do ambiente</strong></p>
+<p>[…] Admiradíssimo, notei a enorme diferenciação do ambiente. Não havia, ali, como em outras reuniões a que assistira, a grande comunidade de sofredores às portas. A residência particular, onde se efetuariam os trabalhos, chegava a ser isolada por extenso cordão de trabalhadores de nosso plano, num círculo de vinte metros em derredor.</p>
+<p><strong>Trabalhadores encarnados</strong> </p>
+<p>[..] Nesse instante, pessoas familiarizadas com a reunião penetraram a sala, tomando os lugares que lhes eram habituais. Estabeleceu-se, entre os encarnados, ligeira conversação, na qual se comentavam os trabalhos levados a efeito anteriormente.</p>
+<p>Não se passaram muitos minutos e a jovem médium, afável e simpática, deu entrada no recinto, acompanhada por diversas entidades, dentre as quais se destacava um amigo de elevada condição, que parecia chefiar o grupo de servidores. Esse exercia considerável controle sobre a moça, que a ele se ligava através de tênues fios de natureza magnética.</p>
+<p><strong>Comportamento dos trabalhadores encarnados</strong></p>
+<p>[..] Entre os votos de êxito dos companheiros encarnados semiconfiantes, a médium foi conduzi da ao pequeno gabinete improvisado, fazendo-se, em seguida, ligeira oração. Via-se, no entanto, que, como acontecia em outras reuniões, os amigos terrestres emitiam solicitações silenciosas, entrando as vibrações mentais em conflito ativo, desservindo ao invés de auxiliar no trabalho da noite, o qual requisitava a mais elevada percentagem de harmonia. À claridade fraca e suave da luz vermelha que substituíra a forte lâmpada comum, notavam-se as emissões luminosas do pensamento dos amigos encarnados. Francamente, não havia na pequena comunidade o espírito de entendimento divino do serviço em curso. Ninguém ponderava a expressão do fato para a Humanidade ter rena, sequiosa de revelação celeste. Via-se que a reunião era profundamente dominada pelo «eu». Enquanto uns exteriorizavam exigências, outros determinavam as criaturas desencarnadas que deveriam comparecer nos fenômenos de materialização, procurei, contudo, coibir minhas impressões de desagrado, porque todos os trabalhadores de grande elevação, no recinto, portavam-se calmamente, tratando os companheiros carnais com desvelado carinho, quais sábios em face de crianças queridas ao coração.</p>
+<p><strong>Perturbação Vibratória do ambiente em vista da atitude dos encarnados e importância da Música:</strong></p>
+<p>Notando a perturbação vibratória do ambiente, em vista da atitude desaconselhável dos companheiros encarnados, disse Calimério ao controlador mediúnico:</p>
+<p>– Alencar, é necessário extinguir o conflito de vibrações. Nossos amigos ignoram ainda como auxiliar-nos, harmonicamente, através das emissões mentais. É mais razoável se abstenham da concentração por agora. Diga-lhes que cantem ou façam música de outra natureza. Procure distrair-lhes a atenção deseducada.</p>
+<p>Alencar, porém, que se encontrava sob preocupações fortes, diante das múltiplas obrigações que deveria desempenhar no momento, pediu a colaboraração de Alexandre, que se colocou à disposição dele, imediatamente:</p>
+<p>– André – falou o meu orientador, em tom grave -, improvisemos a garganta ectoplásmica. Não podemos perder tempo. [..]</p>
+<p>Formara-se, ao influxo mental e sob a ação técnica de meu orientador, uma garganta irrepreensível. Com assombro, verifiquei que através do pequeno aparelho improvisado e com a cooperação dos sons de vozes humanas, guardados na sala, nossa voz era integralmente percebida por todos os encarnados presentes. Parecendo-me satisfeito com o êxito de seu trabalho, Alexandre falou pela garganta artificial, como quem utilizava um instrumento vocal humano:</p>
+<p>– Meus amigos, a paz de Jesus seja convosco! Ajudem-nos, cantando! Façam música e evitem a concentração!…</p>
+<p>Fez-se música no ambiente e vi que o Irmão Alencar, depois de ligar-se profundamente à organização mediúnica, tomava forma, ali mesmo, ao lado da médium, sustentada por Calimério e assistida por numerosos trabalhadores.</p>
+<p>André Luiz. Missionários da Luz. Psicografia de Francisco Cândido Xavier. Cap. 10</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

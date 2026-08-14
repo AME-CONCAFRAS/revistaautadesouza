@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como fazer Escola de Estudos Espíritas | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Como fazer na casa espírita</span>
+          <h1>Como fazer Escola de Estudos Espíritas</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-27T11:00:16 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/estudando-kardec-13_11_2017.jpg" alt="" class="alignleft" width="498" height="380" />
+
+<p><strong>Como multiplicar os trabalhadores na Casa Espírita</strong><br>“ Indispensável, porém, cogitar da formação daqueles que se nos farão continuadores nos círculos de serviço.<br>De que maneira laurear profissionais dignos e competentes nos estabelecimentos de ensino superior, sem a escola funcionando na base da cultura?<br>Nas atividades espirituais, há que se observar igualmente o clima de sequência, se quisermos obter colaboradores corretos e eficientes.” (Emmanuel. Mediunidade e sintonia. Psicografado por Francisco Cândido Xavier. FEB. p.90.)</p>
+<p><strong>Qual orientação de Kardec sobre</strong> <strong>Cursos de Espiritismo</strong><br>“Um curso regular de Espiritismo seria professado com o fim de desenvolver os princípios da Ciência e de difundir o gosto pelos estudos sérios. Esse curso teria a vantagem de fundar a unidade de princípios, de fazer adeptos esclarecidos, capazes de espalhar as ideias espíritas e de desenvolver grande número de médiuns. Considero esse curso como de natureza a exercer capital influência sobre o futuro do Espiritismo e sobre suas consequências.” (Allan Kardec. Obras Póstumas. FEB. 16.ed. p.342.)</p>
+<p><strong>A Escola de Estudos Espíritas</strong><br>A Escola de Estudos Espíritas é responsável pela formação doutrinária dos trabalhadores da Casa Espírita. Integra uma série de cursos sistematizados e possui um currículo subdividido em Ciclos Introdutório e Ciclo de Especialização.</p>
+<p><strong>Ciclo Introdutório</strong><br>Este Ciclo representa uma proposta de estudo sistematizado e regular da Doutrina Espírita em que o neófito adquire conhecimentos teóricos e de práticas assistenciais que o habilita a integrar-se, posteriormente, no Ciclo de Especialização. É composto de quatro cursos, de duração semestral.</p>
+<p> <strong>CURSOS DO CICLO INTRODUTÓRIO</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/conheca-o-espiritismo-capa-13_11_2017.jpg" alt="" class="alignleft" width="179" height="256" />
+
+<p><strong>1 – CONHEÇA O ESPIRITISMO</strong> –  <strong>NOÇÕES BÁSICAS DA DOUTRINA ESPÍRITA</strong> – Um curso sistematizado e regular destinado  àqueles que desejam conhecer o Espiritismo, suas verdades e sua aplicação prática. Deus, Jesus, Allan Kardec e Doutrina Espírita, espírito, perispírito e corpo,<br>reencarnação, mediunidade, obsessão, pluralidade dos mundos habitados constituem, dentre outros, palpitantes assuntos para o despertamento e iluminação da alma.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/nosso-lar-13_11_2017.jpg" alt="" class="alignleft" width="178" height="248" />
+
+<p><strong>2 – NOSSO LAR</strong>  –  O curso Nosso Lar constitui um estudo do livro Nosso Lar,<br>do espírito André Luiz e psicografia de Francisco Cândido Xavier, editado pela Federação Espírita Brasileira. Esse curso objetiva estudar a experiência vivida por André Luiz no plano espiritual.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/passe-13_11_20171-2.jpg" alt="" class="alignleft" width="178" height="257" />
+
+<p><strong>3 – PASSE, CARIDADE ENSINADA POR JESUS</strong> – Constituindo importante estudo dos mecanismos de ação, dos tipos e das técnicas dessa eficiente terapêutica exemplificada por Jesus, esse curso pretende formar passistas esclarecidos, capazes de atuar no auxílio magnético na Casa Espírita. </p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/corrente-magnetica-capa-13_11_2017-1.jpg" alt="" class="alignleft" width="176" height="256" />
+
+<p><strong>4 – CORRENTE MAGNÉTICA – O MAGNETISMO APLICADO À DESOBSESSÃO –</strong> Trata-se de um estudo dirigido e seqüenciado do livro Desobsessão por Corrente Magnética: pesquisa bibliográfica, relatos, interpretações e manual de aplicação, publicado pela Editora Auta de Souza. Objetiva identificar a fundamentação doutrinária desse eficiente método desobsessivo, sua utilidade e aplicação no tratamento e prevenção das doenças obsessivas.</p>
+<p>Além dos livros que dão título aos cursos, são utilizados mais dois livros, da Editora Auta de Souza, que irão complementar a aplicação das aulas:</p>
+<p>Caderno de Exercícios dos cursos Nosso Lar e Corrente Magnética e Manual de Aplicação do Ciclo Introdutório.</p>
+<p><strong>CICLO DE ESPECIALIZAÇÃO</strong></p>
+<p>O Ciclo de Especialização visa a preparação do trabalhador para atuar em determinado campo do conhecimento humano e espiritual e na prática assistencial dos diversos Institutos do Centro Espírita. É composto pelas Escolas de Formação de Trabalhadores dos Institutos.</p>
+<p>Metodologia do Ciclo Introdutório</p>
+<p>Os estudos do Ciclos Introdutório, visando à formação doutrinária dos trabalhadores, são ministrados sob a forma de cursos teórico-práticos, de duração semestral, com início das aulas em fevereiro e agosto e término em junho e dezembro.</p>
+<p>“[…]somos chamados, na Doutrina Espírita, a estudar instruindo-nos, e, pela mesma razão, advertiu-nos Jesus de que apenas o conhecimento da verdade nos fará livres.” Albino Teixeira. Espíritos diversos. Caminho Espírita. IDE. 2.ed., p.144.)</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/estudo-em-grupo-13_11_2017.jpg" alt="" class="alignleft" width="389" height="268" />
+
+<p><strong>Estudo em grupo</strong></p>
+<p>As aulas são realizadas com a valorização do estudo em grupo, conforme nos orienta o espírito de Emmanuel:<br>“Tanto para os jovens como para os adultos o estudo em grupo é o mais eficiente até porque nós não podemos esquecer que na base do Cristianismo, o próprio Jesus desistiu de agir sozinho, procurando agir em grupo.” (Emmanuel. A terra e o semeador. Psicografado por Francisco Cândido Xavier. FEB. 6.ed., p.80.)</p>
+<p><strong>Reforma íntima</strong></p>
+<p>O Programa de Apoio à Reforma Íntima trata-se de uma proposta de estímulo a todos aqueles que desejam iniciar um projeto pessoal de progresso, elevação e melhoria. Que aspiram por reforma moral e que anseiam por tornar sua vida melhor. Esta proposta dividi-se em duas partes distintas:</p>
+<p><strong>1º) Reforma íntima no dia-a-dia</strong> (vivência individual aplicada no dia-a-dia da pessoa)<br>a) Uso da Agenda Reforma Íntima<br>b) Leitura diária: sustentáculo doutrinário</p>
+<p><strong>2º) Reforma Íntima na Casa Espírita</strong> (Proposta metodológica a ser vivenciada na Casa Espírita pelos seus trabalhadores e frequentadores).<br>A metodologia de Reforma Íntima a ser vivenciada na Casa Espírita pelos seus trabalhadores da Casa Espírita, deverá ser aplicada no horário dos cursos sistematizados da Casa Espírita, que é a atividade que congrega todos os alunos e trabalhadores em torno do estudo e da reflexão.</p>
+<p>Toda aplicação deste programa está dividida em três ações distintas:</p>
+<ol>
+<li>Momento Individual e diário com o apoio da Agenda Reforma Íntima  </li>
+<li>Leituras edificantes realizadas ao longo da semana, sendo que para cada curso da Escola de Estudos Espíritas foi indicado um livro específico  </li>
+<li>30 minutos de exercício de Reforma Íntima no horário da Escola de Estudos Espíritas</li>
+</ol>
+<p><strong>HORÁRIO GERAL DA REFORMA ÍNTIMA DURANTE OS CURSOS NA CASA ESPÍRITA</strong> Tempo: 30 minutos </p>
+<p>Atividade</p>
+<p>Tempo</p>
+<p>Local</p>
+<p>horário</p>
+<p>LIVRE CONVERSA</p>
+<p>10 minutos</p>
+<p>Sala de aula</p>
+<p> </p>
+<p>ACOMPANHAMENTO DA LEITURA DO LIVRO DO SEMESTRE</p>
+<p>10 minutos</p>
+<p>Sala de aula</p>
+<p> </p>
+<p>PREENCHIMENTO DA AGENDA DA REFORMA ÍNTIMA E REFLEXÃO</p>
+<p>10 minutos</p>
+<p>Sala de aula</p>
+<p> </p>
+<p> Obs: Toda fundamentação do Programa da Reforma íntima encontra-se no livro Reforma Íntima – Como tornar sua vida melhor, da Editora Auta de Souza.  </p>
+<p>Caderno de exercícios</p>
+<p>Cada curso do Ciclo Introdutório é acompanhado de um Caderno de Exercícios, destinado à fixação do conteúdo doutrinário ministrado nas aulas.<br>“Renovar as matérias tratadas nos programas de evangelização, segundo orientações atualizadas.<br>O Espiritismo progride sempre.” (André Luiz. Conduta espírita. Psicografado por Francisco Cândido Xavier. FEB. 15.ed., p.141.)</p>
+<p><strong>FUNCIONAMENTO DO CICLO INTRODUTÓRIO</strong></p>
+<ol>
+<li><strong>Duração das aulas e dos cursos</strong></li>
+</ol>
+<p>As aulas são semanais, com duração de 150 minutos, sendo que 30 minutos desse tempo são destinados ao Programa de Apoio à Reforma Íntima, em sala de aula. Os cursos são constituídos por 21 ou 22 aulas curriculares, organizadas da seguinte forma:<br>01 aula inaugural;<br>14 aulas teóricas;<br>03 aulas especiais;<br>02 aulas de práticas assistenciais (para os cursos Noções Básicas de Doutrina Espírita e Nosso Lar); ou 03 aulas de práticas assistenciais (para os cursos Passe e Desobsessão por Corrente Magnética).<br>01 aula de avaliação e encerramento.<br>“Para cada médium urge o dever de estudar para discernir, e trabalhar para merecer.” (Emmanuel e André Luiz. Estude e viva. Psicografado por Francisco Cândido Xavier. FEB. 6.ed., p.210.)</p>
+<ol start="2">
+<li><strong>Aulas teóricas</strong></li>
+</ol>
+<p>São aquelas que se destinam ao conhecimento doutrinário, visando o aprimoramento individual e à reforma íntima.<br>“[…] ministrar conhecimentos práticos em torno da vida prática, ideias tão sólidas quanto possíveis, quanto à realidade da vida em si.” (Emmanuel. A terra e o semeador. Psicografado por Francisco Cândido Xavier. FEB. 6.ed., p.80.)</p>
+<ol start="3">
+<li><strong>Aulas especiais</strong></li>
+</ol>
+<p>São aquelas que atendem às confraternizações, comemorações, encontros espíritas, tais como: aniversário do Centro Espírita, dia das mães, Encontros Fraternos, etc.<br>“Insistamos na confraternização permanente de nossas energias, a fim de que o trabalho de equipe possa oferecer ao próximo todo o rendimento de que sejamos capazes na edificação do bem.” (Batuíra. Mais luz. Psicografado por Francisco Cândido Xavier. GEEM. 4.ed., p.42.)</p>
+<ol start="4">
+<li><strong>Aula inaugural</strong></li>
+</ol>
+<p>É aquela destinada à apresentação do curso e dos alunos, e deverá ser muito bem preparada, pois refletirá na sua continuidade. Nessa aula, os instrutores destacarão a importância do estudo, as normas e a disciplina do curso.</p>
+<ol start="5">
+<li><strong>Aula de encerramento e avaliação</strong></li>
+</ol>
+<p>É aquela que finaliza o curso, avaliando a participação e o aproveitamento dos alunos, bem como a sua promoção para os cursos seguintes.</p>
+<ol start="6">
+<li><strong>Aulas de práticas assistenciais</strong></li>
+</ol>
+<p>São aquelas consagradas ao exercício da caridade, sendo realizadas em horário ou dia diferenciado do das aulas teóricas, com uma programação específica vinculada à prática. Estão assim organizadas:</p>
+<p>Curso Noções Básicas de Doutrina Espírita:<br>1ª – Campanha de Fraternidade Auta de Souza e<br>2ª – Livre (planejamento a critério do instrutor).</p>
+<p>Curso Nosso Lar:<br>1ª – Posto de Assistência e<br>2ª – Livre (planejamento a critério do instrutor)</p>
+<p>Curso Passe:<br>1ª – Culto do Evangelho no Lar<br>2ª – Campanha do Esclarecimento Chico Xavier e<br>3ª – Livre (planejamento a critério do instrutor).</p>
+<p>Curso Corrente Magnética:<br>1ª – Visita a Hospital ou Instituições Sociais<br>2ª – Caravana Jesus no Lar<br>3ª – Livre (planejamento a critério do instrutor).<br>“Havia, porém, um terceiro curso, o qual se resumia no ensaio da aplicação, na vida prática, dos valores adquiridos durante os estudos e observações dos cursos anteriormente mencionados. Em vez, porém, de nos instruírem para uma “prática profissional”, como se diria na linguagem terrena, esse terceiro aprendizado, orientado para a prática da observância das Leis da Providência, que havia séculos, infringíamos, tinha por mentor o lente Souria-Omar e desenvolvia-se, geralmente, fora do santuário, isto é, do recinto da Escola, de preferência na crosta da Terra e nos domínios inferiores do nosso Instituto.” (Camilo Cândido Botelho. Memórias de um suicida. Psicografado por Yvonne A. Pereira. FEB. 18.ed., p.453.)</p>
+<ol start="7">
+<li><strong>Tarefa semanal</strong></li>
+</ol>
+<p>Ler os textos da aula e responder às questões correspondentes no Caderno de Exercícios.<br>“Estudar sempre e incessantemente a fim de amar com enobrecimento e liberdade.” (Joanna de Ângelis. Celeiro de bênçãos. Psicografado por Divaldo Pereira Franco. Livraria Espírita Alvorada Editora. p. 33.)</p>
+<ol start="8">
+<li><strong>Frequência às aulas e critério de promoção</strong></li>
+</ol>
+<p>A presença às aulas será anotada, para efeito de avaliação e acompanhamento no curso, no Formulário de Frequência. Serão promovidos para o curso subsequente os alunos que alcançaram frequência regular nas 19 aulas teóricas (máximo de 3 faltas) e nenhuma ausência nas aulas de práticas assistenciais sendo que, nestas, o aluno poderá repor a aula a que, justificadamente, não compareceu.<br>“A um sinal de Irmão Sóstenes, iniciou-se a chamada dos pacientes. Nossos nomes, registrados no volumoso livro de matrícula onde os assináramos à chegada, ressoavam, um a um, proferido pela voz possante de um adjunto que, ao lado da tribuna de honra, como que secretariava a reunião. E, ouvindo que nos chamavam, respondíamos timidamente, quais colegiais bisonhos[…].”<br>Camilo Cândido Botelho. Memórias de um suicida. Psicografado por Yvonne A. Pereira. FEB.18.ed., p.420.)</p>
+<p>Falta-trabalho</p>
+<p>Considera-se falta-trabalho, desde que previamente autorizada pela direção da Casa Espírita, a ausência do aluno motivada pela participação em Encontros Fraternos, rotas de divulgação ou outros eventos programados pela instituição.</p>
+<ol start="9">
+<li><strong>Equipe de instrutores</strong></li>
+</ol>
+<p>Para cada curso será designado um 1º e um 2º instrutor, ambos tendo as seguintes atribuições:<br>1 – Realizar planejamento prévio das aulas, utilizando formulário próprio.<br>2 – Fazer a chamada dos alunos em todas as aulas, incluindo as de práticas assistenciais, utilizando o Formulário de frequência, logo após a prece inicial.<br>3 – Avaliar semanalmente as aulas, utilizando o Formulário de avaliação de plano de aula.<br>4 – Fazer avaliação geral do curso, ao final do semestre.<br>5 – Registrar no campo próprio do formulário de frequência os resultados de cada aluno.<br>6 – Participar das reuniões mensais de instrutores.</p>
+<ol start="10">
+<li><strong>Matrícula dos alunos</strong></li>
+</ol>
+<p>A matrícula dos alunos novatos poderá ser realizada ao longo de todo o ano, devendo ser intensificada nos meses de janeiro, fevereiro e julho, períodos que antecedem o início dos cursos.<br>“[…] Nossa identidade, portanto, era antes fotografada: as imagens emitidas por nossos pensamentos, no ato das respostas às perguntas formuladas, seriam captadas por processos que na ocasião escapavam à nossa compreensão. […].<br>(Camilo Cândido Botelho. Memórias de um suicida. Psicografado por Yvonne A. Pereira. FEB.18.ed., p.57-58.)</p>
+<ol start="11">
+<li><strong>Horário</strong></li>
+</ol>
+<p>A porta será fechada no horário combinado para o início das aulas, não sendo permitida a entrada após o mesmo.<br>“Tanto quanto possível, em qualquer obrigação a cumprir, esteja presente pelo menos dez minutos antes, no lugar do compromisso a que você deve atender.” (André Luiz. Sinal verde. Psicografado por Francisco Cândido Xavier. FEB. 2.ed., p.91.)</p>
+<p><strong>O CICLO DE ESPECIALIZAÇÃO DE ESTUDOS ESPÍRITAS</strong></p>
+<p>É o ciclo de estudos que sucede ao Ciclo Introdutório. Visa a formação e especialização de trabalhadores para atuarem nos diversos Institutos da Casa Espírita. É composto pelas Escolas para Formação de Trabalhadores de cada Instituto: Instituto da Criança; Instituto do Jovem; Instituto do Esclarecimento e Família; Instituto da Caridade; Instituto da Divulgação e Instituto da Mediunidade.</p>
+<p>Para iniciar A ESCOLA DE ESTUDOS ESPÍRITAS na sua Casa Espírita adquira o livro Conheça o Espiritismo – Noções Básicas de Doutrina Espírita da Editora Auta de Souza e tenha um bom estudo!<br><a href="http://www.editoraautadesouza.com.br">www.editoraautadesouza.com.br</a></p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

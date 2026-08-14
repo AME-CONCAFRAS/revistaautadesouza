@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energia e Evolução &#8211; Energia Mental | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Universo e vida</span>
+          <h1>Energia e Evolução &#8211; Energia Mental</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-22T09:54:19 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Energia Mental</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/energia-cura-mental-rosaholystica.jpg" alt="" class="aligncenter" width="855" height="425" />
+
+<p>A ciência oficial de nossos dias já conhece algo sobre as propriedades da matéria e da energia, quando elas são conversíveis entre si, o que importa dizer: da mesma natureza essencial. Existem, porém, aspectos elementares da estrutura da energia que permanecem desconhecidos da ciência terrestre. Esta lhe identifica variadas formas de manifestação, mas ainda ignora por completo suas formas não conversíveis em matéria, embora já comece a desvendar os segredos da antimatéria.</p>
+<p>Inclui-se dentre os mais comuns e constantes tipos de energia não adensável – a energia mental propriamente dita, da qual o pensamento é a mais elevada expressão. No entanto, ela é capaz de agir sobre as diversas formas de energia reconversível, de impressioná-las e transformá-las, através de radiações de potência ainda não humanamente detectável, mas de alto e efetivo poder, traduzível em fenômenos eletromagnéticos inapreciáveis.</p>
+<p>Essa é basicamente a energia que organiza o tecido perispiritual e, de resto, todos os campos vibratórios que envolvem o espírito humano e nos quais este se movimenta nas dimensões extrafísicas.</p>
+<p>É também ela o fulcro de que se origina a energização das idéias, corporificando-as em formas-pensamentos, suscetíveis, como já sabem os pesquisadores do psiquismo, de serem temporárias, mas poderosamente vivificadas, dirigidas e até mesmo materializadas, através dê processos de densificação bem mais comumente utilizados do que vulgarmente se presume.</p>
+<p>É, contudo, bem mais importante assinalarmos o fato de que essa energia mental retrata sempre, como imagens vivas, as emoções e os sentimentos do Espírito humano, encarnado ou desencarnado, condensando e expressando automaticamente, e com rigorosa exatidão, toda e qualquer emoção ou sentimento de qualquer ente espiritual, sob as mais nítidas e diferenciadas características de forma, cor, som, densidade, peso específico, velocidade, freqüência vibratória e capacidade de permanência.</p>
+<p>Isso significa que as emoções e os sentimentos humanos impregnam e magnetizam o campo energético das vibrações do pensamento, por via de um processo de superenergização, no qual uma espécie de energia mais quintessenciada e poderosa ativa, colora e qualifica outra espécie de energia, sem com ela fundir-se ou confundir-se, e sem que haja entre elas a possibilidade de mútua conversão.</p>
+<p>Jean-Jacques Rousseau percebeu isso intuitivamente, embora de modo evidentemente imperfeito, quando afirmou a precedência do sentimento sobre a razão. Foi, entretanto, o Divino Mestre quem revelou tal verdade de forma inconfundível, ao alicerçar todo o seu ensino e exemplificação no sentimento do Amor — resumo, como explicou, de “toda a Lei e de todos os Profetas”.</p>
+<p>Os estudos de Darwin sobre a evolução das espécies abriram caminho a grandes avanços do conhecimento humano no campo da hierarquia das complexidades, que acompanham os processos de aprimoramento dos organismos. Sabe-se hoje que essa crescente complexidade é conseqüência de funções novas, nascidas de novas necessidades e geradoras de novos poderes. Ê também assim na ordem da evolução anímica, onde o Espírito, ao desenvolver a sua própria mente, amplia e diversifica sua estrutura, seu espaço e seu tempo individuais, crescendo para Deus, no seio do Universo Infinito.</p>
+<p>Quanto mais o ser espiritual se sublima, mais recursos desenvolve, em formas cada vez mais altas e nobres de energia sutil, tanto mais poderosas e excelsas, quanto menos densas e mais diferenciadas das formas materializáveis de energia.</p>
+<p>Eis por que o Espiritismo Evangélico sobrepõe o esforço de santificação, isto é, de sublimação moral dos sentimentos humanos, a todo e qualquer processo de evolução meramente intelectiva. É que o aprimoramento da inteligência, sob todas as formas, sendo embora imperativo inderrogável da Eterna Lei, é mais fácil de ser realizado, e de modo menos suscetível a erros e quedas, quando produzido sob o ascendente do sentimento enobrecido, que é a força diretriz de todas as energias e potencialidades do Espírito. </p>
+<p>Áureo. Universo e vida, psicografia de Hernani T. Santana.  5.ed., Cap. 5, item 1, p. 67 – 69</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

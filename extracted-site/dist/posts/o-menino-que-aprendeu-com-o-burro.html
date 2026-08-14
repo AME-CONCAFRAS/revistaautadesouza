@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O menino que aprendeu com o burro | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>O menino que aprendeu com o burro</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T17:18:23 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália. Adaptação para teatro a partir do livro: O Aprendiz desapontado. Neio Lúcio. F.C.Xavier.FEB<br><strong>Personagens:</strong> Narrador que será um camponês, Gesiel, D. Aline, Menino, Burro e o Espírito de Luz</p>
+<p><strong>CENÁRIO: Espaço maior do palco: um campo. Outra parte, menor, representação de uma casa</strong></p>
+<p>(Inicia-se com o camponês entrando em cena, no espaço do campo, cantarolando uma música que fala sobre semente, plantio, etc.)</p>
+<p><strong>CAMPONÊS:</strong> Entra cantando ‘A enxada faz assim, o regador assim… E as flores vão crescendo, vão crescendo em meu jardim…” ou outra música). Que bom que é trabalhar, cuidar do campo, plantar, ver o campo florir… Trabalhar e vencer a preguiça (olha para o público de crianças e pergunta) – Qual de vocês que tem preguiça? (Finge que não viu ninguém dizer que sim). Isso mesmo, não podemos ter preguiça. Se ela chegar devemos mandá-la embora… xô preguiça, xô preguiça. Falando sobre esse assunto… vejam que interessante…</p>
+<p>(Vai saindo. Nesse momento, no cenário representando uma casa, entra uma mãe organizando-a.)</p>
+<p><strong>D. ALINE:</strong> Quantas coisas para organizar. Ufa! Ainda bem que está na hora do Gesiel chegar. Com a ajuda dele vai ser mais fácil.</p>
+<p>(Nesse instante entra Gesiel, cantarolando uma música da Evangelização, que fala sobre Jesus.)</p>
+<p><strong>GESIEL:</strong> Olá mamãe, tudo bem?<br><strong>D. ALINE:</strong> Oi meu filho, tudo bem. Estou um pouco atarefada, mas com sua ajuda será mais fácil. Você pode limpar a poeira dos móveis para a mamãe?<br><strong>GESIEL:</strong> Ah! Mamãe, bem que eu queria, mas agora não posso. Tenho que ir para o meu quarto pensar em Jesus.<br><strong>D. ALINE:</strong> Mas, meu filho, Jesus ensinou que devemos pensar Nele ajudando ao próximo.<br><strong>GESIEL:</strong> Agora eu não posso mesmo. Vou meditar sobre Jesus.<br><strong>CAMPONÊS:</strong> D. Aline continuou o seu trabalho e seu filho foi para o quarto. Deitou-se e começou a pensar em Jesus (Gesiel vai encenado as falas). De repente, enquanto seu corpo fica descansando, Gesiel sai e chega a um campo… Mas era um campo muito descuidado. (vai saindo de cena)<br><strong>GESIEL:</strong> (Observando curioso) – Que lugar será esse? Parece um campo… Mas está muito descuidado. Ôpa, parece que vem gente aí. Vou ficar aqui escondido e observar. (Esconde-se)</p>
+<p>(Nesse momento entra um menino, puxando um burrinho.)</p>
+<p><strong>MENINO</strong> – Ah, como eu desejo morar no céu. (Olha para o alto) – Deus, ajude-me a morar no céu. Vou ficar aqui esperando. Tenho certeza de que o Senhor vai enviar um espírito de luz para me ajudar.<br><strong>CAMPONÊS:</strong> Aquele era um menino… um menino que desejava ir para o céu… Ir para o céu? (olhando bem firme para as crianças) _ O céu que ele queria ir é uma colônia espiritual superior. Ele ficava imaginando como seria bom morar em lugar assim. Mas, sabe o que ele fez? Sentou-se e ficou esperando. (O menino senta-se). Enquanto ele ficava sentado, sabe quem trabalhava? O Burro… Ele movimentava-se para lá e para cá… parecia procurar sempre algo para fazer… O menino não entendia aquilo… e sempre falava:</p>
+<p><strong>MENINO:</strong> Fique quieto burro, está atrapalhando meu sossego!</p>
+<p><strong>CAMPONÊS:</strong> Nesse momento, algo diferente parecia que ia acontecer. O que será? (faz suspense). Meu Deus! Está chegando um emissário de Jesus. Um espírito de Luz!</p>
+<p>(Entra o Espírito de Luz, que é visto pelo menino. Ao reconhecê-lo, começa a dizer.)</p>
+<p><strong>MENINO:</strong> (Emocionado) – Mensageiro de Jesus, quero o paraíso! Que devo fazer para chegar lá?<br><strong>EMISSÁRIO:</strong> (Gentil) – O primeiro caminho é a obediência. O segundo o trabalho.</p>
+<p>(O menino faz um ar de surpresa. Gesiel que está observando, também faz expressão de surpresa.)</p>
+<p><strong>MENINO:</strong> Obediência e trabalho?<br><strong>EMISSÁRIO:</strong> Venho a este campo para auxiliar a natureza. Você quer ajudar-me a limpar o chão, carregando estas pedras?<br><strong>MENINO:</strong> (Decepcionado) – Não posso, não posso. (senta-se)<br><strong>EMISSÁRIO:</strong> (Para o burro) – Burro, você quer ajudar-me?<br><strong>BURRO:</strong> Ihom! Claro… vamos trabalhar.<br><strong>CAMPONÊS:</strong> E o animal, pacientemente, transportou tudo. Carregou pedras para lá e para cá. Enquanto isso… o menino descansava. O Emissário insistia:<br><strong>EMISSÁRIO:</strong> Vamos, amigo, abramos um caminho.<br><strong>MENINO:</strong> (Espreguiçando) – Eu, não!<br><strong>BURRO:</strong> Conte comigo. Ajudarei, ajudarei.</p>
+<p>(Fazer encenações de cada situação. Se possível colocar um música instrumental que demonstra movimento, ou mesmo, uma da evangelização que fala sobre trabalho. Ir colocando vasos de flores, retirando sujeiras, etc.)</p>
+<p><strong>EMISSÁRIO:</strong> Vamos mover o arado?<br><strong>MENINO:</strong> Que nada! Não quero nada.<br><strong>BURRO:</strong> Eu ajudo… eu ajudo!<br><strong>CAMPONÊS:</strong> Durante a sementeira, o pequeno repousava… e o burro trabalhava. Abriram um filete de água. O jovem, cheio de saúde e de leveza, permanecia amuado, choramingando sem razão. No fim do dia, o campo estava lindo!!!<br><strong>EMISSÁRIO:</strong> Bom, está na hora de retornar. (Abraça o burro) – Deus abençoe sua contribuição, meu amigo.</p>
+<p>(O menino, ao perceber que o mensageiro de Jesus se punha de volta, gritou ansioso.)</p>
+<p><strong>MENINO:</strong> Espírito querido! Quero seguir contigo. Quero ir para o Céu!!<br><strong>EMISSÁRIO:</strong> O paraíso não foi feito para gente preguiçosa. Se você deseja encontrá-lo, aprenda primeiro a obedecer com o burro que soube ser disciplinado e educado também.<br><strong>CAMPONÊS:</strong> E assim esclarecendo, subiu para as estrelas, deixando o rapazinho desapontado, mas disposto a mudar de vida. (Sai de cena)<br><strong>MENINO:</strong> Amigo burro, por favor, deixe-me a aprender com você.<br><strong>BURRO:</strong> Ihom! Venha, vou te ajudar.</p>
+<p>(Enquanto eles vão saindo, Gesiel sai do local de onde estava observando, olha para as crianças,e fala:)</p>
+<p><strong>GESIEL:</strong> Nossa! Que vergonha! Acho que estou como o menino que observei. O burro trabalhou muito… e o menino somente descansou… Então não basta falar em Jesus, chamar por Jesus… é preciso TRABALHAR POR JESUS!! Deixa eu voltar rapidinho para o meu corpinho… para começar a trabalhar! Xô, xô preguiça!</p>
+<p>(Faz que retorna para o corpo. Começa a acordar. Nesse momento volta à cena inicial. A mãe entra trabalhando. O menino levanta-se e vai até ela.)</p>
+<p><strong>MENINO:</strong> Mamãe, mamãe, deixa eu te ajudar.<br><strong>D. ALINE:</strong> (Surpresa) Que bom meu filho… Mas que mudança é essa?<br><strong>GESIEL:</strong> Não foi nada, mamãe (olha para o público e repete) _ Não foi nada! Somente aprendi, com o amigo Burro, que para amar a Jesus, tenho que começar a trabalhar e a servir.<br><strong>CAMPONÊS:</strong> E assim, Gesiel também aprendeu com o amigo burro, considerado um simples animal, a alegria do trabalho.</p>
+<p>(Nesse momento todos os personagens vão entrando em cena)<br><strong>MENINO:</strong> Temos que acabar com a preguiça.<br><strong>BURRO:</strong> Temos que aprender a obedecer.<br><strong>EMISSÁRIO:</strong> Temos que trabalhar por Jesus, ajudando a todos que precisam de nós.<br><strong>D. ALICE:</strong> Assim fazendo, quando chamarmos por Jesus: Senhor, Senhor…<br><strong>GESIEL:</strong> Ele responderá em nossos corações…<br><strong>CAMPONÊS:</strong> Meus irmãozinhos queridos, eu estou aqui, podem entrar!<br><strong>TODOS:</strong> Não basta apenas chamar:<br>_ Senhor, Senhor, Senhor!<br>Pois, Jesus somente escuta<br>A voz que brota do amor.</p>
+<p>Assim, queridas crianças,<br>Coloquem em seus corações<br>O Evangelho de Jesus,<br>Através das boas ações.</p>
+<p><strong>Autora:</strong> Nísia Anália. Adaptação para teatro a partir do livro: O Aprendiz desapontado. Neio Lúcio. F.C.Xavier.FEB<br><strong>Personagens:</strong> Narrador que será um camponês, Gesiel, D. Aline, Menino, Burro e o Espírito de Luz</p>
+<p><strong>CENÁRIO: Espaço maior do palco: um campo. Outra parte, menor, representação de uma casa</strong></p>
+<p>(Inicia-se com o camponês entrando em cena, no espaço do campo, cantarolando uma música que fala sobre semente, plantio, etc.)</p>
+<p><strong>CAMPONÊS:</strong> Entra cantando ‘A enxada faz assim, o regador assim… E as flores vão crescendo, vão crescendo em meu jardim…” ou outra música). Que bom que é trabalhar, cuidar do campo, plantar, ver o campo florir… Trabalhar e vencer a preguiça (olha para o público de crianças e pergunta) – Qual de vocês que tem preguiça? (Finge que não viu ninguém dizer que sim). Isso mesmo, não podemos ter preguiça. Se ela chegar devemos mandá-la embora… xô preguiça, xô preguiça. Falando sobre esse assunto… vejam que interessante…</p>
+<p>(Vai saindo. Nesse momento, no cenário representando uma casa, entra uma mãe organizando-a.)</p>
+<p><strong>D. ALINE:</strong> Quantas coisas para organizar. Ufa! Ainda bem que está na hora do Gesiel chegar. Com a ajuda dele vai ser mais fácil.</p>
+<p>(Nesse instante entra Gesiel, cantarolando uma música da Evangelização, que fala sobre Jesus.)</p>
+<p><strong>GESIEL:</strong> Olá mamãe, tudo bem?<br><strong>D. ALINE:</strong> Oi meu filho, tudo bem. Estou um pouco atarefada, mas com sua ajuda será mais fácil. Você pode limpar a poeira dos móveis para a mamãe?<br><strong>GESIEL:</strong> Ah! Mamãe, bem que eu queria, mas agora não posso. Tenho que ir para o meu quarto pensar em Jesus.<br><strong>D. ALINE:</strong> Mas, meu filho, Jesus ensinou que devemos pensar Nele ajudando ao próximo.<br><strong>GESIEL:</strong> Agora eu não posso mesmo. Vou meditar sobre Jesus.<br><strong>CAMPONÊS:</strong> D. Aline continuou o seu trabalho e seu filho foi para o quarto. Deitou-se e começou a pensar em Jesus (Gesiel vai encenado as falas). De repente, enquanto seu corpo fica descansando, Gesiel sai e chega a um campo… Mas era um campo muito descuidado. (vai saindo de cena)<br><strong>GESIEL:</strong> (Observando curioso) – Que lugar será esse? Parece um campo… Mas está muito descuidado. Ôpa, parece que vem gente aí. Vou ficar aqui escondido e observar. (Esconde-se)</p>
+<p>(Nesse momento entra um menino, puxando um burrinho.)</p>
+<p><strong>MENINO</strong> – Ah, como eu desejo morar no céu. (Olha para o alto) – Deus, ajude-me a morar no céu. Vou ficar aqui esperando. Tenho certeza de que o Senhor vai enviar um espírito de luz para me ajudar.<br><strong>CAMPONÊS:</strong> Aquele era um menino… um menino que desejava ir para o céu… Ir para o céu? (olhando bem firme para as crianças) _ O céu que ele queria ir é uma colônia espiritual superior. Ele ficava imaginando como seria bom morar em lugar assim. Mas, sabe o que ele fez? Sentou-se e ficou esperando. (O menino senta-se). Enquanto ele ficava sentado, sabe quem trabalhava? O Burro… Ele movimentava-se para lá e para cá… parecia procurar sempre algo para fazer… O menino não entendia aquilo… e sempre falava:</p>
+<p><strong>MENINO:</strong> Fique quieto burro, está atrapalhando meu sossego!</p>
+<p><strong>CAMPONÊS:</strong> Nesse momento, algo diferente parecia que ia acontecer. O que será? (faz suspense). Meu Deus! Está chegando um emissário de Jesus. Um espírito de Luz!</p>
+<p>(Entra o Espírito de Luz, que é visto pelo menino. Ao reconhecê-lo, começa a dizer.)</p>
+<p><strong>MENINO:</strong> (Emocionado) – Mensageiro de Jesus, quero o paraíso! Que devo fazer para chegar lá?<br><strong>EMISSÁRIO:</strong> (Gentil) – O primeiro caminho é a obediência. O segundo o trabalho.</p>
+<p>(O menino faz um ar de surpresa. Gesiel que está observando, também faz expressão de surpresa.)</p>
+<p><strong>MENINO:</strong> Obediência e trabalho?<br><strong>EMISSÁRIO:</strong> Venho a este campo para auxiliar a natureza. Você quer ajudar-me a limpar o chão, carregando estas pedras?<br><strong>MENINO:</strong> (Decepcionado) – Não posso, não posso. (senta-se)<br><strong>EMISSÁRIO:</strong> (Para o burro) – Burro, você quer ajudar-me?<br><strong>BURRO:</strong> Ihom! Claro… vamos trabalhar.<br><strong>CAMPONÊS:</strong> E o animal, pacientemente, transportou tudo. Carregou pedras para lá e para cá. Enquanto isso… o menino descansava. O Emissário insistia:<br><strong>EMISSÁRIO:</strong> Vamos, amigo, abramos um caminho.<br><strong>MENINO:</strong> (Espreguiçando) – Eu, não!<br><strong>BURRO:</strong> Conte comigo. Ajudarei, ajudarei.</p>
+<p>(Fazer encenações de cada situação. Se possível colocar um música instrumental que demonstra movimento, ou mesmo, uma da evangelização que fala sobre trabalho. Ir colocando vasos de flores, retirando sujeiras, etc.)</p>
+<p><strong>EMISSÁRIO:</strong> Vamos mover o arado?<br><strong>MENINO:</strong> Que nada! Não quero nada.<br><strong>BURRO:</strong> Eu ajudo… eu ajudo!<br><strong>CAMPONÊS:</strong> Durante a sementeira, o pequeno repousava… e o burro trabalhava. Abriram um filete de água. O jovem, cheio de saúde e de leveza, permanecia amuado, choramingando sem razão. No fim do dia, o campo estava lindo!!!<br><strong>EMISSÁRIO:</strong> Bom, está na hora de retornar. (Abraça o burro) – Deus abençoe sua contribuição, meu amigo.</p>
+<p>(O menino, ao perceber que o mensageiro de Jesus se punha de volta, gritou ansioso.)</p>
+<p><strong>MENINO:</strong> Espírito querido! Quero seguir contigo. Quero ir para o Céu!!<br><strong>EMISSÁRIO:</strong> O paraíso não foi feito para gente preguiçosa. Se você deseja encontrá-lo, aprenda primeiro a obedecer com o burro que soube ser disciplinado e educado também.<br><strong>CAMPONÊS:</strong> E assim esclarecendo, subiu para as estrelas, deixando o rapazinho desapontado, mas disposto a mudar de vida. (Sai de cena)<br><strong>MENINO:</strong> Amigo burro, por favor, deixe-me a aprender com você.<br><strong>BURRO:</strong> Ihom! Venha, vou te ajudar.</p>
+<p>(Enquanto eles vão saindo, Gesiel sai do local de onde estava observando, olha para as crianças,e fala:)</p>
+<p><strong>GESIEL:</strong> Nossa! Que vergonha! Acho que estou como o menino que observei. O burro trabalhou muito… e o menino somente descansou… Então não basta falar em Jesus, chamar por Jesus… é preciso TRABALHAR POR JESUS!! Deixa eu voltar rapidinho para o meu corpinho… para começar a trabalhar! Xô, xô preguiça!</p>
+<p>(Faz que retorna para o corpo. Começa a acordar. Nesse momento volta à cena inicial. A mãe entra trabalhando. O menino levanta-se e vai até ela.)</p>
+<p><strong>MENINO:</strong> Mamãe, mamãe, deixa eu te ajudar.<br><strong>D. ALINE:</strong> (Surpresa) Que bom meu filho… Mas que mudança é essa?<br><strong>GESIEL:</strong> Não foi nada, mamãe (olha para o público e repete) _ Não foi nada! Somente aprendi, com o amigo Burro, que para amar a Jesus, tenho que começar a trabalhar e a servir.<br><strong>CAMPONÊS:</strong> E assim, Gesiel também aprendeu com o amigo burro, considerado um simples animal, a alegria do trabalho.</p>
+<p>(Nesse momento todos os personagens vão entrando em cena)<br><strong>MENINO:</strong> Temos que acabar com a preguiça.<br><strong>BURRO:</strong> Temos que aprender a obedecer.<br><strong>EMISSÁRIO:</strong> Temos que trabalhar por Jesus, ajudando a todos que precisam de nós.<br><strong>D. ALICE:</strong> Assim fazendo, quando chamarmos por Jesus: Senhor, Senhor…<br><strong>GESIEL:</strong> Ele responderá em nossos corações…<br><strong>CAMPONÊS:</strong> Meus irmãozinhos queridos, eu estou aqui, podem entrar!<br><strong>TODOS:</strong> Não basta apenas chamar:<br>_ Senhor, Senhor, Senhor!<br>Pois, Jesus somente escuta<br>A voz que brota do amor.</p>
+<p>Assim, queridas crianças,<br>Coloquem em seus corações<br>O Evangelho de Jesus,<br>Através das boas ações.</p>
+<p>(Terminar cantando uma música apropriada ao tema. Todos devem descer do palco e cantar junto com todas as crianças.)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

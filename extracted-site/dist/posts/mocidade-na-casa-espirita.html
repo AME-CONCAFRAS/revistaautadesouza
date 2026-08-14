@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mocidade na Casa Espírita | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Como fazer na casa espírita</span>
+          <h1>Mocidade na Casa Espírita</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-02T18:01:06 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Uma proposta de trabalho com os jovens no Centro Espírita</strong></p>
+<p>Como integrar o jovem no Centro Esp<strong>í</strong>rita?</p>
+<p>“A melhor forma de integração do jovem, na Casa Espírita, é através do trabalho. […].</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/campanha-em-defesa-da-vida-03_02_2018.jpg" alt="" class="alignleft" width="477" height="316" />
+
+<p>O jovem espírita é o nosso continuador. <strong>Engajá-lo nas atividades habituais, procurando fazer com que ele sinta a responsabilidade da casa, que se vincule, que assuma compromissos dentro do seu nível de conhecimento e das suas possibilidades […] para que nos ajudem a arrebentar os ranços que trazemos do passado e dêem ao nosso movimento uma dinâmica nova.</strong>” (Divaldo Franco, <em>Diálogo com dirigentes e trabalhadores espíritas,</em> 3. ed., p. 67-69).</p>
+<p><strong>O Instituto do Jovem</strong></p>
+<p><em>O Instituto do Jovem é um departamento da Casa Espírita que visa atender, evangelizar e acompanhar o jovem, a partir de 12 anos. Proporcionará à juventude um espaço participativo, criativo e de interação cristã. Dividir-se-á em duas ações: formação da mentalidade cristã do jovem e a especialização de trabalhadores para a Evangelização Juvenil.</em></p>
+<h3>Como o Instituto do Jovem é organizado?</h3>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Organograma-jovem.png" alt="" width="580" height="432" />
+
+<p><strong>Que objetivos queremos alcançar com o trabalho de Evangelização Juvenil?</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Objetivos.png" alt="" width="504" height="325" />
+
+<p><strong>Quem é o adolescente de hoje?</strong></p>
+<p>“O adolescente atual é Espírito envelhecido, acostumado a realizações nem sempre meritórias, o que lhe produz anseios e desgostos aparentemente inexplicáveis, insegurança e medo sem justificativa, que são remanescentes de sua <em>consciência de culpa</em>, em razão dos atos praticados, que ora veio reparar, superando os limites e avançando com outro direcionamento pelo caminho da iluminação interior, que é o essencial objetivo da vida.” (Joanna de Ângelis_. Adolescência e vida._ 14. ed. p. 26).</p>
+<p>“O Espiritismo oferece ao jovem um projeto ideal de vida, explicando-lhe o objetivo real da existência na qual se encontra mergulhado, ora vivendo no corpo e, depois, fora dele, com um todo que não pode ser dissociado somente porque se apresenta em etapas diferentes. Explica-lhe que o Espírito é imortal e a viagem orgânica constitui-lhe recurso precioso de valorização do processo iluminativo, libertador e prazenteiro.” (Joanna de Ângelis. <em>Adolescência e vida</em>. 14. ed.,  p. 16).</p>
+<p><strong>O que é a Mocidade Espírita?</strong></p>
+<p><em>A Mocidade é o Núcleo de Trabalho do Instituto do Jovem que irá atender, acompanhar e direcionar o jovem a partir de 12 anos nas atividades da Casa Espírita, bem como propiciar trocas de experiências e oportunidades de contribuição do jovem para a própria Mocidade e para o Centro Espírita a qual está vinculado.</em></p>
+<p>“A mocidade tem capital importância, porque é a primeira orientação para o destino; nela, o esquecimento do passado é completo; este não existe mais, e todas as suas potências estão voltadas para o futuro. Eis por que os moralistas e os educadores concentraram sua experiência e seus esforços nesse prefácio da vida humana […].” (Léon Denis. <em>O grande enigma</em>. 9. ed., p. 200).</p>
+<p><strong>Quais os objetivos da Mocidade Espírita?</strong></p>
+<ul>
+<li>Traçar diretrizes seguras, dentro do Evangelho, a fim de que, através da sua formação moral, seja o jovem a base de uma sociedade feliz.</li>
+<li>Acompanhar o desenvolvimento físico, moral e psicológico do jovem, proporcionando estudos doutrinários e atividades práticas.</li>
+<li>Estimular o jovem ao trabalho e à iniciativa da auto-educação.</li>
+<li>Propiciar meios de integrar a juventude à Jesus.</li>
+</ul>
+<p><strong>Como é a estrutura pedagógica da Mocidade?</strong></p>
+<p>     <em>A editora Auta de Souza divulga a metodologia “O Centro Espírita: Escola da alma”, que em sua proposta de evangelização tem início na Escola de Evangelização Espírita Infantil com a divisão pedagógica em Nível I (Crianças de 0 a 5 anos) e Nível II (Crianças de 06 a 11 anos) dando continuidade na Mocidade com os níveis III (Jovens de 12 e 13 anos) e Nível IV(Jovens a partir de 14 anos), cada nível possui uma grade curricular própria com vistas a um atendimento adequado a cada realidade.</em></p>
+<p><strong>NÍVEL III – JOVENS DE 12 E 13 ANOS</strong></p>
+<p><em>Atende aos jovens de I2 e I3 anos e onze meses, provindos ou não da Escola de Evangelização Espírita Infantil, da comunidade e aqueles encaminhados pelo tratamento espiritual da Casa Espírita.</em></p>
+<p><strong>NÍVEL 4 – JOVENS A PARTIR DE 14 ANOS</strong></p>
+<p><em>Atende aos jovens a partir de 14 anos provindos do Nível III, da comunidade e aqueles encaminhados pelo tratamento espiritual da Casa Espírita.</em></p>
+<p><strong>Horário da Mocidade no sábado</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/cronograma-jovem.png" alt="" width="506" height="344" />
+
+<p><strong>09h10 – 09h40: OFICINAS RECREATIVAS</strong></p>
+<p>• São desenvolvidas atividades lúdicas com os jovens visando à integração do grupo e fortalecendo o relacionamento na Mocidade.</p>
+<p>• Ex: oficina de violão, de culinária, de futebol,  jogos dinâmicos (ex: dama, xadrez), dinâmicas, roda de músicas, etc.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Alegria-Crista-4-03_02_2018.jpg" alt="" class="alignright" width="388" height="291" />
+
+<p><strong>09h – 09h10: RECEPÇÃO, ALEGRIA CRISTÃ E PRECE INICIAL</strong></p>
+<ul>
+<li>Recepção dos Jovens na Casa Espírita</li>
+<li>Momento de Alegria Cristã com músicas espíritas animadas e edificantes e dinâmicas de integração.</li>
+<li>Prece</li>
+</ul>
+<p><strong>09h40 – 10h: LANCHE</strong></p>
+<p>• Momento em que os jovens e os trabalhadores tomam café-da-manhã juntos.</p>
+<p><strong>10h – 11h10: ATIVIDADES PRÁTICAS</strong></p>
+<p>Esta atividade visa associar os conhecimentos adquiridos no momento de estudo com o trabalho. As atividades práticas estão vinculadas à parte doutrinária.<br>Ex: Campanha de Fraternidade Auta de Souza, Artesanato e Assistência, Campanha Jesus no Lar.  </p>
+<p><strong>11h10 – 11h20: INTERVALO</strong></p>
+<p><strong>11h20 – 11h40 : PROGRAMA DA REFORMA ÍNTIMA</strong></p>
+<ul>
+<li>Será estimulado ao jovem a busca por sua Reforma Íntima, através de atividades reflexivas e avaliativas.</li>
+<li>As atividades são realizadas com a utilização do Diário de Bordo</li>
+<li>Há também neste momento a reflexão a cerca de um texto doutrinário e o momento da conversa fraterna.</li>
+</ul>
+<p><strong>11h40 -12h35 : CURSOS DOUTRINÁRIOS</strong></p>
+<p>É oferecido aos Jovens cursos destinados às reflexões de temas afetos à juventude tais como: O Jovem e a Família, O Jovem e os Vícios, O Jovem e o Sexo, dentre outros.<br>Os cursos deve ser realizado de forma dinâmica e interativa de modo a cativar o interesse juvenil<br>Os jovens são divididos em dois níveis:</p>
+<ul>
+<li>Nível II: Jovens de 12 e 13 anos –</li>
+<li>Nível IV: Jovens de 14 anos acima</li>
+</ul>
+<p><strong>12h35 – 12h45: PRECE FINAL</strong></p>
+<p><strong>Qual o currículo doutrinário para os jovens?</strong></p>
+<p><strong>NÍVEL III</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/curriculo-nivel-3.png" alt="" width="515" height="262" />
+
+<p><strong>NÍVEL IV</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/curriculo-nivel-4.png" alt="" width="495" height="169" />
+
+<p><strong>Planejamento semestral</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Planejamento.png" alt="" width="496" height="344" />
+
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/O-jovem-e-a-doutrina.jpg" alt="" class="alignleft" width="230" height="212" />
+
+<img src="http://161.35.11.199/wp-content/uploads/2020/05/O-jovem-e-a-família.jpg" alt="" width="289" height="265" />
+
+<img src="http://161.35.11.199/wp-content/uploads/2020/05/O-jovem-e-o-vícios.jpg" alt="" class="alignleft" width="276" height="254" />
+
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/o-jovem-e-o-sexo.jpg" alt="" class="alignleft" width="235" height="215" />
+
+<p>PARA SABER MAIS, ACESSE: <a href="http://www.ocentroesp%C3%ADrita.com">www.ocentroespírita.com</a> e editoraautadesouza.com</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

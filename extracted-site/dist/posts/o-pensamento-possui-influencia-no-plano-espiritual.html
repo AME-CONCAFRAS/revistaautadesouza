@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O pensamento possui influência no plano espiritual? | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Os espíritos respondem</span>
+          <h1>O pensamento possui influência no plano espiritual?</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-25T09:10:51 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>André Luiz descreve os preparativos para o recebimento da visita ao Santuário da Benção – onde se encontra no plano espiritual – de Asclépios, emissários das Esferas Superiores.<br>Conrélio – diretor do Santuário da Benção.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/arte-e-ideoplastia-05_10_2019.jpg" alt="" class="alignright" width="460" height="300" />
+
+<p>“Após longo intervalo, destinado a nossa preparação mental, tornou-se ele, sem afetação:</p>
+<p>– Projetemos nossas forças mentais sobre a tela cristalina. O quadro a formar-se constará de paisagem simbólica, em que águas mansas, personificando a paz, alimentem vigorosa árvore, a representar a vida. Assumirei a responsabilidade da criação do tronco, enquanto os chefes das missões entrelaçarão energias criadoras fixando o lago tranqüilo.</p>
+<p>E dirigindo-se especialmente a nós outros, os colaboradores mais humildes, acrescentou:</p>
+<p>– Formarão vocês a veste da árvore e a vegetação que contornará as águas serenas, bem como as características do trecho de firmamento que deverá cobrir a pintura mental.</p>
+<p>Após ligeira pausa concluía:</p>
+<p>–    Este, o quadro que oferecemos ao visitante excepcional que nos falará em breves minutos. Atendamos aos sinais.</p>
+<p>Dois auxiliares postaram-se ao lado da pequena câmara, em posição de serviço, e, ao soar de harmonioso aviso, pusemo-nos em concentração profunda, emitindo o potencial de nossas forças mentais mais íntimas.</p>
+<p>Senti a pressão do próprio esforço, que minha mente se deslocava na direção do gabinete de cristal, onde acreditei penetrar, colocando tufos de grama junto ao desenho do lago que deveria surgir… Utilizando as vigorosas energias da imaginação, recordei a espécie de planta que desejava naquela criação temporária, trazendo-a do passado terrestre para àquela hora sublime. Estruturei todas as minúcias das raízes, folhas e flores, e trabalhei, intensamente, na intimidade de mim mesmo, revivendo a lembrança e fixando-a no quadro, com fidelidade possível…</p>
+<p>Fornecido o sinal de interrupção, retomei a postura natural de quem observa, a fim de examinar os resultados da experiência, e contemplei, oh! Maravilha!… Jazia o gabinete fundamente transformado. Águas de indefinível beleza e admirável azul celeste refletiam uma nesga de firmamento, banhando as raízes de venerável árvore, cujo tronco dizia, em silencio, da própria grandiosidade. Miniatura prodigiosa de cúmulos e nimbos estacionavam no céu, parecendo pairar muito longe de nós… As bordas do lago, contudo, configuravam-se quase nuas e galhos do tronco apresentavam-se vestidos escassamente.</p>
+<p>O instrutor, célere, retomou a palavra e dirigiu-se a nós com firmeza:</p>
+<p>– Meus amigos, a vossa obrigação não foi integralmente cumprida. Atentai para os detalhes incompletos e exteriorizai vosso poder dentro da eficiência necessária! Tendes, ainda, quinze minutos para terminar a obra.</p>
+<p>Entendemos, sem maiores explicações, o que desejava ele dizer e concentramo-nos, de novo, para consolidar as minudências de que deveria se revestir a paisagem.</p>
+<p>Procurei imprimir mais energia à minha criação mental e, com mais presteza, busquei colocar as flores pequeninas nas margens humildes, recordando minhas funções de jardineiro, no amado lar que havia deixado na Terra. Orei, pedi a Jesus que me ensinasse a cumprir o dever dos que desejavam a bênção do seu divino amor naquele Santuário e, quando a notificação soou novamente, confesso que chorei.</p>
+<p>O desenho vivo da gramínea que minha esposa e os filhinhos tanto haviam estimado em minha companhia no mundo, adornava as margens com um verde maravilhoso, e as mimosas flores azuis, semelhando-se a miosótis silvestres, surgiam abundantes…</p>
+<p>A árvore cobrira-se de folhagem farta e vegetação de singular formosura completava o quadro, que me pareceu digno de primoroso artista da Terra.</p>
+<p>Cornélio sorriu, evidenciando grande satisfação, e determinou que os dois auxiliares conservassem a destra unida ao gabinete. Desde esse momento, como se uma operação magnética desconhecida fosse posta em ação, nossa pintura coletiva começou a dar sinais de vitalidade temporária. Algo de leve e imponderável, semelhante a caricioso sopro da Natureza, agitou brandamente a árvore respeitável, balouçando-se os arbustos e a minúscula erva, a se refletirem nas águas muito azuis, docemente encrespadas de instante a instante…</p>
+<p>Minha gramínea estava agora tão viva e tão bela que o pensamento de angustiosa saudade do meu antigo lar ameaçou de súbito, meu coração ainda frágil. (…)”(OBREIROS DA VIDA ETERNA – Cap. 3 – ANDRÉ LUIZ)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

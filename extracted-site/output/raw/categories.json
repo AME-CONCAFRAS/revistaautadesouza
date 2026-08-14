@@ -1,0 +1,882 @@
+[
+  {
+    "id": 12,
+    "count": 11,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/aprenda-a-tocar/",
+    "name": "Aprenda a tocar",
+    "slug": "aprenda-a-tocar",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/12"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=12"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 6,
+    "count": 25,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/atualidades/",
+    "name": "Atualidades",
+    "slug": "atualidades",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/6"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=6"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 7,
+    "count": 0,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/cantinho-da-crianca/",
+    "name": "Cantinho da Criança",
+    "slug": "cantinho-da-crianca",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/7"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=7"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 13,
+    "count": 18,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/ciencia-e-espiritismo/",
+    "name": "Ciência e espiritismo",
+    "slug": "ciencia-e-espiritismo",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/13"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=13"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 5,
+    "count": 15,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/como-fazer-na-casa-espirita/",
+    "name": "Como fazer na casa espírita",
+    "slug": "como-fazer-na-casa-espirita",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/5"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=5"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 11,
+    "count": 8,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/conheca-o-espiritismo/",
+    "name": "Conheça o Espiritismo",
+    "slug": "conheca-o-espiritismo",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/11"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=11"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 22,
+    "count": 14,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/crianca-em-cena/",
+    "name": "Criança em cena",
+    "slug": "crianca-em-cena",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/22"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=22"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 14,
+    "count": 9,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/educacao-e-espiritismo/",
+    "name": "Educação e espiritismo",
+    "slug": "educacao-e-espiritismo",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/14"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=14"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 20,
+    "count": 16,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/english/",
+    "name": "English",
+    "slug": "english",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/20"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=20"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 8,
+    "count": 9,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/espaco-do-evangelizador/",
+    "name": "Espaço do Evangelizador",
+    "slug": "espaco-do-evangelizador",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/8"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=8"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 21,
+    "count": 5,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/espanol/",
+    "name": "Español",
+    "slug": "espanol",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/21"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=21"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 15,
+    "count": 20,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/esperanto/",
+    "name": "Esperanto",
+    "slug": "esperanto",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/15"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=15"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 16,
+    "count": 14,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/estudando-o-evangelho/",
+    "name": "Estudando o evangelho",
+    "slug": "estudando-o-evangelho",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/16"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=16"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 19,
+    "count": 0,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/francais/",
+    "name": "Français",
+    "slug": "francais",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/19"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=19"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 1,
+    "count": 9,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/galera-jovem/",
+    "name": "Galera Jovem",
+    "slug": "galera-jovem",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/1"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=1"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 23,
+    "count": 6,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/historia-da-vovo/",
+    "name": "História da vovó",
+    "slug": "historia-da-vovo",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/23"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=23"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 17,
+    "count": 10,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/mediunidade/",
+    "name": "Mediunidade",
+    "slug": "mediunidade",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/17"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=17"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 4,
+    "count": 11,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/missionarios-do-bem/",
+    "name": "Missionários do bem",
+    "slug": "missionarios-do-bem",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/4"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=4"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 9,
+    "count": 33,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/os-espiritos-respondem/",
+    "name": "Os espíritos respondem",
+    "slug": "os-espiritos-respondem",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/9"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=9"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 375,
+    "count": 1,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/revistas-impressas/",
+    "name": "Revistas Impressas",
+    "slug": "revistas-impressas",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/375"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=375"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 18,
+    "count": 19,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/universo-e-vida/",
+    "name": "Universo e vida",
+    "slug": "universo-e-vida",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/18"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=18"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 10,
+    "count": 18,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/category/videos/",
+    "name": "Vídeos",
+    "slug": "videos",
+    "taxonomy": "category",
+    "parent": 0,
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories/10"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/categories"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/category"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?categories=10"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falando sobre sexo com os jovens | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Galera Jovem</span>
+          <h1>Falando sobre sexo com os jovens</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-30T11:51:00 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>“O sexo se define, desse modo, por atributo não apenas respeitável mas profundamente santo da Natureza, exigindo educação e controle.</p>
+<p>Através dele dimanam forças criativas, às quais devemos, na Terra, o instituto da reencarnação, o templo do lar, as bênçãos da família, as alegrias revitalizadoras do afeto e o tesouro inapreciável dos estímulos espirituais.</p>
+<p>Desarrazoado subtrair-lhe as manifestações aos seres humanos, a pretexto de elevação compulsória, de vez que as sugestões da erótica se entranham na estrutura da alma, ao mesmo tempo que seria absurdo deslocá-lo de sua posição venerável, a fim de arremessá-lo ao campo da aventura menos digna, com a desculpa de se lhe garantir a libertação.</p>
+<p>Sexo é espírito e vida, a serviço da felicidade e da harmonia do Universo. Conseguintemente, reclama responsabilidade e discernimento, onde e quando se expresse. Por isso mesmo, nossos irmãos e nossas irmãs precisam e devem saber o que fazem com as energias genésicas, observando como, com quem e para que se utilizam de semelhantes recursos, entendendo-se que todos os compromissos na vida sexual estão igualmente subordinados à lei de causa e efeito; e, segundo esse exato princípio, de tudo o que dermos a outrem, no mundo afetivo, outrem também nos dará. (Emmanuel. Vida e sexo. 15 ed., p.10-11)</p>
+<p><strong>O DESPERTAR DA SEXUALIDADE</strong></p>
+<p>“A nossa sexualidade, hoje, é o resultado de milênios de experiências vivenciadas – não somente na condição humana, mas também nas fases da vida animal, incorporadas, século a século, como patrimônio imperecível, na zona instintiva do ser.</p>
+<p>Não se pode observar e analisar uma criança ou um adolescente tão somente pelas suas experiências na atual reencarnação, pois, as influências recebidas agora são apenas pequena fração que vai somar-se ao grande celeiro de recursos do Espírito, acumulados em milênios. As influências dos pais e educadores, hoje, são importantes, na medida em que trabalham por recuperar, reeducar e iluminar o campo do caráter e do sentimento da criança e do jovem.” (Walter Barcelos. Sexo e evolução. 3. ed., p.14-143)</p>
+<p>“Na adolescência, o despertar da sexualidade é como o romper de um dique, no qual se encontram represadas forças incomensuráveis, que se atiram, desordenadas, produzindo danos e prejuízos em relação a tudo quanto encontram pela frente. […]</p>
+<p>A orientação sexual sadia é a única alternativa para o equilíbrio na adolescência, como base de segurança para toda a reencarnação.” (Joanna de Ângelis. Adolescência e vida. 6. ed., p.18-19)</p>
+<p><strong>O AMOR E PAIXÃO NA ADOLESCÊNCIA</strong></p>
+<p>“Período de exuberância hormonal, a adolescência se caracteriza pelos impulsos e desmandos da emotividade. Confundem-se as emoções, e todo o ser é um conjunto de sensações desordenadas, num turbilhão de impressões que aturdem o jovem. Irrompem, naturalmente, os desejos da sensualidade, e se confundem os sentimentos, por falta da capacidade de discernir gozo e plenitude, êxtase sexual e harmonia interior.</p>
+<p>É nessa fase que se apresentam as paixões avassaladoras e irresponsáveis que desajustam e alucinam, gerando problemas psicológicos e sociais muito graves, quando não são controladas e orientadas no sentido da superação dos desejos carnais.</p>
+<p>Subitamente o jovem descobre interesses novos em relação a outro, àquele com quem convive e nunca antes experimentara nada de original, que se diferenciasse da fraternidade, da amizade sem compromisso. A libido se lhe impõe e propele-o a relacionamentos apressados quão ardorosos, que logo se esfumam. Quando não atendida, por circunstâncias violentas, dá surgimento a estados depressivos, que podem perturbar profundamente o adolescente, que passa a cultivar o pessimismo e a angústia, derrapando em desajustes psicológicos de curso demorado.” (Joanna de Ângelis. Adolescência e vida. 6. ed., p. 43-44)</p>
+<p><strong>COMPREENSÃO SAGRADA DO SEXO</strong></p>
+<p>“A ´compreensão sagrada do sexo`, lapidar expressão de Emmanuel, começa pelo entendimento de que está situada na mente a sede real do sexo, como dizem os Benfeitores Espirituais, impondo-se, portanto, a adoção de superior programa de atividades, em todos os setores da vida, a fim de que se sublimem as energias sagradas, possibilitando, em consequência, as edificações da Alma Imortal.</p>
+<p>Empreendimentos filantrópicos, atividades religiosas ou culturais enobrecedoras constituem valioso programa de superação de pensamentos torturantes, relacionados com o sexo, favorecendo, outrossim, a transformação das forças criadoras em elementos de exaltação do bem e do embelezamento da Vida.</p>
+<p>O uso respeitável dos patrimônios da Vida – asseveram os Instrutores Espirituais – engrandece o homem perante Deus e a sua própria consciência.</p>
+<p>O abuso, no entanto, levá-lo-á aos abismos da delinquência e da loucura.</p>
+<p>Milhares de moços espíritas podem, na atualidade, dar à sociedade que se desarvora os melhores exemplos de ‘compreensão sagrada do sexo’, sentindo e vivendo o problema dentro da normalidade que equilibra e dignifica os homens perante Deus.” (Martins Peralva. O pensamento de Emmanuel. 5. ed., p. 95-96)</p>
+<p><strong>EDUCAÇÃO DA SEXUALIDADE</strong></p>
+<p>“Não proibição, mas educação.</p>
+<p>Não abstinência imposta, mas emprego digno, com o devido respeito aos outros e a si mesmo.</p>
+<p>Não indisciplina, mas controle.</p>
+<p>Não impulso livre, mas responsabilidade.</p>
+<p>Fora disso, é teorizar simplesmente, para depois aprender ou reaprender com a experiência.</p>
+<p>Sem isso, será enganar-nos, lutar sem proveito, sofrer e recomeçar a obra da sublimação pessoal, tantas vezes quantas se fizerem precisas, pelos mecanismos da reencarnação, porque a aplicação do sexo, ante a luz do amor e da vida, é assunto pertinente à consciência de cada um.” (Emmanuel. Vida e sexo. 15 ed., p. 08)</p>
+<p><strong>ESFORÇO POR UMA EDUCAÇÃO</strong></p>
+<p>“Conflitos e torturas sexuais são encontrados na Terra, entre homens e mulheres, constituindo quase que um traço dominante em toda parte.</p>
+<p>Entretanto, vale a pena o esforço por uma educação perseverante e lúcida, capaz de transformar cada indivíduo num espelho refletor das harmonias da vida, produzindo amor e luz que impregnem as expressões da libido.” (Camilo. Educação e vivências. 2. ed., p. 87)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

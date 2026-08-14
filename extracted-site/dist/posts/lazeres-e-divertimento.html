@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lazeres e divertimento | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Atualidades</span>
+          <h1>Lazeres e divertimento</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T18:45:31 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/lazer-06_11_2017.jpg" alt="" class="alignleft" width="306" height="204" />
+
+<p>A indústria do turismo, habilmente manipulada, vende os pacotes da ilusão como anestésico para a consciência da responsabilidade…</p>
+<p>Muitos indivíduos trabalham afanosamente, acumulando recursos amoedados e o cansaço inevitável, estresse e angústia em decorrência da luta em demasia, mantendo a espectativa de fruir lazeres e divertimentos que lhes trariam reequilíbrio e alegria pura.</p>
+<p>Afinal, o objetivo essencial do viver não é o de desfrutar as concessões artificiais que diariamente são renovadas e podem conseguidas mediante os recursos financeiros.</p>
+<p>Como efeito, empenham-se para compensar a ausência física e emocional no lar, ao lado da família, pelo anseio de ganhar mais dinheiro, proporcionando-se e a todos os membros domésticos férias coletivas, numa fuga psicológica da realidade do dia a dia, que é a participação dos problemas e desafios no seio dessa célula de valor ímpar que são os familiares.</p>
+<p>À semelhança de aves gárrulas, realizando a viagem dos sonhos e do espairecimento, visitam lugares consagrados ao ócio, onde predominam a beleza das paisagens, os artefatos, de alto valor tecnológico para o esquecimento dos problemas, vivenciando o mundo de fantasias e do cansaço, das caminhadas exaustivas, dos suores e dos aborrecimentos inevitáveis, esteja-se onde estiver…</p>
+<p>Quando se chegam aos lugares paradisíacos, passada a primeira emoção, logo se descobre que quase todo mundo tomou a mesma decisão, escolheu o mesmo local e suas ofertas fantásticas, passando a ouvir os guias monótonos, as crianças em fase de irritação, as despesas não previstas que pioram o orçamento, algum desencanto inicial…</p>
+<p>Ao invés do repouso anelado, defronta-se o corre-corre das filas imensas ou o silêncio dos lugares selecionados que, após algum tempo, induzem ao tédio e ao arrependimento.</p>
+<p>As promoções muito bem elaboradas magoam aqueles que não podem participar dessas festas, sentindo-se humilhados no grupo social, levando-os à depressão.</p>
+<p>Que busca, afinal, a criatura humana, senão as aparências, os aplausos, a ilusão?</p>
+<p>É claro que todo esforço prolongado culmine em cansaço e mal-estar, causando sensações de aniquilamentos e de abandono.</p>
+<p>A recreação surge, como estímulo renovador, capaz de proporcionar júbilo, facultando estímulos edificantes.</p>
+<p>O ser humano é possuidor de inesgotável cabedal de energias e de vitalidade.</p>
+<p>Sucede que, fascinado pelo exterior, não se anima a auto-penetrar-se, a encontrar as respostas claras para as próprias necessidades.</p>
+<p>[…] Há lazeres no lar, no trabalho, na comunidade, ricos de divertimentos domésticos não desgastantes, como frutos da consciência objetiva do dever.<br>*<br>Se te sentes afadigado no trabalho a que te dedicas, muda a rotina, retempera o ânimo e sentirás renovação emocional, tornando-te tranquilo.</p>
+<p>Reflexiona em torno dos teus compromissos e põe-lhes o sal do amor, pensando nas metas a alcançar, especialmente quando portadoras de significado profundo.</p>
+<p>Considera que o trabalho é benção que deves honrar, não acalentando o anseio infantil somente de férias e de repouso.</p>
+<p>Quem opera no bem conscientemente experimenta inefável alegria e, quando é alcançado pela estafa, transfere-se para outro tipo de ação, renovando-se e prosseguindo.<br>Toda ilusão, ao ser defrontada pela realidade e esfumar-se, deixa significativas marcas de desencanto. Ocorrendo-lhe a morte, alguns indivíduos também sentem morrer das suas aspirações caracterizadas pela falsa necessidade do gozo, do prazer, do possuir…</p>
+<p>As alegrias das férias de encantamento passam e retornam os compromissos que ficaram aguardando, esquecidos nos escaninhos da magia e do encantamento de breve duração.</p>
+<p>[…]Não acolhas a tristeza, quando não possas fazer parte dos grupos sorridentes de conquistadores do mundo mágico da imaginação deslumbrada.</p>
+<p>Estabelece um programa a respeito de tudo quanto te é importante ou secundário e labora com disposição jubilosa, e nenhum cansaço te amarfanhará as horas.</p>
+<p>Preenche as tuas horas com atividades produtivas, e naquelas dedicadas ao repouso, ao lazer, não te desligando da realidade, prosseguindo ativo mentalmente e com emoção de felicidade.</p>
+<p>Contempla os grupos ruidosos dos festeiros e divertidos após as celebrações, e verá a máscara do mal-estar afivelada à face ou a aceitação para dizer aos outros como foram as alegrias, numa necessidade de exibir o ego, assim apaziguando a frustação.</p>
+<p>Vida alegre é assinalada pelo trabalho contínuo, enriquecedor e natural.</p>
+<p>Faze do teu lar o abençoado reduto de ação e de paz, onde a alegria seja resultado do prazer de viver e de amar.</p>
+<p>E quando possas espairecer, mudando de ambiente, procurando lazeres e divertimentos convencionais, vive-os no seu momento próprio, sem que se te façam pesada carga de despesas inoportunas ou geradoras de futuros desencantos.</p>
+<p>*</p>
+<p>Jesus até hoje trabalha, conforme acentuou, referindo-se ao Pai que nunca cessou de agir.</p>
+<p>O cristão primitivo, no sublime trabalho da autoiluminação e da caridade, encontrava a inigualável alegria que os lazeres e divertimentos de fora jamais conseguem proporcionar.</p>
+<p>Desse modo, mantém-te desperto, de forma que a noite da ilusão não te sombreie o dia de ação, anunciando-te júbilos que se transforma em esgares.</p>
+<p>Joanna de Ângelis. <strong>Ilumina-te.</strong> Ed. 1. Cap.4</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

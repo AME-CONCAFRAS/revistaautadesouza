@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CAMPAÑA DE FRATERNIDAD AUTA DE SOUZA | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Español</span>
+          <h1>CAMPAÑA DE FRATERNIDAD AUTA DE SOUZA</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T17:54:17 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <h2>NYMPHO DE PAULA CORREA Y LOS BUENOS FRUTOS DE LA CAMPAÑA</h2>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/cfas-03_02_2018.jpg" alt="" class="alignleft" width="445" height="209" />
+
+<p>“Pero es llegado el tiempo de un reajustamiento de todos los valores humanos. Si las dolorosas expiaciones colectivas preludian la epoca de los ultimos dias “ais” del Apocalipsis, la espiritualidad tiene que penetrar las realizaciones del hombre fisico, conduciendolas para el bien de toda la humanidad</p>
+<p>El Espiritismo, en su misión de Consolador, es el amparo del mundo en este siglo de declives de la historia; solo el puede, en su caracteristica de Cristianismo redivivo, salvar las religiones que se apagan entre los choques de las fuerza y de la ambicion, del egoismo y del dominio, apuntando al hombre sus verdaderos caminos. En su manantial de esclarecimientos, se puede beber la linfa cristalina de las verdades consoladoras del Cielo, preparandose las almas para la nueva era. (…).</p>
+<p>Trabajemos por Jesus, mientras que nuestro taller este localizado en el desierto de las conciencias.</p>
+<p>Todos somos los llamados a la gran labor y nuestro mas sublime deber es responder a los llamados del Elegido.” (Emmanuel, <em>A camino de la luz</em>, 19 ed., p. 213-215).</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/nympho-de-paula-correa.png" alt="" class="alignleft" width="432" height="305" />
+
+<p><strong>Nympho de Paula Correa y la Campana</strong></p>
+<img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/nimpho-04_09_2017.jpeg" alt="" />
+
+<p>“(…) motivos de fuerza mayor llevaron a Nympho Correa para San Pablo, Capital, en junio de 1952. En la Capital Bandeirante se volvio frecuentador de la Federación Espirita de San Pablo y del entonces pequeño Departamento de Asistencia Social de la Federación. Luego notó las dificultades enfrentadas por el Órgano Asistencial de la Federación Espirita de San Pablo. Notó también que los mensajes espiritas-cristianos continuaban restringidos al ambiente espirita, en vez de ser llevados a los hogares hambrientos de nuevos conocimientos para sus espíritus (…). El 3 de marzo de 1953, con la protección de los Espíritus Mayores, el corazón lleno” de alegría, sin siquiera saber que estaría plantando allí un gran árbol destinado a dar frutos de tanta belleza, a irradiarse en múltiples tareas, a cabo del futuro, se realizó la memorable primer Campaña de Fraternidad, en la histórica ciudad de San Pablo, en el barrio de Pinheiros, en frente del Cementerio de Aracá – justamente en frente al cementerio, como que simbolizando la unión entre la llamada “muerte”, con la vida eterna de todos nosotros, a gritar, “Unamos nuestros esfuerzos para que cuando el Señor llegue encuentre acabada la obra” – con doce caravaneros (…).” (Revista Auta de Souza, n.o 11, p. 31-32).</p>
+<p><strong>Los buenos frutos de la Campañas</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/c3adndice.png" alt="" class="alignleft" width="225" height="225" />
+
+<p><strong>a) Divulgación</strong></p>
+<p>“A éstos doce envió Jesús, y les ordeno?, diciendo: (…) es llegado el reino de los Cielos.” (Mateo, 10:5-7).</p>
+<p>“Después de ésto el Señor designó otros setenta, y los envió delante de si?, de dos en dos, para que lo presidiesen en cada ciudad y lugar a donde el debía de ir. Y les decía: en verdad, la cosecha es abundante, mas los trabajadores son pocos; Rogad, pues al Señor de la cosecha que mande trabajadores para su cosecha”. (Lucas, 10:1-2).</p>
+<p>“La tarea en la Divulgación de la Doctrina Espirita, explicando las enseñanzas de Nuestro Señor Jesús Cristo, debe merecer nuestro mayor entendimiento y nuestro mejor cariño. Es verdad que el pan material remueve el hambre agresiva del cuerpo, no obstante, ¿qué agente suprimirá el hambre del alma, adormecida, muchas veces, en las sombras de la inercia o en el fuego de la prueba, sino el esclarecimiento espirita susceptible de serenar las fuerzas sin gobierno del corazón?<br>(…). divulguemos, sí, la instrucción y el consuelo, la paz y el aviso de la Doctrina Espirita en favor de los que yacen fronterizos a la delincuencia y la locura, a la enfermedad y a la muerte, sin razón de ser. En muchas circunstancias la criatura no espera sino una frase, un señalamiento, una elucidación o una bendición verbal de protegerse contra la caída en precipicios fatales. Trabajemos por la distribución organizada y metódica del conocimiento espirita cristiano con la misma devoción con que se procura establecer un servicio de agua y luz.” (Batuira, <em>Mas luz</em>, 5 ed., p. 130-131).</p>
+<p><strong>b) La recaudación</strong></p>
+<p>“(…) entonces Rey dirá a los de su derecha: Venid, benditos de mi Padre, heredad el reino preparado para vosotros desde la fundación del mundo. Porque tuve hambre, y me disteis de comer; tuve sed, y me disteis de beber; fui forastero, y me recogisteis; estuve desnudo, y me cubristeis; enfermo, y me visitasteis; en la cárcel, y vinisteis a mí. Entonces los justos le responderán diciendo: Señor, ¿cuándo te vimos hambriento, y te sustentamos, o sediento, y te dimos de beber? ¿Y cuándo te vimos forastero, y te recogimos, o desnudo, y te cubrimos? ¿O cuándo te vimos enfermo, o en la carcel, y vinimos a ti? Y respondiendo el Rey, les dirá: De cierto os digo que en cuanto lo hicisteis a uno de estos mis hermanos más pequeños, a mí lo hicisteis.” Jesús (Mateo 25:34-40).</p>
+<p>“Yo me llamo la caridad, soy el camino principal que conduce a Dios; Seguidme, porque soy el objeto al que debéis todos aspirar. Esta mañana he hecho mi paseo habitual, y con el corazón lastimado vengo a<br>deciros: ¡Oh! amigos míos, qué miserias, qué lágrimas y cuánto tenéis que hacer para sacarlas todas! (…).” (Allan Kardec, <em>El Evangelio según el Espiritismo,</em> 131 ed., cap. 13, i?tem 13).</p>
+<p><strong>c) Estímulo a la caridad</strong></p>
+<p>“(…) dar oportunidad a tantas criaturas deseosas de practicar la caridad, de hacerla a través de los caravaneros de la Campaña.” (Editora Auta de Souza, Campaña de Fraternidad Auta de Souza – Bases y reglamento, 2 ed., p. 22).</p>
+<p>“Estando Jesús sentado enfrente al gazofilácio, a observar de que modo el pueblo allí lanzaba su dinero, vio a muchas personas ricas lo dejaban en abundancia en el arca de las ofrendas. En eso, vió también a una viuda muy pobre que apenas dejó dos pequeñas monedas de diez centavos de valor cada una. Llamando entonces a sus discípulos les dijo:<br>—En verdad os digo que esta viuda pobre echó más que todos, pues todos aquellos echaron para las ofrendas de Dios de lo que les sobra; pero ésta, de su pobreza echó todo el sustento que tenía.” Jesu?s (Lucas 21:1-4).</p>
+<p>“Entonces, ¿reprobáis la limosna?</p>
+<p>– No, lo vituperable no es la limosna en sí, sino con frecuencia la forma de darla. Porque el hombre de bien, que entiende la caridad de acuerdo con Jesús, se llega hasta el desdichado, sin esperar que éste le tienda la mano. (…)” (Allan Kardec, <em>El libro de los Espíritus</em>, 70 ed., p. 888 a).</p>
+<p><strong>d) Niños</strong></p>
+<p>“(…) aprovechar, también, el gran potencial de la niñez, enseñándola a ser el caravanero del futuro.” (Editora Auta de Souza, Campaña de Fraternidad Auta de Souza – Bases y reglamento, 2 ed., p. 22).</p>
+<p>“Dejad venir a mi a los pequeñitos, no os impidan, porque de ellos es el reino de Dios.” Jesús (Mateo, 10:13)</p>
+<p>“El corazón de los niños es solo a cultivar, plagado de dificultades. Preparemos el terreno a nuestra disposición, abonemos-lo y tiremos en él las semillas del Evangelio. Jesús hará el resto. (…).” Francisco Spinelli (Espíritus diversos, Crestomatía de la inmortalidad, p. 105).</p>
+<p><strong>e) Casa Espirita</strong></p>
+<p>De entre los inmensos beneficios que la Campaña de Fraternidad Auta de Souza ofrece a la Casa Espirita, se destaca la divulgación de la Doctrina Espirita, a través de millares de páginas de consuelo que distribuye de puerta en puerta, divulgando también todas sus actividades, aumentando así el número de frecuentadores.</p>
+<p>“Sobre la propaganda que procuráis hacer, exclusivamente para llamar a vuestro seno mayor número de adeptos, diré – si las formas mas sencillas que se han encontrado son la cura de vuestros hermanos obsesos, son las visitas domiciliares y la expansión de los fluidos – ahí tienes un modesto trabajo para vuestra meditación y estudio.” (Allan Kardec, <em>La oración conforme el Evangelio según el Espiritismo</em>, 40 ed., p. 22)</p>
+<p>Con la Campaña, la Casa pasa a tener un contacto con las familias de su región, puesto que los hogares son visitados periódicamente lo que despierta en las familias el interés en conocer la Casa Espirita así, crea un fuerte vínculo entre familia y Casa Espirita.</p>
+<p>“Es preciso que nosotros, los espiritas, comprendamos que no podemos distanciarnos del pueblo, porque el Espiritismo vino para el pueblo y con él debe dialogar. Es indispensable que estudiemos la Doctrina Espirita junto con las masas, que amemos a todos los compañeros, pero sobre todo, a los mas humildes social e intelectualmente hablando y nos aproximemos a ellos con real espíritu de comprensión y fraternidad.” Francisco Cândido Xavier (Adelino Silveira, <em>Chico, de Francisco</em>, 3 ed., p. 83).</p>
+<p><strong>f) Trabajadores</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/Campanha-Auta-de-Souza-2.jpeg" alt="" class="alignright" width="380" height="461" />
+
+<p>Consecuencia natural de todos los aspectos anteriormente relacionados, trabajando de caravana simple y absorbente, ampliando la divulgación doctrinaria, practicando la desobsesión colectiva. Los trabajadores pasan a recibir orientación y formación doctrinaria, integrándose en el trabajo del bien y principalmente practicando la reforma íntima.</p>
+<p>“Necesitaremos, en nuestro trabajo, de dar ejemplos para que los demás se sientan atraídos por nuestra vivencia y, en la medida que ellos aprenden con nuestra vivencia, quedamos con su colaboración, naciendo un saludable intercambio.” (Divaldo Franco, Diálogo con dirigentes y trabajadores espiritas, 2 ed., p. 38).</p>
+<p>Mas allá de eso, la campaña ofrece la integración de todos los trabajadores. Sean niños, jóvenes o adultos, todos tienen oportunidad de dedicarse juntos a la tarea cristiana. La familia puede trabajar unida en la Campaña de Fraternidad Auta de Souza.</p>
+<p>“Instruye al niño en el camino que debe seguir, y cuando fuere viejo no se desviará de el.” (Proverbios, 22:6).</p>
+<p>“(…) beneficiar el trabajo del caravanero como servidor, en el ejercicio de la humildad y tolerancia (…), proporcionando a muchos corazones oportunidad de trabajo así como fuente de cura a los enfermos del alma.” (EDITORA AUTA DE SOUZA, <em>Campaña de Fraternidad Auta de Souza: bases y reglamento,</em> 2 ed., p. 22).</p>
+<p>“Aunque yo hablase las lenguas de los hombres y de los ángeles, y no tuviese amor, sería como el metal que resuena o como el platillo que campanillea. Y aunque tuviese el don de la profecía, y conociese todos los misterios y toda la ciencia, y aunque tuviese toda la fe, de manera tal que transportase los montes, y no tuviese amor, nada sería.” (Paulo, I Cor, 13:1-2).</p>
+<p><strong>g) Espíritus</strong></p>
+<p>Todos los aspectos relacionados con la Campaña naturalmente son mecanismos de reeducación de los espíritus encarnados (caravanero, donador, asistido), y de desencarnados; estos últimos son atendidos por la desobsesión colectiva generada por la Campaña de Fraternidad Auta de Souza, y transformados por los ejemplos de los encarnados.</p>
+<p>“En ese propósito, es imposible igualmente olvidar que los hermanos en rebeldía y desespero, que nos oyen los llamados a la regeneración y al amor, no se transforman simplemente a la fuerza de nuestras palabras, mas, sobre todo, al toque moral de nuestras acciones, cuando nuestras acciones se patentizan de acuerdo con nuestras enseñanzas.” (André Luiz, Desobsesión, 9 de., p. 241-242).</p>
+<p>Incentivando el proceso de la caridad, la Campaña estimula el pensamiento en el campo del bien, tanto en el caravanero como en el donador. El pensamiento en el campo del bien es eficaz instrumento de desobsesión para el trabajador, que ejercita la humildad al pedir, al donador, que ejerce la caridad al donar.</p>
+<p>“Practicando el bien y poniendo en Dios toda vuestra confianza, repeleréis la influencia de los Espíritus inferiores y aniquilaréis el imperio que desean tener sobre vosotros.” (Allan Kardec, <em>El libro de los Espíritus</em>, 63 ed., preg. 469).</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
