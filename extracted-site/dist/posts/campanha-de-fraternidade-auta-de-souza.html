@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campanha de Fraternidade Auta de Souza | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Como fazer na casa espírita</span>
+          <h1>Campanha de Fraternidade Auta de Souza</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-28T16:31:00 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>O que é a Campanha de Fraternidade Auta de Souza?</strong> </p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/Campanha-Auta-de-Souza-2.jpeg" alt="" class="alignleft" width="401" height="486" />
+
+<p>A Campanha de Fraternidade é um dos instrumentos de que se valem os Centros Espíritas para a realização da assistência social e a propagação do Evangelho de Jesus. É ela um componente de um todo, para um objetivo único – a prática da caridade material, moral e espiritual – via pela qual chegaremos todos, um dia, até Deus. </p>
+<p><strong>A Campanha de Fraternidade Auta de Souza é uma campanha de rua</strong> que se destina a levar a sublimidade dos ensinos de Jesus, através da Doutrina Espírita, aos lares visitados, de porta em porta, sob a forma de uma palavra de conforto e de bom ânimo, de um ensinamento ou de uma amorosa vibração através de mensagens transmitidas pelos Espíritos responsáveis pela Evangelização do Brasil, e, bem assim, angariar donativos para as famílias carentes de ajuda em alimentos, roupas, agasalhos, etc. “Vem e Ajuda”… é o divino convite que ecoa em nossos corações, porém o mesmo deve estar sempre presente como uma chama viva e de fé e amor ao semelhante, porque, se não tivermos amor, embora dando todos os haveres inclusive as roupas do corpo, não teremos caridade. </p>
+<p><strong>Objetivos:</strong></p>
+<p><strong>Divulgar a Doutrina Espírita</strong></p>
+<p> “Divulgar a Doutrina Espírita nos lares, de porta em porta, através da difusão de mensagens de Espíritos reconhecidos evangelizadores […].” (Campanha de Fraternidade Auta de Souza: Bases e regulamentos. 2.ed. P. 22.) </p>
+<p><strong>Arrecadar Donativos</strong></p>
+<p> “[…] Arrecadar donativos em alimentos, roupas, etc., a serem distribuídos às famílias carentes, assistidas pelas Campanhas e Departamento de Assistência Social dos Centros Espíritas, Casas Tansitórias, etc., a que pertencer.” (Campanha de Fraternidade Auta de Souza: Bases e regulamentos. 2. ed. P. 22). </p>
+<p><strong>Praticar e Oportunizar a Prática da Caridade</strong> </p>
+<p>“Outrossim, dar oportunidade a tantas criaturas desejosas de praticar a caridade, de fazê-la através dos caravaneiros da Campanha.” (Campanha de Fraternidade Auta de Souza: Bases e regulamentos. 2. ed. P. 22.) “A caridade partida do coração, ainda que exteriorizada numa simples migalha de luz, que, irradiando-se, possibilita seja vislumbrada num átimo toda a excelsitude do amor de Jesus, que se derrama como manancial de bênçãos sobre aquele que dá.” (Campanha de Fraternidade Auta de Souza: Bases e regulamentos. 2.ed. P. 20.) </p>
+<p><strong>Histórico</strong> </p>
+<p>A Campanha do Quilo “Nos idos de 1950, eu residia em Campo Grande, Estado de Mato Grosso, onde integrava as fileiras da Mocidade do Centro Espírita Discípulos de Jesus. Naquela época transferiu-se para aquela cidade o nosso confrade Oli de Castro, que musicou o hino da Alegria Cristã, vindo da cidade de Recife, onde trabalhava na Campanha do Quilo. Em Campo Grande o nosso irmão Oli convocou a Mocidade para organização da dita Campanha e, dentro de alguns dias, eis que nas ruas de Campo Grande, viam-se os trabalhadores visitando os lares.” Nympho Corrêa (Campanha de Fraternidade Auta de Souza: Bases e regulamentos. 2. ed. P.18.) A Idealização da Campanha de Fraternidade “Em junho de 1952, por força maior, fui obrigado a transferir minha residência para a Capital de São Paulo e lá chegando tornei-me um freqüentador assíduo da Federação Espírita, especialmente de seu então pequeno Departamento de Assistência Social, achando-se em sua direção o nosso prezado companheiro de jornada, Sr. José Gonçalves Pereira. À vista das dificuldades que os irmãos do Departamento enfrentavam para dar assistência às poucas famílias que na época eram assistidas e sentindo também a necessidade de serem abertas novas frentes de trabalho, uma vez que os Espíritas continuavam transmitindo suas mensagens em ambiente fechado ao invés de levá-las ao encontro das almas necessitadas e ávidas de novos conhecimentos, isto é, levar às residências a mensagem de amor, de felicidade e de beleza que há muito a Revelação Espírita nos vêm proporcionando, através de nosso muito querido médium Francisco Cândido Xavier, e bem assim dar a oportunidade aos lares de prestarem a caridade, dando-nos a sua sobra, é que concluí que só uma campanha de rua viria suprir aquelas necessidades. Assim então, deliberei organizar a campanha do quilo, mais bem estruturada e melhor organizada e padronizada, a fim de que crescesse e se fortificasse não só em São Paulo, mas em todo o Brasil. Em 3 de fevereiro de 1953, às 20:00 hs, em uma das dependências da Federação Espírita, à Rua Maria Paula, 158, reuni alguns amigos e expus a minha idéia de criação da campanha, a qual seria denominada de Campanha de Fraternidade; sendo estudada carinhosamente pelos companheiros, foi aprovada e marcado seu início para daí a um mês, ou seja, em 3 de março de 1953.” Nympho Corrêa (Campanha de Fraternidade Auta de Souza: Bases e regulamentos. 2.ed. P.18-19.) </p>
+<p><strong>A Campanha de Fraternidade passa a levar o nome de Auta de Souza</strong> </p>
+<p>“Após vencidas as primeiras lutas chegavam de Pedro Leopoldo, por intermédio de nosso muito querido Francisco Cândido Xavier, os primeiros incentivos do Alto, partido de um coração amoroso, cheio de boa vontade, o de Auta de Souza, em mensagens encorajadoras, concitando os caravaneiros a se unificarem no trabalho perseverante de levar aos lares a palavra amiga, a mensagem esclarecedora referente à Boa Nova de Jesus, no ‘Ide pois, dois a dois e pregai o meu Evangelho’ e também nos assistindo, nos inspirando e nos amparando nas lutas em prol da continuidade dos trabalhos. Daí surgiu a idéia de dar seu querido nome à Campanha, passando, assim, a se denominar ‘Campanha de Fraternidade Auta de Souza’. Das muitas mensagens que ela nos encaminhou, destaco as primeiras que são: Vem e Ajuda, Agora, Escuta, Bendita Sejas, Divide, Migalha, Oração de Hoje, Pensa, Sublime Encontro, Aos Caravaneiros do Bem.” Nympho Corrêa (Campanha de Fraternidade Auta de Souza: Bases e regulamentos. 2.ed. P.19.)</p>
+<p><strong>O que proporciona na Casa Espírita</strong> </p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/bases_e_regulamento_da_campanha_de_fraternidade_auta_de_souza_17_1_20191001183600.jpg" alt="" class="alignleft" width="259" height="383" />
+
+<p> <em><strong>01. Propicia um Trabalho Simples e Envolvente</strong></em></p>
+<p> Um trabalho de caravana absorve os mais diferentes tipos de trabalhadores: da criança ao idoso. A Campanha de Fraternidade Auta de Souza é um trabalho de caravana. Eis porque é simples e envolvente, proporcionando labor edificante à toda a família.</p>
+<p> <strong><em>02. Aglutina Novos Trabalhadores</em></strong></p>
+<p> Conseqüência natural de todos os aspectos anteriormente relacionados: trabalho de caravana simples e envolvente ampliando a divulgação doutrinária, praticando a desobsessão coletiva e trazendo famílias e novos freqüentadores ao Centro. Estes passam a receber orientação e formação doutrinária, integrando-se na Casa Espírita como trabalhadores.</p>
+<p> <em><strong>03. Proporciona a Participação da Criança, do Jovem e do Adulto</strong></em> </p>
+<p>A Campanha de Fraternidade Auta de Souza é uma das poucas atividades que envolvem trabalho e estudo na Casa Espírita, permitindo a participação conjunta de crianças, jovens e adultos. A família pode trabalhar unida.</p>
+<p> <em><strong>04. Contribui na Divulgação da Doutrina Espírita</strong></em></p>
+<p> A Campanha de Fraternidade Auta de Souza divulga de porta em porta a Doutrina Espírita, através das milhares de páginas de consolo que distribui. A Casa Espírita, através da Campanha de Fraternidade Auta de Souza, divulga todas as suas atividades, aumentando assim o número de freqüentadores. Todos os trabalhadores que participam dessa caravana estão inseridos no processo de divulgação da Doutrina Espírita.</p>
+<p> <em><strong>05. Forma Novos Dirigentes</strong></em> </p>
+<p>Quando formamos novos trabalhadores, estamos naturalmente estimulando a formação de novos dirigentes. O trabalho de caravana incentiva o surgimento de novas lideranças, nas funções de coordenadores e orientadores de grupo, revelando novos e futuros dirigentes da Casa Espírita.</p>
+<p> <strong><em>06. Gera Organização Administrativa</em></strong></p>
+<p>Com o desenvolvimento das atividades e aumento do número de trabalhadores, a Casa Espírita precisa contar com uma melhor organização administrativa, no que é auxiliada pelos novos dirigentes e líderes que surgirão.</p>
+<p><em><strong>07. Cria ou Amplia os Trabalhos Assistenciais</strong></em> </p>
+<p>Ao estimular o processo da caridade, indo em busca do doador e de quem irá receber a doação, a Campanha de Fraternidade Auta de Souza inaugura o trabalho assistencial na Casa Espírita, se esta ainda não o possui. Ao formar novos trabalhadores, como conseqüência do trabalho da Campanha de Fraternidade Auta de Souza, o Centro Espírita naturalmente amplia as suas atividades assistenciais.</p>
+<p><em><strong>08. Proporciona a Presença das Famílias no Centro e vice-versa</strong></em></p>
+<p> A coleta de alimentos na Campanha de Fraternidade Auta de Souza e a sua conseqüente distribuição, conduz necessariamente as famílias a buscarem o alimento na Casa Espírita ou a Casa Espírita a se dirigir até o local onde estão os assistidos.</p>
+<p><strong><em>09. Cria Vínculos entre a Casa Espírita e a Família</em></strong></p>
+<p> Com a implantação da Campanha de Fraternidade Auta de Souza, a Casa Espírita passa a ter um contato com as famílias de sua região, visto que os lares são visitados periodicamente, o que desperta nas famílias o interesse em conhecer a Casa Espírita, criando assim um forte vínculo entre ambas.</p>
+<p><strong><em>10. Desenvolve os Aspectos Pedagógicos</em></strong></p>
+<p> A presença das famílias no Centro, além das pessoas estimuladas pela divulgação da Campanha de Fraternidade Auta de Souza, leva a Casa Espírita a se preocupar com a formação e conteúdo doutrinário oferecido aos novos frequentadores. Todas as vezes que uma Casa Espírita se preocupa com a educação das pessoas que a frequentam, preocupa-se com o aspecto pedagógico. Consequentemente, novas palestras e novos cursos, melhores e mais organizados são implantados. </p>
+<p><strong><em>11. Proporciona o Processo de Educação dos Espíritos</em></strong></p>
+<p> Todos os aspectos relacionados com a Campanha de Fraternidade Auta de Souza naturalmente são mecanismos de reeducação de espíritos encarnados (caravaneiro, doador, assistido), como de desencarnados; estes últimos, são atendidos pela desobsessão coletiva gerada pela Campanha de Fraternidade Auta de Souza, e transformados pelos exemplos dos encarnados. </p>
+<p><strong><em>12. Amplia os Espaços Físicos da Casa Espírita</em></strong></p>
+<p> Com a implantação e/ou ampliação da atividade assistencial e conseqüente aumento de assistidos, frequentadores e trabalhadores, além da implantação de novos cursos e novas palestras, a Casa Espírita naturalmente necessitará ampliar seus espaços físicos. </p>
+<p><strong><em>13. É um Processo de Caridade: Doador x Receptor</em></strong></p>
+<p> É um processo da caridade ocorre quando há beneficência. A Campanha de Fraternidade Auta de Souza estimula e desenvolve o processo da caridade ao pedir, sem ostentação pelos que sofrem, evitando que estes se embruteçam esmolando, nem se humilhem ao receber os alimentos. Com a Campanha de Fraternidade Auta de Souza estaremos ampliando o campo de ação da caridade, proporcionando também àquele que doa, a oportunidade de praticar o bem.</p>
+<p> <strong><em>14. Proporciona um Processo de Desobsessão</em></strong> </p>
+<p>Incentivando o processo da caridade, a Campanha de Fraternidade Auta de Souza estimula o pensamento no campo do bem, tanto no caravaneiro quanto no doador. O pensamento no campo do bem é eficaz instrumento de desobsessão para o trabalhador, que exercita a humildade ao pedir, e para o doador, que exerce a caridade ao doar.</p>
+<h2><strong>Como Realizar</strong></h2>
+<p><strong>Sugestão do Horário de Funcionamento</strong></p>
+<p>08:30 – 09:00: 1ª etapa – Preparação</p>
+<p>09:00 – 10:00: 2ª etapa – Realização do trabalho na rua</p>
+<p>10:00 – 11:00: 3ª etapa – Arrumação do material e avaliação</p>
+<p><strong>Funcionamento das Etapas</strong></p>
+<p><strong>1ª Etapa</strong><br>Prece de Abertura;<br>Identificação dos trabalhadores com crachá;<br>Leitura das Bases e Regulamentos;<br>Leitura de uma Poesia de Auta de Souza;<br>Canção da Alegria Cristã.</p>
+<p><strong>2ª Etapa</strong></p>
+<p>Na realização do trabalho na rua, os trabalhadores realizam visitas domiciliares divulgando a mensagem consoladora da Doutrina Espírita e arrecadando donativos para os trabalhos assistenciais. Em uma semana é entregue uma mensagem Espírita juntamente com uma carta pedido. Na semana seguinte, voltamos aos mesmos lares, onde será entregue outra mensagem Espírita e recolhidos os donativos. Desta forma, a Campanha de Fraternidade Auta de Souza oferta aos lares duas mensagens Espíritas e oportuniza a prática da caridade a estes mesmos lares.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/cfas-03_02_2018.jpg" alt="" class="alignright" width="431" height="202" />
+
+<p><strong>3ª Etapa</strong></p>
+<p>Nesta etapa todo o material arrecadado é organizado, contado, relacionado e posteriormente é entregue ao Departamento Assistencial.</p>
+<p><strong>Canção da Alegria Cristã</strong></p>
+<p>(Letra: Leopoldo Machado, Música: Oli de Castro)</p>
+<p>Somos companheiros,</p>
+<p>Amigos, irmãos</p>
+<p>Que vivem alegres, pensando no bem.</p>
+<p>A nossa alegria é de bons cristãos,</p>
+<p>Não ofende a Jesus, nem fere a ninguém</p>
+<p>A nossa alegria,</p>
+<p>É bem do Evangelho,</p>
+<p>Vibra e contagia</p>
+<p>Da criança ao velho.</p>
+<p>Mesmo entre perigos</p>
+<p>Daremos as mãos,</p>
+<p>Como bons amigos,</p>
+<p>Como bons cristãos.</p>
+<p>Sempre ombro a ombro,</p>
+<p>Sempre lado a lado</p>
+<p>Vamos trabalhar com muita alegria,</p>
+<p>Pelo Espiritismo mais cristianizado,</p>
+<p>Pela implantação da paz e harmonia.</p>
+<p>Saiba mais no livro Campanha de Fraternidade Auta de Souza, da Editora Auta de Souza.</p>
+<p>ADQUIRA AQUI: <a href="http://www.editoraautadesouza.com.br">www.editoraautadesouza.com.br</a></p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

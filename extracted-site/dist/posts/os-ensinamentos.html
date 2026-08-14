@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Os ensinamentos | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>Os ensinamentos</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T17:20:57 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália<br><strong>Personagens:</strong> Lídia, Gisele, Amor, Família, Lei de Causa e Efeito, Reencarnação (esses ensinamentos poderão ser representados por uma ou mais pessoas), Narrador.</p>
+<p>**Cenário: Uma sala muito bonita, representando uma sala de Evangelização, na qual estará, bem no centro da mesma, um enorme livro (pode ser confeccionado tendo como capa, por exemplo, placas de isopor ou algum material mais ecológico). No mesmo estará escrito bem grande: EVANGELHO DE JESUS.<br>**<br><strong>Músicas:</strong> As músicas sugeridas podem ser substituídas por outras, que tratem do mesmo tema. No final estarão relacionadas as letras, com seus respectivos compositores. Se tiver dificuldade em conhecê-las ou substituí-las, o personagem poderá declamá-las em forma de poesia.</p>
+<p><strong>Narrador:</strong> (Após cumprimentar o público) – Qual de vocês sonha durante a noite? No outro dia, vocês se lembram do que sonharam? Comigo também acontece isso, às vezes eu me lembro, outras vezes não. Bem, hoje vamos conhecer um sonho de uma amiguinha nossa, chamada Lídia. Vocês querem conhecer esse sonho? (incentiva)<br>Certa noite Lídia teve um lindo sonho. Ela sonhou que estava… Bem, sabe o que eu vou fazer? Vou trazer o sonho da Lídia aqui para vocês verem. Atenção!!!</p>
+<p>(Sai de cena. Nesse momento coloca-se uma música suave. Após alguns segundos, entra uma menina observando o local, admirada, surpresa. A seguir começa a falar)</p>
+<p><strong>Lídia:</strong> Que lugar lindo! Onde será que eu estou? (vê o Livro) – Que livro enorme! (Lê em voz alta) _ O Evangelho de Jesus! Nossa!! Será que Jesus mora aqui? Preciso encontrar alguém para me explicar.</p>
+<p>(Nesse momento entra Gisele, se aproxima de Lídia, sem que ela perceba, e fala):</p>
+<p><strong>Gisele:</strong> Oi Lídia, tudo bem?<br><strong>Lídia:</strong> (Assustando-se) – Oi! Quem é você?<br><strong>Gisele:</strong> Meu nome é Gisele.<br><strong>Lídia:</strong> Você me conhece?<br><strong>Gisele:</strong> Sim, eu a conheço e estou muito feliz por você estar aqui.<br><strong>Lídia:</strong> Que lugar é esse?<br><strong>Gisele:</strong> Lídia, você está em um Centro Espírita. Esse local é uma sala, onde acontecem as aulas de Evangelização das Crianças.<br><strong>Lídia:</strong> Aulas de Evangelização das Crianças? E o que vocês estudam nestas aulas?<br><strong>Gisele:</strong> (Mostrando o livro) – Veja esse livro.<br><strong>Lídia:</strong> O Evangelho de Jesus! Eu estava exatamente olhando-o, quando você chegou.<br><strong>Gisele:</strong> Isso mesmo, o Evangelho de Jesus. Nele estão contidos todos os ensinamentos de Jesus, tudo o que Ele quer que nós façamos em nossas vidas.<br><strong>Lídia:</strong> Que interessante! Gostaria muito de conhecer este livro para saber o que Jesus quer que eu faça.<br><strong>Gisele:</strong> Sim, é exatamente isso que as crianças aprendem nas aulas de Evangelização. Hoje eu posso lhe mostrar alguns destes ensinamentos, mas depois você precisa estudá-lo para entender melhor. Precisa frequentar as aulas de evangelização.<br><strong>Lídia:</strong> Ôba!!! Gostaria muito de conhecê-lo.<br><strong>Gisele:</strong> Está bem, venha, vou lhe mostrar.</p>
+<p>(Nesse momento, Gisele irá passando as páginas. Em cada uma estará escrito uma palavra ou frase. De acordo com as mesmas, entrará um ou mais personagens, representando o ensinamento lido. Fala ou canta uma música)</p>
+<p><strong>Gisele:</strong> Vamos ver qual é o primeiro ensinamento. (Passa a primeira página, na qual estará escrito bem grande: AMOR)<br><strong>Lídia:</strong> (Lendo em voz alta) – A M O R .</p>
+<p>(Nesse momento entra o amor, cantando a música: Cor do Amor. No final fala):</p>
+<p><strong>Amor:</strong> Eu sou o maior ensinamento trazido por Jesus. Ele quer que todos vocês tenham muito amor no coração… muiiito amoorr no coração. (Afasta-se ou senta-se no chão).<br><strong>Lídia:</strong> Que lindo! Posso ver outro ensinamento?<br><strong>Gisele:</strong> Claro. (Passa para outra página, na qual estará escrito: Família. Entram os representantes da família. Poderá ser um pai, uma mãe e um filho (a) e cantam a música: Papai e Mamãe)<br><strong>Família:</strong> (Os três) – A família é muito importante. Devemos amar o papai, a mamãe, os irmãos e todas as pessoas de nossa família.<br><strong>Gisele:</strong> Você gosta de sua família, Lídia?<br><strong>Lídia:</strong> Muito! Eu gosto muito de minha família.<br><strong>Gisele:</strong> Vamos conhecer outro ensinamento? (passa a próxima página, estará escrito: Lei de Causa e Efeito)<br><strong>Lídia:</strong> Lei de causa e efeito! Que Lei é essa?</p>
+<p>(Entra o representante da Lei de causa e efeito, trazendo em sua mão algumas sementes)</p>
+<p><strong>Lei:</strong> Aqui estou eu! Funciono da seguinte forma: tudo aquilo que você fizer para as outras pessoas, você receberá de volta. Observe essa semente, é uma semente de laranja, se eu plantá-la vai nascer um pé de quê?<br><strong>Lídia:</strong> Ora, um pé de laranja.<br><strong>Lei:</strong> (Mostrando uma semente de abacate ou outra qualquer. Adaptar a pergunta e a resposta de acordo com a semente conseguida) – Esta é uma semente de abacate, se eu plantá-la, vou colher o quê?<br><strong>Lídia:</strong> (Rindo) – Abacate, ora!<br><strong>Lei:</strong> Pois é assim que funciono. Devolvo sempre para cada pessoa o que ela planta. Desta forma, quem planta o bem para os outros recebe o bem de volta, mas as pessoas que fazem o mal para os outros, recebem a maldade de volta, entendeu?<br><strong>Gisele:</strong> Claro que entendi: colhemos o que plantamos.<br><strong>Lei:</strong> Portanto, faça somente o bem para colher o bem! Preste atenção: (canta a música Isto ou Aquilo e vai se afastando)<br><strong>Gisele:</strong> (Passando mais uma página) – Veja só este aqui, como é importante. É graças à sua existência que vamos melhorando o nosso espírito. (Estará escrito: REENCARNAÇÃO)<br><strong>Lídia:</strong> Reencarnação? O que é isso?</p>
+<p>(Entra a Reencarnação)</p>
+<p><strong>Reencarnação:</strong> Preste atenção! Reencarnar é a gente nascer de novo. Nosso espírito não morre. Quando o corpo morre vai para o Plano Espiritual e depois nasce de novo, em um novo corpo, para evoluir sempre. Repita comigo: Nascer, viver, morrer, renascer, progredir sempre, tal é a Lei. E a morte deixou de existir, em seu lugar, nova vida surgiu!</p>
+<p>(Após as crianças repetirem a letra, começa a cantar ensinando-as a cantarem também)</p>
+<p><strong>Lídia:</strong> Meu Deus! Quantas coisas maravilhosas contém o Evangelho de Jesus.<br><strong>Gisele:</strong> Sim, este é o livro mais importante que existe e toda criança deve estudá-lo em conjunto com outros livros importantes também, que explicam melhor os ensinos de Jesus.<br><strong>Lídia:</strong> Que livros são esses?<br><strong>Gisele:</strong> São os livro da Doutrina Espírita, como, por exemplo, O Livro dos Espíritos.<br><strong>Lídia:</strong> Mas… quando eu acordar, como vou estudá-los?<br><strong>Gisele:</strong> É só você frequentar as aulas de Evangelização Infantil do Centro Espírita (fala o nome do Centro), todos os sábados. Tudo o que as evangelizadoras ensinam, são lições do Evangelho de Jesus e do Espiritismo.<br><strong>Lídia:</strong> Claro que vou frequentar estas aulas. Não vou faltar nenhuma vez! Quero aprender todos os ensinamentos de Jesus, pois quero crescer sendo uma boa menina.<br><strong>Gisele:</strong> Faça isso… ao acordar lembre-se: você precisa frequentar as aulas de Evangelização Infantil. Jesus confia em você. (Pede para as crianças ajudarem a repetir para a Lídia a fala anterior. Diz que é para ela acordar com muita vontade de ir para a evangelização)</p>
+<p>(Lídia sai de cena. Todos os outros personagens, continuam no palco, sem se movimentarem. O narrador entra e conversa com as crianças).</p>
+<p><strong>Narrador:</strong> Vocês viram que sonho lindo a Lídia teve? Será que ela se lembrou ao acordar? (espera resposta). Sim. Assim que ela acordou, lembrou-se do sonho e correu para pedir à sua mãe para leva-la às aulas de Evangelização.</p>
+<p>(Nesse momento, todos se aproximaram mais do centro do palco. Lídia entra e todos falam)</p>
+<p><strong>Todos:</strong> E você também amiguinho, quer crescer com amor no coração? Então venha aprender as lições de Jesus, nas aulas de Evangelização.<br>Esperamos por todos vocês!!!</p>
+<p>Letras das músicas sugeridas:</p>
+<p>**1 – A cor do Amor<br>**(Virgínia Scalia)</p>
+<p>De que cor<br>De que cor<br>Você acha ser<br>Você pensa ser<br>O amor, o amor<br>O amor, o amor.</p>
+<p>Tem a cor do carinho<br>Como o sol amarelinho<br>Tem a cor do perdão<br>E da beleza das mãos.<br>Mãos que abençoam<br>E se juntam em oração.</p>
+<p>Se você quiser saber<br>De que cor é o amor<br>Basta olhar e querer ver<br>O mundo que Deus Criou<br>Ô la la la la la ô<br>O mundo que Deus criou.</p>
+<p>**2 – Papai e Mamãe<br>**(Frankilin J.Heilbuth)</p>
+<p>Você se lembra mamãe<br>Aquela primeira vez<br>Papai piscou prá você<br>Você fingiu que não viu<br>Mais o coração<br>Contente sorriu<br>E aconteceu<br>O amor surgiu.</p>
+<p>(Voz de criança)<br>No jardim dos teus sonhos,<br>Nasceu pequenina flor,<br>Foi eu mamãe que nasci<br>Prá juntos cantar o amor.</p>
+<p>Mamãe, mamãe, mamãe, mamãe<br>Papai, papai, papai, papai</p>
+<p>**3 – Isto ou Aquilo<br>**(Frankilin J.Heilbult)</p>
+<p>Deus nos fez livres<br>Para escolher<br>Isto ou aquilo<br>Tens que resolver<br>Quem planta colhe<br>É causa e efeito<br>Decida sozinho<br>Mas pense direito.<br>Ô ô ô ou isto<br>Ô ô ô ou aquilo</p>
+<p>**4 – Reencarnação<br>**(Frankilin J.Heibulth)</p>
+<p>Nascer, viver, morrer<br>Renascer, progredir sempre, tal é a Lei.</p>
+<p>E a morte deixou de existir<br>Em seu lugar nova vida surgiu.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

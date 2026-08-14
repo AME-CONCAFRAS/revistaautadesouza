@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energia e Evolução &#8211; Virtude e Conhecimento | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Universo e vida</span>
+          <h1>Energia e Evolução &#8211; Virtude e Conhecimento</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-07-04T12:03:18 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/fantasy-2861107_960_720.jpg" alt="" class="alignleft" width="525" height="297" />
+
+<p>É certo que os valiosíssimos estudos de Fraunhofer e de Fresnel, a respeito da difração das ondas eletromagnéticas, jamais visaram a extrapolações filosóficas, tampouco o cálculo das “curvas de vibração” através da “espiral de Cornu”. Todavia, nada nos impede anotar, a respeito, uma ou outra particularidade, para dela extrairmos certos conceitos que nos interessam mais de perto.</p>
+<p>Vejamos, por exemplo, o fato, aparentemente sem maiores implicações, de que, no próprio centro de sombra que algum pequeno objeto circular projeta sobre um anteparo, sempre se observa a existência dum minúsculo ponto iluminado.</p>
+<p>O fenômeno desperta nos físicos terrenos um interesse meramente técnico, ligado aos processos naturais da difração da luz; nós, porém, vemos nele pálida imagem do que se verifica no reino das vibrações de natureza mais sutil, atingindo vastos setores da vida espiritual. </p>
+<p> A Luz Divina também se “difrata”, ao encontrar a resistência duma mente que provisoriamente se lhe mostre refratária; mas, ainda assim, revela-se presente e ativa no próprio núcleo da sombra que tal ser projeta de si mesmo.</p>
+<p>Essa verdade exemplifica por que jamais é vã qualquer emissão de luz espiritual sobre quem quer que seja, por mais empedernido no mal e aparentemente infenso ao bem esse alguém seja. O Amor é Luz Divina que não se perde jamais.</p>
+<p>É claro que, em qualquer plano, os fenômenos têm a sua hierarquia. Quando se observa a difração de raios X, pelos átomos duma rede cristalina, percebe-se complexa superposição de efeitos de interação, que conduzem a espalhamento, e de efeitos de interferência provocados por trens de ondas.</p>
+<p>Tudo isso, e muito mais, se observa, por igual, noutro nível, na física transcendente, a lembrar- nos de que a Lei da Vida é fundamentalmente a mesma em toda parte.</p>
+<p>Consideremos agora este outro assunto, dentro da mesma ordem de idéias: — na técnica das práticas magnetistas, são comumente usados passes transversais e passes longitudinais, conforme o caso e o que se pretende, porque, dentre outras razões, as ondas transversais e as longitudinais diferem umas das outras pela relação entre a sua direção de propagação e a do movimento das partículas do meio em que se movem. Numa onda transversal, as duas direções são perpendiculares, enquanto numa onda longitudinal elas são coincidentes. As ondas transversais podem ser polarizadas; nunca, porém, as longitudinais.</p>
+<p>Já as ondas que se propagam na água não são transversais, nem longitudinais, o que explica a facilidade com que aquela pode ser “fluidificada”, isto é, magnetizada, pois num meio líquido podem propagar-se ondas de pressão de grande intensidade e muito velozes.</p>
+<p>Não fosse o despreparo moral em que a nossa Humanidade ainda se compraz, os Poderes de Cima já teriam desvelado, através de seus missionários, inumeráveis conhecimentos e recursos novos de técnica científica, capazes de outorgar maiores poderes de ação ao homem terrestre.</p>
+<p>Enquanto, porém, as criaturas da Crosta, e de suas adjacências, não assimilarem, na prática, a Lei do Amor, os recursos ao seu dispor continuarão sendo basicamente apenas aqueles suscetíveis de agir sobre as formas físicas, e não sobre as estruturas mais profundas do espírito imortal.<br>(Áureo. <em>Universo e vida</em>. Psicografia de Hernani T. Sant’Anna.  5.ed., Cap. 5, item 12.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

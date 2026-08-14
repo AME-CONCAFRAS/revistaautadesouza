@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pluralidade dos mundos habitados | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Conheça o Espiritismo</span>
+          <h1>Pluralidade dos mundos habitados</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2021-04-02T15:30:05 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/04/pexels-pixabay-87651-3.jpg" alt="" width="1024" height="1024" />
+
+<p><strong>Todos os globos que circulam no espaço são habitados?</strong></p>
+<p>Sim e o homem terreno está bem longe de ser, como acredita, o primeiro em inteligência, bondade e perfeição. Há, entretanto, homens que se julgam espíritos fortes e imaginam que só este pequeno globo tem o privilégio de ser habitado por seres racionais. Orgulho e vaidade! Crêem que Deus criou o Universo somente para eles. (Allan Kardec. <em>O Livro dos Espíritos</em>, 33. ed., perg. 55.)</p>
+<h4>Diversas categorias de mundos</h4>
+<p>Do ensino dado pelos Espíritos, resulta que muito diferentes umas das outras são as condições dos mundos, quanto ao grau de adiantamento ou de inferioridade dos seus habitantes. (Allan Kardec. <em>O Evangelho segundo o Espiritismo</em>, 107. ed., p. 72-73.)</p>
+<p>São assim classificados os mundos habitados:</p>
+<ul>
+<li>Mundos primitivos, destinados às primeiras encarnações da alma humana;</li>
+<li>Mundos de provas e expiações, onde domina o mal;</li>
+<li>Mundos de regeneração, nos quais as almas que ainda têm o que expiar haurem novas forças;</li>
+<li>Mundos ditosos, onde o bem sobrepuja o mal; e</li>
+<li>Mundos Celestes ou divinos, habitações de Espíritos depurados, onde exclusivamente reina o bem.</li>
+</ul>
+<p>A Terra pertence à categoria dos mundos de expiação e provas, razão por que aí vive o homem a braços com tantas misérias. (Allan Kardec, <em>O Evangelho Segundo o Espiritismo</em>, 107. ed., p. 72-73.)</p>
+<h4>A grande família universal</h4>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/04/universo-696x377-1.jpg" alt="" width="696" height="377" />
+
+<p>E dizer-se que só na nossa modesta galáxia existem mais de cem bilhões de sóis! Esses mundos incontáveis são, como disse Jesus, as muitas moradas da Casa do Eterno Pai. É neles que nascem, crescem, vivem e se aperfeiçoam os Filhos do Criador, a Grande Família Universal. São eles as grandes Escolas das Almas, as Grandes Oficinas do Espírito, as Grandes Universidades e os Grandes Laboratórios do Infinito… E são também — Deus seja louvado! — os berços da Vida. (Irmão Áureo, <em>Universo e Vida</em>, 4 ed., p. 31-33)</p>
+<h4>A nova geração</h4>
+<p>Para que na Terra sejam felizes os homens, preciso é que somente a povoem Espíritos bons, encarnados e desencarnados, que somente ao bem se dediquem. Havendo chegado o tempo, grande emigração se verifica dos que a habitam: a dos que praticam o mal pelo mal, ainda não tocados pelo sentimento do bem, os quais, já não sendo dignos do planeta transformado, serão excluídos, porque, senão, lhe ocasionariam de novo perturbação e confusão e constituiriam obstáculo ao progresso. Irão expiar o endurecimento de seus corações, uns em mundos inferiores, outros em raças terrestres ainda atrasadas, equivalentes a mundos daquela ordem, aos quais levarão os conhecimentos que hajam adquirido, tendo por missão fazê-las avançar. Substituí-los-ão Espíritos melhores, que farão reinem em seu seio a justiça, a paz e a fraternidade. (…) Em cada criança que nascer, em vez de um Espírito atrasado e inclinado ao mal, que antes nela encarnaria, virá um Espírito mais adiantado e propenso ao bem. (Allan Kardec, <em>A gênese</em>, 19 ed., p. 418)</p>
+<h4>O porvir</h4>
+<p>Os filhos da iniqüidade, empedernidos no crime e cristalizados no orgulho, deixarão as fronteiras fisiomagnéticas da Terra, em demanda das novas experiências a que fizeram jus; mas aqui, no orbe aliviado e repleto de escombros, uma nova idade de trabalho e de esperança nascerá, ao Sol da Regeneração e da Graça.</p>
+<p>Nesse mundo renovado, a paz inalterável instituirá um progresso sem temores e uma civilização sem maldade. Os habitantes do planeta estarão muito longe da angelitude, mas serão operosos e sinceros, um tanto sofredores e endividados para com a Eterna Justiça, mas fraternos e dóceis à inspiração superior. O Estatuto dos Povos manterá o Parlamento das Nações, onde Excelsos Espíritos materializados designarão, em nome e por escolha do Cristo, os Governadores da Terra. Sem monarquias, oligarquias, plutocracias ou democracias, haverá apenas uma <em>Espiritocracia Evangélica</em>, fundada no celeste platonismo do mérito maior, do maior saber e da maior virtude, para o serviço mais amplo e mais fecundo. (Irmão Áureo, <em>Universo e Vida</em>, 4 ed., p. 168-169)</p>
+<p>Quer saber mais? Estude o livro <em><strong>Conheça o Espiritismo</strong></em>: <a href="http://www.editoraautadesouza.com.br/">http://www.editoraautadesouza.com.br/</a></p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

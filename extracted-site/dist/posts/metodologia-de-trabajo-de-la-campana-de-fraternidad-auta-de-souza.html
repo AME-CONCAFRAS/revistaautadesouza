@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Metodología de trabajo de la Campaña de Fraternidad Auta de Souza | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Español</span>
+          <h1>Metodología de trabajo de la Campaña de Fraternidad Auta de Souza</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T18:09:05 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p> La Campaña de Fraternidad Auta de Souza es un servicio donde ganamos el pan material para aquellos que no lo poseen. Es un servicio donde entregamos el pan Espiritual para los sedientos, divulgando la Doctrina.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/cfas.jpg" alt="" class="alignleft" width="468" height="271" />
+
+<p>La Campaña de Fraternidad Auta de Souza es realizada en dos fases distintas:</p>
+<p>1 a semana: Distribución;</p>
+<p>2 a semana: Colecta.</p>
+<p>Cada una de las fases de la campaña es compuesta de tres etapas, que son:</p>
+<p>1 a etapa: Reunión de preparación;</p>
+<p>2 a etapa: Realización del trabajo en la calle;</p>
+<p>3 a etapa: Ordenamiento del material y evaluación.</p>
+<p>El libro “Campaña de Fraternidad Auta de Souza – Bases y Reglamento” trata detalladamente de éstas fases y etapas, en el capítulo IV.</p>
+<h2>¿Qué genera la Campaña de Fraternidad Auta de Souza?</h2>
+<p><strong>a) Para el caravanero</strong></p>
+<p>“No olvidemos que el trabajo edificante de la Campaña es medio de reajuste para nuestros espíritus imperfectos y deudores. Al disponernos a salir a las calles, golpeando de puerta en puerta, cargando la bolsa de redención, y llevando el mensaje salvador, nos estamos redimiendo de pasados errores; estaremos ejercitando, o mejor, estamos adquiriendo la humildad y la paciencia y dando un paso, en principio tambaleante, mas con el tiempo seguro, para extirpar de dentro de nosotros, dos monstruos que impiden nuestra evolución: el egoísmo y el orgullo.”</p>
+<p>Es importante también la participación, en la campaña, del joven y de los niños (…).</p>
+<p>“A través del trabajo en la campaña, viendo el ejemplo edificante del mas viejo, principalmente del padre y de la madre, el joven y el niño reciben preciosas lecciones, que formarán al espirita y al caravanero de mañana”. (Editora Auta de Souza, Campaña de Fraternidad Auta de Souza: Bases y reglamento, 2 ed., p. 42).</p>
+<p><strong>b) Para el hogar que dona</strong></p>
+<p>“La campaña tiene por objetivo llevar a los hogares, a las almas afligidas y necesitadas, el mensaje cristiano de amor, de fe, de esperanza, de fraternidad y de caridad, transmitida por la Doctrina Espirita, y pedir de puerta en puerta, recursos materiales para asistencia de aquellos que pasan por la expiación o prueba de la miseria casi que absoluta. Es evidente que el éxito del segundo objetivo dependerá directamente del éxito del primero, pues solamente en la medida que el mensaje evangélico penetra el corazón de las personas visitadas, obtendremos la respuesta en términos de donación simbolizada por porciones de arroz, de frijol, un suéter, un calzado etc.” (Editora Auta de Souza, Campaña de Fraternidad Auta de Souza: Bases y reglamento, 2 ed., p. 41).</p>
+<p><strong>c) Para el hogar que recibe</strong></p>
+<p>“La distribución de los alimentos recolectados por la Campaña de Fraternidad Auta de Souza, conduce necesariamente a las familias a buscar a la Casa Espirita y a recibir estimulantes lecciones del Evangelio de Jesús a la luz de la Doctrina Espirita, auxiliando en la manutención del equilibrio en el hogar”. (Síntesis Doctrinaria – 43a Concafras-Pse, p. 84).</p>
+<p><strong>d) Trabajo simple y envolvente</strong></p>
+<p>Un trabajo de caravana absorbe los mas diferentes tipos de trabajadores: de la niño al anciano. La Campaña de Fraternidad Auta de Souza es un trabajo de caravana. Es por ésto que es simple y atractivo, proporcionando trabajo edificante a toda familia.</p>
+<p><strong>e) Nuevos trabajadores</strong></p>
+<p>Consecuencia natural de todos los aspectos anteriormente relacionados: trabajo de caravana simple y envolvente, ampliando la divulgación doctrinaria, practicando la desobsesión colectiva y trayendo familias y nuevos frecuentadores al Centro. Estos pasan a recibir orientación y formación doctrinaria, integrandose en la Casa Espirita como trabajadores.</p>
+<p><strong>f) Participación de la niñez, del joven y del adulto</strong></p>
+<p>La Campaña de Fraternidad Auta de Souza es una de las pocas actividades que envuelven trabajo y estudio en la Casa Espirita, permitiendo la participación conjunta de niños, jóvenes y adultos. La familia puede trabajar unida en la Campaña de Fraternidad Auta de Souza.</p>
+<p><strong>g) Divulgación de la Doctrina</strong></p>
+<p>La Campaña de Fraternidad Auta de Souza divulga de puerta en puerta la Doctrina Espirita, a través de millares de páginas de consuelo que distribuye. La Casa Espirita, a través de la campaña, divulga todas sus actividades, aumentando así el número de frecuentadores. Todos los trabajadores que participan de esa caravana están insertados en el proceso de divulgación de la Doctrina Espirita.</p>
+<p><strong>h) Nuevos dirigentes</strong></p>
+<p>Cuando formamos nuevos trabajadores, estamos naturalmente estimulando la formación de nuevos dirigentes. El trabajo de caravana incentiva el surgimiento de nuevos liderazgos, en las funciones de coordinadores y orientadores de grupo, revelando nuevos y futuros dirigentes de la Casa Espirita.</p>
+<p><strong>i) Organización administrativa</strong></p>
+<p>Con el desarrollo de las actividades y aumento del número de trabajadores, la Casa Espirita precisa contar con una mejor organización administrativa, en lo que es auxiliada por los nuevos dirigentes y líderes que surgirán.</p>
+<p><strong>j) Trabajos asistenciales</strong></p>
+<p>Al estimular el proceso de la caridad, yendo a la búsqueda del donador y de quién irá a recibir la donación, la Campaña de Fraternidad Auta de Souza inaugura el trabajo asistencial en la Casa Espirita, si ésta todavía no lo posee.</p>
+<p>Al formar nuevos trabajadores, como consecuencia del trabajo de la Campaña, el Centro Espirita naturalmente amplia sus actividades asistenciales.</p>
+<p><strong>k) Presencia de las familias en el Centro y viceversa</strong></p>
+<p>La colecta de alimentos en la Campaña de Fraternidad Auta de Souza y su consecuente distribución conducen necesariamente a las familias a buscar el alimento en la Casa Espirita o la Casa Espirita se dirige hasta el lugar donde están los asistidos.</p>
+<p><strong>l) Vínculos entre la Casa Espirita y las familias</strong></p>
+<p>Con la implantación de la Campaña, la Casa Espirita pasa a tener un contacto con las familias de su región, visto que los hogares visitados periódicamente, lo que despierta en las familias el interés en conocer la Casa Espirita, creando así, un fuerte vínculo entre ambas.</p>
+<p><strong>m) Desarrollo de los aspectos pedagógicos</strong></p>
+<p>La presencia de las familias en el Centro, más allá de las personas estimuladas por la divulgación de la Campaña, lleva la Casa Espirita a preocuparse con la formación del asistido y mejorar el contenido doctrinario a los nuevos frecuentadores. Todas las veces que una Casa Espirita se preocupa con la educación de las personas que la frecuentan, se preocupa con el aspecto pedagógico. Consecuentemente, nuevas conferencias y nuevos Cursos, mejores y mas organizados son implantados.</p>
+<p><strong>n) Educación de los espíritus</strong></p>
+<p>Todos los aspectos relacionados con la Campaña naturalmente son mecanismos de reeducación de los espíritus encarnados (caravanero, donador, asistido), y de desencarnados; estos últimos son atendidos por la desobsesión colectiva generada por la Campaña de Fraternidad Auta de Souza, y transformados por los ejemplos de los encarnados.</p>
+<p><strong>o) Ampliación de los espacios físicos de la Casa Espirita</strong></p>
+<p>Con la implantación y/o ampliación de la actividad asistencial y consecuente aumento de asistidos, frecuentadores y tra</p>
+<img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/186282343-02_09_20171.jpg" alt="" />
+
+<p>bajadores, más allá de la implantación de nuevos curso y nuevas conferencias, la Casa Espirita naturalmente necesitará ampliar sus espacios físicos.</p>
+<p><strong>p) Un proceso de caridad donador X receptor</strong></p>
+<p>El proceso de caridad ocurre cuando hay beneficencia. La Campaña estimula y desarrolla el proceso de caridad al pedir, sin ostentación, por los que sufren, evitando que éstos embrutezcan en la mendicidad, ni se humillen al recibir los alimentos. Con la campaña estaremos ampliando el campo de acción de la caridad, proporcionando también a aquel que dona, la oportunidad de practicar el bien.</p>
+<p><strong>q) Desobsesión</strong></p>
+<p>Incentivando el proceso de caridad, la Campaña de Fraternidad Auta de Souza estimula el pensamiento en el campo del bien, tanto en el caravanero como en el donador. El pensamiento en el campo del bien es eficaz instrumento para el trabajador, que ejercita la humildad al pedir, y para el donador que ejerce la caridad al donar.</p>
+<p><strong>r) El encuentro con Jesús en las calles</strong></p>
+<p>Llevando el mensaje Espirita de puerta en puerta la Campaña de Fraternidad Auta de Souza lleva a Jesús a las plazas, calles y hogares por donde pasa.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

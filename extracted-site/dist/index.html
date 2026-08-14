@@ -1,0 +1,2832 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artigos | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="./index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="./index.html">Artigos (261)</a>
+      <a href="./pages.html">Páginas (7)</a>
+      <a href="./raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+    <h2>Todos os Artigos (261)</h2>
+    <p style="color: var(--text-muted); margin-bottom: 1rem;">Arquivo estático de todos os artigos extraídos do site.</p>
+    <input type="text" id="search" class="search-box" placeholder="Pesquisar por título ou categoria..." onkeyup="filterCards()">
+    <div class="grid">
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/hands-2906458_960_720.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Español</span>
+        <h2>Trabajo con el Anciano en La Casa Espirita &#8211; Nucleo de convivencia del Anciano Necesidad</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/1523.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/allankardec-11_09_2017-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Conheça o Espiritismo</span>
+        <h2>A DOUTRINA ESPÍRITA E ALLAN KARDEC</h2>
+        <div class="meta">📅 2020-05-28</div>
+      </div>
+      <a href="posts/a-doutrina-espirita-e-allan-kardec.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/10/child-865116_1920-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Educação e espiritismo</span>
+        <h2>Educação e espiritismo</h2>
+        <div class="meta">📅 2020-10-03</div>
+      </div>
+      <a href="posts/a-educacao-encontra-no-espiritismo-respostas-precisas-para-melhor-compreensao-do-educando-e-maior-eficiencia-do-educador.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/unnamed.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>A escolha é livre</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/a-escolha-e-livre.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/genetica.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>A genética está submetida a leis puramente materiais?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/a-genetica-esta-submetida-a-leis-puramente-materiais.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/pessoas-que-jogam-instrumentos-musicais-com-notas-de-musica-em-segundo-plano_1308-5843.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Espaço do Evangelizador</span>
+        <h2>A história do Canildo &#8211; Letra: Nísia Anália Música: Valéria Scalia</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/a-historia-do-canildo-letra-nisia-analia-musica-valeria-scalia.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/desencarne-05_10_2019.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>A hora final</h2>
+        <div class="meta">📅 2020-04-24</div>
+      </div>
+      <a href="posts/a-hora-final.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/mae-filho-filha-filhos-familia-1494542676387-v2-900x506-16_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>A mais linda mãe</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/a-mais-linda-mae.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Vídeos</span>
+        <h2>A morte de Dimas</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/a-morte-de-dimas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/jesus-cristo-samaritana-poc-o-mulher-11_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>A mulher ante o Cristo</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/a-mulher-ante-o-cristo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/71d2ec1ce6cd4c9bb0aaedce214ddaf5bf40cb79r1-743-413v2_hq-1-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>A música</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/a-musica.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/10/virus-5209059_1920-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>A pandemia na visão Espírita</h2>
+        <div class="meta">📅 2020-07-04</div>
+      </div>
+      <a href="posts/a-pandemia-na-visao-espirita.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">História da vovó</span>
+        <h2>A prece</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/a-prece.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/http://161.35.11.199/wp-content/uploads/2020/05/Eurípedes-Barsanulfo-1024x576.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Educação e espiritismo</span>
+        <h2>A primeira escola confessional espírita</h2>
+        <div class="meta">📅 2020-05-18</div>
+      </div>
+      <a href="posts/a-primeira-escola-confessional-espirita.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/jesus_ressureicao-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>A Resignação de uma Esposa</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/a-resignacao-de-uma-esposa.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/consciencia-02_02_2019-3.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>A subconsciência nos fenômenos psíquicos</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/a-subconsciencia-nos-fenomenos-psiquicos.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/03/kathy-1491588_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>A Terra pertencerá aos mansos de coração</h2>
+        <div class="meta">📅 2021-03-06</div>
+      </div>
+      <a href="posts/a-terra-pertencera-aos-mansos-de-coracao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/jesuseascrianas-01_02_2020.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Espaço do Evangelizador</span>
+        <h2>A verdadeira alegria</h2>
+        <div class="meta">📅 2020-04-22</div>
+      </div>
+      <a href="posts/a-verdadeira-alegria.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">História da vovó</span>
+        <h2>A viagem do trenzinho</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/a-viagem-do-trenzinho.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">História da vovó</span>
+        <h2>A vida de Auta de Souza</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/a-vida-de-auta-de-souza.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/88t0kn7hmejsybjct6988224c.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Mediunidade</span>
+        <h2>Ação da Água Fluidificada</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/acao-da-agua-fluidificada.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/bezerra.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Adolfo Bezerra de Menezes</h2>
+        <div class="meta">📅 2020-05-23</div>
+      </div>
+      <a href="posts/adolfo-bezerra-de-menezes.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/casal-esta-tendo-uma-briga-enquanto-esta-sentado-no-sofa-em-casa_85574-14056.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>Agressões e Conflitos no Lar</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/agressoes-e-conflitos-no-lar.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/obsessao-02_12_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Álcool e obsessão</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/alcool-e-obsessao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Design-sem-nome-100-1.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Alegria Cristã na Casa Espírita</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/alegria-crista-na-casa-espirita.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/alergia-02_02_2019-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Alergia e Obsessão</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/alergia-e-obsessao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/analia_franco-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Anália Franco, a Dama da Educação</h2>
+        <div class="meta">📅 2020-05-22</div>
+      </div>
+      <a href="posts/analia-franco-a-dama-da-educacao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/homem-triste-segurando-a-cabeca-com-a-mao_1150-6346.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Ando muito deprimida, mas não deixo transparecer. O que faço?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/ando-muito-deprimida-mas-nao-deixo-transparecer-o-que-faco.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/mediunidade-nos-jovens-tb-07_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Ante os que partiram</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/ante-os-que-partiram.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/neanderthal-4731928_960_720.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Antes de Cristo</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/antes-de-cristo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/menina-levanta-as-maos-para-o-ceu-e-sente-liberdade_1204-253.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Aos quase suicidas</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/aos-quase-suicidas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/chicoxavier_10-1280x720-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Espaço do Evangelizador</span>
+        <h2>Aprenda a música: Um menino esquisito</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/aprenda-a-musica-um-menino-esquisito.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-3-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a tocar: Ele</h2>
+        <div class="meta">📅 2020-07-05</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-ele.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-2-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a tocar: Música Alma Gêmea</h2>
+        <div class="meta">📅 2021-03-07</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-musica-alma-gemea.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-2-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a Tocar: Música Alma Querida</h2>
+        <div class="meta">📅 2021-03-07</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-musica-alma-querida.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-3-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a tocar: música É Impossível</h2>
+        <div class="meta">📅 2020-07-05</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-musica-e-impossivel.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-2-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a tocar: Música Hino a Deus</h2>
+        <div class="meta">📅 2021-03-07</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-musica-hino-a-deus.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a tocar: Música Hino a Eurípedes Barsanulfo</h2>
+        <div class="meta">📅 2021-03-07</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-musica-hino-a-euripedes-barsanulfo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-1-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a tocar: Música Já é tempo.</h2>
+        <div class="meta">📅 2020-07-05</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-musica-ja-e-tempo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-1-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a tocar: Música Jesus</h2>
+        <div class="meta">📅 2021-03-07</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-musica-jesus.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-1-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a tocar: Música Maria Menina</h2>
+        <div class="meta">📅 2021-03-07</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-musica-maria-menina.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-2-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a tocar: Música Nova Geração</h2>
+        <div class="meta">📅 2021-03-07</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-musica-nova-geracao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/adi-goldstein-vH2vj_3_IeU-unsplash-1-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Aprenda a tocar, Vídeos</span>
+        <h2>Aprenda a Tocar: Música Prece I</h2>
+        <div class="meta">📅 2021-03-07</div>
+      </div>
+      <a href="posts/aprenda-a-tocar-musica-prece-i.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/nosso-lar-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Galera Jovem</span>
+        <h2>Arte no Plano Espiritual &#8211; A Cidade Universitária</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/arte-no-plano-espiritual-a-cidade-universitaria.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/11/chico.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Educação e espiritismo</span>
+        <h2>As opiniões de Chico Xavier e Emmanuel sobre o ensino espírita na Escola Espírita</h2>
+        <div class="meta">📅 2020-05-18</div>
+      </div>
+      <a href="posts/as-opinioes-de-chico-xavier-e-emmanuel-sobre-o-ensino-espirita-na-escola-espirita.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/hands-2847508_1280-2.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Ato Público em Defesa da Vida</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/ato-publico-em-defesa-da-vida.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/religion-3452582_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>Atributos das leis divinas descritos em O Evangelho segundo o Espiritismo</h2>
+        <div class="meta">📅 2021-02-20</div>
+      </div>
+      <a href="posts/atributos-das-leis-divinas-descritos-em-o-evangelho-segundo-o-espiritismo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/auta-de-souza-02_02_2019.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Auta de Souza</h2>
+        <div class="meta">📅 2020-05-22</div>
+      </div>
+      <a href="posts/auta-de-souza-2.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/bom-samaritano-infantil-2-06_11_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Bom Samaritano Infantil</h2>
+        <div class="meta">📅 2020-04-28</div>
+      </div>
+      <a href="posts/bom-samaritano-infantil.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/caibar-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Caibar Shutel</h2>
+        <div class="meta">📅 2020-05-22</div>
+      </div>
+      <a href="posts/caibar-shutel.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/livros-humberto-de-campos-13_11_2017-1-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Español</span>
+        <h2>Campaña de Esclarecimiento Chico Xavier</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/campana-de-esclarecimiento-chico-xavier.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/Campanha-Auta-de-Souza-2-1.jpeg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Español</span>
+        <h2>CAMPAÑA DE FRATERNIDAD AUTA DE SOUZA</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/campana-de-fraternidad-auta-de-souza.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/livros-humberto-de-campos-13_11_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Campanha de Esclarecimento Chico Xavier</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/campanha-de-esclarecimento-chico-xavier.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/Campanha-Auta-de-Souza-2-1.jpeg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Campanha de Fraternidade Auta de Souza</h2>
+        <div class="meta">📅 2020-04-28</div>
+      </div>
+      <a href="posts/campanha-de-fraternidade-auta-de-souza.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2022/09/Design-sem-nome-23.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Campanha de prevenção ao suicídio Camilo Castelo Branco</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/campanha-de-prevencao-ao-suicidio-camilo-castelo-branco.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/alma-990x557-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Campanha E a Vida Continua&#8230;</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/campanha-e-a-vida-continua.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/vovo-800-0-07_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>Canildo em Cena</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/canildo-em-cena.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/com-a-biblia-nas-maos-lendo-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Caravana Jesus no Lar</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/caravana-jesus-no-lar.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/castro1-1.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Esperanto</span>
+        <h2>Castro Alves planeja sua encarnação como esperantista</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/castro-alves-planeja-sua-encarnacao-como-esperantista.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/energia-mental-06_09_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Cérebro e energia</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/cerebro-e-energia.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/Luz-02_02_2019-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Ciência e Vida</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/ciencia-e-vida.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/clouds-3978912_960_720-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Comando Mental</h2>
+        <div class="meta">📅 2020-06-09</div>
+      </div>
+      <a href="posts/comando-mental.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/loneliness1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como a obsessão se instala em nós?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-a-obsessao-se-instala-em-nos.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/prayerful_person-640x330-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como ajudar uma pessoa querida que desencarnou de forma violenta?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-ajudar-uma-pessoa-querida-que-desencarnou-de-forma-violenta.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/335-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Como conversar com uma pessoa que pensa em suicídio?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-conversar-com-uma-pessoa-que-pensa-em-suicidio.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/casal.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como devem proceder os cônjuges para bem cumprir seus deveres?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-devem-proceder-os-conjuges-para-bem-cumprir-seus-deveres.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/fantasy-2861107_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como devemos entender os sonhos?</h2>
+        <div class="meta">📅 2020-05-19</div>
+      </div>
+      <a href="posts/como-devemos-entender-os-sonhos.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/11/download.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como devemos receber os ataques da crítica ao Espiritismo?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-devemos-receber-os-ataques-da-critica-ao-espiritismo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/estudando-kardec-13_11_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Como fazer Escola de Estudos Espíritas</h2>
+        <div class="meta">📅 2020-04-27</div>
+      </div>
+      <a href="posts/como-fazer-escola-de-estudos-espiritas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/c3adndice.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Español</span>
+        <h2>Como Hacer: Campaña de Fraternidad Auta de Souza</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-hacer-campana-de-fraternidad-auta-de-souza.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/social-work-2356024_960_720.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Como implantar um Posto de Assistência</h2>
+        <div class="meta">📅 2020-04-28</div>
+      </div>
+      <a href="posts/como-implantar-um-posto-de-assistencia.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/esmola.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como interpretar a esmola material?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-interpretar-a-esmola-material.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/medicina-etica-he-jiankui-cientista-modificou-dna-humano-genetica-humana-polemica-religiao-reflexao-avanc3a7o-gabriel-moura-2018-blog-loucuras-de-julia-rolim-02.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como o Espiritismo pode auxiliar a Medicina?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-o-espiritismo-pode-auxiliar-a-medicina.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/a-life-worth-living.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como? Onde? E por que existir?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-onde-e-por-que-existir.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/Libertacao-Livres-de-todo-Mal-450x300-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como perder os hábitos e vícios existentes na sociedade?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-perder-os-habitos-e-vicios-existentes-na-sociedade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como posso afastar pensamentos suicidas?</h2>
+        <div class="meta">📅 2021-07-10</div>
+      </div>
+      <a href="posts/como-posso-afastar-pensamentos-suicidas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/10/c6c0a9_3a746096885042e59307624bea4b9515_mv2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Como se processam os resgates coletivos?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/como-se-processam-os-resgates-coletivos.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/http://161.35.11.199/wp-content/uploads/2020/05/Eurípedes-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Educação e espiritismo</span>
+        <h2>Coragem da fé</h2>
+        <div class="meta">📅 2020-05-18</div>
+      </div>
+      <a href="posts/coragem-da-fe.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/princ.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Mediunidade</span>
+        <h2>Corpo Causal – Casos de André Luiz</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/corpo-causal-casos-de-andre-luiz.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/pensamento-e-evolucao-06_09_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Corrente mental humana</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/corrente-mental-humana.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/culto-no-lar-07_09_2019.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>Culto Cristão no Lar</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/culto-cristao-no-lar.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/03/cocoons-329070_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Conheça o Espiritismo</span>
+        <h2>Desencarnação</h2>
+        <div class="meta">📅 2021-03-06</div>
+      </div>
+      <a href="posts/desencarnacao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/good-night-3027664_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Conheça o Espiritismo</span>
+        <h2>DEUS &#8211;                                           A Inteligência Suprema</h2>
+        <div class="meta">📅 2020-05-26</div>
+      </div>
+      <a href="posts/deus-a-inteligencia-suprema.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/divaldo-franco2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Divaldo e o Espiritismo</h2>
+        <div class="meta">📅 2020-05-22</div>
+      </div>
+      <a href="posts/divaldo-e-o-espiritismo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/gravidez-scaled.jpeg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Em uma gravidez de risco, qual vida preservar?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/em-uma-gravidez-de-risco-qual-vida-preservar.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/pensamento-e-evolucao-06_09_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Energia Mental</h2>
+        <div class="meta">📅 2020-05-22</div>
+      </div>
+      <a href="posts/energia-e-evolucao-energia-mental.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/wheat-2713927_960_720-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Equilíbrio Vital</h2>
+        <div class="meta">📅 2020-07-04</div>
+      </div>
+      <a href="posts/energia-e-evolucao-equilibrio-vital.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/wormhole-2514312_960_720-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Fluido Cósmico</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/energia-e-evolucao-fluido-cosmico.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/unnamed-5.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Energia e evolução &#8211; Fluido Magnético</h2>
+        <div class="meta">📅 2020-06-09</div>
+      </div>
+      <a href="posts/energia-e-evolucao-fluido-magnetico-2.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/face-622904_960_720-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e evolução &#8211; Fluido Magnético</h2>
+        <div class="meta">📅 2020-06-09</div>
+      </div>
+      <a href="posts/energia-e-evolucao-fluido-magnetico.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/rebirth-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Infecção e Purgação</h2>
+        <div class="meta">📅 2021-02-20</div>
+      </div>
+      <a href="posts/energia-e-evolucao-infeccao-e-purgacao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/12/ondas-mentais-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Mente e Sexo</h2>
+        <div class="meta">📅 2020-12-05</div>
+      </div>
+      <a href="posts/energia-e-evolucao-mente-e-sexo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/landscape-1757345_960_720-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; O poder das Trevas</h2>
+        <div class="meta">📅 2020-06-09</div>
+      </div>
+      <a href="posts/energia-e-evolucao-o-poder-das-trevas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/Pensamentos-e-Fluidos-620x350-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e evolução &#8211; Problemas de sintonia</h2>
+        <div class="meta">📅 2020-06-09</div>
+      </div>
+      <a href="posts/energia-e-evolucao-problemas-de-sintonia.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/spring-276014__180.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Processos de alimentação</h2>
+        <div class="meta">📅 2020-07-04</div>
+      </div>
+      <a href="posts/energia-e-evolucao-processos-de-alimentacao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/12/spiral-staircase-430907_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Profecia e livre-arbítrio</h2>
+        <div class="meta">📅 2020-12-05</div>
+      </div>
+      <a href="posts/energia-e-evolucao-profecia-e-livre-arbitrio.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/summerfield-336672_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Radiações Luminosas</h2>
+        <div class="meta">📅 2021-02-20</div>
+      </div>
+      <a href="posts/energia-e-evolucao-radiacoes-luminosas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/novos-planetas-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Sistemas e sóis</h2>
+        <div class="meta">📅 2020-06-09</div>
+      </div>
+      <a href="posts/energia-e-evolucao-sistemas-e-sois.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/panorama-3122181-340-01_12_2018-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução – Sombra e Luz</h2>
+        <div class="meta">📅 2020-06-09</div>
+      </div>
+      <a href="posts/energia-e-evolucao-sombra-e-luz.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/hourglass-620397_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Tempo e Velocidade</h2>
+        <div class="meta">📅 2021-02-20</div>
+      </div>
+      <a href="posts/energia-e-evolucao-tempo-e-velocidade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/05/hands-4153292_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Transformadores de Energia</h2>
+        <div class="meta">📅 2021-02-20</div>
+      </div>
+      <a href="posts/energia-e-evolucao-transformadores-de-energia.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/fantasy-2861107_960_720-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>Energia e Evolução &#8211; Virtude e Conhecimento</h2>
+        <div class="meta">📅 2020-07-04</div>
+      </div>
+      <a href="posts/energia-e-evolucao-virtude-e-conhecimento.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/pedra-04_12_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Escolhemos todas as nossas provas?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/escolhemos-todas-as-nossas-provas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/1280px-Flag_of_Esperanto.svg.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Esperanto</span>
+        <h2>Esperanto &#8211; o idioma definitivo dos povos é ensinado no mundo espiritual</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/esperanto-o-idioma-definitivo-dos-povos-e-ensinado-no-mundo-espiritual.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/fraternidade_em_acao.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Espiritismo é ciência?</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/espiritismo-e-ciencia.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/perisprito-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Conheça o Espiritismo</span>
+        <h2>ESPÍRITO, PERISPÍRITO E CORPO</h2>
+        <div class="meta">📅 2020-05-28</div>
+      </div>
+      <a href="posts/espirito-perispirito-e-corpo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/sentindo-se-desanimado-2-1024x683-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Estou desanimado para voltar ao centro espírita. O que faço?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/estou-desanimado-para-voltar-ao-centro-espirita-o-que-faco.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/leitura-dinamica-o-que-e-como-ler-3-vezes-mais-rapido-730x488-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>Estudo e Trabalho</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/estudo-e-trabalho.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/euripedes-barsanulfo.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Eurípedes Barsanulfo &#8211; O apóstolo da Nova Era</h2>
+        <div class="meta">📅 2020-05-23</div>
+      </div>
+      <a href="posts/euripedes-barsanulfo-o-apostolo-da-nova-era.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/05/1bed4ca2002b3c00277caa1144d809df.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Educação e espiritismo</span>
+        <h2>Eurípedes e a Escola Espírita</h2>
+        <div class="meta">📅 2021-05-07</div>
+      </div>
+      <a href="posts/euripedes-e-a-escola-espirita.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/04/cuidados-paliativos-eutanasia-33deb9f8-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Eutanásia</h2>
+        <div class="meta">📅 2021-04-02</div>
+      </div>
+      <a href="posts/eutanasia.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/9ced8639-7caf-4fd4-bcf4-f67956bf9f77_1200-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Evangelização Infantil</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/evangelizacao-infantil.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/arte.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Existe arte no Plano Espiritual?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/existe-arte-no-plano-espiritual.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/familia-conversa.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Galera Jovem</span>
+        <h2>Falando sobre sexo com os jovens</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/falando-sobre-sexo-com-os-jovens.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/blog-crianc-atriste3-07_10_2017-scaled.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Feridas e cicatrizes na infância</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/feridas-e-cicatrizes-na-infancia.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/shutterstock_101819059-02_12_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Fótons e fluido cósmico</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/fotons-e-fluido-cosmico.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/medium-chico-xavier-uberaba.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Francisco Cândido Xavier</h2>
+        <div class="meta">📅 2020-05-22</div>
+      </div>
+      <a href="posts/francisco-candido-xavier.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/chopin-05_10_2019-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Esperanto</span>
+        <h2>Frédéric Chopin na Espiritualidade</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/frederic-chopin-na-espiritualidade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/nosso-lar-1-08_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Grandes mensageiros estão entre vós</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/grandes-mensageiros-estao-entre-vos.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/heranca-04_11_2017-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Herança</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/heranca.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/ZOM.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Espaço do Evangelizador</span>
+        <h2>História das Formiguinhas</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/historia-das-formiguinhas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/ivoc-mulher-pensativa-11051826-e1511804914983-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Homossexualidade</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/homossexualidade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/10/book-1822474_1920.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Educação e espiritismo</span>
+        <h2>Integração do conteúdo espírita na Escola Espírita</h2>
+        <div class="meta">📅 2020-10-03</div>
+      </div>
+      <a href="posts/integracao-do-conteudo-espirita-na-escola-espirita.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/Jeronimo2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Jerônimo Candinho</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/jeronimo-candinho.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/formacao_voce-tambem-pediria-agua-a-samaritana-como-fez-jesus.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>Jesus e a Maternidade</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/jesus-e-a-maternidade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Cristo-1000-1300-06_04_2019-1-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Conheça o Espiritismo</span>
+        <h2>JESUS &#8211; O guia e modelo mais perfeito</h2>
+        <div class="meta">📅 2020-05-26</div>
+      </div>
+      <a href="posts/jesus-o-guia-e-modelo-mais-perfeito.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/05/2019-canvas-Euripedes-Barsanulfo-marceloazeva-tammed.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Educação e espiritismo</span>
+        <h2>Jogo sobre Eurípedes Barsanulfo</h2>
+        <div class="meta">📅 2021-05-07</div>
+      </div>
+      <a href="posts/jogo-sobre-euripedes-barsanulfo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/jesus-e-jovens.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Jovens de Ontem</h2>
+        <div class="meta">📅 2020-05-23</div>
+      </div>
+      <a href="posts/jovens-de-ontem.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/portrait-787522_1280.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Galera Jovem</span>
+        <h2>Jovens suicidas na espiritualidade</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/jovens-suicidas-na-espiritualidade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>KONU SPIRITISMON &#8211; DIO &#8211; 01</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-dio-01.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Elkarnigo &#8211; 06</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-elkarnigo-06.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Hejmo &#8211; 11</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-hejmo-11.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Jesuo &#8211; 02</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-jesuo-02.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Karitato kaj Spiritisma Centro 14</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-karitato-kaj-spiritisma-centro.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Malvirtoj kaj drogoj  &#8211; 13</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-malvirtoj-kaj-drogoj-13.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Mediumeco &#8211; 08</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-mediumeco-08.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Memkonado &#8211; 10</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-memkonado-10.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Obsedado &#8211; 9</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-obsedado-9.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Plureco de la logataj mondoj &#8211; 07</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-plureco-de-la-logataj-mondoj-07.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Prego -12</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-prego-12.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Reenkarnigo &#8211; 05</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-reenkarnigo-05.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Spiritisma Doktrino kaj Allan Kardec &#8211; 03</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-spiritisma-doktrino-kaj-allan-kardec-03.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Konu Spiritismon &#8211; Spirito, Perispirito kaj Korpo &#8211; 04</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/konu-spiritismon-spirito-perispirito-kaj-korpo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>La Spiritoj Respondas</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/la-spiritoj-respondas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/depositphotos-92652516-stock-photo-happy-young-women-in-bed-07_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Lazeres e divertimento</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/lazeres-e-divertimento.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/desencarne-05_10_2019.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Discarnation</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-discarnation.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/sunset-174276_1920-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; God</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-god.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/pictures-of-jesus-with-a-child-1127679-gallery.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Jesus</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-jesus.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/chico-xavier6.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Mediumship</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-mediumship.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/maxresdefault.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Obsession</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-obsession.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/mundos-02_02_2019-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Plurality of inhabited worlds</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-plurality-of-inhabited-worlds.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/religion-3452582_1920-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Prayer and Gospel at Home</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-prayer-and-gospel-at-home.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/hqdefault-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Reincarnation</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-reincarnation.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/summerfield-336672_1920.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Self-knowledge</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-self-knowledge.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/rebirth.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Spirit, Perispirit and body</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-spirit-perispirit-and-body.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/Design-sem-nome-1-1-822x689-1.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Spiritism and Allan Kardec</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-spiritism-and-allan-kardec.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/unnamed.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Learn Spiritism &#8211; Vices</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/learn-spiritism-vices.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/passe-13_11_20171-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Livro Passe &#8211; Caridade Ensinada por Jesus</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/livro-passe-caridade-ensinada-por-jesus.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/coisas-mae-de-menina-16_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>Mãe &#8211; o melhor presente</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/mae-o-melhor-presente.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/images-02_02_2019-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Magnetismo e Espiritismo – Ciências Gêmeas</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/magnetismo-e-espiritismo-ciencias-gemeas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Mais Esperanto, Mais Paz!</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/mais-esperanto-mais-paz.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">História da vovó</span>
+        <h2>Maria Feliz</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/maria-feliz.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/mae.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>Maternidade</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/maternidade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/11/chico.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Conheça o Espiritismo</span>
+        <h2>MEDIUNIDADE</h2>
+        <div class="meta">📅 2021-11-06</div>
+      </div>
+      <a href="posts/mediunidade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/sonambullismo-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Mediunidade</span>
+        <h2>Médiuns Sonambúlicos</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/mediuns-sonambulicos.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/10/recordacoes.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>Memória além-túmulo</h2>
+        <div class="meta">📅 2021-10-02</div>
+      </div>
+      <a href="posts/memoria-alem-tumulo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/hqdefault.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Galera Jovem</span>
+        <h2>Meninas do barulho &#8211; As irmãs Fox</h2>
+        <div class="meta">📅 2020-04-22</div>
+      </div>
+      <a href="posts/meninas-do-barulho-as-irmas-fox.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/auta_de-_souza_espiritismo.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Español</span>
+        <h2>Metodología de trabajo de la Campaña de Fraternidad Auta de Souza</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/metodologia-de-trabajo-de-la-campana-de-fraternidad-auta-de-souza.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">História da vovó</span>
+        <h2>Meu avô Desencarnou</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/meu-avo-desencarnou.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Vídeos</span>
+        <h2>Mocidade espírita &#8211; Aproveitando a vida de verdade</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/mocidade-espirita-aproveitando-a-vida-de-verdade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/campanha-em-defesa-da-vida-03_02_2018-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Mocidade na Casa Espírita</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/mocidade-na-casa-espirita.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/hyperions-by-vincent-callebaut-21-1020x610-02_02_2019-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Moradas Espirituais &#8211; Visitas a 20 Colônias Espirituais</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/moradas-espirituais-visitas-a-20-colonias-espirituais.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/46-464926_background-music.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Music: Nature II</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/music-nature-ii.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/46-464926_background-music-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Music: Nymphus</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/music-nymphus.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/46-464926_background-music-3.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Music: Share my love</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/music-share-my-love.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/46-464926_background-music-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">English</span>
+        <h2>Music: Way out</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/music-way-out.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/Musica-02_02_2019-1.jpeg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Música e Materialização</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/musica-e-materializacao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/0-1087_child-royalty-free-cartoon-clip-art-criana-feliz.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Espaço do Evangelizador</span>
+        <h2>Música: Ser feliz</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/musica-ser-feliz.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/familia.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Nascemos na família que merecemos?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/nascemos-na-familia-que-merecemos.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/12/christmas-jesus-birth-celebration-1451015165_835x547-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>NATAL…</h2>
+        <div class="meta">📅 2020-12-10</div>
+      </div>
+      <a href="posts/natal.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/deus-02_12_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Necessidade da ideia de Deus</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/necessidade-da-ideia-de-deus.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/febbb-vilma-08_10_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Nós e César</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/nos-e-cesar.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/nympho-de-paula-correa-autadesouza.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Nympho de Paula Corrêa</h2>
+        <div class="meta">📅 2020-05-22</div>
+      </div>
+      <a href="posts/nympho-de-paula-correa.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/gravidez-16_09_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>O aborto é um crime?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-aborto-e-um-crime.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">História da vovó</span>
+        <h2>O dia mais lindo da Terra</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/o-dia-mais-lindo-da-terra.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/divorcio-02_12_2017.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>O espiritismo e o divórcio</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-espiritismo-e-o-divorcio.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/Jesus5.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>O Espiritismo é uma religião</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-espiritismo-e-uma-religiao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/hands-105455_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>O Evangelho em defesa da Vida: Aborto Nunca!</h2>
+        <div class="meta">📅 2021-02-20</div>
+      </div>
+      <a href="posts/o-evangelho-em-defesa-da-vida-aborto-nunca.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/JOANA-E-JESUS-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Universo e vida</span>
+        <h2>O Filho do Homem</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-filho-do-homem.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/05/hands-4153292_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>O fluido vital pode ser transmitido de um indivíduo a outro?</h2>
+        <div class="meta">📅 2021-05-01</div>
+      </div>
+      <a href="posts/o-fluido-vital-pode-ser-transmitido-de-um-individuo-a-outro.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/bolsa-jovem-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Mediunidade</span>
+        <h2>O Jovem deve trabalhar na Mediunidade?</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/o-jovem-deve-trabalhar-na-mediunidade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/10/feet-349687_1920-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Galera Jovem</span>
+        <h2>O jovem e a sociedade &#8211; conflito de gerações?</h2>
+        <div class="meta">📅 2020-10-03</div>
+      </div>
+      <a href="posts/o-jovem-e-a-sociedade-2.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/jovens_unidos-20_10_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Galera Jovem</span>
+        <h2>O Jovem e a Sociedade</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/o-jovem-e-a-sociedade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/10/crowd-of-people-1209630_1920.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Galera Jovem</span>
+        <h2>O jovem espírita pode participar de festas?</h2>
+        <div class="meta">📅 2020-10-03</div>
+      </div>
+      <a href="posts/o-jovem-espirita-pode-participar-de-festas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Criança em cena</span>
+        <h2>O Livro Espírita salvando vidas</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-livro-espirita-salvando-vidas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/conto-velho-16_10_2017.rapaz_.burro_yes2_.a_.pe_.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>O menino que aprendeu com o burro</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-menino-que-aprendeu-com-o-burro.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/hqdefault-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>O nascimento de Jesus</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-nascimento-de-jesus.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/reencarnac-a-o-07_10_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>O papel do perispírito na reencarnação</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/o-papel-do-perispirito-na-reencarnacao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/lisias-nosso-lar.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>O Passe auxilia no processo de cura?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-passe-auxilia-no-processo-de-cura.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/pensamento-e-evolucao-06_09_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>O pensamento possui influência no plano espiritual?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-pensamento-possui-influencia-no-plano-espiritual-2.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/arte-e-ideoplastia-05_10_2019-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>O pensamento possui influência no plano espiritual?</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/o-pensamento-possui-influencia-no-plano-espiritual.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/Captura-de-Tela-2018-07-01-as-10-01_07_2018.59_.07_-1.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>O Perispírito e algumas de suas propriedades</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/o-perispirito-e-algumas-de-suas-propriedades.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/respiratory-protection-mask-5038663_1280-_1_-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>O plano de socorro espiritual  aos que estão desencarnando vítimas da Covid-19</h2>
+        <div class="meta">📅 2021-02-20</div>
+      </div>
+      <a href="posts/o-plano-de-socorro-espiritual-aos-que-estao-desencarnando-vitimas-da-convid-19.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/magnetismo-capa-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Mediunidade</span>
+        <h2>O poder fluidico da Corrente Magnética</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/o-poder-fluidico-da-corrente-magnetica.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/azul-aberto-3d-realista-caixa-de-presente-com-brilho-magico-e-fitas-douradas-voando_136277-37.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>O presente de Jesus</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-presente-de-jesus.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/6c5ed3713e1abf5666eddbcad2e221ad-07_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>O problema da prostituição</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-problema-da-prostituicao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/mae27.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>O que a mãe pode fazer para conduzir os filhos para o bem e para a verdade?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-que-a-mae-pode-fazer-para-conduzir-os-filhos-para-o-bem-e-para-a-verdade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/jesus-cristo-samaritana-poc-o-mulher-11_10_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>O que pensar quando tudo no mundo parece contra nós?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-que-pensar-quando-tudo-no-mundo-parece-contra-nos.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/41bb9d_0722ccedb54b430b80128f7c1a1b8a70_mv2.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>O sexo sem compromisso é uma influência obsessiva?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-sexo-sem-compromisso-e-uma-influencia-obsessiva.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/dreamy_child_girl-Photo_HD_Wallpaper_1366x768.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>O sonho de Aninha</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/o-sonho-de-aninha.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Vídeos</span>
+        <h2>O tratamento espiritual em Palmelo</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/o-tratamento-espiritual-em-palmelo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/unnamed-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>Os ensinamentos</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/os-ensinamentos.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/1tYTJOI3CZwkwr_r7_6AVhw.jpeg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>Paz em Ti</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/paz-em-ti.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/luz-do-raio-de-sun-no-fundo-da-natureza-do-ceu-azul_52253-1823.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Pena de Morte</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/pena-de-morte.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/mae-e-filha-negra-14012020161825604.jpeg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Espaço do Evangelizador</span>
+        <h2>Plano de aula especial para o dia das mães</h2>
+        <div class="meta">📅 2020-04-22</div>
+      </div>
+      <a href="posts/plano-de-aula-especial-para-o-dia-das-maes.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/04/pexels-pixabay-87651-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Conheça o Espiritismo</span>
+        <h2>Pluralidade dos mundos habitados</h2>
+        <div class="meta">📅 2021-04-02</div>
+      </div>
+      <a href="posts/pluralidade-dos-mundos-habitados-2.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/mundos-02_02_2019-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Pluralidade dos mundos habitados</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/pluralidade-dos-mundos-habitados.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/paper-figures.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>Política Divina</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/politica-divina.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/03/autumn-leaves-1735984_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Por que os espíritas não temem a morte</h2>
+        <div class="meta">📅 2021-03-06</div>
+      </div>
+      <a href="posts/por-que-os-espiritas-nao-temem-a-morte.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/1102009468_univ_lsr_xl.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Por que os médiuns curadores não curam sempre?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/por-que-os-mediuns-curadores-nao-curam-sempre.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/reforma-intima-06_11_2017-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Por que praticar o Exercício da Reforma Íntima?</h2>
+        <div class="meta">📅 2020-04-27</div>
+      </div>
+      <a href="posts/por-que-praticar-o-exercicio-da-reforma-intima.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/flor-murcha-02_02_2019-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Por que se morre?</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/por-que-se-morre.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/naom_5b8fac7198c76.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>Primavera</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/primavera.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Jesus-e-Kardec.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Educação e espiritismo</span>
+        <h2>Princípios filosóficos da Escola Espírita</h2>
+        <div class="meta">📅 2020-05-18</div>
+      </div>
+      <a href="posts/principios-filosoficos-da-escola-espirita.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/maos-pai-e-filho-2416718-1280-01_02_2020-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>Procura-se um pai</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/procura-se-um-pai.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/image.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Mediunidade</span>
+        <h2>Psiquismo mediúnico</h2>
+        <div class="meta">📅 2020-05-01</div>
+      </div>
+      <a href="posts/psiquismo-mediunico.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/banquete-de-consequencias.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Quais as consequências para quem pratica o aborto?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/quais-as-consequencias-para-quem-pratica-o-aborto.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/kids-1093758_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Educação e espiritismo</span>
+        <h2>Qual o propósito da Escola Espírita?</h2>
+        <div class="meta">📅 2020-05-18</div>
+      </div>
+      <a href="posts/qual-o-proposito-da-escola-espirita.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/natal_1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Qual o significado do natal?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/qual-o-significado-do-natal.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/hqdefault-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Mediunidade</span>
+        <h2>Quem são os médiuns na sua generalidade?</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/quem-sao-os-mediuns-na-sua-generalidade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/homem-olhando-horizonte-07_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Reduzir a maioridade penal?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/reduzir-a-maioridade-penal.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/03/pregnant-woman-2886651_1280-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Conheça o Espiritismo</span>
+        <h2>Reencarnação</h2>
+        <div class="meta">📅 2021-03-06</div>
+      </div>
+      <a href="posts/reencarnacao.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/lembrancas-de-vidas-passadas-espiritismo-05_10_2019-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Mediunidade</span>
+        <h2>Reminiscências de vidas passadas</h2>
+        <div class="meta">📅 2020-04-24</div>
+      </div>
+      <a href="posts/reminiscencias-de-vidas-passadas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/jesuseascrianas-01_02_2020.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Espaço do Evangelizador</span>
+        <h2>Reunião de pais: Por que os pais devem levar seus filhos à Escola de Evangelização Infantil?</h2>
+        <div class="meta">📅 2020-04-22</div>
+      </div>
+      <a href="posts/reuniao-de-pais-por-que-os-pais-devem-levar-seus-filhos-a-escola-de-evangelizacao-infantil.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/11/Captura-de-ecra-2021-11-13-140119.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Revistas Impressas</span>
+        <h2>Revistas impressas</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/revistas-impressas.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Esperanto</span>
+        <h2>Revuo Auta de Souza intervjuas Szabadi J. Tibor</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/revuo-auta-de-souza-intervjuas-szabadi-j-tibor.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/boy-1666611_640-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Galera Jovem</span>
+        <h2>Série Adolescência em risco: Suicídio</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/serie-adolescencia-em-risco-suicidio.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/10/man-802062_1920-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Galera Jovem</span>
+        <h2>Sexo livre, DST&#8217;s e Relacionamentos responsáveis</h2>
+        <div class="meta">📅 2020-10-03</div>
+      </div>
+      <a href="posts/sexo-livre-dsts-e-relacionamentos-responsaveis.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/07/panico-ii-02_12_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Sinto muito medo. Por que?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/sindrome-do-panico.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/mulher-deprimida-triste-em-casa-sentado-no-sofa-e-abracando-um-conceito-de-travesseiro-solidao-e-tristeza_130111-1759.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Solidão dentro do próprio lar? Por que?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/solidao-dentro-do-proprio-lar-por-que.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/WhatsApp-Image-2020-05-02-at-18.40.25.jpeg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Mediunidade</span>
+        <h2>Sonambulismo</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/sonambulismo.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/mediunidade-espirita-1508879066.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Sou médium, são os espíritos que estão me usando ou sou eu?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/sou-medium-sao-os-espiritos-que-estao-me-usando-ou-sou-eu.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Vídeos</span>
+        <h2>Sozinho? 1</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/sozinho-1.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Vídeos</span>
+        <h2>Sozinho? 2 Ambiente de bar</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/sozinho-2-ambiente-de-bar.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Vídeos</span>
+        <h2>Sozinho? 3 Ação da prece</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/sozinho-3-acao-da-prece.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Vídeos</span>
+        <h2>Sozinho? 5 Tratamento espiritual</h2>
+        <div class="meta">📅 2020-04-30</div>
+      </div>
+      <a href="posts/sozinho-5-tratamento-espiritual.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/lazeres-e-divertimentos-07_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Suicídio, uma realidade mundial.</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/suicidio-uma-realidade-mundial.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/Design-sem-nome-24.png" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Estudando o evangelho</span>
+        <h2>Suicídio</h2>
+        <div class="meta">📅 2021-02-20</div>
+      </div>
+      <a href="posts/suicidio.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/unnamed-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Mediunidade</span>
+        <h2>Técnica de vampirização por ovóides</h2>
+        <div class="meta">📅 2020-05-02</div>
+      </div>
+      <a href="posts/tecnica-de-vampirizacao-por-ovoides.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/gravidez-16_09_2017-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Como fazer na casa espírita</span>
+        <h2>Trabalhando com a Gestante</h2>
+        <div class="meta">📅 2020-04-28</div>
+      </div>
+      <a href="posts/trabalhando-com-a-gestante.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/transicao_planetaria-02_12_2017-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Transição Planetária</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/transicao-planetaria.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge"></span>
+        <h2>Tratamento Espiritual</h2>
+        <div class="meta">📅 2021-02-10</div>
+      </div>
+      <a href="posts/tratamento-espiritual.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/159-anos-do-livro-dos-espi-ritos-e-o-surgimento-da-doutrina-espi-rita-16_10_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>Um aniversário muito especial</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/um-aniversario-muito-especial.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/contos-de-natal.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Espaço do Evangelizador</span>
+        <h2>Um conto de Natal</h2>
+        <div class="meta">📅 2020-04-26</div>
+      </div>
+      <a href="posts/um-conto-de-natal.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/diacrianca-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Criança em cena</span>
+        <h2>Uma ideia diferente</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/uma-ideia-diferente.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/07/pessoa-sozinha.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Os espíritos respondem</span>
+        <h2>Uma pessoa que se suicidou numa encarnação tem mais probabilidade de repetir esse delito em uma outra?</h2>
+        <div class="meta">📅 2021-07-10</div>
+      </div>
+      <a href="posts/uma-pessoa-que-se-suicidou-numa-encarnacao-tem-mais-probabilidade-de-repetir-esse-delito-em-uma-outra.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/rosa-02_12_2017-2.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>União infeliz, por que?</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/uniao-infeliz-por-que.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        
+        <span class="badge">Espaço do Evangelizador</span>
+        <h2>Vídeo sobre o desencarne de Maria: Mãe Santíssima</h2>
+        <div class="meta">📅 2021-05-07</div>
+      </div>
+      <a href="posts/video-sobre-o-desencarne-de-maria-mae-santissima.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/violencia-02_12_2017.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Atualidades</span>
+        <h2>Violência Doméstica</h2>
+        <div class="meta">📅 2020-06-06</div>
+      </div>
+      <a href="posts/violencia-domestica.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/celula-tronco-02_02_2019-1.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Ciência e espiritismo</span>
+        <h2>Visão espírita sobre o emprego de células-tronco</h2>
+        <div class="meta">📅 2020-04-25</div>
+      </div>
+      <a href="posts/visao-espirita-sobre-o-emprego-de-celulas-tronco.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  
+    <div class="card">
+      <div>
+        <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/02/yvonne_pereira.jpg" style="width: 100%; height: 160px; object-fit: cover; border-radius: 8px; margin-bottom: 0.75rem;" alt="" />
+        <span class="badge">Missionários do bem</span>
+        <h2>Yvonne do Amaral Pereira &#8211; Uma vida dedicada à mediunidade</h2>
+        <div class="meta">📅 2020-05-22</div>
+      </div>
+      <a href="posts/yvone-pereira-biografia-e-vida-dedicada-a-mediunidade.html" class="btn">Ler artigo &rarr;</a>
+    </div>
+  </div>
+  
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

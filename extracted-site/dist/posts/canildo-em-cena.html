@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canildo em Cena | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>Canildo em Cena</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T16:36:55 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália<br><strong>Personagens:</strong> Palhaço Alegria, palhaço Sorriso, Minhoquinha, Gotinha e Canildo.</p>
+<p>**Cenário: quintal de uma residência.<br>**<br>(Ao iniciar a peça entra o Palhaço Alegria, todo feliz, cumprimentando o público).</p>
+<p><strong>ALEGRIA</strong> – Bom dia!! Bom dia!! Bom dia pessoal! Que dia lindo! (Utilizar o cumprimento de acordo com o horário) – Meu nome é Alegria e eu estou muito feliz por estar aqui hoje, principalmente por estar com vocês!<br>Olha, perto de mim ninguém pode ficar triste, tá ok? Nós os seres humanos, precisamos sorrir mais.<br>Vamos lá, quem estiver sério aí, vai sorrir agora.<br>Quem está feliz levante a mão! (inventar outras coisas como: bata palma, abrace quem estiver ao lado, etc.).</p>
+<p>(Neste momento entra pelo fundo o Palhaço Sorriso, cantarolando).</p>
+<p><strong>SORRISO</strong> – Eu bato palma (bate), dou um sorriso (sorrir), falo amor (amor), abraço um amigo (abraça o Alegria).<br><strong>ALEGRIA</strong> – Olá Sorriso, que bom ver você!<br><strong>SORRISO</strong> – Que nada! Bom mesmo é ver você.<br><strong>ALEGRIA</strong> – Você veio ajudar-me?<br><strong>SORRISO</strong> – Bom… não sei, só sei que estava passando aqui perto e ouvi esse pessoal aqui sorrindo, então achei que vocês estavam me chamando…<br><strong>ALEGRIA</strong> – Ah, sim, onde tem Alegria o Sorriso aparece!<br><strong>SORRISO</strong> – Bem, já que estou aqui eu posso te ajudar, pois você sabe que eu adoro…<br><strong>ALEGRIA</strong> – Eu também, mas será que eles (aponta para o público) gostam também?<br><strong>SORRISO</strong> – Não sei, vamos perguntar.<br><strong>ALEGRIA</strong> – Vocês gostam? (Deixa um suspense no ar)<br><strong>SORRISO</strong> – Alegria, como eles vão responder se não sabem do que estamos falando?<br><strong>ALEGRIA</strong> – É mesmo, desculpe-nos. Vocês gostam de ouvir historias? (Incentivar para que respondam)<br><strong>SORRISO</strong> – Mas, história não é coisa apenas de criança? (se o público for criança perguntar se não e coisa de adulto)<br><strong>ALEGRIA</strong> – Já que vocês gostam, então vamos contar uma linda historia.<br><strong>SORRISO</strong> – Era uma vez… (suspense)<br><strong>ALEGRIA</strong> – Lá debaixo da terra, num lugar onde os olhos não vêem…<br><strong>SORRISO</strong> – Morava um velho cano, trabalhando com alegria, apesar de trabalhar escondido…</p>
+<p>(Se afastam ou saem de cena, entra Canildo cantarolando).</p>
+<p><strong>CANILDO</strong> – Passa água, passa água, passa bem de mansinho,<br>                    Vá pra perto, vá pra longe, ajudar os irmãozinhos!<br>                    Ah! Que bom que é trabalhar, saber que estou sendo útil, contribuindo para a felicidade dos seres da criação de Deus.</p>
+<p><strong>ALEGRIA</strong> (ao fundo) – Assim era nosso amigo Canildo, nada de tristeza! Até que um dia…</p>
+<p>(Entra toda imponente uma minhoquinha)</p>
+<p><strong>MINHOQUINHA</strong> – (Aproximando-se de Canildo) – Olá Canildo, tudo bem?<br><strong>CANILDO</strong> – Olá, minha amiga Minhoquinha, eu estou muito bem.<br><strong>MINHOQUINHA</strong> – Sabe que eu não te entendo, Canildo!<br><strong>CANILDO</strong> – Não me entende! Como assim?<br><strong>MINHOQUINHA</strong> – É que você está sempre feliz, tranquilo…<br><strong>CANILDO</strong> – Graças a Deus, trabalho realmente com muita alegria.<br><strong>MINHOQUINHA</strong> – É, acho que só existe uma conclusão sobre você…<br><strong>CANILDO</strong> – (Bem animado) – Sim! E qual é?<br><strong>MINHOQUINHA</strong> – Você é um… um bobão!<br><strong>CANILDO</strong> – Bobo, eu? Mas… porque?<br><strong>MINHOQUINHA</strong> – Sua vida é muito triste, e você fica sorrindo… sorrindo…<br><strong>CANILDO</strong> – Minha vida é triste?<br><strong>MINHOQUINHA</strong> – Claro que sua vida é triste. Você vive escondido aqui debaixo da terra, não pode sair do lugar… E o pior de tudo é que ninguém vê você, ninguém sabe que você existe!<br><strong>CANILDO</strong> – (Chué) – Será?<br><strong>MINHOQUINHA</strong> – Acredite em mim, eu sou muito esperta e sabida!<br><strong>CANILDO</strong> – (Mais triste ainda) – Será?<br><strong>MINHOQUINHA</strong> – E o pior é que ninguém reconhece o seu trabalho. Preste atenção Canildo, para que serve um velho cano escondido na escuridão?<br>Agora já vou indo, pois tenho muito que mostrar. Fique aí com sua triste alegria. Até breve.</p>
+<p><strong>CANILDO</strong> – (Desanimado) – Até…</p>
+<p>(A Minhoquinha sai toda vaidosa. Canildo fica triste, pensativo…).</p>
+<p><strong>CANILDO</strong> – Ah, meu Deus! Será que a Minhoquinha tem razão?<br> Pensando bem, ela está certa, eu sou um bobo mesmo. Imagina só, ficar alegre aqui escondido!</p>
+<p>(Nesse instante entra a Gotinha, representando a água, se possível ao som de uma música sobre a água).</p>
+<p><strong>GOTINHA</strong> – (Toda feliz) – Olá, meu amigo Canildo!<br><strong>CANILDO</strong> – (Chué) – Olá…<br><strong>GOTINHA</strong> – O quê? Que olá mais chué! Não estou lhe reconhecendo!<br><strong>CANILDO</strong> – Estou cansado…<br><strong>GOTINHA</strong> – Cano cansado? Diga a verdade Canildo!<br><strong>CANILDO</strong> – É a verdade…<br><strong>GOTINHA</strong> – A verdade Canildo, é que eu estava passando por aqui e ouvi sua conversa com a Minhoquinha.<br><strong>CANILDO</strong> – (Surpreso) – Ouviu?<br><strong>GOTINHA</strong> – Sim, por isso parei e vim conversar com você.<br><strong>CANILDO</strong> – E você acha que a Minhoquinha tem razão?<br><strong>GOTINHA</strong> – Mas é claro! (Deixa que Canildo se assuste) Claro que não! O valor de nosso trabalho não está em sermos reconhecidos…<br><strong>CANILDO</strong> – Antes eu pensava assim…<br><strong>GOTINHA</strong> – (Otimista) – Pois continue pensando. O importante é sermos úteis, cumprindo nosso compromisso de servir a Deus, a Jesus e à Vida.<br><strong>CANILDO</strong> – Nossa, havia me esquecido de Jesus!<br><strong>GOTINHA</strong> – Então, meu amigo, cada ser da Criação está no seu lugar certo. Devemos cumprir o nosso papel com muita humildade e alegria, pois se não tomarmos cuidado, o nosso orgulho nos faz esquecer nossa principal tarefa.<br><strong>CANILDO</strong> – (Animado) – você tem razão.<br><strong>GOTINHA</strong> – Imagina se todos os canos quisessem estar acima do chão? Ao invés de ajudarem fariam que outros, tropeçando caíssem naquela região…<br><strong>CANILDO</strong> – (Sorrindo) – Nossa! Ia ser uma confusão. As pessoas não iam gostar mais dos canos.<br><strong>GOTINHA</strong> – E isso seria bom?<br><strong>CANILDO</strong> – Claro que não.<br><strong>GOTINHA</strong> – Então, Canildo volte a sorrir… Trabalhe com alegria… Não se preocupe com que os outros estão pensando sobre você. Quando aprendermos a trabalhar com humildade, encontraremos a verdadeira liberdade e seremos mais felizes.<br><strong>CANILDO</strong> – Que bom que você veio conversar comigo. Você me ajudou muito.<br><strong>GOTINHA</strong> – Lembre-se, você é muito útil. Graças a você podemos chegar em todos os lugares onde os homens precisam de nós.<br><strong>CANILDO</strong> – Que vergonha eu ter ficado desanimado! Lembrarei sempre dessa lição: O importante é nossa parcela de amor, que mesmo na escuridão, serve de presente ao Senhor.<br><strong>GOTINHA</strong> – Agora já vou indo, pois estou atrasada. Um grande abraço e… juízo Canildo!</p>
+<p>(Sai toda feliz)</p>
+<p><strong>CANILDO</strong> – Sim, minha amiga, terei muito juízo… (Fala para o público) Aprenda você também essa lição: Só teremos verdadeira liberdade, quando aprendermos em nosso caminho a trabalhar e servir com humildade. Repitam comigo: Só teremos verdadeira liberdade, quando aprendermos em nosso caminho a trabalhar e servir com humildade!!! Até breve, vou continuar o meu trabalho… com alegria!!! (sai de cena)</p>
+<p>(Entram os palhaços)</p>
+<p><strong>ALEGRIA</strong> – (Emocionado) – Fico tão emocionado quando eu conto ou quando eu ouço histórias…<br><strong>SORRISO</strong> – É como se estivéssemos vendo a história acontecer.<br><strong>ALEGRIA</strong> – Ainda bem que o Canildo encontrou a Gotinha em seu caminho…<br><strong>SORRISO</strong> – Porque senão, ele teria esquecido da sua verdadeira função…<br><strong>ALEGRIA</strong> – Um bom amigo pode nos ajudar muito!<br><strong>SORRISO</strong> – É verdade, um amigo é um tesouro!<br><strong>ALEGRIA</strong> – Não é assim! É assim: um tesouro é um amigo!<br><strong>SORRISO</strong> – Ah! É mesmo!<br><strong>OS DOIS</strong> – O importante é que somos amigos!<br><strong>SORRISO</strong> – E temos o melhor amigo também.<br><strong>ALEGRIA</strong> – O maior amigo! Nosso grande amigo Jesus!<br><strong>SORRISO</strong> – Nosso amigo e amigo de todos vocês.<br><strong>OS DOIS</strong> – Assim como o Canildo, trabalhem e estudem felizes por Jesus!</p>
+<p>(Cantar a música: Canildo – Vídeo abaixo)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

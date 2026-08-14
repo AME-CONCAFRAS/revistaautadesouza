@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homossexualidade | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Atualidades</span>
+          <h1>Homossexualidade</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T19:09:48 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/ivoc-mulher-pensativa-11051826-e1511804914983-1.jpg" alt="" class="alignleft" width="453" height="253" />
+
+<p><strong>“ – Será que eu sou um Espírito feminino domiciliado num corpo masculino?</strong> </p>
+<p>Toda minha vida até aqui é um permanente delírio. A minha psicologia difere da minha fisiologia, minhas aspirações entram em choque com a minha forma.Desde criança, eu preferia que me chamassem Lícia, a Lício, que é o meu nome. A última forma me chocava, enquanto a primeira me produzia deleite. Ao espelho, despido, sempre me estranhei, passando a detestar o que eu apresentava sem mentir, anelando pelo que experimentava emocionalmente sem possuir. As foras do corpo produziram-me estranheza… Foi porém, na puberdade que os meus sofrimentos se agravaram, na escola, no lar, em toda parte. Eu era uma pessoa dupla: a real, era interior, enquanto que a aparente, era a visível. </p>
+<p>Todas as minhas recordações estão assinaladas por preferências femininas e os meus interesses sempre giram nessa órbita. A inocência não me deixava entender a variedade de sentimentos, essa dicotomia comportamental. Ainda não me assaltavam preferências físicas, já que tudo acontecia num plano ideal, platônico, se posso dizer, sem outros comuns ingredientes humanos…” (Manoel P. de Miranda. <strong>Loucura e Obsessão.</strong> 6.Ed. Cap. 5 e 6.) </p>
+<p><strong>Homossexualidade</strong> </p>
+<p>“ A  homossexualidade,  também  hoje chamada  transexualidade,  em  alguns  círculos  de  ciência,  definindo-se,  no  conjunto  de  suas  características,  por  tendência  da criatura  para  a  comunhão afetiva  com  uma outra criatura  do mesmo sexo,  não encontra explicação  fundamental  nos  estudos  psicológicos  que  tratam  do  assunto  em  bases materialistas,  mas  é  perfeitamente compreensível,  à  luz  da  reencarnação.[…]. A vida  espiritual  pura e  simples se  rege  por  afinidades  eletivas  essenciais; no entanto, através de milênios e milênios, o Espírito passa por fileira imensa de reencarnações, ora em  posição de feminilidade, ora em  condições  de  masculinidade,  o  que  sedimenta  o  fenômeno da  bissexualidade, mais ou menos pronunciado, em quase todas as criaturas. O homem e a mulher serão, desse modo, de maneira respectiva, acentuadamente masculino ou acentuadamente feminina, sem especificação psicológica absoluta. […].”  (Emmanuel. <strong>Vida e Sexo.</strong>  15. Ed. Cap. 21.) </p>
+<p><strong>Causas anteriores</strong> </p>
+<p>“O homem que  abusou das faculdades genésicas, arruinando a existência  de outras pessoas com a destruição de uniões construtivas e  lares diversos, em muitos casos é induzido a buscar nova  posição, no renascimento  físico, em corpo morfologicamente feminino, aprendendo, em regime de prisão, a reajustar os próprios sentimentos, e a mulher que agiu de igual modo é impulsionada à reencarnação em corpo morfologicamente masculino,  com idênticos fins. E, ainda, em muitos outros casos, Espíritos cultos e sensíveis, aspirando a realizar tarefas específicas na elevação de agrupamentos humanos e, conseqüentemente, na elevação de  si  próprios,  rogam dos  Instrutores da Vida Maior que os  assistem a  própria internação  no  campo  físico, em vestimenta carnal  oposta à estrutura psicológica pela qual transitoriamente se definem. Escolhem com isso viver  temporariamente  ocultos  na armadura  carnal,  com o  que  se  garantem  contra arrastamentos  irreversíveis,  no  mundo afetivo,  de  maneira a  perseverarem,  sem maiores  dificuldades,  nos  objetivos  que abraçam.” (Emmanuel. <strong>Vida e Sexo.</strong> 15. Ed. P. 89 – 92) </p>
+<p><strong>Amparo Educativo</strong> </p>
+<p>“ Observadas as tendências homossexuais dos companheiros reencarnados nessa faixa  de  prova  ou de experiência,  é  forçoso  se  lhes  dê  o  amparo  educativo  adequado, tanto quanto  se administra  instrução  à  maioria  heterossexual.  E  para  que  isso  se verifique em linhas  de  justiça  e compreensão,  caminha  o mundo de  hoje  para mais  alto entendimento dos  problemas  do  amor  e  do  sexo,  porquanto,  à  frente  da  vida  eterna,  os erros  e  acertos  dos  irmãos  de  qualquer  procedência,  nos  domínios  do  sexo  e  do  amor, são  analisados  pelo  mesmo  elevado  gabarito de  Justiça e  Misericórdia.  Isso porque todos  os  assuntos  nessa área  da  evolução  e  da  vida  se especificam  na  intimidade  da consciência de cada um.”  (Emmanuel. <strong>Vida e Sexo.</strong> 15. Ed. P. 89-92) </p>
+<p><strong>Conflitos e desafios perante o sexo</strong> </p>
+<p>“O ser humano é constituído por equipamentos muito delicados, em uma engrenagem complexa que deslumbra as mentes mais aguçadas que se debruçam sobre a organização, sem entender as miríades de implementos que se apoiam uns nos outros, a fim de que funcionem corretamente em perfeita harmonia. Herdeiro das experiência de multifárias reencarnações, imprime, no instrumento orgânico de que necessita para evoluir, as necessidades em forma de limitação ou capacidade, de tormento ou paz, de acordo com as conquistas anteriormente realizadas.</p>
+<p>De qualquer limite, dificuldade ou problema na área sexual, as raízes se encontram na conduta do ser em anteriores existências, exigindo reparação e controle. Novos deslizes no comportamento atual significam danos mais graves a serem recuperados com dificuldades mais extenuantes.</p>
+<p>O sexo não é a vida em si mesma, por isso, a vida vale mais do que as sensações do imediatismo sexual.</p>
+<p>Aparelho valioso, como tantos outros no conjunto físico, deve ser atendido com critério e oportunidade, evitando-se exaustão ou abandono, paixão ou desinteresse, aprisionamento ou castigo injustificáveis.</p>
+<p>Criado por Deus, para servir de instrumentos à vida terrestre, não o pode submeter aos seus desmandos, sob os estímulos da alucinação que varre o planeta nos dias hodiernos. […]Se renasceste com dificuldades ou desafios na área sexual, recorre à oração e ao equilíbrio, evitando justificativas que te facultam os abismos de novos comprometimentos.</p>
+<p>Aprende a reeducar-te, encontrando diferentes formas de felicidade e prazer, sem ultrajar a tua organização genésica, nem submeter ao desconforto da anestesia da consciência ou da conduta cínica, como forma extravagante de enfrentar  o grupo social no qual te encontras.[…]</p>
+<p>Não creias que liberando as cargas do desejo insano e infrene, te reconfortarás, reequilibrando-te. Prazer fruído, necessidade de prazer novo.</p>
+<p>Sensação esfogueante e apaixonada, desejo que retorna, logo se removem as forças.Somente a conduta de paz e amor para contigo mesmo e para com o sexo, poderá facultar-te harmonia, que pode demorar um pouco, mas que, chegando, jamais te abandonará.”  (Joanna de Ângelis. <strong>Sendas luminosas</strong> P. 43 – 47)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

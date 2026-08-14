@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jovens de Ontem | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Missionários do bem</span>
+          <h1>Jovens de Ontem</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-23T17:33:43 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>JOÃO E TIAGO – APÓSTOLOS</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/joao-e-tiago.jpg" alt="" class="alignleft" width="342" height="342" />
+
+<p><img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/thiago-apostolo-11_09_2017.jpg" alt="">“João Evangelista, dentre os discípulos do Senhor, foi considerado o que mais se dedicou ao Mestre, pela força do Amor. Era bem moço quando assistira, juntamente com alguns familiares, às Bodas de Caná. O destino fê-lo acompanhar o Cristo nos Seus mais difíceis testemunhos, assim como nas Suas grandes alegrias. Presenciou várias curas fantásticas do Senhor, fez parte dos três no Monte Tabor; na agonia do Getsêmani, estava no Jardim das Oliveiras; assistiu às pregações mais profundas do Mestre, presenciou à Entrada Triunfal, subiu ao Calvário para se despedir do seu preceptor e, no topo mais dramático do mundo, recebeu como nova mãe, Maria, indicada pelo Divino Messias. […].</p>
+<p>Quando nasceu, Salomé foi tomada por uma chama de luz, presenciada por Zebedeu em estado de vigília, e se fez um clarão tão grande, que foi igualmente visto por muitos pastores, na madrugada […].<img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/sa-o-joa-o-evangelista-11_09_2017.JPG" alt=""><br>Sua mãe, certa vez, aproximou-se do Mestre Jesus e narrou para Ele os fenômenos que o acompanhavam desde o berço. Notara, sem medo de estar errada, que seu filho tinha uma tarefa em algo semelhante à do Cristo, e pediu com humildade para que Ele o abençoasse escolhendo também Tiago, para que pudessem assentar cada um a Seu lado, no reino de Deus. Tiago e João aproximam-se do Mestre, decididos, ficando um de cada lado, concretizando o pedido da mãe. Cristo, fixando os Seus grandes olhos nos de Salomé respondeu sinceramente:</p>
+<p>‘Não compete a mim decidir, deixar ou não que os teus filhos se assentem ao meu lado, na marcha que se propuseram caminhar na Terra e no Céu. Eis que cada um de nós haveremos de testemunhar diante de Deus e de nossa consciência o que aprendemos. No entanto, se eles suportarem tomar comigo o cálice amargo, preparado para mim há milênios, rogaremos ao Nosso Pai Celestial que os mantenha em minha companhia, para que a felicidade aumente em meu coração, e a tua vontade será satisfeita, se for esta a vontade de Deus.</p>
+<p>Antes de compreender seu apostolado junto de Nosso Senhor Jesus Cristo, João parecia um moço impetuoso, deixando extravasar uma cachoeira de energias, num cinetismo dificilmente compreendido pelos homens, pois era o impulso esquematizado, desde sua gênese, para que no futuro o Evangelho fosse sustentado pela sua conduta grandiosa.” (Miramez, Francisco de Assis, 14. ed., p. 13, 14).</p>
+<p><strong>TIMÓTEO</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/timoteo.jpg" alt="" class="alignright" width="318" height="159" />
+
+<p><img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/timoteo-11_09_2017.jpg" alt="">“Velha viúva de um grego abastado, Lóide morava em companhia de sua filha Eunice, igualmente viúva, e de seu neto Timóteo, cuja inteligência e generosos sentimentos de menino constituíam o maior encanto das duas senhoras. Os mensageiros da Boa Nova foram recebidos nesse lar com inequívocas provas de simpatia. […].</p>
+<p>Na mesma noite da chegada, observou a ternura com que Timóteo, tendo pouco mais de treze anos, tomava os pergaminhos da Lei de Moisés e os Escritos Sagrados dos Profetas. Deixou o Apóstolo que as duas senhoras comentassem as revelações em companhia do mesmo, até que fosse chamado a intervir. Qua ndo tal se deu, aproveitou o ensejo para fazer a primeira apresentação do Cristo ao coração enlevado dos ouvintes. Tão logo começou a falar, observou a profunda impressão das duas mulheres, cujos olhos brilhavam enternecidos; mas o pequeno Timóteo ouvia-o com tais demonstrações de interesse que,  muitas vezes, lhe acariciou a fronte pensativa.</p>
+<p>Os parentes de Onesíforo receberam a Boa Nova com júbilos infinitos. No dia imediato não se falou de outra coisa. O rapaz fazia interrogações de toda espécie. O Apóstolo, porém, atendia-o com alegria e interesse fraternais. […].</p>
+<p>O Evangelho continuava, a estender seu raio de ação em todos os setores. Profundamente sensibilizado, o convertido de Damasco, no desdobramento natural do serviço, começou a obter notícias da ação de Timóteo. O jovem filho de Eunice, pelo que lhe informavam, soubera enriquecer, de maneira prodigiosa, os conhecimentos adquiridos. A pequena cristandade de Derbe já lhe devia grandes benefícios. Por mais de uma vez, o novo discípulo ali acorrera em missões ativas. Disseminava curas e consolações. Seu nome era abençoado de todos. Cheio de júbilo, após o término de suas tarefas naquela cidade pequenina, o ex-rabino demandou Listra, com ansiedade carinhosa. […].<br>“[…] recordando que Jesus lhe prometera associar Estevão à divina tarefa, julgou não dever atuar por si só e chamou Timóteo e Silas para redigir a primeira de suas famosas epístolas.<br>Assim começou o movimento dessas cartas imortais, cuja essência espiritual provinha da esfera do Cristo […]. (Emmanuel, Paulo e Estêvão, 35. ed., p. 366, 401, 426).</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/tito-1.jpg" alt="" class="alignleft" width="264" height="322" />
+
+<p><strong>TITO</strong>  </p>
+<p>“Alargando os projetos generosos, deliberou levar em sua companhia o jovem Tito, que, embora oriundo das fileiras pagãs não obstante contar vinte anos incompletos, representava na igreja de Antioquia uma das mais lúcidas inteligências a serviço do Senhor. Desde a vinda de Tarso, Tito afeiçoara-se-lhe como um irmão generosos. Notando-lhe a índole laboriosa, Paulo ensinara-lhe o ofício de tapeceiro e fora ele o seu substituto na tenda humilde, por todo o tempo que durou a primeira missão. […].”(Emmanuel, Paulo e Estêvão, 16. ed., p. 384).  </p>
+<p>“Em seguida, atendendo ainda a observação de Paulo, Tito falou, profundamente comovido com a interpretação dos ensinamentos do Cristo e mostrando possuir formosos dons de profecia, fazendo-se admirar pelo próprio Tiago, que o abraçou mais de uma vez.” (Emmanuel, Paulo e Estêvão, 16. ed., p. 384, 392-393).  </p>
+<img src="http://161.35.11.199/wp-content/uploads/2020/05/João-Marcos.jpg" alt="" class="alignright" width="291" height="374" />
+
+<p><strong>JOÃO MARCOS</strong><br>“A mãe de João Marcos era uma das discípulas mais desassombradas e generosas. […].  </p>
+<p>Queria dar o filho, ainda muito jovem, a Jesus. De há muito vinha preparando o menino para o apostolado. Todavia, Jerusalém afogava-se em lutas religiosas, sem tréguas. As perseguições surgiam e ressurgiam. A organização cristã da cidade experimentava profundas alternativas. Só a paciência de Pedro conseguia manter a continuidade do ideal divino. Não seria melhor que João Marcos se transferisse para Antioquia, junto do tio? Barnabé não se opôs ao plano da irmã entusiasmada. O jovem, a seu turno, seguia as conversações, mostrando-se satisfeito. Chamado a opinar, Saulo percebeu que os irmãos deliberavam sem consultar o interessado. O rapaz acompanhava os projetos, sempre jovial e sorridente. Foi aí que o ex-doutor da Lei, profundo conhecedor da alma humana, desviou a palavra, procurando interessá-lo mais diretamente.<br>— João — disse bondosamente —, sentes, de fato, verdadeira vocação para o ministério?<br>— Sem dúvida! — confirmou o adolescente algo perturbado.<br>— Mas, como defines teus propósitos? — tornou a perguntar o ex-rabino.<br>— Penso que o ministério de Jesus é uma glória — respondeu um tanto acanhado sob o exame daquele olhar ardente e inquiridor.<br>Saulo refletiu um instante e sentenciou:<br>— Teus intuitos são louváveis, mas é preciso não esqueceres que a mínima expressão de glória mundana apenas chega após o serviço. Se assim acontece no mundo, que não será com o trabalho para o reino do Cristo? Mesmo porque, na Terra, todas as glórias passam e a de Jesus é eterna!…<br>O jovem anotou a observação e, embora desconcertado pela profundez dos conceitos, acrescentou:<br>— Sinto-me preparado para os labores do Evangelho e, além disso, mamãe faz muito gosto que eu aprenda os melhores ensinamentos nesse sentido, a fim de tornar-me um pregador das verdades de Deus.<br>Maria Marcos olhou o filho cheia de maternal orgulho. Saulo percebeu a situação, teve um dito alegre e depois acentuou:<br>— Sim, as mães sempre nos desejam todas as glórias deste e do outro mundo. Por elas, nunca haveria homens perversos. Mas, no que nos diz respeito, convém lembrar as tradições evangélicas. Ainda ontem, lembrei a generosa inquietação da esposa de Zebedeu, ansiosa pela glorificação dos filhinhos!… Jesus lhe recebeu os anseios maternais, mas, não deixou de lhe perguntar se os candidatos ao Reino estavam devidamente preparados para beber do seu cálice… E, ainda agora, vimos que o cálice reservado a Tiago continha vinagre tão amargo quanto o da cruz do Messias!…<br>Todos silenciaram, mas Saulo continuou em tom prazenteiro, modificando a impressão geral:<br>— Isto não quer dizer que devamos desanimar ante as dificuldades, para aliciar as glórias legítimas do Reino de Jesus, Os obstáculos renovam as forças. A finalidade divina deve representar nosso objetivo supremo. Se assim pensares, João, não duvido de teus futuros triunfos.<br>Mãe e filho sorriram tranquilos.<br>Ali mesmo, combinaram a partida do jovem, em companhia de Barnabé. O tio discorreu ainda sobre as disciplinas indispensáveis, o espírito de sacrifício reclamado pela nobre missão. Naturalmente, se Antioquia representava um ambiente de profunda paz, era também um núcleo de trabalhos ativos e constantes. João precisaria esquecer qualquer expressão de esmorecimento, para entregar-se, de alma e corpo, ao serviço do Mestre, com absoluta compreensão dos deveres mais justos.<br>O rapaz não hesitou nos compromissos, sob o olhar amorável de sua mãe, que lhe buscava amparar as decisões com a coragem sincera do coração devotado a Jesus.<br>Dentro de poucos dias os três demandavam a formosa cidade do Orontes. […].<br>Saulo contemplou-o, admirado da firme resolução que suas palavras deixaram transparecer, e observou:<br>— Se deres um testemunho tão grande como a coragem que revelas, não tenho dúvidas quanto à grandeza de tua missão.<br>Entre confortadoras esperanças, o projeto terminou com formosas perspectivas de trabalho para os três.” (Emmanuel, Paulo e Estêvão, 16. ed., p. 322-325, 330).  </p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/francisco-de-assis.jpg" alt="" class="alignleft" width="313" height="176" />
+
+<p><strong>FRANCISCO DE ASSIS</strong><br><strong>Nascimento</strong>  </p>
+<p>“O calendário marcava 26 de setembro de 1182. O dia amanhecera mostrando límpido céu azul e o sol concedia seus raios nascentes, em diáfana claridade. […].<br>No exato momento em que dava à luz o seu filho, Pica, quase em êxtase, ouviu sublimado cântico na acústica de seu coração e viu a cote de Anjos que viera assistir ao regresso à Terra, pelos canais da reencarnação, de um Espírito de elevada envergadura, fazendo-se homem nos caminhos do mundo.” (p. 151).  </p>
+<p><strong>Infância e adolescência</strong><br>“Como um Anjo em estado de repouso, Francisco, nos primeiros anos, obedecia mais ao comando mental de sua mãe. […].<br>Dos sete aos catorze anos, a mente do pai passou a intervir mais, dividindo as influências. Dessa fase à maioridade, o pai assumiu a liderança e, daí em diante, como Espírito superior, ninguém o segurava. Ele tornou-se ele mesmo, com o seu próprio mundo, quebrando as amarras exteriores, pela verdade que já conhecia e que começava a viver.” (p. 156-157).  </p>
+<p><strong>Discordância com o pai</strong><br>“Francisco a tudo entendia em dimensões elevadas. Certa feita, o pai começou a aborrecer-se com ele, percebendo o modo como tratava os empregados e o cunho de sinceridade que demonstrava aos fregueses. Chamou-o à ordem querendo demonstrar-lhe que a verdade comercial é diferente da verdade do coração, sendo uma incompatível com a outra.” (p. 158).<br>“Sendo difícil para ele conviver com aquele estado de coisas, tinha ímpetos de renunciar e partir da própria casa onde morava. […].<br>Em casa assentou-se perto da mãe, beijou-lhe as faces e acariciou-lhe os lindos cabelos. Olhou dentro de seus grandes olhos, e falou-lhe com doçura:<br>– Mamãe! … Sabes de onde vem toda essa fortuna do papai, esse conforto que desfrutamos nesta casa, a segurança e a fama dos Bernardone?” (p. 159).<br>“Francisco!… Acho-te de pouca idade para pensar nestes relevantes assuntos. Observa que existe isso em toda a parte. Não serás tu, uma criança de Assis, que vai mudar o mundo. Se porventura, algum dia, já adulto, achares que esse proceder de teu pai e do resto do mundo está errado, procura vida diferente, ou une-te a quem pensa do mesmo modo, sem oprimir quem quer que seja. Toda opressão gera malquerência, toda imposição gera ódio, e todo julgamento apressado nos diz, pela experiência, que o errado é, em verdade, o julgador. Não queiras servir nunca de motivo de escândalos! Se nasceste sem interesse nos bens terrenos, não queiras obrigar os outros a fazerem o mesmo. Respeita as idéias e a vida alheia, que desse modo, Deus haverá de te abençoar e o teu coração será um coração de luz…” (p. 164).<br>“Não quero inovar o mundo, nem os homens, ambiciono sim, difundir pela vida, a alegria pura, a amizade sincera, a fé sem covardia, a piedade sem hipocrisia, a caridade sem trocas e o amor sem barreiras. […]. Essa é a voz que canta dentro do meu coração! […]. O que me importa é servir à causa de Deus, que é a mesma causa de Jesus!” (p. 165).<br>“Daí a semanas, Francisco era um soldado, empunhando armas nos campos de batalha. […]. A mansão perdera a paz.” (p. 201).<br>“Em acirrada batalha, Francisco foi encurralado pelos inimigos; Shaolin avançou em sua defesa, e caiu igualmente no cerco, sendo ambos aprisionados. Foram atados a uma árvore, até que cessasse o combate, após o que foram levados como presos valiosos.” (p. 205).<br>“Francisco regressou à casa desfeito e combalido. Os bacilos de Koch, que não eram conhecidos naquela época, invadiram-lhe os tecidos pulmonares.” (p. 206).<br>“[…], já bem disposto, pensou em alistar-se na Cruzada, pois nela iria defender uma causa nobre, e em Assis havia um posto de alistamento […]. E daí a dias, figurava o nome de Francisco no grande livro rubricado por Inocêncio III, com os emblemas da cruz e da espada gravados na capa.” (p. 207).  </p>
+<p><strong>Francisco escolhe outro caminho</strong><br>“Mesmo em tenra idade, nunca duvidava da eficácia dos sacrifícios e da renúncia, mostrando assim à humanidade, que Deus está sempre presente, ajudando-a. e ele tinha fortes pressentimentos de que deveria, algum dia se entregar de corpo e alma à grande fraternidade, aquela que nivela as criaturas, de sorte que todos os homens sintam o mesmo amor e os mesmos interesses de se ajudarem mutuamente. […].<br>E nestas deduções, o seu coração lhe segredava que o seu caminho era outro, e não aquele das guerras fratricidas. Computava idéias de todas as procedências, que a sua mente fértil associava, e acabou certificando-se de que a violência era filha legítima da ignorância, e que, para quem sentia a presença de Deus no coração, o melhor caminho era o que Cristo delineara para a humanidade.” (p. 208-209).<br>“Lembrou-se fortemente do Evangelho, senão de Jesus, e pediu a Deus, no íntimo d’alma, para lhe clarear o caminho, ora duvidoso. Entrou como em ligeiro sono e ouviu uma voz, a mesma voz sua companheira, que lhe falou nestes termos:<br>” Francisco!… Constrói a minha igreja!” (p. 210).<br>“Como a voz lhe tinha pedido para reconstruir a Igreja, tomou como ponto de inspiração a pequena igreja da localidade, de nome São Damião. Saiu pedindo de porta em porta, não mais como nobre, porém, como homem comum, como filho de Deus e discípulo de Cristo, ajuda para reconstruir a pequena igreja, contando o ocorrido com ele. E quase todos iam lhe ofertando o que podiam para a reconstrução da velha casa de Deus.” (p. 216).<br>“E avançou de cabeça erguida, ao encontro do Papa Inocêncio III.<br>Francisco de Assis não estava em busca das bênçãos do papa; estava à procura do restabelecimento da Igreja de Deus, por vontade de Jesus Cristo, entre aqueles homens, cuja simplicidade desvalorizava as gigantescas idéias e os monumentais pensamentos de pureza cristã, para aqueles, que não tinham olhos de ver.” (p. 234).<br>“Francisco de Assis teve desassombro de ira ao encontro do Sultão Melek-el-Kamel com um dos seus discípulos, pela autoridade que o Amor lhe conferia.” (p. 384).<br>“A caminhada foi longa. Pai Francisco estava cego e tinha velhas enfermidades de fígado e estômago. […], e sofria dores por todo o corpo. […]. No entanto, era de se admirar o seu vigor mental. De nada se esquecia, e respondia a tudo que se lhe perguntasse com precisão e acerto.” (p. 427).<br>“O calendário marcava a data de três de outubro de 1226… […].<br>O sol começava a apagar-se no poente, quando a alma Francisco de Assis começou a apagar-se no poente da vida física, para esplender fulgurante na eternidade.” (p. 428-429). (Miramez, Francisco de Assis, 14. ed,. cap. 10,11, 14, 15, 16, 24, 26)  </p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/joanna-darc-1-748x1024.jpg" alt="" class="alignright" width="222" height="304" />
+
+<p><strong>JOANA D’ARC</strong><br><strong>Livro:</strong> Joana D’arc – médium<br><strong>Autor:</strong> Léon Denis  </p>
+<p>“É Domrémy, aldeia ignorada até então, mas que, pela criança a cujo nascimento assistiu em 1412, se vai tornar célere no mundo inteiro.” (p. 31).<br>“A luta contra a Inglaterra dura perto de cem anos. Em quatro derrotas sucessivas, a nobreza francesa fora esmagada, quase aniquilada. […].<br>E como um raio de luz, vindo do alto, em meio dessa noite de luto e de miséria, apareceu Joana.” (p. 27,29).<br>“Joana não descendia de alta linhagem; filha de pobres lavradores, fiava a lã unto de sua mãe, ou guardava o seu rebanho nas veigas do Mosa, quando não acompanhava o pai na charrua.<br>Não sabia e nem escrever, ignorava todas as coisas da guerra. Era uma boa e meiga criança, amada por todos, especialmente pelos pobres pelos desgraçados, os quais nunca deixava de socorrer e consolar. […]. Cedia de boa mente a cama a qualquer peregrino fatigado e passava a noite sobre um feixe de palha, a fim de proporcionar descanso a anciães extenuados por longas caminhadas. Cuidava dos enfermos […].” (p. 32).<br>“Assídua em sua tarefa, nada desprezava para satisfazer aos pais e a todos aqueles com quem lidava. ‘Viva o trabalho!’, dirá mais tarde, afirmando assim que o trabalho é o melhor amigo do homem, sou amparo, seu conselheiro na vida, seu consolador na provação e que não há verdadeira felicidade sem ele.” (p. 33).<br>“Misteriosa influência a envolve. Vozes lhe falam aos ouvidos e ao coração; seres invisíveis a inspiram, dirigem-lhe todos os atos, todos os passos. E eis que essas vozes comandam. Ordens superiores se fazem ouvir. É-lhe preciso renunciar à vida tranquila. Pobre menina de dezessete anos, deverá afrontar o tumulto dos acampamentos!” (p. 34).  </p>
+<p>“Um dia S. Miguel lhe diz: ‘Filha de Deus, tu conduzirás o delfim a Reims, a fim de que recebas aí sua digna sagração. Santa Catarina e Santa Margarida lhe repetiam sem cessar:‘Vai, vai, nós te ajudaremos!’. Estabelecem-se então, entre a vigem e seus guias, estreitas relações. No sei o de seus ‘irmãos do paraíso’, vai ela cobrar o ânimo necessário para levar a termo sua obra, da qual está inteiramente compenetrada. A França a espera, é preciso partir!” (p. 35).<br>“Concluamos, pois, de nossa parte, reconhecendo, mais uma vez, em Joana, um grande médium.” (p. 59).<br>“Convém, primeiramente notar: graças às suas faculdades psíquicas extraordinárias é que ela pôde conquistar rápido ascendente sobre o exército e o povo.” (p. 42-43).<br>“À medida que a fama da heroína se dilata, que sua glória sobrepuja todas as glórias, o ódio se lhe avoluma em torno, e as intrigas se tecem entre os grandes fidalgos, cujos planos e tenebrosas maquinações ela viera frustrar.” (p. 116).<br>“Assim é inquestionável que, se Carlos VII, logo após a sagração, tivesse avançado sobre Paris a grande cidade se teria rendido sem combate.<br>Em vez disso, seis semanas se gastam em hesitações e quando, por fim, defrontam com a capital, nenhuma precaução tomam. […].<br>No dia seguinte, quis recomeçar o ataque. Porém, que aconteceu? Não puderam mais passar. O rei havia mandado destruir as pontes, e impusera a retirada.” (p. 116-117).<br>“Fracassado o cerco da Charité, Joana foi chamada à corte. […]. Abandona o rei aos prazeres e festas em que se comprazia e à frente de uma tropa que lhe era dedicada voa para Conpiègne, então assediada. É aí que lhe sucede cair prisioneira do conde de Luxemburgo […].” (p. 118).<br>João de Luxemburgo descendia de alta linhagem; era, porém, mesquinhos de coração e falto de fortuna […]. Não pôde, consequentemente, recusar as dez mil libras em ouro que o rei da Inglaterra oferecia. Por esse preço, vendeu Joana e a entregou.” (p. 120).<br>“Com efeito, ao mesmo tempo que padecia tão duro e horrível cativeiro, Joana ainda tinha que sofrer as longas e torturosas fases de um processo tal como nunca houve igual no mundo.” (p. 129).<br>“Assim, o temível tribunal do Santo Ofício […], reaparecia, saía da sombra, para reclamar a maior vítima de quantas lhe compareceram à barra.” (p. 130).<br>“Estamos a 30 de maio de 1431. O drama toca o desenlace. […].<br>Lêem o libelo acusatório, […]. Joana se ajoelha. Nesse solene momento, em presença da morte que se avizinha, sua alma se desprende das sombras terrenas e entrevê os esplendores eternos. Ora em voz alta. Profere uma prece extensa e fervorosa. Perdoa a todos, a seus inimigo, a seus algozes. Num sublime arroubo do pensamento e do coração, reúne dois povos, enlaça dois reinos.” (p. 151-152).<br>“E nada mais se ouviu, além dos estalidos que o crepitar do fogo produz…<br>Terá Joana sofrido muito? Ela própria nos assegura que não. ‘Poderosos fluidos’, diz-nos, ‘choviam sobre mim. Por outro lado, minha vontade era tão forte que dominava a dor’.” (p. 154).  </p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Pascal-e1576273599616.jpg" alt="" class="alignleft" width="306" height="170" />
+
+<p><strong>PASCAL</strong>  </p>
+<p>“Certo dia, um menino de 10 anos bateu com uma colher num prato e escutou atentamente o som, que continuou a vibrar por algum tempo, parando, no entanto, quando o pequeno pôs a mão sobre o prato.<br>Com certeza, em muitos lugares do mundo, outros tantos garotos terão feito o mesmo e observado o fenômeno.<br>Mas, só um gênio como Blaise Pascal resolveu investigar o mistério e escreveu um tratado sobre o som: ‘Traité des sons’.<br>Nascido aos 19 de junho de 1623, em Clermont Ferrand (Auvergne), cedo demonstrou a sua genialidade.<br>Certo dia, o pai o encontrou a riscar, com um pedaço de giz, “rodas e barras” no soalho do seu quarto.<br>Rodas e barras eram na verdade os círculos e as linhas retas da Geometria, traduzidos na linguagem infantil.<br>Logo mais provaria que a soma dos ângulos de um triângulo perfaz dois retos, resolvendo num passatempo, o 32º teorema de Euclides, cujo nome ignorava.<br>Na adolescência, aos 16 anos, escreveu um Tratado sobre as secções dos cones ‘Traité des sections coniques’, um problema de alta Geometria, que assombrou o mundo profissional da época.<br>O próprio Descartes, ao lê-lo, se recusou a acreditar tivesse sido escrito por um jovem dessa idade. Dois anos mais tarde, construiu o jovem matemático uma máquina de contar, com o principal objetivo de aliviar seu pai dos complicados cálculos que necessitava fazer na sua lida com as finanças do Município.<br>Numa época em que não estavam aperfeiçoadas as tábuas logarítmicas, este engenho prestou grandes serviços aos que se ocupavam com a aritmética e mereceu numerosas reproduções.<br>Mais tarde, entre seus 23 e 25 anos, interessou-se pelos estudos da Física, escrevendo sobre o “espaço vazio”: ‘Nouvelles experiences touchant le vide’.<br>Foi também nesta época que o pai de Blaise sofreu um acidente e, por permanecer longo período na cama, teve a lhe servir de enfermeiros dois fervorosos discípulos de Cornélio Jansênio que, ao se despedirem, deixando Etienne Pascal curado, deixaram toda a família Pascal profundamente impressionada com o ideal religioso.<br>Em outubro de 1654, estando Blaise Pascal a passear de carruagem por uma ponte, assustaram-se os cavalos, tendo dois deles se precipitado da ponte, após rompidos os arreios.<br>Os outros, com a carruagem ficaram suspensos sobre o abismo, salvando a vida do cientista.<br>Dizem alguns de seus biógrafos que este fato lhe teria produzido um violento abalo, fazendo-o se dedicar às questões religiosas.<br>Contudo, depois de sua morte foi encontrado, cosido no forro de sua vestimenta, um bilhete datado de 23 a 24 de novembro de 1654, em que ele relata uma espécie de êxtase que teria experimentado, e demonstra um desejo ardente de se consagrar às coisas espirituais.<br>Escrevendo suas ‘Cartas Provinciais’, Pascal apresenta a verdadeira Igreja do Cristo não circunscrita a uma determinada organização eclesiástica, menos ainda a determinados homens de um certo período, representando casualmente a Igreja, mesmo porque, falíveis os homens, insegura seria a fé. Em 1657, suas ‘Cartas’, dezoito ao todo, foram relacionadas no Index, da Igreja.<br>São consideradas um dos maiores monumentos da literatura francesa e o atestado de uma grande sinceridade cristã.<br>A respeito, pronunciou-se Pascal: ‘Roma condenou as minhas Cartas; mas o que nelas condenei está condenado no céu ? apelo para o teu tribunal, Senhor Jesus!’<br>Relata que pediu a Deus 10 anos de saúde para poder escrever sua apologia do Cristianismo, que o mundo viria a conhecer com o nome de ‘Pensées’, contudo, confessa, Deus lhe deu quatro anos de enfermidade.<br>Nessa Apologia, ele apresenta Cristo não como o ‘Senhor morto’ de tantos cristãos, mas o Cristo vivo, sempre-vivo, aquele Cristo que segue com os homens, todos os dias.<br>Amar era para ele a melhor forma de crer, a ‘razão do coração que a razão ignora’.<br>Deus é, antes de tudo o Sumo Bem, o alvo do amor, e ele afirmava não poder crer senão num Deus que pudesse amar sinceramente.<br>A mensagem para a humanidade de sua época, para os melhores homens do século, foi uma mensagem de vasta, profunda e panorâmica espiritualidade cristã.<br>Uma espiritualidade que brilha em todas as páginas do Evangelho, a espiritualidade do Cristo. […].<br>Sua morte se deu a 19 de agosto de 1662, aos 39 anos, em Paris, sendo que os dois últimos anos de sua vida foram de intenso sofrimento.<br>A enfermidade que o tomou lhe furtou qualquer possibilidade de esforços físicos e intelectuais.”  </p>
+<p>(<a href="http://www.espiritismogi.com.br/biografias/blaise%5C_pascal.htm">http://www.espiritismogi.com.br/biografias/blaise\_pascal.htm</a>). Acessado em 13/10/10, às 12h 05min</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

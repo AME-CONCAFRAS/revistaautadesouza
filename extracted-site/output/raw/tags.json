@@ -1,0 +1,470 @@
+[
+  {
+    "id": 335,
+    "count": 1,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/aprenda-a-tocar/",
+    "name": "aprenda a tocar",
+    "slug": "aprenda-a-tocar",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/335"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=335"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 344,
+    "count": 1,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/auta-de-souza/",
+    "name": "Auta de Souza",
+    "slug": "auta-de-souza",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/344"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=344"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 28,
+    "count": 52,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/destaque/",
+    "name": "destaque",
+    "slug": "destaque",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/28"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=28"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 107,
+    "count": 0,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/deus/",
+    "name": "Deus",
+    "slug": "deus",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/107"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=107"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 109,
+    "count": 0,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/deus-a-inteligencia-suprema/",
+    "name": "DEUS A inteligência Suprema",
+    "slug": "deus-a-inteligencia-suprema",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/109"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=109"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 108,
+    "count": 2,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/deusdoutrina-espirita/",
+    "name": "DeusDoutrina Espírita",
+    "slug": "deusdoutrina-espirita",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/108"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=108"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 339,
+    "count": 6,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/espiritismo/",
+    "name": "espiritismo",
+    "slug": "espiritismo",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/339"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=339"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 347,
+    "count": 1,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/jesus/",
+    "name": "Jesus",
+    "slug": "jesus",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/347"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=347"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 340,
+    "count": 1,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/maria/",
+    "name": "Maria",
+    "slug": "maria",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/340"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=340"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 333,
+    "count": 8,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/musica/",
+    "name": "musica",
+    "slug": "musica",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/333"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=333"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 336,
+    "count": 8,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/musicas-espiritas/",
+    "name": "músicas espíritas",
+    "slug": "musicas-espiritas",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/336"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=336"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  },
+  {
+    "id": 334,
+    "count": 1,
+    "description": "",
+    "link": "https://www.revistaautadesouza.com/index.php/tag/violao/",
+    "name": "violão",
+    "slug": "violao",
+    "taxonomy": "post_tag",
+    "meta": [],
+    "_links": {
+      "self": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags/334"
+        }
+      ],
+      "collection": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/tags"
+        }
+      ],
+      "about": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/taxonomies/post_tag"
+        }
+      ],
+      "wp:post_type": [
+        {
+          "href": "https://www.revistaautadesouza.com/index.php/wp-json/wp/v2/posts?tags=334"
+        }
+      ],
+      "curies": [
+        {
+          "name": "wp",
+          "href": "https://api.w.org/{rel}",
+          "templated": true
+        }
+      ]
+    }
+  }
+]

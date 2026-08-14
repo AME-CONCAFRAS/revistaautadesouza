@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A música | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Como fazer na casa espírita</span>
+          <h1>A música</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-02T11:38:22 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/musica-1024x683-1.jpg" alt="" class="alignleft" width="365" height="243" />
+
+<p>“Diversos trabalhos espíritas, para maior eficiência, se beneficiam de música apropriada como, por exemplo: o de vibrações para curas, o de efeitos físicos e outros. A música apropriada não será, naturalmente, a música mundana, fútil, criada para a dança e o lazer como, também não será aquela criada como expressão das paixões e dos sentimentos animalizados do homem, mas sim a música serena, a melodia suave que enleva o espírito e o transporta às esferas celestiais, a música harmoniosa cujas vibrações correspondem às dos sentimentos elevados de fé, amor e alegria. Para preparar o ambiente, auxiliar as vibrações, para apaziguar os corações, para ajudar a emissão de fluidos, para saturar o ambiente de vibrações elevadas, para tudo serve a música, conquanto não represente um ato ritual, mas simplesmente preparatório e auxiliar, nos trabalhos espíritas. Nas reuniões ou atos públicos e piedosos do Espaço é a música utilizada como alto elemento inspirador e de deleite espiritual, conforme constatamos pelas obras que descrevem a vida nessas esferas felizes.” (Edgard Armond. <em>Trabalhos Práticos de Espiritismo</em>. Cap. V item 18 ).</p>
+<h2>o valor da música para o Plano Espiritual</h2>
+<p><strong>A MÚSICA CELESTE</strong></p>
+<p>“A música celeste não é produzida por fricções de arco sobre cordas: tudo é fluídico, tudo é espiritual, tudo é inspirado pelo pensamento de Deus.” (Léon Denis. <em>O Espiritismo na arte</em>. 3ª lição, parte IX)</p>
+<p><strong>A música nobre influencia as almas</strong></p>
+<p>“[…] os grandes músicos da Terra, […] obedecem […] a gloriosos impulsos das forças do Infinito, porquanto a música na Terra é, por excelência,<br>a arte divina. […]</p>
+<p>Apenas desse modo podereis compreender a sagrada influência que a música nobre opera nas almas, arrebatando-as, em quaisquer ocasiões, às ideias indecisas da Terra, para as vibrações do íntimo com o Infinito.”(Emmanuel. <em>O consolador.</em> Psicografia de Francisco Cândido Xavier. Perg. 167)</p>
+<p><strong>PODER E AÇÃO DAS VIBRAÇÕES SONORAS</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/71d2ec1ce6cd4c9bb0aaedce214ddaf5bf40cb79r1-743-413v2_hq-1.jpg" alt="" class="alignleft" width="388" height="215" />
+
+<p><strong>Experiência de André Luiz na Colônia Nosso Lar</strong></p>
+<p>“Mal terminara a explicação, as setenta e duas figuras começaram a<br>cantar harmonioso hino, repleto de indefinível beleza. A fisionomia de<br>Clarêncio, no círculo dos veneráveis companheiros, figurou-se-me tocada de<br>mais intensa luz. O cântico celeste constituía-se de notas angelicais, de<br>sublimado reconhecimento. Pairavam no recinto misteriosas vibrações de<br>paz e de alegria e, quando as notas argentinas fizeram delicioso staccato,<br>desenhou-se ao longe, em plano elevado, um coração maravilhosamente<br>azul (1), com estrias douradas. Cariciosa música, em seguida, respondia aos louvores, procedente talvez de esferas distantes. Foi aí que abundante chuva de flores azuis se derramou sobre nós…” (André Luiz. <em>Nosso lar.</em> Psicografia de Francisco Cândido Xavier. Cap.3)</p>
+<p>A música é o <strong>médium</strong> da harmonia; ela a recebe e a dá, como o refletor é o <strong>médium</strong> da luz, como tu és o <strong>médium</strong> dos Espíritos. (Allan Kardec. <em>Obras Póstumas</em>. A música celeste)</p>
+<p>“[…] o som, o ritmo, a harmonia, são forças criadoras. Se nós pudéssemos calcular o poder das vibrações sonoras, avaliar sua ação sobre a matéria fluídica, sua forma de agrupar os turbilhoes de átomos, chegaríamos a um dos segredos da energia espiritual[…].” (Léon Denis. O Espiritismo na arte. Parte VI. A Música- parte 1)</p>
+<p><strong>A MÚSICA EXPRIMINDO BOM ÂNIMO E ALEGRIA</strong></p>
+<p>“[…] a caravana espiritual se dispunha a partir, quando Maria se lembrou dos discípulos perseguidos pela crueldade do mundo.[…] aproximando-se de uma jovem encarcerada, de rosto descarnado e macilento, lhe disse<br>ao ouvido: <strong>“Canta, minha filha! Tenhamos bom ânimo!</strong>…[…]. Daí a instantes, seu canto melodioso era acompanhado pelas centenas de vozes dos que choravam no cárcere, aguardando o glorioso testemunho. […], desde esse dia, nos tormentos mais duros, os discípulos de Jesus têm cantado na Terra, <strong>exprimindo o seu bom ânimo e a sua alegria,</strong> guardando a suave herança de nossa <strong>Mãe Santíssima</strong>.” (Humberto de Campos. <em>A Boa Nova</em>. Psicografia de Francisco Cândido Xavier. Cap.30)</p>
+<p><strong>A MÚSICA NO CENTRO ESPÍRITA</strong></p>
+<p>Podemos e devemos usar a música dentro de nossas Casas Espíritas, como forma de divulgação do Consolador Prometido, tendo, portanto, o cuidado de escolhermos as músicas adequadas para o ambiente. Tão importante quanto levarmos a música para dentro da Casa Espírita é proporcionarmos aos irmãos do Centro a oportunidade de cantarem as músicas juntamente com a equipe de Alegria Cristã. Os HINÁRIOS são a maneira mais fácil e prática de incentivarmos os nossos irmãos a cantarem conosco, uma vez que de posse das letras das músicas fica mais fácil aprender a melodia. Heis o valor e importância do HINÁRIO, companheiro inseparável da equipe de Alegria Cristã.</p>
+<p>“Preferir as composições artísticas de feitura espírita, integral, preservando-se a pureza doutrinária.A Arte enobrecida estende o poder do Amor.”(André Luiz. <em>Conduta espírita</em>. Psicografado por Francisco Cândido Xavier. Cap. 44)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

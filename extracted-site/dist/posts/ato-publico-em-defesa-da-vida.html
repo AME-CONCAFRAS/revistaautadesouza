@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ato Público em Defesa da Vida | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Como fazer na casa espírita</span>
+          <h1>Ato Público em Defesa da Vida</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-25T10:53:34 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p> “ Lancemos a mensagem do bem, onde o mal procura envolver situações , criaturas e coisas, estabelecendo aflições.” Meimei ( Autores diversos. Dicionário da alma**.**  Psicografado por Francisco Cândido Xavier. FEB. 2. ed., p.257).</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/hands-2847508_1280.png" alt="" class="alignleft" width="414" height="275" />
+
+<p>O Ato Público em Defesa da Vida é uma ação realizada em espaço público, que pode ser: num parque, numa praça ou num local com grande circulação de pessoas, onde são montados estandes para aplicação de vários temas: <strong>Eutanásia, Pena de Morte, Aborto, Suicídio, Drogas, Depressão, etc.</strong></p>
+<p>Além das atividades destacadas, outras são realizadas: alegria cristã, distribuição de mensagens, momento artístico, ginástica aeróbica, com destaque para a caminhada Pela Vida e pela Paz que objetiva chamar a atenção da comunidade para os fatos tão graves contra a vida, esclarecendo à luz da Doutrina Espírita.</p>
+<p><strong>PLANEJAMENTO</strong>  </p>
+<p>Para a realização do ato público em defesa da Vida, em espaço público, temos que prever:</p>
+<p>·       Indicar os coordenadores das atividades que serão realizadas.</p>
+<p>·       Definir data, local e duração do evento.</p>
+<p>·       Estimar a meta de participantes.</p>
+<p>·       Definir quantidade dos estandes temáticos.</p>
+<p>·       Definir o programa de divulgação, perante as Casas Espíritas.</p>
+<p>·       Definir a quantidade de materiais de divulgação.</p>
+<p>·       Estimar gastos.</p>
+<p>·       Providenciar autorização junto ao setor responsável pelo espaço público.</p>
+<p>·       Providenciar as barracas, seja por doação ou aluguel.</p>
+<p>Esses assuntos serão discutidos em reunião registrados em atas, para que sejam devidamente acompanhados, após a primeira reunião é definido o calendário para as próximas. Recomendamos que as reuniões iniciem com 3 meses de antecedência da data do evento.</p>
+<p><strong>AÇÕES PRELIMINARES</strong></p>
+<p>·       Providenciar treinamentos aos coordenadores das atividades.</p>
+<p>·       Distribuir as tarefas aos trabalhadores.</p>
+<p>·       Verificar com antecedência quem irá realizar apresentação musical.</p>
+<p>·       Tomar as providências para o lanche dos trabalhadores.</p>
+<p>·       Definir os brindes para o sorteio junto ao público participante.</p>
+<p>·       Montagem das barracas, para aplicação dos temas de estudos.</p>
+<p><strong>PROVIDÊNCIAS</strong></p>
+<p>·       Mensagens, crachás, aparelhagem de som, tendas, materiais para a apresentação das palestras, água mineral, relatórios e canetas.  </p>
+<p><strong>ASSIM REALIZAMOS O ATO PÚBLICO EM DEFESA DA VIDA:</strong></p>
+<p><strong>ALEGRIA CRISTÃ: 8:50 – 9:10</strong></p>
+<p>Salientando a importância da música como fator indutor, promovendo adesão mental dos trabalhadores e daqueles que passam pelo local do evento.</p>
+<p><strong>PRECE INICIAL: 9:10 – 9:15</strong></p>
+<p>O coordenador da atividade poderá fazê-la ou indicar outro trabalhador.</p>
+<p><strong>DISTRIBUIÇÃO DE MENSAGENS PELOS JOVENS E DEMAIS TRABALHADORES: 9:15 – 10:30</strong></p>
+<p>Caminhando pelo percurso delineado realizam a distribuição de mensagens e convidam os transeuntes para a participação das atividades nos estandes.</p>
+<p><strong>O QUE SÃO OS ESTANDES TEMÁTICOS? 9:15 – 10:30</strong></p>
+<p>Nos estandes são apresentados vários temas em defesa da vida: Eutanásia, Pena de Morte, Aborto e Suicídio e outros temas como Drogas, Depressão, etc.</p>
+<p>Nos estandes são afixados cartazes e banners relativos aos temas abordados.</p>
+<p><strong>MOMENTO ARTÍSTICO OU AERÓBICO: 10:30 – 11:00</strong></p>
+<p>O momento artístico é uma atividade praticada antes do início da caminhada, com a finalidade de envolver o participantes em clima de alegria e vibração.</p>
+<p>Outra ação bem sucedida é a ginástica aeróbica, que promove a interação e também o aquecimento para a caminhada.<br>Lembrando da importância de manter o estoque de água disponível para servir aos trabalhadores e aos participantes.</p>
+<p><strong>CAMINHADA PELA VIDA E PELA PAZ: 11:00 – 11:50</strong></p>
+<p>Com a participação dos convidados e dos trabalhadores, é realizada a caminhada, conforme percurso definido. Durante a caminhada são distribuidas mensagens, panfletos, exposição de faixas e são entregues papéis numerados, para permirtir a participação no sorteio ao final da caminhada. Sugestão de brindes: Livros Espíritas e artigos esportivos.</p>
+<p><strong>LANCHE APÓS A  CAMINHADA: 11:50 – 12:10</strong> </p>
+<p>Ao término da caminhada é servido um lanche aos trabalhadores.</p>
+<p><strong>PREMIAÇÃO: 12:10 – 12:28</strong></p>
+<p>Antes do encerramento das atividades é realizado o sorteio dos premios.</p>
+<p><strong>PRECE FINAL: 12:28 – 12:30</strong></p>
+<p>O coordenador realiza a prece ou indica alguém para fazê-la.</p>
+<p>Quer saber sobre outras ações Educativas em Defesa da Vida consulte o Manual das ações da Campanha Educativa em Defesa da Vida Contra o Aborto, disponível no site <a href="http://www.editoraautadesouza.com.br/">www.editoraautadesouza.com.br</a></p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

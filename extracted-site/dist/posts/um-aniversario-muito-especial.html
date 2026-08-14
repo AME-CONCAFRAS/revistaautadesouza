@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Um aniversário muito especial | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>Um aniversário muito especial</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T16:52:03 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália<br><strong>Personagens:</strong> O Livro dos Espíritos, A gênese, O Livro dos Médiuns, O Evangelho Segundo o Espiritismo, O Céu e o Inferno, O que é o Espiritismo e Obras Póstumas.</p>
+<p>**Cenário: Um ambiente físico (sala ou salão), sendo preparado para uma festa de aniversário.<br>**<br>(Ao som de uma música, entra o Narrador, caracterizado de alguém que lembra um intelectual)</p>
+<p><strong>Narrador</strong> – Boa noite crianças, como vocês estão? Tudo bem? (sorrindo e ficando sério ao mesmo tempo). Que bom, que bom ver vocês aqui. Este é um local muito especial, sabem por quê? (esperar resposta, incentivando-a). É porque aqui está sendo preparado um aniversário pra lá de especial! Um aniversário genial! E o mais fantástico é que todos vocês foram convidados. Quem já recebeu o convite? Ah! Os evangelizadores que estão aí perto de vocês estão com os convites, podem entregar minhas amigas e meus amigos, queremos todas as crianças neste aniversário (incentivar os evangelizadores a simular que estão entregando os convites). Receberam? Então vamos nos preparar! Primeiro o banho (vai simulando os momentos citados com gestos, incentivando os alunos a participarem através da imaginação), agora vestindo a roupa, escovando os dentes, penteando os cabelos, calçando os sapatos, passando perfume, etc… Vejam quem está preparando este aniversário! São os irmãos do aniversariante! Vamos ver o que está acontecendo antes da festa? Vamos pegar nossa lente que vê além das paredes, que vê longe, longe… Silêncio!!!</p>
+<p>(Vai saindo vagarosamente de cena. Coloca-se uma música e entram os dois primeiros irmãos. O Livro dos Médiuns e o Evangelho Segundo o Espiritismo)</p>
+<p><strong>L. dos Médiuns</strong> – Vamos lá meu irmão, não podemos parar, precisamos trabalhar bastante, para organizarmos todas as nossas tarefas.<br><strong>O Evangelho</strong> – Vamos sim, Jesus já disse “Meu Pai trabalha até agora e eu trabalho também”. Então nós não podemos parar.<br><strong>L. dos Médiuns</strong> – Temos que preparar esta festa para nosso irmão com muito carinho!<br><strong>Evangelho</strong> – É mesmo, nosso irmão merece todo nosso amor!</p>
+<p>(Começam a organizar o ambiente. Nesse momento Entra o Livro: O Céu e o Inferno)</p>
+<p><strong>O Céu e o Inferno</strong> – Olá, irmãos, como estão os preparativos?<br><strong>L. dos Médiuns</strong> – Tudo vai indo muito bem.<br><strong>O Evangelho</strong> – Que bom que você chegou! É muito bom trabalharmos juntos!<br><strong>O Céu e o Inferno</strong> – Eu também adoro trabalhar. Esse negócio de ficar parado, não é para mim. Mas e aí, será que nosso irmão ficará feliz?</p>
+<p>(Nesse momento entra A Gênese, e fala:)</p>
+<p><strong>A Gênese</strong> – Claro que ele ficará feliz. Imagina, tudo está sendo preparado com tanto amor. E a origem de tudo é o amor.<br><strong>L. dos Médiuns</strong> – Olá, querida irmã, como você está?<br><strong>A Gênese</strong> – Muito bem, sempre explicando a origem de tudo!!!<br><strong>O Evangelho</strong> – Que bom! Mas agora vamos terminar os preparativos. Vai ser uma grande surpresa!</p>
+<p>(Faz que estão arrumando e continuam a conversar)</p>
+<p><strong>O Céu e o Inferno</strong> – Nosso irmão está ficando bem velhinho, vocês não acham?</p>
+<p><strong>A Gênese</strong> – Que nada, 150 anos! (adaptar conforme o ano que estiver sendo apresentado o teatro) Ele ainda é muito novinho!<br><strong>O Evangelho</strong> – Bom, novo ou velho, isso não é o mais importante. O que vale mesmo é que ele é muito inteligente e importante.<br><strong>L. dos Médiuns</strong> – Isso mesmo! Ele é muito sábio! É a base para a vida de todas as pessoas.<br><strong>A Gênese</strong> – E os nossos irmãos O que é o Espiritismo e a caçulinha Obras Póstumas, não virão?<br><strong>O Céu e o Inferno</strong> – Claro que sim, já devem estar chegando por aí!<br><strong>O Evangelho</strong> – E por falar neles….</p>
+<p>(Nesse momento entram O que é o Espiritismo e Obras Póstumas)</p>
+<p><strong>Os dois</strong> – Olá irmãos!<br><strong>Obras Póstumas</strong> – Como estão os preparativos?<br><strong>O que é o Espiritismo</strong> – Estou tão emocionado!<br><strong>L. dos Médiuns</strong> – Está tudo pronto. Todos nós estamos emocionados também!</p>
+<p>(Nesse momento ouve-se um barulho)</p>
+<p><strong>Todos</strong> – Nossa! Aí vem ele.<br><strong>A Gênese</strong> – Onde estão os convidados!<br><strong>O Evangelho</strong> – (Mostrando as crianças)- Veja, estão todos aí!<br><strong>L. dos Médiuns</strong> – Vamos nos esconder, para fazermos a surpresa!<br><strong>O Céu e o Inferno</strong> – (Falando para as crianças) – Silêncio!!! Todos em silêncio para ele não perceber!</p>
+<p>(Os livros se escondem. Coloca-se uma música e entra O Livro dos Espíritos)</p>
+<p><strong>L. dos Espíritos</strong> – (Observando o ambiente) _ Nossa que lindo! Será de quem é o aniversário?</p>
+<p>(Os livros aparecem e falam em conjunto)</p>
+<p><strong>Todos</strong> – É seu aniversário querido irmão!!!<br><strong>L. dos Espíritos</strong> – Meu?<br><strong>Todos</strong> – Sim, seu aniversário!<br><strong>L.dos Espíritos</strong> – Nossa! Estou tão preocupado em ajudar as pessoas e iluminar consciências, que até esqueci que era meu aniversário!</p>
+<p><strong>O Evangelho</strong> – Entretanto, querido irmão<br>Nós não nos esquecemos de você<br>E hoje, com carinho,<br>Queremos lhe agradecer…</p>
+<p><strong>L. dos Médiuns</strong> – Agradecer por você existir,<br>E por todos os esclarecimentos<br>Que você tem proporcionado<br>Iluminando os pensamentos!</p>
+<p><strong>O Céu e o Inferno</strong> – Seu nascimento foi um marco<br>No caminho da humanidade<br>Trazendo ensinamentos<br>De Amor e de Verdade!</p>
+<p><strong>A Gênese</strong> – A partir de seu nascimento<br>Também fomos surgindo<br>Ampliando seus ensinos<br>E, com você interagindo!</p>
+<p><strong>Obras Póstumas:</strong> Mesmo chegando depois<br>Sendo o irmão temporão<br>Guardo os seus ensinos<br>Como parte de meu coração!</p>
+<p><strong>O que é o Espiritismo:</strong> Parabéns pra você<br>Nesta data querida…<br>Continue sempre a levar<br>Compreensão sobre a Vida!</p>
+<p><strong>Todos os irmãos</strong> – (Adaptar para a idade conforme o ano correspondente)<br>Cento e cinquenta anos<br>De O Livro dos Espíritos<br>Cento e cinquenta anos<br>De O Livro dos Espíritos!<br>P A R A B E N S !!!</p>
+<p><strong>L. dos Espíritos</strong> – Estou tão emocionado, que não sei o que dizer. Só tenho agradecer a Deus e a Jesus pela bênção da minha existência! Que eu possa, Senhor, continuar levando luz às consciências, principalmente às crianças.<br><strong>L. dos Médiuns</strong> – Veja também quem veio ver você!</p>
+<p>(Neste momento entra Allan Kardec – que poderá ser a mesma pessoa que fez o narrador, caracterizado diferente)</p>
+<p><strong>Allan Kardec</strong> – Meu filho querido, em l8 de abril de 1857 você nascia. Que Deus o abençoe por todas as bênçãos que tem espalhado pela humanidade! (abraçam-se emocionados). A seguir A.Kardec, olha para as crianças e fala) – Queridas crianças, que bom receber vocês no aniversário de meu filho, aqui na Terra, O Livro dos Espíritos! Ele ainda é bem novinho! Está completando apenas 150 anos (adaptar), mas já espalhou luz para grande parte da humanidade e vai continuar espalhando mais ainda. Por isso convidamos a todos vocês agora, para juntos cantarmos os parabéns para ele. Vamos Lá!</p>
+<p><strong>Todos os Livros</strong> – Muito bem, vamos lá! (Todos começam a cantar : Parabéns pra você!)</p>
+<p>(Logo depois os livros se misturam às crianças, principalmente O Livro dos Espíritos, para receber os parabéns das crianças, fixando sempre a sua idade. Começa a festa preparada pelos Evangelizadores. Sugerimos também, se possível, a entrega de uma lembrancinha de O Livro dos Espíritos).</p>
+<p>Texto escrito especialmente para a CONCAFRINHAS – Araguaina/07. Homenagem carinhosa aos 150 de “O Livro dos Espíritos”, pelo qual agradecemos a Deus, a Jesus, a Kardec e a toda equipe de O Espírito de Verdade. A autora.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

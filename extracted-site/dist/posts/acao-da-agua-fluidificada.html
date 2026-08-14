@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ação da Água Fluidificada | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Mediunidade</span>
+          <h1>Ação da Água Fluidificada</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-02T00:09:55 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>“[…] Ora, desde que ele pode operar uma modificação nas propriedades da água, pode também produzir um fenômeno análogo com os fluidos do organismo, donde o efeito curativo da ação magnética, convenientemente dirigida.” </p>
+<p>(Allan Kardec, O livro dos médiuns, item 131)</p>
+<img src="http://161.35.11.199/wp-content/uploads/2020/05/copo-água-bebidas-refrescantes.jpg" alt="" class="alignright" width="600" height="400" />
+
+<p>Você sabe a ação da água fluidificada no organismo?</p>
+<p><strong>Absorve e conduz a bioenergia</strong></p>
+<p>“A água, em face da sua constituição molecular, é elemento que absorve e conduz a bioenergia que lhe é ministrada. Quando magnetizada e ingerida, produz efeitos orgânicos compatíveis com o fluido de que se faz portadora.”</p>
+<p>Manuel P. de Miranda, Loucura e obsessão, cap. 3</p>
+<p>“De todos os corpos da Natureza, a água é o que mais completamente recebe o fluido magnético, e o recebe de maneira a chegar facilmente ao estado de saturação.”</p>
+<p>Michaelus, Magnetismo espiritual, cap. XV, p.136</p>
+<p><strong>Age diretamente sobre os órgãos afetados</strong></p>
+<p>“É sobretudo nas doenças internas que a água magnetizada age de uma maneira espantosa; ela transporta diretamente o magnetismo aos órgãos afetados. Dai um vaso d’água magnetizada a um paciente que tem, por exemplo, uma dor lateral; alguns momentos após que a tiver bebido parecerá que essa água desce à sede do mal.” Deleuze, Instruction pratique suor le magnétisme animal, 1825, p.74</p>
+<p><strong>Acelera a cura</strong></p>
+<p>“Vi água magnetizada produzir efeitos tão maravilhosos que temi estar em ilusão e só pude neles crer após muitas experiências. Em geral os magnetizadores não fazem dela muito uso. Eles se poupariam de muita fadiga, dispensariam seus pacientes de muitos remédios, acelerariam a cura se atribuíssem a esse meio toda confiança que merece.” Deleuze, nstruction pratique suor le magnétisme animal, 1825, p.73</p>
+<p><strong>Não há contra indicação</strong></p>
+<p>“ A água magnetizada tem a vantagem de não fazer mal, ser introduzida facilmente e os enfermos a bebem com prazer.”</p>
+<p>Deleuze, Histoire critrique do magnétisme animal, 1813, p.119-120</p>
+<p><strong>Recomendado sempre fazer uso</strong></p>
+<p>“Eu disse que o magnetizador pode acumular o fluido magnético nos corpos que toca; é certo que diversos corpos se impregnam dele mais ou menos. aquele que mais se impregna dele é a água; e é necessário sempre fazer com que os doentes que são tratados pelo magnetismo bebam a água magnetizada.”  </p>
+<p>Deleuze, Histoire critrique do magnétisme animal, 1813, p.120</p>
+<p>“Recomendamos com muita ênfase a água magnetizada para os pacientes que se fazem tratar pela magnetização.” </p>
+<p>Millet, Cour de megnétisme animal en douze leçons, 1858, p.8</p>
+<p><strong>Para fluidificação das águas</strong> </p>
+<p><strong>Não existem condições especiais</strong></p>
+<p>Existem condições especiais para que os Espíritos amigos possam fluidificar a água pura, como sejam as presenças de médiuns curadores, reuniões de vários elementos,etc,etc?</p>
+<p> A caridade não pode atender a situações especializadas. A presença de médiuns curadores, bem como as reuniões especiais, de modo algum podem constituir o preço do benefício aos doentes, porquanto os recursos dos guias espirituais, nessa esfera de ação, podem independer do concurso medianímico, considerando o problema dos méritos individuais. </p>
+<p>Emmanuel, O consolador, perg. 104</p>
+<p><strong>Pode ser em benefício coletivo ou particular</strong></p>
+<p> No tratamento ministrado pelos Espíritos amigos, a água fluidificada, para um doente, terá o mesmo efeito em outro enfermo?</p>
+<p>A água pode ser fluidificada, de modo geral, em benefício de todos; todavia, pode sê-lo em caráter particular para determinado enfermo, e, neste caso, é conveniente que o uso seja pessoal e exclusivo. </p>
+<p>Emmanuel, O consolador, perg. 103</p>
+<p><strong>Não é necessário destampar as garrafas</strong></p>
+<p>“Nenhum corpo lhe opõe (ao fluido) obstáculo; ele os penetra e atravessa todos. Até agora nenhum se conhece que seja capaz de o isolar.” </p>
+<p>Allan Kardec, Obras póstumas, 1a parte, p.122</p>
+<p><strong>Veja agora um caso de fluidificação das águas por imposição de mãos</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/agua-fluidificada-porpiedades-1024x466-1.jpg" alt="" class="aligncenter" width="1024" height="466" />
+
+<p>Caso: A fluidificação das águas por imposição de mãos</p>
+<p>Livro: Nos domínios da Mediunidade, Cap 12;</p>
+<p>Autor: André Luiz, psicografia de Francisco Cândido Xavier;</p>
+<p>Local: Grupo Espírita na Terra;</p>
+<p>Personagens desencarnados: Clementino, Orientador Espiritual do Grupo Espírita; Áulus, Instrutor da equipe; Hilário e André Luiz, aprendizes;</p>
+<p>Atividades: Reunião de atendimento espiritual em grupo espírita na crosta terrestre.</p>
+<p>“Pequeno cântaro de vidro, com água pura, foi trazido à mesa.</p>
+<p> E porque Hilário perguntasse se iríamos as­sistir a alguma cerimônia especial, o Assistente explicou, afável:</p>
+<p>— Não, nada disso. A água potável destina-se a ser fluidificada. O líquido simples receberá recursos magnéticos de subido valor para o equilíbrio psicofísico dos circunstantes.</p>
+<p>Com efeito, mal acabávamos de ouvir o apon­tamento, Clementino se abeirou do vaso e, de pen­samento em prece, aos poucos se nos revelou co­roado de luz.</p>
+<p>Daí a instantes, de sua destra espalmada sobre o jarro, partículas radiosas eram projetadas sobre o líquido cristalino que as absorvia de maneira total.</p>
+<p>— Por intermédio da água fluidificada — continuou Aulus —, precioso esforço de medicação pode ser levado a efeito. Há lesões e deficiências no veículo espiritual a se estamparem no corpo físico, que somente a intervenção magnética con­segue aliviar, até que os interessados se disponham à própria cura.”(p. 123-124)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

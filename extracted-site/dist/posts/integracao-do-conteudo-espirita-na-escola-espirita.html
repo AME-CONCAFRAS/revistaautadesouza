@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integração do conteúdo espírita na Escola Espírita | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Educação e espiritismo</span>
+          <h1>Integração do conteúdo espírita na Escola Espírita</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-10-03T16:24:48 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <h4>ALIANÇA DA CIÊNCIA COM A RELIGIÃO</h4>
+<p>“No dia em que a evolução dispensar o concurso religioso para a solução dos grandes problemas educativos da alma do homem, a humanidade inteira estará integrada na religião, que é a própria verdade, encontrando-se unida a Deus, pela Fé e pela Ciência então irmanadas.” (Emmanuel, <em>Palavras de Emmanuel,</em> p. 128)</p>
+<h4>Jesus e a ciência universal</h4>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/10/earth-1388003_1920-2.jpg" alt="" class="alignleft" width="1024" height="576" />
+
+<p>“Ora, entre os fariseus, havia um homem chamado Nicodemos, senador dos judeus – que veio à noite Ter com Jesus e lhe disse: ‘Mestre, sabemos que vieste da parte de Deus para nos instruir como um doutor, porquanto ninguém poderia fazer os milagres que fazes, se Deus não estivesse com ele.’<br>Jesus lhe respondeu: ‘Em verdade, em verdade, digo-te: Ninguém pode ver o reino de Deus se não nascer de novo.’<br>Disse-lhe Nicodemos: ‘Como pode nascer um homem já velho? Pode tornar a entrar no ventre de sua mãe para nascer segunda vez?’<br>Retorquiu-lhe Jesus: ‘Em verdade, em verdade, digo-te: Se um homem não renasce da água e do Espírito, não pode entrar no reino de Deus. – O que é nascido da carne é carne e o que é nascido do Espírito é Espírito. – Não te admires de que eu te haja dito ser preciso que nasças de novo. – O Espírito sopra onde quer e ouves a sua voz, mas não sabe donde vem ele, nem para onde vai; o mesmo de dá com todo homem que é nascido do Espírito.’<br>Respondeu-lhe Nicodemos: ‘Como pode isso fazer-se?’ – Jesus lhe observou: ‘Pois quê! És mestre em Israel e ignoras estas coisas? Digo-te em verdade, em verdade, que não dizemos senão o que sabemos e que não damos testemunho, senão do que temos visto. Entretanto, não aceitas o nosso testemunho. – Mas, se não me credes, quando vos falo estas coisas da Terra, como me crereis, quando vos fale das coisas do céu?&#39;” (S. João, cap. 3, vv. 1 a 12.)</p>
+<h4><strong>A ciência e religião, as duas alavancas da inteligência humana</strong></h4>
+<p>“A Ciência e a Religião são as duas alavancas da inteligência humana: uma revela as leis do mundo material e a outra as do mundo moral. Tendo, no entanto, essas leis o mesmo princípio, que é Deus, não podem contradizer-se. Se fossem a negação uma da outra, uma necessariamente  estaria em erro e a outra com a verdade, porquanto Deus não pode pretender a destruição de sua própria obra.  </p>
+<p>[…] São chegados os tempos em que os ensinamentos do Cristo têm de ser completados; em que o véu intencionalmente lançado sobre algumas partes do ensino tem de ser levantado; em que a Ciência, deixando de ser exclusivamente materialista, tem de levar em conta o elemento espiritual em que a Religião, deixando de ignorar as leis orgânicas e imutáveis da matéria, como duas forças que são, apoiando-se uma na outra e marchando combinadas, se prestarão mútuo concurso. Então, não mais desmentida pela Ciência, a Religião adquirirá inabalável poder, porque estará de acordo com a razão, já se lhe não podendo mais opor a irresistível lógica dos fatos.” (Allan Kardec, <em>O Evangelho Segundo o Espiritismo</em>, cap1, item 8)</p>
+<h4><strong>Evangelho  e Ciência</strong></h4>
+<p>Muito do que ontem era mistério somente aceito pela fé, hoje é do domínio científico, por conseguinte, da razão. Muito do que hoje é considerado sobrenatural será conhecido e utilizado pela Ciência de amanhã. A razão terá se dilatado com o auxílio da intuição que, ampliando-se igualmente, prosseguirá descerrando novos horizontes ao conhecimento humano.<br>A fé tem suas raízes na intuição.<br>Graças à intuição da vida espiritual e da existência de um Poder Criador, inerente a todos os povos, cultos ou incultos, o homem tem depositado fé nos princípios religiosos que, não obstante as falhas e excessos, lhe freiam os impulsos primitivos e lhe apontam conduta adequada ao aperfeiçoamento.<br>A Ciência tem suas bases no raciocínio e na experimentação, instrumentos com os quais a razão seleciona e comprova os conhecimentos. Fé e Ciência, se inicialmente marcharam juntas sob a orientação de seres superiores, fizeram-no pelos caminhos Humanos, cedo tisnados de erros e astúcia ou desvirtuados pelos interesses pessoais, o que não tardaria em separá-las.<br>Olhando a realidade cósmica sob conceituação diversa, cada uma passou a explicar as coisas a seu modo. Colocaram-se em campos opostos, teimando em não ver o que uma e outra encerravam de verdade ou absurdo. Entretanto, como acabamos de concluir, o ser em evolução atinge fatalmente um ponto em que não poderá mais seguir por um destes caminhos sem perceber sua ligações com o outro.<br>Nem a Ciência  pode prescindir da intuição, com as realidades maiores reveladas pela fé, quando deseja ultrapassar as limitações sensoriais para atingir dimensões mais amplas de conhecimento, nem a Fé pode ignorar a Ciência  se não se quiser perder no labirinto das superstições ou nos absurdos do dogma, falsamente apoiados em preceitos vacilantes e inverificáveis.” (Vilma Americano Brasil, <em>Evangelho e Ciência,</em> cap. 03)</p>
+<h4>O duplo caráter da revelação espírita</h4>
+<p>“O Espiritismo, dando-nos a conhecer o mundo invisível que nos cerca e no meio do qual vivíamos sem o suspeitarmos, assim como as leis que o regem, suas relações com o mundo visível, a natureza e o estado dos seres que o habitam e, por conseguinte, o destino do homem depois da morte, é uma verdadeira revelação, na acepção científica da palavra.<br>Por sua natureza, a revelação espírita tem duplo caráter: participa ao mesmo tempo da revelação divina e da revelação científica. (Allan Kardec, <em>A Gênese</em>, cap. 01, itens 12 e 13)</p>
+<h4>A origem da incompatibilidade da ciência com a religião</h4>
+<p>“A incompatibilidade que se julgou existir entre essas duas ordens de idéias provém apenas de uma observação defeituosa e de excesso de exclusivismo, de um lado e de outro. Daí um conflito que deu origem à incredulidade e à intolerância.<br>A Ciência e a Religião não puderam, até hoje, entender-se, porque, encarando cada uma as coisas do seu ponto de vista exclusivo, reciprocamente se repeliam. Faltava com que encher o vazio que as separava, um traço de conhecimento que as aproximasse. Esse traço de união está no conhecimento das leis que regem o Universo espiritual e suas relações com o mundo corpóreo, leis tão imutáveis quanto as que regem  o movimento dos astros e a existência dos seres. Uma vez comprovadas pela experiência essas relações, uma nova luz se fez: a fé dirigiu-se à razão; esta nada encontrou de ilógico na fé: vencido foi o materialismo. Mas, nisso, como em tudo, há pessoas que ficam atrás, até serem arrastadas pelo movimento geral, que as esmaga, se tentam resistir-lhe, em vez de o acompanharem. É toda uma revolução que neste momento se opera e trabalha os espíritos. Após uma elaboração que durou mais de dezoito séculos, chega ela a sua plena realização e vai marcar uma nova era na vida da Humanidade. Fáceis são de prever as conseqüências: acarretará para as relações sociais inevitáveis modificações, às quais ninguém terá força para se opor, porque elas estão nos desígnios de Deus e derivam da lei do progresso, que é lei de Deus. (Allan Kardec, <em>O Evangelho Segundo o Espiritismo</em>, cap.1, item 8)</p>
+<h4>A evolução do espírito rumo à ciência universal</h4>
+<p> A Conquista da Perfeição Moral  </p>
+<p>“A perfeição sideral só o Espírito puro a possui. Não possui, porém, o saber sem limites, do qual só Deus dispõe. Nem mesmo os Espíritos que mais aproximados dele estão pela ciência desfrutam desse saber sem limites, porquanto nenhum Espírito criado, repetimo-lo, pode jamais igualar a Deus.<br>Aquele que conquistou a infalibilidade moral não é infalível  intelectualmente, senão de modo relativo e por efeito da assistência de que goza, quando lhe falta alguma coisa da ciência para o desempenho de uma missão qualquer. Perfeitos moralmente, com relação a todos os Espíritos, sejam quais forem, ele é sempre , porque Deus assim o quer, assistido e sustentado pelos  que lhe estão superiores em ciência.<br>A hierarquia, que, no tocante à ciência, existe entre os Espíritos puros, não passa, dentro da igualdade resultante da pureza que lhes é comum, de um princípio de assistência que se origina de Deus, única fonte donde dimanam e à qual remontam todo mérito e todo poder.<br>Sabei-o bem: o Espírito puro, embora muito tenha que fazer ainda para ganhar os extremos limites da ciência universal no infinito, é sempre, moral e intelectualmente, perfeito com relação a todos os planetas de que se acerque.” (J. B. Roustaing, <em>Os Quatro Evangelhos</em>, vol. 1, 8. ed., p. 326-329)</p>
+<p><strong><em>A Marcha inconsciente da Ciência na Terra à Procura de Deus.</em></strong></p>
+<p>“Há muitas coisas novas no campo atual dos conhecimentos e das pesquisas sobre Astronomia, que estão forçando a inteligência humana a rever os seus conceitos sobre os Universos, na marcha inconsciente da Ciência à procura de Deus.</p>
+<p>De perplexidade em perplexidade, a Ciência caminha em campos novos, aos quais não está ainda acostumada. De repente, sem pretender  e sem esperar, descobrirá o Espírito.<br>O homem gostaria de desenvolver suas capacidades  sensoriais (auditivas, olfativas, visuais, etc.) para além dos limites que a sua atual condição fisiológica estabelece. Intuitivamente sente que isso é possível , mas ainda não percebeu que só poderá consegui-lo despertando e desenvolvendo, educando e aprimorando os seus poderes psíquicos, que conjugados aos físicos, lhe descerrarão horizontes imensuráveis de novas dimensões da vida. Mas, o que sobretudo ainda não percebeu é que o poder interior, espiritual, só eclode como conseqüência de um alto equilíbrio de tensão de forças dinâmicas suficientemente poderosas para potencializar o Espírito e desenvolver-lhe as capacidades divinas.<br>O que a Ciência terá de admitir é que não existe somente o nosso Universo; existem incontáveis Universos, na Criação Infinita. Eles são formados, nascem, crescem, envelhecem, contraem-se, “morrem”, explodem e renascem, numa incessante recriação, sob as vistas paternais de Deus e sob o controle amoroso e potente dos Arcanjos Divinos.<br>Diante das perplexidades da Ciência e da pressão cada vez maior dos fatos novos, que não cessam de fustigar a inteligência  humana e de rumá-la para novas pesquisas e conclusões mais altas, cabe aos espíritas a sublime missão de oferecer aos pesquisadores e estudiosos humanos a contribuição substancial  do Espiritismo, de modo a ajudar os cientistas sinceros a orientar-se com segurança na direção das verdadeiras soluções. Mas os espíritas só conseguirão fazer isso, com verdadeiro proveito , se se dedicarem seriamente ao estudo das realidades e dos progressos da Ciência, cotejando tudo, ponto por ponto, com as pesquisas, os conhecimentos e as revelações do Espiritismo, de modo a oferecer contribuições sérias aos pesquisadores e aos homens de pensamento que laboram fora dos muros. Alertados para inúmeros aspectos importantes da realidade, que insistem em desdenhar ou simplesmente não conhecem, talves alguns estudiosos capazes e de boa-fé acertem o passo no sentido de maiúsculas e felizes constatações.<br>Acostumados a tudo reduzir ao alcance dos seus sentidos ou da sua capacidade de entendimento, os homens se atordoam  diante da grandeza ilimitada da Criação e só o seu inveterado orgulho os impede de desarmar o espírito e fazê-lo explodir em adoração de respeito e amor pelo Todo-Poderoso. Entretanto, os progressos da Astronomia, talvez mais que quaisquer outros, os estão forçando, cada vez mais, a essa sublime rendição, que marcará o fecundo e glorioso início de uma nova e insuspeitada sabedoria.” (Áureo, <em>Universo e Vida</em>, cap.2)</p>
+<h4>A contribuição do espiritismo à ciência</h4>
+<p> <em><img src="http://www.revistaautadesouza.com/public/imagem/conteudo/ckfinder/images/ci%C3%AAncia%20e%20religi%C3%A3o.jpg" alt=""> Tem o Espiritismo absoluta necessidade da ciência terrestre?</em><br>— Essa necessidade de modo algum pode ser absoluta. O concurso científico é sempre útil, quando oriundo da consciência esclarecida e da sinceridade do coração. Importa considerar, todavia, que a ciência do mundo, se não deseja continuar no papel de comparsa da tirania e da destruição, tem absoluta necessidade do Espiritismo, cuja finalidade divina é a iluminação dos sentimentos, na sagrada melhoria das características morais do homem. (Emmanuel, <em>O Consolador,</em> questão 1)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primavera | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>Primavera</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T17:29:04 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália<br><strong>Personagens:</strong> Narrador, Girassol, Margarida, Rosa, Árvore, Passarinho 1 e 2, Borboleta, Primavera, Chuva e Sol.</p>
+<p>**Cenário: Um campo ou jardim<br>**<br><strong>Narrador:</strong> Olá amiguinhos, como estão vocês, tudo bem? Comigo está tudo ótimo, graças a Deus. Sabe, quando eu estava vindo para cá, aconteceu um fato muito interessante. Fiquei observando a Natureza e… Bem, não achem que eu fiquei meio maluco, mas… (Fala como que baixinho para o público) eu estava ouvindo as flores, as árvores e todas as plantas desse lugar conversarem…. Isso mesmo, elas estavam conversando uma com as outras. (Fala com o público) Vocês estão duvidando? Querem ouvir essa conversa? (Incentiva para que digam sim). Então prestem bastante atenção. Todos devem ficar com os olhos bem fechados…</p>
+<p>(Entram em cena o Girassol, a Rosa, a Margarida e a Árvore).</p>
+<p><strong>Narrador:</strong> Muito bem! Agora podem abrir… Era uma vez um lindo campo, onde moravam várias plantinhas. Lá os pássaros, as borboletas e as crianças adoravam passear. Acontece que naquele campo, estava acontecendo algo diferente. As plantinhas estavam muito tristes… Sabem por quê? É porque… Bom, não serei eu que vou lhes contar, ouçam vocês mesmos a conversa entre elas… Muita atenção. (Vai saindo de cena).</p>
+<p><strong>Girassol:</strong> Veja como estou, amiga Margarida. Minhas folhas já caíram quase todas.<br><strong>Margarida:</strong> E minhas pétalas, vejam como estão! Rasgadas, sem vida…<br><strong>Rosa:</strong> E eu então? Pareço ter apenas espinhos.<br><strong>Árvore:</strong> Eu também quase não tenho mais folhas.<br><strong>Girassol:</strong> O que está acontecendo?</p>
+<p>(Nesse instante entram dois passarinhos, cantarolando, e falam):</p>
+<p><strong>Passarinhos:</strong><br>Tudo, tudo nessa vida,<br>Tem sua razão de ser.<br>Não fiquem tristes amigos,<br>Outro dia irá nascer.</p>
+<p><strong>Árvore:</strong> Bom dia amigos passarinhos.<br><strong>Passarinhos:</strong> Bom dia! Bom dia!<br><strong>Rosa:</strong> Por que vocês disseram, que tudo na vida tem sua razão de ser?<br><strong>Margarida:</strong> Qual é a razão de estarmos assim, despetaladas, sem flores?<br><strong>Passarinho 1:</strong> Estamos com muita pressa, não temos tempo para lhes explicar.<br><strong>Passarinho 2:</strong> Quando a borboleta Borborina aparecer por aqui, perguntem a ela, pois ela é muito sábia e poderá responder as dúvidas de vocês.<br><strong>Passarinhos:</strong> Até logo, já vamos… Mas, lembre-se: (repetem o poeminha anterior e vão saindo).<br><strong>Todos:</strong> Esperem!</p>
+<p>(Os passarinhos saem cantarolando).</p>
+<p><strong>Girassol:</strong> Assim não vale.<br><strong>Rosa:</strong> Eles nos deixaram curiosos.<br><strong>Margarida:</strong> O que faremos?<br><strong>Árvore:</strong> O jeito é aguardarmos a visita da amiga Borborina.</p>
+<p>(Nesse momento entra a borboleta Boborina, cantarolando ou, ao som de uma música).</p>
+<p><strong>Borborina:</strong> Bom dia, amigos! (boa tarde, ou boa noite, de acordo com o horário da apresentação).<br><strong>Todos:</strong> Bom dia, Borborina.<br><strong>Girassol:</strong> Estávamos esperando você.<br><strong>Borborina:</strong> Esperando por mim? Que bom! Mas, para quê?<br><strong>Rosa:</strong> Gostaríamos que nos explicasse a razão de estarmos assim…<br><strong>Margarida:</strong> Por que nossas folhas e pétalas estão caindo?<br><strong>Borborina:</strong> Ora, amigos! Antes de tornar-me borboleta e voar por toda parte, eu era uma simples lagarta a rastejar com muita dificuldade. Para a minha transformação tive que ficar por algum tempo em um casulo, e…<br><strong>Girassol:</strong> O que esse fato tem a ver com nossa situação?<br><strong>Borborina:</strong> É que toda renovação exige algum sacrifício e esforço da nossa parte.<br><strong>Árvore:</strong> Como assim?<br><strong>Borborina:</strong> Para ser uma borboleta, tive antes de passar pelo esforço de ficar em um casulo. Assim, vocês, para terem folhas e pétalas novas, têm antes de passar pelo sacrifício de perder as velhas.</p>
+<p>(Nesse momento, entram os dois passarinhos cantarolando e falando).</p>
+<p><strong>Passarinhos:</strong><br>A primavera está chegando<br>Para a natureza renovar.<br>Alegria, muita alegria,<br>É o que ela distribuirá.</p>
+<p><strong>Todos:</strong> A Primavera?<br><strong>Rosa:</strong> Quem é a Primavera?<br><strong>Girassol:</strong> Será a prima da Vera?<br><strong>Pass. 1:</strong> Não, não é a prima da Vera. Primavera é a estação do ano encarregada de renovar toda natureza!<br><strong>Pass. 2:</strong> É ela que ajudará todos vocês a renovarem suas folhas e pétalas.<br><strong>Margarida e Girassol:</strong> Mesmo?<br><strong>Borborina:</strong> Sim, é isto que eu queria lhes explicar.<br><strong>Árvore:</strong> E quando ela chegará?<br><strong>Pass. 1:</strong> A partir do dia 22 de setembro.<br><strong>Pass. 2:</strong> E esse dia já está chegando!<br><strong>Todos:</strong> Oba! Oba, que alegria!<br><strong>Borborina:</strong> Bom, amigos, agora já tenho que ir embora, tenho muito trabalho a fazer. Até logo.<br><strong>Passarinhos:</strong> Nós também já estamos indo, até breve amigos! (Saem repetindo o poema sobre a chegada da primavera).</p>
+<p>(Nesse momento entra o Narrador).</p>
+<p><strong>Narrador:</strong> As plantinhas ficaram na expectativa. Cada uma imaginando alguma coisa. O que será? Acho que cada uma estava imaginando como seria a primavera e em como gostariam de ficar, ou seja, lindas, lindas. A noite chegou trazendo consigo as estrelas e a lua prateada. Cada plantinha pôs-se a dormir para sonhar em como ficariam com a chegada da estação primavera. Quando o dia estava quase amanhecendo, algo diferente aconteceu. As plantinhas foram acordadas por uma brisa diferente. O que estaria acontecendo?</p>
+<p>(Nesse instante, coloca-se uma música, e entra uma menina com roupa bem colorida, bailando, representando a primavera. Ela deverá trazer um cesto em sua mão, contendo algumas folhas e pétalas – de papel ou outro material -, que irá entregando ou colando em cada plantinha da história. Todas deverão mostrar um sorriso bem alegre à medida que forem recebendo. Junto com a Primavera, deverão entrar a chuva – caracterizada – molhando todas as plantas e depois o sol. Concluída esta encenação, a Primavera ficará entre a chuva e o sol).</p>
+<p><strong>Girassol:</strong> Como fiquei belo!</p>
+<p>(Nesse momento pode-se colocar a música O Girassol – Vinícius de Moraes – e ele dançar uma coreografia. Pode ainda acrescentar alguns bailarinos caracterizados de girassóis).</p>
+<p><strong>Rosa:</strong> E eu? Vejam como estou colorida e bela.<br><strong>Margarida:</strong> Minhas pétalas se renovaram!</p>
+<p>(Colocar uma música para que elas se aproximem do público, mostrando a renovação que tiveram).</p>
+<p><strong>Árvore:</strong> Eu estou novinha. Minhas folhas se renovaram e as flores começam a se abrir. Em breve poderei produzir os meus frutos!</p>
+<p>(Ela poderá cantar com todas as crianças a música: Árvore Feliz).</p>
+<p><strong>Todos:</strong> Obrigada amiga Primavera!<br><strong>Primavera:</strong> Sou eu que agradeço a Deus a oportunidade de ajudar a Natureza se renovar. Que pena que os humanos estão fazendo tantas coisas erradas, que estão prejudicando toda natureza. Sabe, quase não consegui chegar na época certa.<br><strong>Árvore:</strong> Nossa, se a senhora não tivesse chegado, ainda estaríamos feias e tristes, sem poder alegrar o ambiente onde estamos.<br><strong>Primavera:</strong> Isso mesmo! Por isso contamos com as crianças para ajudar a tomar conta da Natureza! Assim, amiguinhos poderei voltar todos os anos, renovando os campos, os vales, as cerras, tornando ainda mais bonito todos os lugares!</p>
+<p>(Nesse momento, entram os dois passarinhos e a borboleta Borborina, cantando a música: Primavera de Frankilim José Heibuth e/ou outra que fale sobre o tema).</p>
+<p>Letra da música:<br>Primavera, primavera,<br>Alegria, alegria<br>Em toda parte, em minha vida.<br>Canta o grilo<br>Sopra o vento<br>A borboleta voa,<br>Dizendo ao mundo<br>A vida é boa</p>
+<p>(Após a música, começam a falar).</p>
+<p><strong>Passa. 1:</strong> Que lindo está esse lugar!<br><strong>Passa. 2 :</strong> Amigas plantas, como vocês ficaram belas!<br><strong>Borboleta:</strong> Vamos cuidar cada vez mais da natureza, para que a nossa amiga Primavera, sempre chegue na hora certa.<br><strong>Chuva e Sol:</strong> Isso mesmo! Então, VIVA A ESTAÇÃO DA PRIMAVERA!<br><strong>Todos:</strong> VIVA!</p>
+<p>(Começam a cantar todos juntos, novamente, a música Primavera, e vão se misturando no meio das crianças).</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

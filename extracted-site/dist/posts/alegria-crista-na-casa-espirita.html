@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alegria Cristã na Casa Espírita | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Como fazer na casa espírita</span>
+          <h1>Alegria Cristã na Casa Espírita</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-02T10:36:21 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>“Que é Arte?</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Design-sem-nome-100.png" alt="" class="alignleft" width="410" height="247" />
+
+<p>A arte pura é a mais elevada contemplação espiritual por parte das criaturas. Ela significa a mais profunda exteriorização do ideal, a divina manifestação desse “mais além” que polariza as esperanças da alma.</p>
+<p>O artista verdadeiro é sempre o “médium” das belezas eternas e o seu trabalho, em todos os tempos, foi tanger as cordas mais vibráteis do sentimento humano, alçando-o da Terra para o Infinito e abrindo, em todos os caminhos, a ânsia dos corações para Deus, nas suas manifestações supremas de beleza, de sabedoria, de paz e de amor.” (Emmanuel. <em>O Consolador</em>. Psicografado por Francisco Cândido Xavier. Perg. 161)</p>
+<p><strong>” Todo artista pode ser também um missionário de Deus?</strong></p>
+<p>Sempre que a sua arte se desvencilha dos interesses do mundo, transitórios e perecíveis, para considerar tão-somente a luz espiritual que vem do coração uníssono como cérebro, nas realizações da vida, então o artista é um dos mais devotados missionários de Deus, porquanto saberá penetrar os corações na paz da meditação e do silêncio, alcançando o mais alto sentido da evolução de si mesmo e de seus irmãos em humanidade. (Emmanuel. <em>O Consolador</em>. Psicografado por Francisco Cândido Xavier. Perg. 162)</p>
+<p>“A beleza é um dos atributos divinos. Deus colocou nos seres e nas coisas esse misterioso encanto que nos atrai, nos seduz, nos cativa e enche a alma de admiração, às vezes de entusiasmo. A arte é a busca, o estudo, a manifestação dessa beleza eterna, da qual aqui na Terra não percebemos senão um reflexo.” (Leon Denis. <em>O Espiritismo na Arte</em>)</p>
+<h2><strong>A arte na Casa Espírita</strong></h2>
+<p>“O Centro do Espiritismo Evangélico, por mais humilde, é sempre santuário de renovação mental na direção da vida superior. Nenhum de nós que sirva, embora com a simples presença, a uma instituição dessa natureza, deve esquecer a dignidade do encargo recebido e a elevação do sacerdócio que nos cabe. (…).” (Emmanuel. <em>Educandário de Luz</em>. Autores Diversos)</p>
+<p>“A arte bem compreendida é poderoso meio de elevação e renovação. É a fonte das mais puras alegrias; ela embeleza a vida, sustenta e consola nas provas e traça com antecedência para o espírito os caminhos do céu. Quando ela é sustentada, inspirada por uma fé sincera, por um nobre ideal, a arte é sempre uma fonte fecunda da instrução, um meio incomparável de civilização e aperfeiçoamento.” (Leon Denis. O Espiritismo na Arte)</p>
+<p>“E todos vós que podeis produzir, dai; dai o vosso gênio, dai a vossa inspiração, dai o vosso coração, que Deus abençoará. Poetas, literatos, que não sois lidos senão pelas pessoas da sociedade, satisfazei seus lazeres, mas que o produto de algumas de vossas obras seja consagrado ao alívio dos infelizes; pintores, escultores, artistas de todos os gêneros, que a vossa inteligência venha também em ajuda dos vossos irmãos; com isso não tereis menos glória, mas haverá alguns sofrimentos a menos.</p>
+<p>Todos vós podeis dar; em qualquer classe que estiverdes, tendes alguma coisa que podeis partilhar; o que quer que seja que Deus vos tenha dado, disso deveis uma parte àquele a quem falta o necessário, porque em seu lugar estaríeis bem contente que um outro dividisse convosco. Vossos tesouros da Terra serão um pouco menores, mas vossos tesouros no céu serão mais abundantes; nele recolhereis ao cêntuplo a que houverdes semeado em benefícios nesse mundo.” (Allan Kardec. <em>O Evangelho Segundo o Espiritismo</em>. Cap.13, item 16)</p>
+<p>A Arte, quando bem utilizada, pode ser um grandioso instrumento de trabalho, renovação mental e estimulador da fraternidade dentro da Casa Espírita. E, para cuidar do bom e adequado funcionamento das atividades artísticas é que existe a <strong>Comissão de Alegria Cristã.</strong></p>
+<p><strong>A Comissão da Alegria Cristã tem os seguintes objetivos:</strong></p>
+<p>· Divulgar a Doutrina Espírita através da Arte Cristianizada;</p>
+<p>· Estreitar os laços afetivos através da fraternidade legítima;</p>
+<p>· Promover momentos que dinamizem o entrosamento fraterno, a harmonização, a alegria entre os trabalhadores, sensibilizando-os para a importância do lazer como fonte de integração e apoio vibracional;</p>
+<p>· Direcionar todas as suas atividades para a Assistência Social.</p>
+<p><strong>Assim, dentro da Casa Espírita ela é responsável por :</strong></p>
+<p>· Desenvolver atividades de entrosamento como: música, jogos, dinâmicas, teatros e outras;</p>
+<p>· Contribuir eficientemente nas atividades práticas;</p>
+<p>· Proporcionar a integração dos trabalhadores de diversos locais, estimulando o espírito fraterno e cristão;</p>
+<p>· Estar sempre em contato com a direção da Casa auxiliando no cumprimento dos horários, harmonização dos ambientes, cartazes, etc.</p>
+<p>· Estar atenta às solicitações de todos os Institutos já que é uma equipe de apoio.</p>
+<p><strong>Equipes e Atribuições</strong></p>
+<p>De acordo com o organograma acima, as atividades da Comissão da Alegria Cristã são divididas em equipes com atividades específicas, como:</p>
+<p><strong>Eventos</strong></p>
+<p>Cuidar da organização das atividades artísticas da Casa Espírita. Atividades como: contatos com grupos artísticos, coreografias, organização geral do cronograma de eventos mensal, semestral ou anual onde ocorrerão apresentações artísticas e onde será necessária a atuação da comissão.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/arte1-820x455-1.jpg" alt="" class="alignright" width="419" height="232" />
+
+<p><strong>Música</strong></p>
+<p>Está encarregada de:<br>· Estar presente em todas as atividades do Centro Espírita onde será necessária a utilização da música para fins diversos;<br>· Escolher previamente as músicas a serem utilizadas de acordo com a atividade;<br>· Elaborar hinários;<br>· Gravar CDs;<br>· Atuação direta nos Postos de Assistência de acordo com a programação destes.</p>
+<p><strong>Oficinas e Cursos</strong></p>
+<p>· Programar oficinas e cursos fixos oferecidos pela comissão e até mesmo escolher o local adequado. Há diversos tipos de oficinas, dentre elas podemos citar: Canto, Técnicas de Violão, Teatro e Treinamento para os Encontros Fraternos, além das atividades fixas da comissão como Coral e Aulas de Violão.<br>· Selecionar as oficinas;<br>· Organizar os responsáveis por oficinas;<br>· Organizar e acompanhar todo o processo das oficinas e cursos fixos.</p>
+<p><strong>Técnicas e Dinâmicas</strong></p>
+<p>É responsável por:<br>· Jogos (brincadeiras, gincanas, etc.) associados à Comissão de Disciplina;<br>· Dinâmicas que visem integrar as pessoas segundo o espírito fraterno;<br>· Seleção das brincadeiras (confecção de apostilas específicas);<br>· Treinamento dos membros para organização e execução nas atividades dos Institutos, principalmente no Instituto do Jovem e da Criança;<br>· Observar local adequado para realização.</p>
+<p><strong>Secretaria</strong></p>
+<p>Cuidar…<br>· da sala da Alegria Cristã e material da Comissão;<br>· dos contatos com grupos de outras Casas e cidades;<br>· da ata das reuniões e anotações;<br>· do Apoio às subcomissões.</p>
+<p><strong>O QUE ANDRÉ LUIZ ORIENTA SOBRE A ARTE CRISTÃ</strong></p>
+<p><strong>Perante a arte</strong></p>
+<p>Colaborar na cristianização da arte, sempre que se lhe apresentar ocasião.<br>A arte deve ser o Belo criando o Bom.</p>
+<p>Repelir, sem crítica azeda, as expressões artísticas torturadas que exaltem a<br>animalidade ou a extravagância.<br>O trabalho artístico que trai a Natureza nega a si próprio.</p>
+<p>Burilar incansavelmente as obras artísticas de qualquer gênero.<br>Melhoria buscada, perfeição entrevista.  </p>
+<p>Preferir as composições artísticas de feitura espírita integral, preservando-se a pureza doutrinária.<br>A arte enobrecida estende o poder do amor.</p>
+<p>Examinar com antecedência as apresentações artísticas para as reuniões festivas nos arraiais espíritas, dosando-as e localizando-as segundo as condições das assembleias a que se destinem.<br>A apresentação artística é como o ensinamento: deve observar condições e lugar.<br>(André Luiz. <em>Conduta Espírita</em>. Psicografado por Francisco Cândido Xavier. Cap. 44)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

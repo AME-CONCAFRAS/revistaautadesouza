@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coragem da fé | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Educação e espiritismo</span>
+          <h1>Coragem da fé</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-18T22:46:11 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><em>Todo aquele que me confessar e me reconhecer diante das pessoas, também o reconhecerei e o confessarei diante de meu Pai  que está nos Céus; – e todo aquele que me renegar diante das pessoas, igualmente o renegarei diante de meu Pai  que está nos Céus</em>. (S. Mateus,10:32,33).<br><em>Se alguém se envergonhar de mim  e de minhas palavras, o Filho do Homem se envergonhará também dele, quando vier em sua glória e na de seu Pai e dos santos anjos.</em> (S. Lucas, 9:26).  
+ </p>
+<img src="http://161.35.11.199/wp-content/uploads/2020/05/Eurípedes-1.jpg" alt="" class="alignleft" width="348" height="348" />
+
+  
+<p>“A coragem de opinião sempre foi estimada entre as pessoas, pois há mérito em enfrentar perigos, perseguições, contradições e até os simples sarcasmos, aos quais se expõem, quase sempre, aqueles que não temem proclamar abertamente ideias que não são as todos. Aqui, como em tudo, o mérito é proporcional às circunstâncias e à importância do resultado. Sempre há fraqueza em recuar diante das consequências opinião própria e em renegá-la; há casos em que isso constitui extrema covardia, equiparada a fugir no momento do combate.</p>
+<p>Jesus combate essa covardia, do ponto de vista especial da sua doutrina, esclarecendo que, se alguém se envergonhar de suas palavras, Ele igualemente  dele; que renegará quem o renegou; que aquele que o confessar diante das pessoas, Ele o reconhecerá perante seu Pai que está no Céus; em outros termos: <em>os que temerem se confessar discípulos da verdade são indignos de serem admitidos no reino da verdade.</em> Perderão os benefícios da sua fé, porque é uma fé egoísta que guardam para si mesmos, ocultando-a com medo para que não lhes traga prejuízo neste mundo, enquanto que, depositando a verdade acima dos seus interesses materiais, aqueles que a proclamam abertamente, trabalham pelo seu futuro e pelo dos outros, ao mesmo tempo.    </p>
+<p>Assim será com adeptos do Espiritismo; porquanto a doutrina que professam nada mais é que desenvolvimento e aplicação da doutrina do Evangelho, é a eles também que se endereçam as palavras do Cristo. Eles semeiam na Terra o que colherão na vida espiritual; lá colherão os frutos da sua coragem ou da sua fraqueza.”<br>(Allan Kardec, <em>O Evangelho Segundo o Espiritismo</em>, Editora Auta de Souza, 2.ed., p. 286-287)      </p>
+<h4>A RESPONSABILIDADE DO ESPÍRITA</h4>
+<p>“Se, então, em sua previdente sabedoria, a Providência só gradualmente revela as verdades, sempre as torna evidente à proporção que a humanidadeestá madura para recebê-las, mantendo-as reservadas e não sob o alqueire. r Todavia, as pessoas que as adquirem, escondem-nas, quase sempre, do povo com o objetivo de dominá-lo; são esses que, verdadeiramente, depositam a luz debaixo do alqueire. (Allan Kardec, <em>O Evangelho Segundo o Espiritismo</em>, Editora Auta de Souza, 2.ed., p. 282)  </p>
+<p>“Espíritas! Amai-vos! Eis o primeiro ensinamento. Instruí-vos! Eis o segundo. Todas as verdades de encontram no Cristianismo; os erros que nele se enraizaram são de origem humana; eis que além-túmulo, que supunheis fosse o nada, vozes vos clamam: “Irmãos! nada perece! Jesus Cristo é o vencedor do mal. Sede os vencedores da impiedade.” (Allan Kardec, <em>O Evangelho Segundo o Espiritismo</em>, 2.ed., p.103)</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Jesus-kardec-e-Chico.jpg" alt="" class="aligncenter" width="925" height="246" />
+
+<h4>O CONSOLADOR PROMETIDO</h4>
+<p>“<em>Se me amais, guardai os meus mandamentos; e eu rogarei a meu Pai e ele vos enviará outro consolador, a fim de que fiquei eternamente convosco: – O Espírito de Verdade, que o mundo não pode receber, porque o não vê e absolutamente o não conhece. Mas, quanto a vós, conhecê-lo-eis, porque ficará convosco e estará em vós. – Porém, o Consolador, que é o Santo Espírito, que meu Pai enviará em meu nome, vos ensinará todas as coisas e vos fará  recordar tudo o que vos tenho dito.</em> (S. João, cap. XIV, vv. 15 a 17 e 26.)  </p>
+<p>Jesus promete outro consolador: O Espírito de Verdade, que o mundo ainda não conhece, por não estar maduro para o  compreender, consolador que o Pai enviará para ensinar todas as coisas e para relembrar o que o Cristo há dito. Se, portanto, o Espírito de Verdade tinha de vir mais tarde ensinar todas as coisas, é que o Cristo não dissera tudo; se ele vem relembrar o que o Cristo disse, é que o que este disse foi esquecido ou mal compreendido. “ (Allan Kardec, <em>O Evangelho Segundo o Espiritismo</em>, 99.ed., p. 134)</p>
+<h4><strong>O OBJETIVO DO ENSINO CONFESSIONAL ESPÍRITA</strong></h4>
+<p>“A idéia clara e precisa que se faça da vida futura proporciona inabalável fé no porvir, fé que acarreta enormes conseqüências sobre a moralização dos homens, porque muda completamente <em>o ponto de vista sob o qual encaram eles a vida  terrena</em>. Para quem se coloca, pelo pensamento, na vida espiritual, que é indefinida, a vida corpórea se torna simples passagem, breve estada num país ingrato. As vicissitudes e tribulações dessa vida não passam de incidentes que ele suporta com paciência, por sabê-las de curta duração, devendo seguir-se-lhes um estado mais ditoso. A morte nada mais estará de aterrador; deixa de ser a porta que se abre para o nada e torna-se a que dá para a libertação, pela qual entra o exilado numa mansão de bem-aventurados e de paz. Sabendo temporária e não definitiva a sua estada no lugar onde se encontra, menos atenção presta às preocupações da vida, resultando-lhe daí uma calma de espírito que tira àquela muito do seu amargor.  </p>
+<p>Pelo simples fato de duvidar da vida futura, o homem dirige todos o seus pensamentos para a vida terrestre. Sem nenhuma certeza quanto ao porvir, dá tudo ao presente. Nenhum bem divisando mais precioso do que os da Terra, torna-se qual a criança que nada mais vê além de seus brinquedos. E não há o que não faça para conseguir os únicos bens que se lhe afiguram reais. A perda do menor deles lhe ocasiona causticante pesar; um engano, uma decepção, uma ambição insatisfeita, uma injustiça de que seja vítima o orgulho ou a vaidade feridos são outros tantos tormentos, que lhe transformam a existência numa perene angústia, infligindo-se ele, desse modo, a si próprio, verdadeira tortura de todos os instantes. Colocando o ponto de vista, de onde considera a vida corpórea, no lugar mesmo em que aí se encontra, vastas proporções assume tudo o que o rodeia. O  mal que o atinja, como o bem que toque aos outros, grande importância adquire aos seus olhos. Aquele que se acha no interior de uma cidade, tudo lhe parece grande; assim os homens que ocupem as altas posições, como os monumentos. Suba ele, porém, a uma montanha, e logo bem pequenos lhe parecerão homens e coisas.  </p>
+<p>É  o que sucede ao que encara a vida terrestre do ponto de vista da vida futura; a Humanidade, tanto quanto as estrelas do firmamento, perde-se na imensidade. Percebe então que grandes e pequenos estão confundidos, como formigas sobre um montículo de terra; que proletários e potentados são da mesma estatura, e lamenta que essas criaturas efêmeras a tantas canseiras se entreguem para conquistar um lugar que tão pouco as elevará e que por tão pouco tempo conservarão. Daí se segue que a importância dada ao bens terrenos está sempre em razão inversa da fé na vida futura.  </p>
+<p>Se toda a gente pensasse dessa maneira, dir-se-ia, tudo na Terra periclitaria, porquanto ninguém mais se iria ocupar com as coisas terrenas. Não; o homem, instintivamente, procura o seu bem-estar e, embora certo de que só por pouco tempo permanecerá no lugar em que se encontra, cuida de estar aí o melhor ou o menos mal que lhe seja possível. Ninguém há que, dando com um espinho debaixo de sua mão, não a retire, para se não picar. Ora, o desejo do bem-estar força o homem a tudo melhorar, impelido que é pelo instinto do progresso e da conservação, que está nas leis da Natureza. Ele, pois, trabalha por necessidade, por gosto e por dever, obedecendo, desse modo, aos desígnio da Providência que, para tal fim, o pôs na Terra. Simplesmente, aquele que se preocupa com o futuro não liga o presente mais do que relativa importância e facilmente se consola dos seu insucessos, pensando no destino que o guarda.  </p>
+<p>Deus, conseguintemente, não condena os gozos terrenos; condena, sim, o abuso desses gozos em detrimento das coisas da alma. Contra tais abusos é que se premunem os que a si próprios aplicam estas palavras de Jesus: <em>Meu reino não é deste mundo.</em>  </p>
+<p>Aquele que se identifica com a vida futura assemelha-se ao rico que perde sem emoção uma pequena soma. Aquele cujos pensamentos se concentram na vida terrestre assemelham-se ao pobre que perde tudo o que possui e se desespera.  </p>
+<p>O Espiritismo dilata o pensamento e lhe rasga horizontes novos. Em vez dessa visão, acanhada e mesquinha, que o concentra na vida atual, que faz do instante que vivemos na Terra único e frágil eixo do porvir eterno, ele, o Espiritismo, mostra que essa vida não passa de um elo no harmonioso e magnífico conjunto da obra do Criador. Mostra a solidariedade que conjuga todas as existências de um mesmo ser, todos os seres de um mesmo mundo e os seres de todos os mundos. Faculta assim uma base e uma razão de ser à fraternidade universal, enquanto a doutrina da criação da alma por ocasião do nascimento de cada corpo torna estranhos uns aos outros todos os seres. Essa solidariedade entre as partes de um mesmo todo explica o que inexplicável se apresenta, desde que se considere apenas um ponto. Esse conjunto, ao tempo do Cristo, os homens não o teriam podido compreender, motivo por que Ele reservou para outros tempos o fazê-lo conhecido.” (Allan Kardec, <em>O Evangelho Segundo o Espiritismo</em>, 99.ed., p. 70-72)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

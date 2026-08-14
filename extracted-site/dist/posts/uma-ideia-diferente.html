@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uma ideia diferente | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>Uma ideia diferente</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T17:32:16 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália<br><strong>Personagens:</strong> Boneca, Palhaço Jujuba, Coelho, Macaco, Narrador, Palhacinho 1 e 2, Macaquinho, Coelhinho e três Borboletinhas.</p>
+<p>**Cenários: 1 – Uma Rua; 2 – Casa da Boneca; 3 – Casa do Palhaço Jujuba<br>**<br><strong>Narrador:</strong> (Entra como se estivesse procurando algo, em suspense. Olha de repente para o público e diz) – Mês de outubro, mês mais que especial!!! Sabem por quê? Porque comemoramos o dia de todas as crianças (olha sério para elas e continua), ou seja, o dia de vocês. Quero saber quem gosta de ganhar presentes nesse dia? Hum!!! Mas hoje nós vamos conhecer alguns amiguinhos que ganharam um presente diferente. Que presente será esse? Atenção…</p>
+<p>(Ao som de uma música instrumental e/ou alguma que fala de boneca, entra uma menina, representando uma boneca).</p>
+<p><strong>Boneca:</strong> Nossa! O dia das crianças está se aproximando, não sei o que darei para minha filha. Gostaria de lhe dar o presente mais lindo que uma criança boneca pode receber! Mas… o quê? O que ela gostaria de ganhar? Vou pensar… Vou pensar…</p>
+<p>(Sai de cena. Entra o Palhaço Jujuba. Colocar uma música instrumental e/ou sobre palhaço).</p>
+<p><strong>Jujuba:</strong> (todo feliz) _ Alegria, alegria, quero que meus filhos tenham muita alegria! Mas, como conseguirei lhes dar isso? A melhor solução é pensar… pensar…</p>
+<p>(Sai de cena, entram o Coelho e o Macaco).</p>
+<p><strong>Coelho:</strong> Crec, crec… chegou o dia das crianças, como comemorar?<br><strong>Macaco:</strong> Acho que darei a meus filhos um cacho de bananas, será que eles vão gostar?</p>
+<p>(Ficam pensativos. Nesse momento entra a Borboleta).</p>
+<p><strong>Borboleta:</strong> Olá amigos, em que estão pensando?<br><strong>Coelho:</strong> No dia das crianças.<br><strong>Macaco:</strong> Não sabemos que presente devemos dar para nossos filhos.<br><strong>Borboleta:</strong> Eu tenho três filhinhas e já sei o melhor presente para elas…<br><strong>O dois:</strong> Qual?<br><strong>Borboleta:</strong> Um tesouro.<br><strong>Os dois:</strong> Um tesouro?<br><strong>Borboleta:</strong> Sim, o tesouro mais valioso que podemos ter em nossas vidas.<br><strong>Macaco:</strong> E qual é?<br><strong>Coelho:</strong> Quanto ele custa? É caro?<br><strong>Borboleta:</strong> Esse tesouro é um amigo e um amigo é tão valioso que não tem preço, pois nenhum valor pode pagá-lo!<br><strong>Coelho:</strong> Um amigo!!! Que ideia diferente!!!<br><strong>Borboleta:</strong> E não é?<br><strong>Macaco:</strong> Sim, este é o melhor presente!</p>
+<p>(Entra Jujuba).</p>
+<p><strong>Jujuba:</strong> Alegria, alegria. Um amigo é uma grande alegria. Ouvi o que vocês disseram e acho que vocês têm razão…</p>
+<p>(Entra a Boneca).</p>
+<p><strong>Boneca:</strong> Pois eu também ouvi e acho que vocês todos são uns bobos. Vê se amigo é presente! Eu vou dar à minha filha muitos brinquedos, bonitos e caros!<br><strong>Jujuba:</strong> Brinquedos são importantes, mas com o tempo perdem o valor, entretanto um amigo é sempre uma fonte de amor.<br><strong>Coelho:</strong> Crec, crec, se eu não tivesse amigos, seu seria muito infeliz, pois toda riqueza do mundo não preencheria o vazio da ausência de vocês.<br><strong>Boneca:</strong> Pois eu tenho a certeza de que viveria muito bem sem vocês. E minha filha também.<br><strong>Coelho:</strong> Olha minha amiga, você sabe o que faz, mas se resolver mudar de ideia pode nos procurar. Seremos sempre seus amigos.<br><strong>Boneca:</strong> Não mudarei. Até logo.<br><strong>Todos:</strong> Até logo.</p>
+<p>(Vai saindo de cena).</p>
+<p><strong>Macaco:</strong> E então amigos, como faremos?<br><strong>Borboleta:</strong> Que tal fazermos uma festinha?<br><strong>Jujuba:</strong> Isso mesmo! Assim nossos filhos poderão se conhecer e se tornarem amigos. A festa será em minha casa, pode ser?<br><strong>Coelho:</strong> Bem amigos, vamos agora conversar com nossos filhos e contar-lhes a nossa ideia.<br><strong>Jujuba:</strong> Tenho certeza que eles vão adorar.<br><strong>Borboleta:</strong> Não podemos esquecer de dizer que apenas vamos apresenta-lhes novos amigos, mas cabe a eles saber conservá-los.<br><strong>Macaco:</strong> Sim, isso é muito importante. Mas, agora vamos embora, temos muito trabalho a fazer.<br><strong>Todos:</strong> Vamos lá!!!</p>
+<p>(Começam a cantar – ritmo da cantiga de roda: Ciranda, cirandinha):</p>
+<p>Um presente vamos dar<br>Para todas as crianças<br>Um presente diferente<br>Com amor e esperança.</p>
+<p>O presente é um amigo<br>Que nos dá o seu calor,<br>Enche a vida de alegria<br>De carinho e de amor.</p>
+<p><strong>Narrador:</strong> Assim, quando todos chegaram em casa, contaram a seus filhos e filhotes, o que haviam combinado e todos ficaram muito felizes. Todos, menos a bonequinha, que ficou com muita vontade de ir encontrar novos amigos. Dormiram, levantaram… Dormiram e levantaram novamente, até que, finalmente, o grande dia chegou. Vejamos como eles estão se sentindo.</p>
+<p>(Entram os dois palhacinhos, filhos, ao som de uma música, bem alegre).</p>
+<p><strong>Palhacinho 1:</strong> Viva! Viva! Hoje é o dia das crianças.<br><strong>Palhacinho 2:</strong> E o presente que vamos ganhar é um novo amigo!<br><strong>Palhacinho 1:</strong> Acho que será o dias das crianças mais lindo de nossas vidas!<br><strong>Palhacinho 2:</strong> Também acho, mas agora vamos andando para não chegarmos atrasado.</p>
+<p>(Cantam, também ritmo Ciranda, cirandinha e a seguir saem de cena).</p>
+<p>Crianças, criancinhas<br>Vamos todos festejar<br>Esse dia que é nosso<br>Aprendendo a ajudar.</p>
+<p>Lá, lá, lá, lá<br>Lá, lá, lá, lá<br>Esse dia que é nosso<br>Aprendendo a ajudar.</p>
+<p>(Entram um coelhinho e um Macaquinho – filhos).</p>
+<p><strong>Coelhinho:</strong> Crec, crec, vou conhecer novos amiguinhos! Que bom! Que bom!<br><strong>Macaquinho:</strong> Essa é a melhor forma de comemorarmos nosso dia.<br><strong>Coelhinho:</strong> É melhor do que ganhar uma cenoura!<br><strong>Macaquinho:</strong> Com certeza, é muito melhor! Então vamos.</p>
+<p>(Falam juntos, bem animados).</p>
+<p><strong>Os dois:</strong><br>Vamos, vamos, preparar<br>O nosso coração<br>E aos novos amigos<br>Estender as nossas mãos.</p>
+<p>(Saem de cena, entram as três Borboletinhas).<br><strong>Borboletinhas:</strong> Olá, somos três borboletinhas<br>A voar de flor em flor,<br>Este trabalho nós fazemos<br>Com alegria e amor.</p>
+<p>Hoje estamos muito felizes<br>Um presente vamos ganhar,<br>É um presente que mais e mais,<br>Irá nos alegrar.</p>
+<p>Agora já vamos indo,<br>Voando, voando, voando<br>E tão contente estamos<br>Que neste voo vamos cantando.</p>
+<p>(Cantam uma música sobre amigo e vão saindo de cena).</p>
+<p><strong>Narrador:</strong> Enquanto nossos amiguinhos estão felizes, vejamos o que está acontecendo na casa de nossa amiga boneca.</p>
+<p>**(Cenário 2: Casa da Boneca. A Boneca estará sentada em uma cadeira. Entra a bonequinha carregando vários brinquedos e fica brincando em um canto no chão, tristemente).<br>**<br><strong>Bonequinha:</strong> (Levantando-se) _ Mamãe, por que eu não posso ir à festa encontrar com meus amigos?<br><strong>Boneca:</strong> Ora, Bonequinha! Com tantos brinquedos você ainda pensa em amigos?<br><strong>Bonequinha:</strong> O que adianta mamãe, tantos brinquedos se nem mesmo tenho com quem brincar? Nem a senhora brinca comigo.<br><strong>Boneca:</strong> Que pensamento, Bonequinha! Vá brincar que isso passa.</p>
+<p>(A Bonequinha continua brincando. A Boneca mãe fica pensativa).</p>
+<p><strong>Boneca:</strong> (Para o público) – É acho que minha filha tem razão. Não adianta ter tantas coisas, tantos brinquedos sem ter amigos… Será que ainda dá tempo de voltar atrás? Vou tentar. Minha filha venha cá.<br><strong>Bonequinha:</strong> Sim, mamãe.<br><strong>Boneca:</strong> Você gostaria de ir à festa?<br><strong>Bonequinha:</strong> Claro que sim, encontrar meus amigos seria para mim o melhor presente!<br><strong>Boneca:</strong> Venha comigo, filha. Vamos ao encontro de nossos amigos!</p>
+<p>(As duas saem de cena).</p>
+<p><strong>Narrador:</strong> Parece que a amiga Boneca compreendeu que ter amigos é muito importante. Onde será que ela foi?</p>
+<p>**(Cenário3 . Nesse momento entram todos os personagens – com exceção das bonecas – com balões, flores, etc., ao som de uma música. As crianças e filhotes começam a brincar, enquanto os pais ficam conversando).  </p>
+<hr>
+<p>Jujuba:** Que alegria! Que alegria!<br><strong>Coelho:</strong> Nem eu pensava que iria ser tão divertido!<br><strong>Borboleta:</strong> Vejam como nossos filhos estão felizes.</p>
+<p>(Nesse momento batem à porta).</p>
+<p><strong>Macaco:</strong> Quem será? Não está faltando ninguém.<br><strong>Jujuba:</strong> Vou atender, assim ficaremos sabendo.</p>
+<p>(Atende a porta. É a Boneca e a Bonequinha).</p>
+<p><strong>Boneca:</strong> Olá, será que vocês são capazes de me perdoar e nos deixarem participar da festa?<br><strong>Jujuba:</strong> Claro que sim, estávamos esperando por vocês. Venha Bonequinha, vou lhe apresentar às outras crianças.<br><strong>Bonequinha:</strong> (Feliz) – Ôba! Mas que lugar bonito!<br><strong>Jujuba:</strong> Atenção crianças! Silêncio só um minutinho. Esta é a Bonequinha, uma nova amiguinha de vocês.</p>
+<p>(Todos a cumprimentam felizes).</p>
+<p><strong>Palhacinho1:</strong> Venha brincar, venha…</p>
+<p>(Vão brincar).</p>
+<p><strong>Boneca:</strong> Gostaria que todos vocês me perdoassem. Hoje tive uma grande lição.<br><strong>Borboleta:</strong> Esqueça o que aconteceu.</p>
+<img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/livro-o-dia-a-dia-16_09_2017.jpeg" alt="" />
+
+<p><strong>Coelho:</strong> Isso mesmo! Venham vamos brincar com as crianças, pois no fundo ainda somos um pouco como elas.<strong>Todos:</strong> Vamos lá….<br><strong>Boneca:</strong> (Olha para o público e declama o Poema: Momento de brincar, do Livro: O Dia-dia, Editora Auta de Souza. <a href="http://www.editoraautadesouza.com.br/index.asp?idproduto=179909">ADQUIRA O SEU AQUI.</a>) Quando termina, diz: Agora eu vou brincar também!!! Vamos!!!</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

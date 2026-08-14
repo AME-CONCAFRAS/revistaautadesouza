@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Francisco Cândido Xavier | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Missionários do bem</span>
+          <h1>Francisco Cândido Xavier</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-22T15:09:40 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>Chico Xavier nasceu no dia 2 de abril de 1910 na pequena cidade de Pedro Leopoldo, situada a 35 quilômetros de Belo Horizonte. Filho do vendedor de bilhetes de loterias João Cândido Xavier e da dona de casa Maria João de Deus, manifestou cedo sua extraordinária capacidade de entrar em contato com o outro mundo.</p>
+<p>Aos cinco anos, ele fica órfão de mãe e o pai separa os seus nove filhos entre parentes e amigos. Chico passa a viver, então, com a madrinha Rita de Cássia e o padrinho José Felizardo Sobrinho. Permanece com o casal por dois anos. </p>
+<p>Durante o tempo que viveu com a madrinha, passa por dolorosas experiências. Acreditando que o afilhado tinha o diabo no corpo, já que ele lhe contava suas visões do outro mundo, a madrinha lhe ministrava surras com vara de marmelo e chega até a lhe enterrar garfos na barriga.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/chico01.jpg" alt="" class="alignright" width="353" height="284" />
+
+<p>O menino Chico passa a ter visões da mãe no quintal da casa da madrinha, onde costumava se refugiar para rezar. Dona Maria João lhe anuncia que um anjo bom logo apareceria para ajudá-lo. Pouco tempo depois, o pai casa-se novamente. A nova esposa, Cidália Batista, exige que os filhos do primeiro casamento do marido venham a morar com ela, inclusive o pequeno Chico.</p>
+<p>Em maio de 1927, uma das irmãs de Chico, Maria Xavier sofre grave desequilíbrio mental. Até então, toda a família seguia os preceitos da Igreja Católica, mas foi requisitado o auxílio espírita, já que o problema não conseguia ser solucionado através da medicina.</p>
+<p>Depois da <a href="http://www.revistaautadesouza.com/revista/index.php?option=com_content&view=article&id=138:comemoremos-o-centenario-de-chico-xavier&catid=41:jcomments&Itemid=70#">aplicação</a> de passes, a moça recupera-se. A partir de então o jovem Chico, passa a se aprofundar no conhecimento do espiritismo e o Livro dos Espíritos de Allan Kardec. Aprende, então, o que é mediunidade.</p>
+<p>Ainda em 1927 ele ajuda na fundação do primeiro Centro Espírita de Pedro Leopoldo, num barracão onde morava um irmão de Chico, José Xavier, que assume a presidência. A primeira mensagem que Chico recebe é da mãe, Maria João de Deus.</p>
+<p>No ano de 1931, Chico tem o seu primeiro contato com Emmanuel, seu orientador espiritual.</p>
+<p>Em 1932, foi publicada a primeira obra psicografada por Chico: Parnaso de Além-Túmulo, que reuniu 14 nomes da literatura brasileira, uma coletânea de 56 poesias ditadas pelos espíritos de Augusto dos Anjos e Castro Alves, entre outros, que causou polêmica no meio literário.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/kit-4-livros-chico-xavier-libertaco-terra-ceu-sexo-destin-D_NQ_NP_866145-MLB30090861108_042019-F.jpg" alt="" class="alignright" width="446" height="168" />
+
+<p>Em 1935, passa a psicografar textos de Humberto de Campos, que havia desencarnado em 1934.</p>
+<p>Em 4 de janeiro de 1959, o médium muda para Uberaba, graças a uma transferência que conseguiu da fazenda modelo, onde trabalhava.</p>
+<p>Chico Xavier viveu seus últimos anos com uma pequena aposentadoria de escriturário do Ministério da Agricultura. Com o estado de saúde precário, já não podia mais andar, mas continuava a receber visitas, psicografar e até saia, as vezes, de cadeira de rodas, para fazer suas visitas a pessoas carentes.<img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/livros-chico-xavier-feb-francisco-candido-xavier-11_09_2017.jpg" alt="">  </p>
+<p>Foram mais de 400 livros psicografados por ele, que venderam mais de 20 milhões de exemplares.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O jovem espírita pode participar de festas? | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Galera Jovem</span>
+          <h1>O jovem espírita pode participar de festas?</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-10-03T17:31:16 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <h3>E as festas? Podemos frequentá-las?</h3>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/10/crowd-of-people-1209630_1920-2.jpg" alt="" class="alignleft" width="377" height="251" />
+
+<p>“O mundo nos faz inúmeros convites e a juventude se anima a aceitar quase todos. Até certo ponto, é valido conhecer de tudo, mas, sem de tudo fazer uso. Os lazeres são incontáveis, na pauta das atividades humanas. Porém, o comportamento deve pautar-se de bom senso, na escolha preferida. Quando se forma grupos e companheiros, ouve-se de tudo. Às vezes, até o que não se quer ouvir. É como se fosse uma mesa posta: há alimentos de difícil digestão para uns, que não os devem, portanto, ingerir. Assim são os assuntos. Eles são alimentos de todos os tipos. Se já conheces um pouco das ideias de Jesus, já podes escolher o que a consciência pede. Ouvir, podes ouvir de tudo, mas guardar somente o que é bom. As festinhas estimulam a alegria para todos que ali se reúnem. Podes ajudar os outros, mesmo nestes encontros festivos, cultivando a fraternidade e outros sentimentos elevados. São também um teste. Logo vão chegando as bebidas, vem a experimentação. O vício da bebida tem início no primeiro gole e, assim, o cigarro e as conversas improfícuas. Necessário não se deixar contaminar. O mundo está caminhando para a perfeição, em todos os seus aspectos, e as almas se encontram empenhadas com ele. O objetivo é crescer, e quem não atenta ao processo fica para trás, embaraçado na própria inércia. A inexperiência do jovem deve buscar inspiração na vivência dos pais. Consulta-os, no que tange aos acontecimentos nas festas, se ainda não sabes discernir com segurança. Se algum conflito te impede de falar em casa, sempre conhecemos alguém que nos possa ouvir e nos falar ao certo. Se és espírita, os livros são bons conselheiros, em todos os sentidos; busca-os nas horas de indecisões, que encontrarás o toque de compreensão para o que desejas saber.A doutrina dos Espíritos tem a sagrada missão de fazer reviver o cristianismo, nos dias atuais, para orientar a humanidade. Divulguemo-la onde estivermos, sem o azinhavre do fanatismo.As festinhas, sabemos, são momentos de descanso para o teu prolongado labor e os jovens têm necessidade destes encontros. A vida é convivência, é troca de experiência constantes. Mesmo sendo jovem, não te esqueças da oração, todos os dias. Ela te ajuda a guiar os teus passos, onde quer que seja. Não queremos pedir demais, no que se refere à tua reforma. Sabemos que todas as mudanças são demoradas, e elas andam pelas mãos do tempo, força de Deus em toda a Criação. Brinca, meu filho, mas aprende a brincar, para que tenhas paz no coração e tranquilidade na consciência.” </p>
+<p>Scheilla. <em>Chão de Rosas.</em> Psicografia de João Nunes Maia. 3.ed., p.152-155</p>
+<h3>Condutas Importantes</h3>
+<p>“Pudésseis, meus amigos, não ter ocupação mais agradável que a de tornar os outros felizes! Quais são os festejos mundanos que poderíeis comparar às ditosas festas que celebrais, quando, tornando-vos representantes da Divindade, levais alegria a essas pobres famílias que conhecem da vida apenas dificuldades e amarguras […].”<br> Allan Kardec. <em>O Evangelho Segundo o Espiritismo</em>. Editora Auta de Souza. 3.ed., Cap.13. item11. </p>
+<p>“Afastar-se de festas lamentáveis, como aquelas que assinalam a passagem do carnaval, inclusive as que se destaquem pelos excessos de gula, desregramento ou manifestações exteriores espetaculares. A verdadeira alegria não foge da temperança.”</p>
+<p>André Luiz. <em>Conduta Espírita</em>. Psicografia de Francisco Cândido Xavier. 19.ed., p.129.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

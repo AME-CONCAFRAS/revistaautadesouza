@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Princípios filosóficos da Escola Espírita | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Educação e espiritismo</span>
+          <h1>Princípios filosóficos da Escola Espírita</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-18T23:01:56 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <h2><strong>Deus – Jesus – Doutrina Espírita</strong></h2>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Montanha-2.jpg" alt="" class="alignleft" width="514" height="342" />
+
+<p>“Se a filosofia é a busca e a conquista da verdade absoluta, nenhuma ação humana especialmente aquelas direcionadas à educação, podem se considerar desvinculadas deste processo. <strong>Como</strong>, e <strong>que verdade</strong> se busca são as grandes questões.</p>
+<p><img src="http://www.revistaautadesouza.com/public/imagem/conteudo/ckfinder/images/Jesus.jpeg" alt="">Para sedimentar um trabalho sólido, sem se perder em divagações teóricas, esta proposta de Metodologia para Escola Espírita busca a verdade absoluta que é Deus, através dos caminhos confiáveis e seguros conhecidos pela humanidade: Jesus (“Eu sou o caminho, a Verdade e a Vida, ninguém vem ao Pai, senão por mim” – João 14:6) e a Doutrina Espírita (“Eu rogarei ao Pai, e Ele vos dará outro Consolador, para que fique eternamente convosco…” – João 14:15).</p>
+<p>Todo o trabalho pedagógico aqui proposto sustenta-se nestas três incontestáveis e seguras verdades, conforme passamos a descrever.”</p>
+<p><strong>Deus: Nossa essência e nossa destinação</strong></p>
+<p>“Assim como o fluido mentomagnético envolve e penetra o organismo fisiopsicossomático do ser humano, que modela e comanda em suas mais íntimas estruturas, o Universo inteiro vive mergulhado e penetrado pelo fluido cósmico e vivificador que dinama da Mente Paternal de Deus.</p>
+<p>Como já foi dito,  é no Eterno Pai que somos e vivemos. Ele é nossa vida e nossa luz, nossa essência e nossa destinação. Dele recebemos o dom do raciocínio e do movimento, da consciência e da vontade. Ele é a alma de nossa alma, a substância de nosso ser. Existimos e evoluímos para conhecê-Lo e nEle nos realizarmos na plenitude do Espírito, que é felicidade e harmonia, amor e poder. Viajamos para Ele desde tempos imemoráveis, do Cristal ao vírus, da alga ao cefalópode, da esponja à medusa, do verme ao batráquio, do lacertino ao mamífero, do pitecantropo ao homem.”</p>
+<p>“Quanto mais aprendermos e crescermos, mais pequeninos nos sentimos na escala evolutiva dos seres, em face das excelsas grandezas que continuamente nos deparamos. Quando, porém nos voltamos para o Senhor de Tudo e de Todos, e sentimos vibrar dentro de nós o Espírito Divino do nosso Criador e Pai, reintegramo-nos na graça e na esperança, na alegria e na felicidade de existir, cônscios de que através do tempo-espaço de nossas limitações e de nossas dores, chegaremos um dia à intemporalidade ilimitada da perfeição, no Seio Paterno do Onipotente Amor de que provimos.”</p>
+<p><strong>Jesus: Nosso Guia e Modelo</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Cristo-1000-1300-06_04_2019.jpg" alt="" class="alignleft" width="396" height="514" />
+
+<p>625. Qual o tipo mais perfeito que Deus tem oferecido ao homem, para lhe servir de guia e modelo? </p>
+<p>“Jesus.”</p>
+<p>“Para o homem, Jesus constitui o tipo da perfeição moral a que a Humanidade pode aspirar na Terra. Deus no-lo oferece como o mais perfeito modelo e a doutrina que ensinou é a expressão mais pura da lei do Senhor, porque, sendo ele o mais puro de quantos têm aparecido na Terra, o Espírito Divino o animava. Quanto aos que, pretendendo instruir o homem na lei de Deus, o têm transviado, ensinando-lhe falsos princípios, isso aconteceu por haverem deixado que os dominassem sentimentos demasiado terrenos e por terem confundido as leis que regulam as condições da vida da alma, com as que regem a vida do corpo. Muitos hão apresentado como leis divinas simples leis humanas estatuídas para servir às paixões e dominar os homens.” (Allan Kardec, <em>O Livro dos Espíritos</em>, perg. 6)</p>
+<p>“Eu sou o caminho, a verdade e a vida, ninguém vem ao Pai, senão por mim.” (Almeida, João Ferreira de, A Bíblia Sagrada – 2ª edição João 14.6)</p>
+<p>“Naturalmente, ninguém “vem ao Pai” deve significar que ninguém chegará ao estado superior de perfeição, a essa herança Divina, que já possuímos, fora dos seus ensinamentos, ou seja fora do amor que já resume inteiramente a Doutrina de Jesus, porque é o sentimento por excelência” (Kardec, Allan, <em>O Evangelho Segundo o Espiritismo,</em> FEB, 97 ed.,1994)</p>
+<p>Nota-se que Jesus não afirmou “Ninguém vai  ao Pai” mas sim “Ninguém vem ao Pai” (segundo as melhores e mais aceitas traduções do Evangelho), o que demonstra que Ele já chegou a este estado superior de perfeição.” (Alves, Walter Oliveira. Educação do Espírito. 2 ed. São Paulo, Ed. IDE)</p>
+<p><strong>Doutrina Espírita: Poderoso Elemento de Moralização</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/allankardec-11_09_2017.jpg" alt="" class="alignright" width="210" height="260" />
+
+<p>“[…] A Doutrina Espiritista é uma síntese gloriosa de fraternidade e de amor. O seu grande objeto é esclarecer a inteligência humana.” (Emmanuel, <em>O Consolador</em>, FEB,15 ed.,1991)</p>
+<p>“[…] Ministrando a prova material da existência e da imortalidade da alma, iniciando-nos em os mistérios do nascimento, da morte, da vida futura, da vida universal, tornando-vos palpáveis as inevitáveis consequências do bem e do mal, a Doutrina Espírita, melhor do que qualquer outra, põe em relevo a necessidade da melhoria individual. Por meio dela, sabe o homem donde vem, para onde vai, por que está na Terra; o bem tem um objetivo, uma utilidade prática. Ela não se limita a preparar o homem para o futuro, forma-o também para o presente, para a sociedade. Melhorando-se moralmente, os homens prepararão na Terra o reinado da paz e da fraternidade.</p>
+<p>A Doutrina Espírita é assim o mais poderoso elemento de moralização, por se dirigir simultaneamente ao coração, à inteligência e ao interesse pessoal bem compreendido.</p>
+<p>Por sua mesma essência, o Espiritismo participa de todos os ramos dos conhecimentos físicos, metafísicos e morais. São inúmeros as questões que ele envolve, as quais, no entanto, podem resumir-se nos pontos seguintes que, considerados verdades inconcussas, formam o programa das crenças espíritas.” ( Allan Kardec, <em>Obras Póstumas,</em> FEB_,_ 22 ed.,1987)</p>
+<p>Retirado do livro: <em>Manual da Escola Espírita, Ed. Auta de Souza, 2007.</em></p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

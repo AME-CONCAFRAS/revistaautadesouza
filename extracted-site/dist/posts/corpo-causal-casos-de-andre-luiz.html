@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Corpo Causal – Casos de André Luiz | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Mediunidade</span>
+          <h1>Corpo Causal – Casos de André Luiz</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-02T00:25:50 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>André Luiz esgotando resíduos mentais do corpo causal</strong></p>
+<p><strong>Livro:</strong> Nosso Lar, 61, ed., cap. 12;</p>
+<p><strong>Autor:</strong> André Luiz, psicografia de Francisco Cândido Xavier;</p>
+<p><strong>Local:</strong> Colônia Nosso Lar;</p>
+<p><strong>Personagens:</strong> Lísias (desencarnado), visitador dos serviços de saúde em Nosso Lar; André Luiz (desencarnado), aprendiz;</p>
+<p><strong>Atividade:</strong> conversa de André Luiz e Lísias sobre o Umbral.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/umbral-fote-660x330-1.jpg" alt="" width="660" height="330" />
+
+<p>“Após receber tão valiosas elucidações, aguçava-se-me o desejo de intensificar a aquisição de conhecimentos […]. A ausência de preparação religiosa, no mundo, dá motivo a dolorosas perturbações. Que seria o Umbral? Conhecia apenas a ideia do inferno e do purgatório, por meio de sermões ouvidos nas cerimônias católico-romanas a que resistira, obedecendo a preceitos protocolares. Desse Umbral, porém, nunca tivera notícias.</p>
+<p>[…]</p>
+<p>Notando-me a dificuldade para apreender todo o conteúdo do ensinamento, com vistas à minha quase total ignorância dos princípios espirituais, Lísias procurou tornar a lição mais clara:</p>
+<p>– Imagine que cada um de nós, renascendo no planeta, é portador de um fato sujo, para lavar no tanque da vida humana. Essa roupa imunda é o corpo causal, tecido por nossas próprias mãos, nas experiências anteriores. Compartilhando, de novo, as bênçãos da oportunidade terrestre, esquecemos, porém, o objetivo essencial, e, em vez de nos purificarmos pelo esforço da lavagem, manchamo-nos ainda mais, contraindo novos laços e encarcerando-nos a nós mesmos em verdadeira escravidão. Ora, se ao voltarmos ao mundo procurávamos um meio de fugir à sujidade, pelo desacordo de nossa situação com o meio elevado, como regressar a esse mesmo ambiente luminoso, em piores condições? O Umbral funciona, portanto, como região destinada a esgotamento de resíduos mentais; uma espécie de zona purgatorial, onde se queima a prestações o material deteriorado das ilusões que a criatura adquiriu por atacado, […]” (g.n.) (p. 81-83)</p>
+<p><strong>André Luiz deixa o corpo causal nas Câmaras de Retificação</strong></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/1483290_1717012228582240_7987001722578306342_n.jpg" alt="" class="alignright" width="510" height="342" />
+
+<p><strong>Livro:</strong> Nosso Lar, 61, ed., cap. 36;</p>
+<p><strong>Autor:</strong> André Luiz, psicografia de Francisco Cândido Xavier;</p>
+<p><strong>Local:</strong> Colônia Nosso Lar;</p>
+<p><strong>Personagens:</strong> André Luiz  e sua mãe (desencarnados);</p>
+<p><strong>Atividade:</strong> visita de André Luiz a sua mãe durante o sono.</p>
+<p>“[…] De fato, sentia grande necessidade do sono. Narcisa preparou-me o leito com desvelos de irmã.</p>
+<p>Recolhido ao quarto confortável e espaçoso, orei ao Senhor da Vida agradecendo-lhe a bênção do trabalho de ter sido útil. […]<br>Daí a instantes, sensações de leveza invadiram-me a alma toda e tive a impressão de ser arrebatado em pequenino barco, rumando a regiões desconhecidas, Para onde me dirigia? Impossível responder. Ao meu lado, um homem silencioso sustinha o leme. […]<br>Decorridos minutos, vi-me à frente de um porto maravilhoso, onde alguém me chamou com especial carinho:<br>– André!… André!…<br>Desembarquei com precipitação verdadeiramente infantil. Reconheceria aquela voz entre milhares. Num momento, abraçava minha mãe em transbordamentos de júbilo.<br>Fui conduzido, então, por ela, a prodigioso bosque, onde as flores eram dotadas de singular propriedade – a de reter a luz, revelando a festa permanente do perfume e da cor. […] Minhas impressões de felicidade e paz eram inexcedíveis. O sonho não era propriamente qual se verifica na Terra. Eu sabia, perfeitamente, que deixara o veículo inferior no apartamento das Câmaras de Retificação, em ‘Nosso Lar’, e tinha absoluta consciência daquela movimentação em plano diverso. Minhas noções de espaço e tempo eram exatas. A riqueza das emoções, por sua vez, afirmava-se casa vez mais intensa. Após dirigir-me sagrados incentivos espirituais, minha mãe esclareceu bondosamente:<br>– Muito roguei a Jesus me permitisse a sublime satisfação de ter-te a meu lado, no teu primeiro dia de serviço útil. Como vês, meu filho, o trabalho é tônico divino para o coração.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

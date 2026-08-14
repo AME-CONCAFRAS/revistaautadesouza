@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trabajo con el Anciano en La Casa Espirita &#8211; Nucleo de convivencia del Anciano Necesidad | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Español</span>
+          <h1>Trabajo con el Anciano en La Casa Espirita &#8211; Nucleo de convivencia del Anciano Necesidad</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T18:45:45 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/hands-2906458_960_720.jpg" alt="" class="alignleft" width="475" height="316" />
+
+<p><img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/jesus-04_09_2017.png" alt="">“Es importante y necesario una toma de conciencia y sensibilización de la familia, así como del Centro Espirita, en el sentido de atender al espíritu reencarnado en la Tierra, en la etapa de la Tercera Edad, mejorándole las condiciones y calidad de vida material, física, como también y principalmente espiritual, dispensándole no solo atencióin, sino haciéndolo sentirse apoyado y amado.” María Aparecida Valente, Elaine Curti Ramazzini, El anciano en el Centro Espirita, p. 11).</p>
+<p><strong>Importancia</strong></p>
+<p>“Es muy importante valorar a aquellos que adentraron a la tercera edad, incentivarlos a desarrollar sus potencialidades, propicia?ndoles una adaptación positiva y constructiva en el núcleo familiar, en la vida comunitaria y en nuestras Casas Espiritas, enseñándolos a vivir generosamente, educando sus sentimientos, dándoles oportunidad de crecer espiritualmente, a trave?s de los recursos y enseñanzas que el Espiritismo nos concede.” (Lucy Diaz Ramos, Hojas de otoño, p. 24).</p>
+<p><strong>Modalidades de trabajo</strong></p>
+<ul>
+<li><strong>Institucional:</strong> Son instituciones de larga permanencia, gubernamentales o no gubernamentales (asilos, abrigos, hogares).</li>
+<li><strong>Grupos de Ancianos o Grupos de Convivencia:</strong> consiste de trabajo semanal comunes desarrollados con ancianos de ambos sexos e interesados en asuntos comunes a su grupo de edad.</li>
+</ul>
+<p><strong>Objetivos</strong></p>
+<ul>
+<li>Atender al anciano en sus necesidades físicas, morales y espirituales;</li>
+<li>Ofrecer al anciano orientaciones a la luz dela Doctrina Espirita favoreciendo su convivencia familiar y comunitaria, bien con el conocimiento de la inmortalidad del alma, de la vida futura y de la realidad del mundo espiritual;</li>
+<li>Orientar al anciano para la accesibilidad de los programas y beneficios a que tienen derecho dentro de la Política de Atendimiento;</li>
+<li>Desarrollar actividades físicas, laborales, culturales y de asistencia social junto al anciano.</li>
+</ul>
+<p><strong>Día, Horario, Cronograma</strong></p>
+<p>El grupo de Anciano podría funcionar una o mas veces en la semana, con días y horarios conforme la opción de la Casa Espirita, pero se sugiere que sea preferencialmente en el periodo vespertino, en atención a las características del público atendido, conforme la sugestión de abajo:<br><img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/tabela-07_09_2017.png" alt=""></p>
+<p><strong>Actividades</strong></p>
+<p>Son innumerables las actividades que podrían ser implantadas en la Casa Espirita, para atendimiento al anciano. Veamos algunas:</p>
+<p><strong>a) Cursos Doctrinarios</strong></p>
+<p>“Contenido: se sugiere los mismos temas abordados en las reuniones públicas y disponibles en el sitio <a href="http://www.ocentroespirita.com">www.ocentroespirita.com</a>, así como temas de El Evangelio Según el Espiritismo y otras obras espiritas, de acuerdo a la necesidad del grupo atendido.</p>
+<p>“Las enseñanzas espiritas nos dan subsidios para saber de donde venimos, que estamos haciendo aquí en la Tierra, para donde iremos después de la muerte física, ampliando nuestra visión en torno del real sentido de la existencia, porque la fe razonada nos confiere un entendimiento mas amplio de la Justicia Divina y de Sua sabias leyes.” (Lucy Diaz Ramos, Hojas de otoño, p. 64).</p>
+<p><strong>b) Tratamiento Espiritual</strong></p>
+<ul>
+<li>El tratamiento espiritual es de fundamental importancia para el anciano, debiendo el mismo de ser orientado y/o encaminado por el equipo para el atendimiento en la Casa Espirita. Se debe también, estimularlo a implantar el Culto del Evangelio en el Hogar y matricularse en las Escuelas de Evangelización de Adultos y de Estudios Espiritas.</li>
+</ul>
+<p><strong>c) Conferencias dirigidas a las necesidades específicas de esta etapa.</strong></p>
+<ul>
+<li>Mas allá de los cursos doctrinarios, el abordaje de otros temas también es necesario: mantenimiento de la salud, alimentación, auto-medicación, prevención de caídas, preparación para el envejecimiento, abstención del cigarro, alcohol y otras drogas, las limitaciones de esta etapa, dentro de otros.</li>
+</ul>
+<p><strong>d) Dinámicas de Grupos</strong></p>
+<ul>
+<li>Las dinámicas de grupos con ancianos estimulan los sentidos, promueven la integración y la coordinación motora.</li>
+</ul>
+<p><strong>e) Integración del anciano en la Casa Espirita</strong></p>
+<ul>
+<li>Da oportunidad al anciano a la integración en actividades desarrolladas en la Casa Espirita, dentro de sus condiciones (actividades asistenciales, sociales, visitas fraternas, evangelización infanto-juvenil, de entre otras).</li>
+</ul>
+<p> </p>
+<p><strong>f) Talleres artesanales</strong></p>
+<ul>
+<li>Los talleres artesanales estimulan la creatividad, ejercita la mente y la capacidad motora.</li>
+</ul>
+<p><strong>g) Talleres Culturales, paseos y visitasteis</strong></p>
+<ul>
+<li>Elaboración y registro de la historia personal, expresando y señalando hechos de la vida de cada uno;</li>
+<li>Elaboración/producción de un pequeño libro, donde puedan relatar la historia de vida;</li>
+<li>Acceso a la biblioteca (cuentos, historias, lectura);</li>
+<li>Paseos y visitas (hogar de ancianos, hogar de niños, clubes y otros eventos culturales);</li>
+<li>Grupo de Canto Coral.</li>
+</ul>
+<p><strong>h) Talleres de Ciudadanía – Momento de reflexión con el ancianos</strong></p>
+<ul>
+<li>Apoyar al anciano en la conquista y defensa de sus derechos y deberes; Beneficios conferidos a los ancianos – Previsión social;</li>
+<li>Garantías de derecho.</li>
+</ul>
+<p><strong>i) Taller – Centinela de salud</strong></p>
+<ul>
+<li>Estímulo al auto-cuidado, dirigiendo hábitos de vida saludable; Grupo de yoga;</li>
+<li>Programa de prevención y cuidados con la salud; Alimentación saludable.</li>
+</ul>
+<p><strong>j) Taller de Vivencias</strong></p>
+<ul>
+<li>Proporciona mejoría en las relaciones sociales y familiares.</li>
+</ul>
+<p><strong>k) Taller de Cocina</strong></p>
+<ul>
+<li>El arte de la cocina;</li>
+<li>Producción del libro de recetas (Recetas de la Abuela);</li>
+<li>Aulas prácticas: elección y preparación de las mejores recetas compartidas en el grupo.</li>
+</ul>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/hands-545394__340-1.jpg" alt="" class="alignleft" width="510" height="340" />
+
+<p><strong>l) Taller de Inclusión Digital</strong></p>
+<p>La inclusión digital en la Tercera Edad posibilita el fortalecimiento del funcionamiento cognitivo, contribuyendo para el bienestar social, emocional y físico del anciano, bien como la manutención e independencia de sus actividades diarias.</p>
+<p>Mas allá de las actividades ya descritas, otras también son fundamentales, como:</p>
+<p><strong>a) Trabajo con la Familia/Visitas Domiciliares</strong></p>
+<p>En el trabajo con el anciano es fundamental el involucramiento de la familia, pues muchos desajustes y conflictos pueden ser minimizados cuando el anciano se siente amado y respetado en su grupo familiar. De ahí, el trabajo no puede ser realizado de forma aislada, debiendo, por lo tanto, la familia a ser estimulada periódicamente a participar de las reuniones.</p>
+<p>“La familia es el punto de sustentación y equilibrio para el anciano. El anciano bien ajustado en el grupo familiar encuentra mas facilidad para integrarse en el medio social y para mantenerse activo. El resultado de una buena relación en familia es el incentivo que lo lleva a participar de grupos de apoyo y buscar ayuda, cuando es necesario.</p>
+<p>Indiscutiblemente, el hogar es el lugar mas adecuado para el bienestar físico y espiritual del anciano.” (Lucy Diaz Ramos, Hojas de otoño, p. 51).</p>
+<p><strong>b) Atendimiento Psico-social</strong></p>
+<p>Es muy importante que la Casa Espirita cuente con psicólogos y profesionales del servicio social para auxiliar al anciano a lidiar con sus limitaciones de orden físico, social, económicos o de cualquier otra naturaleza, bien como proceder encaminamientos y realizar acompañamientos.</p>
+<p><strong>Equipo de trabajadores- Quienes son</strong></p>
+<p>“El trabajo junto al anciano exige un equipo armónico y preparado. Es importante resaltar que algunas actividades desarrolladas en el grupo de ancianos pueden ser ejecutadas por personas no espiritas pero que tengan afinidad con el trabajo. Son actividades eminentemente técnicas, como la de los médicos, fisioterapeutas, terapeutas ocupacionales, dentistas, de entre otras. Las actividades que hablan respecto a educación del alma (cursos doctrinarios), deben ser ejercidos por voluntario espirita, que alinearan la técnica con los conocimientos doctrinarios, teniendo siempre en vista, los objetivos y finalidades del trabajo.</p>
+<p>Servicio Voluntario: se recomienda que los voluntarios firmen una declaración en la cual quede expreso el trabajo que será por el realizado, así como la carga horaria.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/ball-2585603_960_720.jpg" alt="" class="alignright" width="474" height="266" />
+
+<p><strong>Capacitación de Voluntarios</strong></p>
+<p>“La capacitación del equipo de voluntarios para actuar en el grupo de ancianos es imprescindible para el buen desempeño de la tarea. Es necesario que el trabajador entienda los objetivos del trabajo, así como los deberes que les cabe. Para esto es muy importante la realización de entrenamientos, seminarios y simposios, mas allá de las reuniones semanales.</p>
+<p>“Los Centros Espiritas deben reunir, seleccionar y capacitar continuamente al trabajador del Servicio de Asistencia y Promoción Social en los aspectos doctrinarios y técnicos, con miras a su mejor desempeño. Es preferible hacer un trabajo modesto, pero de buena calidad, buscar realizaciones de gran logro dentro de la improvisación y de la improvidencia.” (Federación Espirita Brasileña, El Centro Espirita, cap. VIII, ítem 4).</p>
+<p><strong>Requisitos mínimos para trabajar con ancianos</strong></p>
+<p>Son requisitos mínimos para trabajar con personas de la Tercera Edad:</p>
+<ul>
+<li><strong>conocimientos específicos en los aspectos:</strong> físico, psíquico, social y espiritual, en las diversas áreas de atendimiento: médica, enfermería, odontológica, nutricional, psicología, fisioterapia, terapéutica- ocupacional, artes (canto, danza, teatro, etc.), artesanía y evangelización;</li>
+<li><strong>personalidad:</strong> estable, alegre, cariñosa, paciente, comunicativa;</li>
+<li><strong>relacionamiento:</strong> considerar al anciano como un ser, especial en todos los aspectos: físico-psíquico, social-espiritual, llamándolo siempre por el nombre. Tratamientos como: “abuelo, abuelo”, aunque cariñosos, son despersonalizantes.</li>
+<li><strong>amar lo que hace:</strong> Tener amor por su trabajo y por las personas con quien se relaciona;</li>
+<li><strong>conocimiento de la persona:</strong> interés, amistad. Considerar al anciano siempre como miembro de su familia, contactando a los familiares y, en la ausencia de estos, los amigos mas cercanos. En caso de problemas o rechazo, usar todos los medios para que la familia acepte y comprenda a su anciano.</li>
+<li><strong>saber oír:</strong> estimular el diálogo, no hablar de sí, pero dejando al anciano hablar, oyéndolo con paciencia e interés;</li>
+<li><strong>tener disponibilidad:</strong> atención, atender con presteza, no hacerse esperar;</li>
+<li><strong>intuición y creatividad:</strong> dejarse llevar por la intuición direccionada para el propósito de servir. Esto aumenta la creatividad en el trabajo, haciéndolo placentero y provechoso en el atendimiento a cada ser;</li>
+<li><strong>amor:</strong> dispensándolo alas criaturas y vivir plenamente el “Amaos los unos a los otros…” de Jesús (María Aparecida Valente, Elaine Curti Ramazzini, El anciano en el Centro Espirita, p. 16-18).</li>
+</ul>
+<p><strong>Jesús – el mayor ejemplo de trabajador voluntario</strong></p>
+<p>“El mayor ejemplo de trabajador voluntario lo tenemos en Jesús, que solamente se dedicó a todos, sin ningún pedido de retribución. Prometiendo el reino de los Cielos, modificó los paisajes de la Tierra. (…)</p>
+<p>Terapia bendecida, el trabajo es mensajero de recursos emocionales, psíquicos y orgánica que restauran el bienestar en el ser humano e impulsándonos al crecimiento interior, al desarrollo de valores que le duermen innatos, preparándolo para la liberación de los impositivos materiales cuando es llamado de retorno a la Vida.” (Joanna de Ángelis, Liberación por el amor, p. 93).</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

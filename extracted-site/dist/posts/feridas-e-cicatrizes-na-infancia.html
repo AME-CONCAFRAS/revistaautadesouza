@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feridas e cicatrizes na infância | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Atualidades</span>
+          <h1>Feridas e cicatrizes na infância</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T19:24:20 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/crianca-02_12_2017-1.png" alt="" class="alignleft" width="431" height="303" />
+
+<p>Tem sido estabelecido através da cultura dos tempos, que a infância é o período mais feliz da existência humana, exatamente pela falta de discernimento da criança, e em razão das suas aspirações que não passam de desejos do desconhecido, de necessidades imediatas, de ignorância da realidade.</p>
+<p>Os seus divertimentos são legítimos, porque a eles se entrega em totalidade, sem qualquer esforço, graças à imaginação criadora que a transporta para esse mundo subjacente do crer naquilo que lhe parece.</p>
+<p>Não estando a personalidade ainda formada, não há dissociação entre o que tem existência real e aquilo que somente se fundamenta na experiência mental.[…]Como a criança não sabe o que é felicidade, facilmente identifica-a no divertimento, aquilo que a agrada e a distrai, os jogos que lhe povoam a imaginação. É na infância que se fixam em profundidade os acontecimentos, aliás, desde antes, na vida intra-uterina, quando o ser faz-se participante do futuro grupo familiar no qual renascerá.</p>
+<p>As impressões de aceitação como de rejeição se lhe insculpirão em profundidade, abençoando-o com o amor e a segurança ou dilacerando-lhe o sistema emocional, que passará a sofrer os efeitos inconscientes da animosidade de que foi objeto. </p>
+<p>Da mesma forma, os acontecimentos à sua volta, direcionados ou não à sua pessoa, exercerão preponderante influência na formação da sua personalidade, tornando-a jovial, extrovertida ou conflitada, depressiva, insegura, em razão do ambiente que lhe plasmou o comportamento. Essas marcas acompanhá-la-ão até a idade adulta, definindo-lhe a maneira de viver. Tornam-se feridas, quando de natureza perturbadora, que mesmo ao serem cicatrizadas, deixam sinais que somente uma terapia muito cuidadosa consegue anular. </p>
+<p>Por sua vez, o Espírito, em processo de reencarnação, acompanha mui facilmente os lances que precedem à futura experiência, e porque podendo movimentar-se com relativa liberdade antes do mergulho total no arquipélago celular, compreende as dificuldades que terá de enfrentar mais tarde, ao sentir-se desde então indesejado, maltratado, combatido. </p>
+<p>Certamente, essa ocorrência tem lugar com aqueles que se vêm impelidos ao renascimento para reparar pesados compromissos infelizes, retornando ao seio das suas anteriores vítimas que agora os rechaçam, o que é injustificável. A bênção de um filho constitui significativa conquista do ser humano, que se deve utilizar do ensejo para crescer e desenvolver os sentimentos superiores da abnegação e do amor. </p>
+<p><strong>Muitos conflitos da fase adulta tiveram sua origem na vida intra-uterina</strong> </p>
+<p> […] Na raiz de muitos conflitos e desequilíbrios juvenis, adultos, e até mesmo ressumando na velhice, as distonias tiveram origem — efeito de causa transata — no período da gestação, posteriormente na infância, quando a figura da mãe dominadora e castradora, assim como do pai negligente, indiferente ou violento, frustrou os anseios de liberdade e de felicidade do ser. </p>
+<p>Todos nascem para ser livres e felizes. No entanto, pessoas emocionalmente enfermas, ante o próprio fracasso, transferem para os filhos aquilo que gostariam de conseguir, suas culpas e incapacidades, quando não descarregam todo o insucesso ou insegurança naqueles que vivem sob sua dependência. Esse infeliz recurso fere o cerne da criança, que se faz pusilânime, a fim de sobreviver ou leva-a a refugiar-se no ensimesmamento, na melancolia, sentindo-se vazia de afeto e objetivo de vida.</p>
+<p>Com o tempo, essas feridas purulam, impelindo a atitudes exóticas, a comportamentos instáveis, às fugas para o fumo, a droga, o álcool ou as diversões violentas, mediante as quais extravasam o ressentimento acumulado, ou mergulham no anestésico perigoso da depressão com altos reflexos na conduta sexual, incompleta, insatisfeita, alienadora… </p>
+<p><strong>A Sociedade atendendo a Infância</strong></p>
+<p>A sociedade terá que atender à infância através de mecanismos próprios, preenchendo os espaços deixados pela ausência do amor na família, na educação escolar, na convivência do grupo, nas oportunidades de desenvolvimento e de auto-afirmação de cada qual. Para tal mister, torna-se necessário o equilíbrio do adulto, do educador formal, que pode funcionar como psicoterapeuta, orientando melhor o aprendiz e reencaminhando-o para a compreensão dos valores existenciais e das finalidades da vida.</p>
+<p>Inveja, mágoa, ciúme, instabilidade, ódio, pusilanimidade e outros hediondos sentimentos que afligem as crianças maltratadas, carentes, abandonadas mesmo nas casas onde moram, desde que não são lares verdadeiros, constituem os mecanismos de reação de todos quantos se sentem infelizes, mesmo que inconscientemente.</p>
+<p>A compreensão dos direitos alheios e dos próprios deveres, o contributo da fraternidade, a segurança afetiva, a harmonia interior, a compaixão, a lealdade se instalarão no ser, cicatrizando as feridas, à medida que o meio ambiente se transforme para melhor e o afeto dos outros, sincero quão desinteressado, substitua a indiferença habitual.</p>
+<p>[…]Toda vez, portanto, que alguém sinta incompletude, insegurança, seja visitado pelos sentimentos inquietadores da insegurança, do medo, da raiva e da inveja injustificáveis, exceção feita aos estados patológicos profundos, as feridas da infância estão ainda abertas ou reabrindo-se, e necessitando com urgência de cicatrização. (Joanna de Ângelis. Amor, imbatível amor. Cap.17)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

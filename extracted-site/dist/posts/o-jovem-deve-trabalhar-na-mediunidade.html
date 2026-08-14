@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Jovem deve trabalhar na Mediunidade? | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Mediunidade</span>
+          <h1>O Jovem deve trabalhar na Mediunidade?</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-02T20:00:24 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>O Adolescente e os Fenômenos Psíquicos</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/mediunidade.jpg" alt="" width="1024" height="473" />
+
+<p>Na infância, porque ainda em fase complementar da reencarnação, o Espírito desfruta relativa liberdade, que lhe permite mais amplo contato com a realidade causal, aquela que diz respeito ao mundo de onde procede.</p>
+<p>Esse lugar permanece acessível ao seu trânsito, e as impressões mais fortes que dele são trazidas se exteriorizam pelo corpo físico.</p>
+<p>Eclodem, então, nessa oportunidade, os fenômenos paranormais, propiciando as faculdades da clarividência e da clariaudiência, particularmente, e, sob mais direta indução dos Espíritos desencarnados, outras manifestações de natureza mediúnica propriamente ditas.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/5665c08982bee174ca01cd0edupla-2corte-620-x-456-site1-822x605-1.jpeg" alt="" class="alignright" width="411" height="303" />
+
+<p>Não obstante, sob a proteção dos Guias Espirituais, a criança permanece vinculada à vida plena, tornando-se instrumento dúctil de comunicações medianímicas, mesmo que de forma inconsciente, o que lhe causa, em determinadas situações, receios e desequilíbrios compreensíveis.</p>
+<p>Considerando-se, porém, a sua falta de estrutura psicológica, porque em fase de desenvolvimento orgânico e psíquico, ela não deve ser encaminhada para experimentações paranormais, auxiliando-se-lhe, entretanto, mediante os valiosos e oportunos recursos específicos da oração, da água magnetizada, das conversações edificantes, como terapia própria para a sua faixa de idade.</p>
+<p>No período da adolescência, porém, em pleno desabrochar das forças sexuais, a mediunidade se apresenta pujante, necessitando de educação conveniente e diretriz adequada para ser controlada e produtiva.</p>
+<p>No momento em que a glândula pineal libera os fatores sexuais complementares, e as demais do sistema endocrínico contribuem para o desenvolvimento da libido, a primeira, que era veladora da função genésica, transforma-se num fulcro de energia portador de possibilidades de captação parapsíquica, que dá lugar a uma variada gama de manifestações.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/1D3idxGjEZABmI3s-YZDCWA.png" alt="" class="alignleft" width="300" height="230" />
+
+<p>Os conflitos comportamentais do adolescente, naturais, nesse período, abrem espaço para um mais amplo intercâmbio com os Espíritos, que se comprazem em afligir e em perturbar, considerando a ignorância da realidade em que se demoram.</p>
+<p>Tratando-se de ser humano em progresso com um passado a reparar, o adolescente é convidado ao testemunho evolutivo, por cujo meio se retempera no exercício do bem e das disciplinas morais, fortalecendo-se para desempenhos futuros de alto coturno.</p>
+<p>Nesse estágio de capacitação intelectual, o intercâmbio psíquico com os desencarnados torna-se mais viável e fecundo, merecendo cuidados especiais, que orientem o sensitivo para o ministério de amor e de iluminação dele próprio, assim como do seu próximo e da sociedade como um todo.</p>
+<p>É expressiva a relação dos adolescentes que foram convidados a atividades missionárias através da mediunidade, confirmando a existência do mundo espiritual e o seu intercâmbio incessante com as criaturas humanas que habitam o mundo físico.</p>
+<p>Joana d’Arc, aos quatorze anos de idade, manteve demorados diálogos com os Espíritos que se diziam Miguel Arcanjo, Catarina e Margarida, considerados santos pela Igreja católica, que a induziram ao comando do desorganizado exército francês para as lutas contra os ingleses, culminando com a coroação de Carlos 7º, em Reims, que a abandonaria depois ao próprio destino de mártir…</p>
+<p>Bernadette Soubirous, aos quatorze anos, na gruta de Massabiélle, em Lourdes, na França, teve dezoito contínuos encontros com uma Entidade luminosa, que lhe afirmou ser Maria de Nazaré.</p>
+<p>Três crianças, na gruta da Iria, em Fátima, Portugal, igualmente mantiveram contato e dialogaram com outro ser espiritual, que informava ser a mesma Senhora.</p>
+<p>Catarina e Margarida Fox tornaram-se instrumento da comunicação lúcida com o mundo espiritual, em Hydesville, nos Estados Unidos, e inauguraram a Era Nova para a comunicabilidade com os seres de além-túmulo.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/2446d322-2155-4bd4-a307-085ba1dbb9df.jpeg" alt="" class="alignleft" width="385" height="131" />
+
+<p>Allan Kardec acompanhou e estudou as excelentes mediunidades das adolescentes irmãs Baudin, de Aline Carlótti, de Japhet e de Ermance Dufaux, que contribuíram expressivamente para as incomparáveis páginas de ciência, filosofia e religião que constituem a Codificação do Espiritismo.</p>
+<p>Florence Cook, também com quatorze anos, buscou o apoio do notável físico Sir William Crookes, em Londres, para que a estudasse e investigasse exaustivamente, produzindo extraordinárias manifestações de ectoplasmia, nas quais se apresentava materializado o Espírito Katie King.</p>
+<p>Daniel Dunglas Home, desde os dez anos de idade, tornou-se admirável médium de efeitos físicos, havendo sido investigado demoradamente por eminentes cientistas que lhe autenticaram as faculdades mediúnicas, o mesmo que fizeram inúmeras cortes européias pelas quais passeou a sua paranormalidade.</p>
+<p>Mais recentemente, inumeráveis instrumentos mediúnicos deram início ao desdobramento das suas faculdades paranormais exuberantes, que brotaram na infância e atingiram o apogeu no período da adolescência, tornando-se verdadeiros exemplos dignos de ser seguidos, pela abnegação e edificação dos ideais do bem que realizaram e que prosseguem desenvolvendo.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/bolsa-jovem.jpg" alt="" class="aligncenter" width="555" height="299" />
+
+<p>É perfeitamente compreensível que, nessa fase de auto identificação, o adolescente desperte para o patrimônio que nele se encontra latente e que se exterioriza sob o aluvião de energias pujantes, a fim de canalizá-las para a sua completude, o seu perfeito equilíbrio psicofísico.</p>
+<p>Inúmeros fenômenos, portanto, que ocorrem no desenvolvimento do adolescente — conflitos fóbicos, transtornos neuróticos e psicóticos, insegurança, insônia, instabilidade sexual, além das conhecidas causas genéticas, psicológicas, psicossociais, também podem ter sua origem nas obsessões, que são interferências de Espíritos sem orientação no comportamento do jovem, como desforços de dívidas pretéritas ou mecanismos de burilamento interior para o próprio progresso moral.</p>
+<p>Da mesma forma que o desabrochar da adolescência exige valiosos contributos da família, da escola, da sociedade, a religião espírita é também convidada a brindar esclarecimentos e terapias para bem conduzir a paranormalidade, as manifestações mediúnicas que fazem parte da existência e se integram em a natureza humana.</p>
+<p>A mediunidade é faculdade da alma que o corpo reveste de células para facultar o intercâmbio entre os Espíritos e as criaturas humanas, constituindo um sexto sentido, que integrará as funções orgânicas de todos os indivíduos.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/esp_jovem_300x225.jpg" alt="" class="alignright" width="300" height="225" />
+
+<p>O adolescente deve enfrentar os desafios de natureza parapsicológica e mediúnica com a mesma naturalidade com que atende as demais ocorrências do período de transição, trabalhando-se interiormente para crescer moral e espiritualmente, tornando a vida mais digna de ser vivida e com um significado mais profundo, que é o da eternidade do ser.</p>
+<p>Joanna de Angelis, Adolescência e vida, cap. 20</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Node dependencies
+node_modules/
+
+# Environment / secret configurations
+config.json
+.env
+
+# Logs & temp files
+*.log
+.DS_Store

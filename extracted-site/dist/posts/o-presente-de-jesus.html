@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O presente de Jesus | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>O presente de Jesus</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T16:27:18 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália<br><strong>Personagens:</strong> Luana, Letícia, Júnior, Rogério, Lívia, duas criancinhas, Amor, Narrador, Mara, Dona Joana, Sr. Túlio</p>
+<p><strong>Cenário: Uma praça toda enfeitada para o Natal. No meio da mesma, deverá ter uma enorme caixa, embalada lindamente para presente.</strong></p>
+<p>(Ao iniciar a peça coloca-se uma música suave, por alguns segundos, suspense no ar. A seguir entram duas meninas conversando alegremente)</p>
+<p><strong>Luana:</strong> Letícia, veja como a praça está linda! Toda colorida!…<br><strong>Letícia:</strong> É mesmo Luana, eu adoro quando se aproxima o dia do Natal.<br><strong>Luana:</strong> A cidade fica muito mais bonita!<br><strong>Letícia:</strong> (Vendo a enorme caixa) – Ei! Para quem será esse presente? Ele não estava aqui antes.<br><strong>Luana:</strong> Nossa, que lindo!!! O que será que tem aí dentro?<br><strong>Letícia:</strong> Nem imagino! Mas, quem ganhar um presentão desse ficará muito feliz!<br><strong>Luana:</strong> É… bem que poderia ser eu.</p>
+<p>(Nesse momento entram dois meninos)</p>
+<p><strong>Júnior:</strong> Oi Letícia, oi Luana, tudo bem?<br><strong>As duas:</strong> Olá, tudo bem.<br><strong>Rogério:</strong> O que vocês estão fazendo aqui?<br><strong>Letícia:</strong> Estávamos olhando esse enorme presente.</p>
+<p>(Os meninos viram-se e veem a caixa)</p>
+<p><strong>Júnior:</strong> Nossa! Que grandão!!!<br><strong>Rogério:</strong> Qual o pai ou a mãe que teve dinheiro para comprar um presente tão grande?<br><strong>Júnior:</strong> De quem é ele?<br><strong>Luana:</strong> É o que queremos saber.<br><strong>Rogério:</strong> Vocês não sabem?<br><strong>Júnior:</strong> Não viram quem o deixou aqui?<br><strong>Letícia:</strong> Não. Quando chegamos ele já estava aqui.</p>
+<p>(Nesse momento entra uma menina com duas criancinhas)</p>
+<p><strong>Lívia:</strong> Olá pessoal, olhando a beleza da praça?<br><strong>Rogério:</strong> Mais ou menos.<br><strong>Lívia:</strong> Por que mais ou menos?<br><strong>Júnior:</strong> Estamos tentando descobrir de quem é esse presente enorme!<br><strong>Lívia:</strong> (Assustando-se) – Que maravilha! Qual de vocês o ganhou?<br><strong>Luana:</strong> Nenhum de nós.<br><strong>Lívia:</strong> Como assim?<br><strong>Letícia:</strong> Nós não sabemos de quem é ele, quando chegamos o encontramos aqui.<br><strong>Lívia:</strong> (Observando) – Vejam, tem um cartão enorme pendurado nele. Será que é falta de educação nós olharmos?<br><strong>Rogério:</strong> Pode ser, mas…<br><strong>Luana:</strong> Mas, quem sabe alguém o deixou aqui porque perdeu o endereço?<br><strong>Júnior:</strong> É, e se soubermos poderemos entregá-lo.<br><strong>Lívia:</strong> Isso mesmo! Deixe-me ver então.</p>
+<p>(Retira o cartão sob a curiosidade de todos. Lê silenciosamente e fica com ar assustado)</p>
+<p><strong>Letícia:</strong> O que houve Lívia? De quem é o presente?<br><strong>Lívia:</strong> O presente é… é nosso!!!<br><strong>Todos:</strong> Nosso?<br><strong>Lívia:</strong> Sim, ouçam o que está escrito:<br>Este presente é endereçado a todas as crianças do mundo!<br>Com Amor.<br><strong>Júnior:</strong> Quem assinou?<br><strong>Lívia:</strong> Não tem assinatura.<br><strong>Luana:</strong> Se é para todas as crianças, é nosso também.<br><strong>Rogério:</strong> Vamos abri-lo?<br><strong>Todos</strong>: Vamos!</p>
+<p>(Começam a desamarrar, lentamente, a caixa. Coloca-se uma música suave. Quando acabam de desamarrar, os lados da caixa deverão cair de uma vez. Dentro haverá uma pessoa, sentada, representando o amor. As crianças se assustam e vão se assentando lentamente, enquanto o amor irá levantando-se. Ao terminar, ele olha para as crianças e começa a cantar – ou declamar, caso não conheçam, a música sugerida: Jesus Gosta de você, de Delmer /Goiânia – ou pode-se utilizar outra música, com o mesmo sentido)</p>
+<p>Jesus gosta de você<br>Jesus quer o seu amor,<br>Seja branco ou amarelo,<br>Seja como você for.</p>
+<p>É o amor sem distinção<br>Ele só olha o coração<br>Ele só quer que você<br>Ame o seu irmão!!!</p>
+<p>Jesus gosta de você.</p>
+<p><strong>Amor:</strong> (Ao terminar a música): Olá, queridas crianças, que Jesus O grande aniversariante do Natal ampare a todos vocês!<br><strong>Todos:</strong> Quem é você.</p>
+<p><strong>Amor:</strong> Eu estou aqui representando o amor. Sou o presente enviado, por Jesus a toda humanidade neste Natal, pois é de amor que toda humanidade está precisando para ser mais feliz. Jesus, me enviou a vocês crianças, pois Ele confia muito em cada uma de vocês. Ele sabe que os seus coraçõezinhos querem: paz, esperança, alegria, fraternidade, caridade…<br>Sou o amor, a essência de todas essas virtudes. Quem ama seus irmãos, traz dentro de si a paz, a alegria, a fraternidade e a caridade…<br>Vamos crianças, vamos neste Natal deixar que Jesus nasça em nossos corações e veremos um mundo mais bonito e mais feliz.<br>Eu, amor, estarei ao lado de cada uma de vocês. Inspirarei em seus corações à prática da fraternidade. Vocês não me verão, mas estarei presente… Serei o amor-caridade, o amor-esperança, o amor-confiança e fé nas horas necessárias. Mas, não se esqueçam: coloquem amor, muito amor dentro de cada um de vocês. Saibam mais uma vez que: (canta)<br>Jesus gosta de você…</p>
+<p>(Vai se afastando lentamente e sai de cena. As crianças vão se levantando à medida que falam)</p>
+<p><strong>Rogério:</strong> Meu Deus! Vocês viram o que vi?<br><strong>Lívia:</strong> Claro que sim!<br><strong>Júnior:</strong> Foi lindo!<br><strong>Luana:</strong> Então o presente que Jesus nos enviou foi o amor?<br><strong>Letícia:</strong> Sim, Ele sabe que realmente precisamos é de amor.<br><strong>Rogério:</strong> Jesus confia em nós.<br><strong>Lívia:</strong> Sim, não podemos decepcioná-lo.<br><strong>Júnior:</strong> Mas, como? Como podemos praticar o amor?<br><strong>Letícia:</strong> Não se esqueçam, ele disse que estará ao nosso lado.<br><strong>Luana:</strong> Está na hora de irmos embora…<br><strong>Lívia:</strong> Está mesmo. Nossos pais já devem estar preocupados. Tenho que levar meus irmãozinhos para a mamãe.<br><strong>Rogério:</strong> Vamos, amanhã nos encontramos aqui, certo?<br><strong>Todos:</strong> Certo! Até amanhã.</p>
+<p>(Saem de cena)</p>
+<p><strong>Narrador:</strong> Vocês viram o presente de Natal que Jesus enviou para as crianças? É o amor. Como está o amor dentro de cada um de vocês? E aquelas crianças, será que aprenderão a lição do amor? Vejamos!!!!</p>
+<p>(Nesse momento entra uma menina bem pobre. Começa a olhar a praça, depois senta-se e começa a chorar. Entra Lívia)</p>
+<p><strong>Lívia:</strong> (Ao ver a menina) – Ei, quem é você?</p>
+<p>(Mara levanta a cabeça e continua a chorar)</p>
+<p><strong>Lívia:</strong> Por que você está chorando? Fala para mim!</p>
+<p>(Nesse momento entra o amor, representando ao Amor-caridade. Fica parado como a inspirar em Lívia o sentimento de caridade. Caracterizar com uma faixa ou outra forma apropriada)</p>
+<p><strong>Mara:</strong> (Levantando-se) – É época de Nata!<br><strong>Lívia:</strong> É sim, isso é muito bom!<br><strong>Mara:</strong> Bom? Bom para você.<br><strong>Lívia:</strong> Por quê?<br><strong>Mara:</strong> Nessa época todas as crianças ganham presentes. E eu não. Minha pobre mãe, coitada! Não pode comprar nenhum presente para mim. Ah! Eu gostaria tanto de ganhar uma boneca!<br><strong>Lívia:</strong> (Decidida) – Então não chora mais, pois eu vou lhe dar uma!!!<br><strong>Mara:</strong> (Pulando de alegria) – Você fala sério?<br><strong>Lívia:</strong> Claro, venha comigo. Eu tenho duas, vou lhe dar uma.</p>
+<p>(As duas se abraçam e saem. O amor sai, acompanhando-as)</p>
+<p><strong>Narrador:</strong> O Natal de Mara foi mais feliz, porque o sentimento de caridade tocou o coração de Lívia. E o seu?</p>
+<p>(Nesse momento entra uma senhora, senta-se e fica pensativa. A seguir entra Luana e Letícia)</p>
+<p><strong>Luana:</strong> Olá Dona Joana, como a senhora está?<br><strong>D. Joana:</strong> Ah! Minha filha, estou muito triste!</p>
+<p>(Entra o Amor-esperança)</p>
+<p><strong>Letícia:</strong> O que aconteceu?<br><strong>D. Joana:</strong> Andei o dia todo procurando trabalho e não consegui nenhum. Preciso tanto trabalhar, mas onde?<br><strong>Luana:</strong> Bem que eu gostaria de ajudar, mas…<br><strong>Letícia:</strong> Luana, hoje eu ouvi a mamãe dizendo que precisava de alguém para ajudá-la.<br><strong>Luana:</strong> É mesmo!<br><strong>D. Joana:</strong> Oh! Minha filhas, quem sabe eu consigo um emprego. Começo a ter novamente uma esperança…<br><strong>As duas:</strong> (Segurando-lhe as mãos) – Venha, vamos ajudá-la.</p>
+<p>(Saem de cena, acompanhadas do Amor-esperança)</p>
+<p><strong>Narrador:</strong> Dona Joana conseguiu o emprego e a esperança voltou a viver em seu coração. E no de vocês?</p>
+<p>(A seguir entra Rogério e Júnior, segurando as mãos de seu pai, homem elegantemente vestido)</p>
+<p><strong>Sr. Túlio:</strong> Amanhã será noite de Natal!<br><strong>Rogério:</strong> Sim, é uma noite muito bonita.<br><strong>Sr. Túlio:</strong> Eu estava pensando em dar uma grande festa para o povo, aqui nessa praça.</p>
+<p>(Entra o Amor -fé e confiança)</p>
+<p><strong>Júnior:</strong> Uma festa?<br><strong>Sr. Túlio:</strong> Sim, uma grande festa.<br><strong>Rogério:</strong> Papai, Natal não é o aniversário de Jesus?<br><strong>Sr.Túlio:</strong> É… é claro que é.<br><strong>Júnior:</strong> Então, por que não nos reunimos para orarmos a Jesus pelo seu aniversário?<br><strong>Rogério:</strong> Isso mesmo! Podemos fazer uma noite dedicada a Jesus!<br><strong>Sr. Túlio:</strong> Sabe que eu não havia pensado nisso? Mas vocês tem razão. Nós estamos precisando é de muita fé e confiança. Nos reuniremos sim, não apenas para uma festa comum, mas para uma festa especial, uma festa realmente dedicada a Jesus. Vamos, vamos meus filhos, vamos preparar tudo. Será muito bom!</p>
+<p>(Saem de cena, acompanhados pelo Amor -fé e confiança)</p>
+<p><strong>Narrador:</strong> E na noite de Natal, todos se reuniram naquela linda praça, para comemorarem um Natal diferente, um Natal em que Jesus seria realmente lembrado.</p>
+<p>(Ao som de uma música de Natal, todos os participantes da peça vão entrando, cumprimentando-se e a seguir sentando, ficando de pé apenas o Sr, Túlio, que começa a falar):</p>
+<p><strong>Sr.Túlio:</strong> Meus amigos. Queridas crianças, lembremo-nos nesse dia tão especial, do aniversariante da noite: JESUS CRISTO. Recordemos que:</p>
+<p>Um dia a Terra estava,<br>Assim como ao léu,<br>Todos andavam e pareciam<br>Muito esquecidos do céu.</p>
+<p>E a Estrela das Estrelas<br>Percebeu que era a hora<br>De aqui na Terra<br>Vir, sem mais demora!</p>
+<p>E a Estrela se fez criança<br>Com sua imensa Luz,<br>Pois entre os homens nasceu<br>O nosso menino Jesus!!!</p>
+<p><strong>(Levatam-se: Luana, Letícia, Júnior, Rogério e Lívia e falam):</strong></p>
+<p>Natal é o aniversário de Jesus,<br>Tempo de paz, ternura e amor.<br>As vibrações se elevam<br>Como o perfume de uma flor!</p>
+<p><strong>(Todos falam juntos):</strong></p>
+<p>Um dia, não muito longe,<br>Natal será todos os dias,<br>Porque a humanidade<br>Viverá em plena harmonia!!!</p>
+<p>(O Amor se aproxima e fala para o público)</p>
+<p><strong>Amor:</strong> Nesse Natal, lembrem-se do verdadeiro aniversariante, da Estrela das Estrelas. Lembrem-se de seu maior ensinamento: O AMOR. Não se esqueçam de que Jesus gosta de vocês!! De cada um de vocês!!!</p>
+<p>(Todos cantam a música: Jesus gosta de você e/ou outra com o mesmo sentido)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caravana Jesus no Lar | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Como fazer na casa espírita</span>
+          <h1>Caravana Jesus no Lar</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-02T15:57:08 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>Disse Jesus: “Ide por todo o mundo, e pregai o Evangelho a toda criatura” (Marcos, 16: 15).</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/Jesusnasuacasa-03_02_2018.jpg" alt="" class="alignleft" width="417" height="313" />
+
+<p>Imagine um trabalho na Doutrina Espírita em que, além de fazer a caridade e auxiliar o próximo, que nem sempre sabe onde buscar ajuda, você também divulga o Espiritismo! Assim é a Caravana Jesus no Lar. Uma atividade do Centro Espírita que sai às ruas levando a mensagem espírita e oferecendo o Culto do Evangelho nos lares, despertando a esperança e o consolo nos corações sofridos.</p>
+<p>“Em vossos dias, o Espiritismo, que representa o Consolador prometido pelo Cristo aos séculos posteriores à sua vinda ao mundo, é uma extraordinária mensagem do Céu à Terra, e faz-se necessário aquilatar-lhe o valor.</p>
+<p>Ainda existem multidões de Espíritos rebeldes, porém, a consciência terrena, em suas características gerais, está agora apta a receber, depois de tantos anos de lutas, o conhecimento espiritual que lhe fará desprezar os últimos resquícios da materialidade inconsciente, aprendendo a discernir os seus erros. Espalhando a boa nova da imortalidade a doutrina de amor abrirá novos horizontes à esperança dos homens, conduzindo-os à aquisição do tesouro espiritual, reservado por Deus a todas as suas criaturas.</p>
+<p>Quando todos os homens compreenderem o sentido de suas magníficas lições, o vosso planeta terá atingido uma nova fase evolutiva e o Espiritismo terá concluído, entre vós, a sua sagrada e gloriosa missão.” (Emmanuel. <em>Emmanuel</em>. Psicografia de Francisco Cândido Xavier. Cap. XXXI)</p>
+<p><strong>IMPORTÂNCIA DESSE TRABALHO</strong></p>
+<p>“Lembra-te deles, os quase loucos de sofrimento, e trabalha para que a Doutrina Espírita lhes estenda socorro oportuno. Para isso, estudemos Allan Kardec, ao clarão da mensagem de Jesus Cristo, e, seja no exemplo ou na atitude, na ação ou na palavra, recordemos que o Espiritismo nos solicita uma espécie permanente de caridade – a caridade da sua própria divulgação.” (André Luiz. <em>Estude e viva</em>. Psicografia de Francisco Cândido Xavier. Cap.40)</p>
+<p><strong>OBJETIVOS DA CARAVANA JESUS NO LAR</strong></p>
+<ul>
+<li>“Divulgar a Doutrina Espírita nos lares, por intermédio do exemplo, da mensagem escrita e falada.</li>
+<li>Propiciar tratamento desobssessivo aos lares visitados, bem como dos caravaneiros que a realizam.</li>
+<li>Oportunizar meios de reajuste, auxílio e reforma íntima dos trabalhadores e também dos desencarnados necessitados.</li>
+<li>Assistir os lares visitados, por meio da realização do culto do Evangelho do Lar.</li>
+<li>Identificar casos de infortúnios ocultos nos lares visitados, e dar o devido encaminhamento para o setor especializado da casa espírita.</li>
+<li>Convidar às palestras públicas, evangelização infantil, a divulgação, etc.” (Trabalhando na divulgação espírita p.127)</li>
+</ul>
+<p><strong>MATERIAIS DE TRABALHO</strong></p>
+<p>Os materiais de trabalho da Caravana Jesus no Lar são os seguintes:</p>
+<p>a) MENSAGENS ESPÍRITAS</p>
+<p>b) O EVANGELHO SEGUNDO O ESPIRITISMO</p>
+<p>É indispensável para a realização do trabaho, realizado no instante da realização do Culto do Evangelho no Lar. Se possível, ter sempre disponível, alguns exemplares para serem doados às famílias que se mostrarem receptivas</p>
+<p>c) CRACHÁS</p>
+<p>d) PAPÉIS DE RASCUNHO PARA ANOTAR OS ENDEREÇOS DOS CULTOS MARCADOS</p>
+<p>e) CANETAS</p>
+<p>f) MAPAS DOS LOCAIS A SEREM VISITADOS</p>
+<p>g) PASTA CONTENDO A FICHA DE FREQUÊNCIA DOS CARAVANEIROS E OS RELATÓRIOS DO TRABALHO</p>
+<p>“Esta pasta deverá conter as fichas de controle do trabalho, estando todas as informações devidamente atualizadas, pronta para ser utilizada a qualquer tempo.</p>
+<p>Ao iniciar o trabalho, o dirigente desta atividade deverá estar em posse desta pasta para melhor conduzir a Jesus no Lar planejada para o dia.” (Trabalhando na divulgação espírita, p.129)</p>
+<p><strong>METODOLOGIA</strong></p>
+<p><strong>1) PLANEJAMENTO</strong></p>
+<p>“A obra do bem em que te encontras empenhado não pode prescindir de planejamento.” (Joanna de Ângelis. <em>Espírito e vida</em>. Psicografia de Divaldo P. Franco. Cap. 38)</p>
+<p>“É imprescindível que se planeje as ações. Recomenda-se planejar a sequência das quadras que serão visitadas, os títulos e textos das mensagens que serão distribuídas, o tempo de duração do trabalho, etc., (tempo de distribuição, quantidade máxima de cultos a serem realizados, em função do tempo disponível).” (Trabalhando na divulgação espírita, p.129)</p>
+<p><strong>2) INÍCIO DO TRABALHO</strong></p>
+<p>“Proferir a prece inicial e a prece final nas reuniões doutrinárias, facilitando-se, dessa forma, a ligação com os Benfeitores da Vida Maior.</p>
+<p>A prece entrelaça os Espíritos.” (André Luiz. Conduta espírita. Psicografia de Francisco Cândido Xavier. Cap. 26)</p>
+<p><strong>3) ESTUDO PREPARATÓRIO</strong></p>
+<p>Antes de sair para as visitas domiciliares, os caravaneiros deverão receber um estudo preparatório condizente com a natureza da atividade que eles realizam.</p>
+<p><strong>4) DESLOCAMENTO PARA O LOCAL DE TRABALHO</strong></p>
+<p>“Os Caravaneiros, ao se deslocarem para o local previamente estabelecido para realizar o trabalho do dia, não devem esquecer a orientação de André Luiz, na obra Sinal Verde, que a rua é um departamento importante da escola do mundo, onde cada criatura pode ensinar e aprender.</p>
+<p>Recomenda-se que o trabalhador da Divulgação adote postura de disciplina e educação como diretrizes de sua conduta nas ruas.” (Trabalhando na divulgação espírita, p.132)</p>
+<p><strong>5) COORDENAÇÃO DO TRABALHO NAS RUAS</strong></p>
+<p>“O trabalho de visita aos lares deve ter um ou mais coordenadores, que deverão indicar as casas a serem abordadas, receber das duplas de caravaneiro a relação dos cultos já contactados, solucionar qualquer dúvida ou problema, repassar mensagens ou outro material que faltar, enfim, ser o elemento de orientação e harmonia entre a equipe e a atividade programada.” (Trabalhando na divulgação espírita, p.132)</p>
+<p><strong>6) DISTRIBUIÇÃO DE MENSAGEM NOS LARES</strong></p>
+<p>“A dupla de caravaneiros, ao bater numa porta, deve manter o pensamento sintonizado com o Alto, rogando a Deus que abençoe a família ora visitada. Nesse momento, lembrar que os bons espíritos que nos acompanham, poderão operar socorro que a providência divina assim determinar.</p>
+<p>Ao ser atendido por alguém, dizer:</p>
+<p>Nós somos da Caravana Jesus no Lar, pertencemos ao Centro Espírita tal…, e estamos fazendo um trabalho de distribuição de mensagens que falam sobre determinado assunto.” (Trabalhando na divulgação espírita, p.132)</p>
+<p><strong>7) IDENTIFICAÇÃO DOS CULTOS NOS LARES</strong></p>
+<p>“Após entregar as mensagens às pessoas que nos atenderem, oferecer o Culto do Evangelho no Lar, explicando que se trata de uma prece em benefício de sua família e com duração em torno de 15 a 20 minutos.</p>
+<p>Se a resposta for positiva, anotar o endereço e o nome do contato numa ficha apropriada, dizendo que voltaremos daqui alguns instantes para o culto.” (Trabalhando na divulgação espírita, p.133)</p>
+<p>“Quando a família ora, Jesus se demora na casa. Quando os corações se unem nos liames da Fé, o equilíbrio oferta bênçãos de consolo e a saúde derrama vinho de paz para todos.” (Joanna de Ângelis. <em>Messe de amor</em>. Psicografia de Divaldo Pereira Franco.)</p>
+<p><strong>8) DIVISÃO DOS CARAVANEIROS PARA OS CULTOS</strong></p>
+<p>“Ao encerrar o trabalho de districuição de mensagens, reunir os caravaneiros, fazendo o levantamento e divisão dos cultos que foram marcados com aqueles que possuírem condições de dirigí-los.” (Trabalhando na divulgação espírita, p.133)</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/com-a-biblia-nas-maos-lendo.jpg" alt="" class="alignleft" width="420" height="264" />
+
+<p><strong>9) CULTO DO EVANGELHO NO LAR</strong></p>
+<p>“Antes de iniciar o Culto do Evangelho no Lar, explicar as suas origens, objetivos, benefícios e a metodologia a ser empregada, bem como as ressalvas quanto às manifestações mediúnicas.” (Trabalhando na divulgação espírita, p.133)</p>
+<p><strong>10) RETORNO PARA O CENTRO ESPÍRITA</strong></p>
+<p>“Ao encerrar os cultos nos lares, os caravaneiros deverão retornar para o Centro Espírita com o mesmo entusiasmo e alegria do início, com a finalidade de procederem o encerramento do trabalho.” (Trabalhando na divulgação espírita, p.133)</p>
+<p><strong>11) AVALIAÇÃO E PREENCHIMENTO DOS RELATÓRIOS</strong></p>
+<p>“De volta ao Centro Espírita, os Caravaneiros deverão fazer a avaliação do trabalho, levantando os pontos positivos e aqueles que precisam ser melhorados.</p>
+<p>Os dados coletados da avaliação deverão ser anotados nas fichas-relatório, para que sejam arquivados e sirvam de subsídios para o planejamento das atividades.” (Trabalhando na divulgação espírita, p.134)</p>
+<p>“Todos estes trabalhos são preparatórios de outros mais edificantes que vos testemunhem não ser de todo improdutivo o vosso labor que, como sabeis, se desenvolve nos dois planos, no plano material e no plano espiritual.” (Francisco Thiesen. <em>No oásis de Ismael: ensinos e meditações</em>)</p>
+<p><strong>12) PRECE DE ENCERRAMENTO</strong></p>
+<p>FONTE: Trabalhando na divulgação espírita</p>
+<p><a href="http://www.editoraautadesouza.com.br/index.asp?idproduto=63204">http://www.editoraautadesouza.com.br/index.asp?idproduto=63204</a></p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anália Franco, a Dama da Educação | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Missionários do bem</span>
+          <h1>Anália Franco, a Dama da Educação</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-22T15:29:50 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>Nascida na cidade de Resende, Estado do Rio de Janeiro, no dia 1o. de fevereiro de 1856, e desencarnada em S. Paulo, no dia 13 de janeiro de 1919. Seu nome de solteira era Anália Emília Franco. Após consorciar- se em matrimônio com Francisco Antônio Bastos, seu nome passou a ser Anália Franco Bastos, entretanto, é mais conhecida por Anália Franco.</p>
+<p>Com 16 anos de idade entrou num Concurso de Câmara dessa cidade e logrou aprovação para exercer o cargo de professora primária. Trabalhou como assistente de sua própria mãe durante algum tempo. Anteriormente a 1875 diplomou- se Normalista, em S. Paulo.  </p>
+<p>**Vocação Literária<br>**<br>Foi após a Lei do Ventre Livre que sua verdadeira vocação se exteriorizou: a vocação literária. Já era por esse tempo notável como literata, jornalista e poetisa, entretanto, chegou ao seu conhecimento que os nascituros de escravas estavam previamente destinados à “Roda” da Santa Casa de Misericórdia. Já perambulavam, mendicantes, pelas estradas e pelas ruas, os negrinhos expulsos das fazendas por impróprios para o trabalho. Não eram, como até então “negociáveis”, com seus pais e os adquirentes de cativos davam preferência às escravas que não tinham filhos no ventre. Anália escreveu, apelando para as mulheres fazendeiras. Trocou seu cargo na Capital de São Paulo por outro no Interior, a fim de socorrer as criancinhas necessitadas. Num bairro duma cidade do norte doEstado de S. Paulo conseguiu uma casa para instalar uma escola primária. Uma fazendeira rica lhe cedeu a casa escolar com uma condição, que foi frontalmente repelida por Anália: não deveria haver promiscuidade de crianças brancas e negras. Diante dessa condição humilhante foi recusada a gratuidade do uso da casa, passando a pagar um aluguel. A fazendeira guardou ressentimento à altivez da professora, porém, naquele local Anália inaugurou a sua primeira e original “Casa Maternal”. Começou a receber todas as crianças que lhe batiam à porta, levadas por parentes ou apanhadas nas moitas e desvios dos caminhos. A fazendeira, abusando do prestígio político do marido, vendo que a sua casa, embora alugada, se transformara num albergue de negrinhos, resolveu acabar com aquele “escândalo” em sua fazenda. Promoveu diligências junto ao coronel e este conseguiu facilmente a remoção da professora. Anália foi para a cidade e alugou uma casa velha, pagando de seu bolso o aluguel correspondente à metade do seu ordenado. Como o restante era insuficiente para a alimentação das crianças, não trepidou em ir, pessoalmente, pedir esmolas para a meninada. Partiu de manhã, à pé, levando consigo o grupinho escuro que ela chamava, em seus escritos, de “meus alunos sem mães”. Numa folha local anunciou que, ao lado da escola pública, havia um pequeno “abrigo” para as crianças desamparadas. A fama, nem sempre favorável da novel professora, encheu a cidade. A curiosidade popular tomou- se de espanto, num domingo de festa religiosa. Ela apareceu nas ruas com seus “alunos sem mães”, em bando precatório. Moça e magra, modesta e altiva, aquela impressionante figura de mulher, que mendigava para filhos de escravas, tornou- se o escândalo do dia. Era uma mulher perigosa, na opinião de muitos. Seu afastamento da cidade principiou a ser objeto de consideração em rodas políticas, nas farmácias. Mas rugiu a seu favor um grupo de abolicionistas e republicanos, contra o grande grupo de católicos, escravocratas e monarquistas.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/05/analia_franco-1.jpg" alt="" class="alignleft" width="341" height="463" />
+
+<p>Com o decorrer do tempo, deixando algumas escolas maternais no Interior, veio para S. Paulo. Aqui entrou brilhantemente para o grupo abolicionista e republicano. Sua missão, porém, não era política. Sua preocupação maior era com as crianças desamparadas, o que a levou a fundar uma revista própria, intitulada “Álbum das Meninas”, cujo primeiro número veio a lume a 30 de abril de 1898. O artigo de fundo tinha o título “Às mães e educadoras”. Seu prestígio no seio do professorado já era grande quando surgiram a abolição da escravatura e a República. O advento dessa nova era encontrou Anália com dois grandes colégios gratuitos para meninas e meninos. E logo que as leis o permitiram, ela, secundada por vinte senhoras amigas, fundou o instituto educacional que se denominou “Associação Feminina Beneficente e Instrutiva”, no dia 17 de novembro de 1901, com sede no Largo do Arouche, em S. Paulo.</p>
+<p>Em seguida criou várias “Escolas Maternais” e “Escolas Elementares”, instalando, com inauguração solene a 25 de janeiro de 1902, o “Liceu Feminino”, que tinha por finalidade instruir e preparar professoras para a direção daquelas escolas, com o curso de dois anos para as professoras de “Escolas Maternais” e de três anos para as “Escolas Elementares”.</p>
+<p>Anália Franco publicou numerosos folhetos e opúsculos referentes aos cursos ministrados em suas escolas, tratados especiais sobre a infância, nos quais as professoras encontraram meios de desenvolver as faculdades afetivas e morais das crianças, instruindo- as ao mesmo tempo. O seu opúsculo “O Novo Manual Educativo”, era dividido em três partes: Infância, Adolescência e Juventude.</p>
+<p>Em 1o. de dezembro de 1903, passou a publicar “A Voz Maternal”, revista mensal com a apreciável tiragem de 6.000 exemplares, impressos em oficinas próprias.</p>
+<p>A Associação Feminina mantinha um Bazar na rua do Rosário n.o. 18, em S. Paulo, para a venda dos artefatos das suas oficinas, e uma sucursal desse estabelecimento na Ladeira do Piques n.o. 23.</p>
+<p>**<br>Obras**</p>
+<p>Anália Franco mantinha Escolas Reunidas na Capital e Escolas Isoladas no Interior, Escolas Maternais, Creches na Capital e no Interior do Estado, Bibliotecas anexas às escolas, Escolas Profissionais, Arte Tipográfica, Curso de Escrituração Mercantil, Prática de Enfermagem e Arte Dentária, Línguas (francês, italiano, inglês e alemão); Música, Desenho, Pintura, Pedagogia, Costura, Bordados, Flores artificiais e Chapéus, num total de 37 instituições.</p>
+<p>Era romancista, escritora, teatróloga e poetisa. Escreveu uma infinidade de livretos para a educação das crianças e para as Escolas, os quais são dignos de serem adotados nas Escolas públicas.</p>
+<p>Era espírita fervorosa, revelando sempre inusitado interesse pelas coisas atinentes à Doutrina Espírita.</p>
+<p>Produziu a sua vasta cultura três ótimos romances: “A Égide Materna”, “A Filha do Artista”, e “A Filha Adotiva”. Foi autora de numerosas peças teatrais, de diálogos e de várias estrofes, destacando- se “Hino a Deus”, “Hino a Ana Nery”, “Minha Terra”, “Hino a Jesus” e outros.</p>
+<p>Em 1911 conseguiu, sem qualquer recurso financeiro, adquirir a “Chácara Paraíso”. Eram 75 alqueires de terra, parte em matas e capoeiras e o restante ocupado com benfeitorias diversas, entre as quais um velho solar, ocupado durante longos anos por uma das mais notáveis figuras da História do Brasil: Diogo Antônio Feijó.</p>
+<p>Nessa chácara fundou Anália Franco a “Colônia Regeneradora D. Romualdo”, aproveitando o casarão, a estrebaria e a antiga senzala, internando ali sob direção feminina, os garotos mais aptos para a Lavoura, a horticultura e outras atividades agropastoris, recolhendo ainda moças desviadas, conseguindo assim regenerar centenas de mulheres.<br>A vasta sementeira de Anália Franco consistiu em 71 Escolas, 2 albergues, 1 colônia regeneradora para mulheres, 23 asilos para crianças órfãs, 1 Banda Musical Feminina, 1 orquestra, 1 Grupo Dramático, além de oficinas para manufatura de chapéus, flores artificiais, etc., em 24 cidades do Interior e da Capital.  
+ </p>
+<p>**Desencarnação<br>**<br>Sua desencarnação ocorreu precisamente quando havia tomado a deliberação de ir ao Rio de Janeiro fundar mais uma instituição, ideia essa concretizada posteriormente pelo seu esposo, que ali fundou o “Asilo Anália Franco”.<br>A obra de Anália Franco foi, incontestavelmente, uma das mais salientes e meritórias da História do Espiritismo.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

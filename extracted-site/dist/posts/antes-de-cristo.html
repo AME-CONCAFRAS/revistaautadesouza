@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Antes de Cristo | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Universo e vida</span>
+          <h1>Antes de Cristo</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T19:28:18 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>A história das civilizações terrestres é a da lenta evolução de um conjunto heterogêneo de Espíritos falidos, em regime de provas e expiações. Foi há cerca de quinhentos milênios que encarnaram neste orbe os primeiros Espíritos conscientes, embora muito primitivos, em fase de incipiente desenvolvimento. De pensamento ainda inseguro e habitando corpos animalescos, mas direta e carinhosamente amparados pelas falanges espirituais do Cristo Divino, tiveram de aperfeiçoar, pouco a pouco e com enormes dificuldades, o seu próprio perispírito e os seus veículos carnais de manifestação, submetidos a longo e áspero transformismo evolutivo, tanto quanto a própria natureza terrestre, ainda em difíceis processos de ajustamento e consolidação.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/neanderthal-4731928_960_720.jpg" alt="" class="alignleft" width="532" height="354" />
+
+<p>A Antropologia moderna e a moderna Paleontologia registram, como marcos desse transformismo, primeiro o chamado <strong>Pithecanthropus</strong> erectus, depois dele o <strong>Sinanthropus pekinensis</strong>, que já usava o fogo e instrumentos de pedra e de madeira, o <strong>Homo heidelbergensis</strong>, seguido pelo <strong>Homo neandertalensis</strong> e pelo <strong>Homem de CroMagnon</strong> que viviam em grupos e em cavernas, aprenderam a pintar e a fazer toscas esculturas. </p>
+<p>Foi somente há cerca de quarenta milênios, quando os selvagens descendentes dos <strong>primatas</strong> se estabeleceram na Ásia Central e depois migraram, em grandes grupamentos, para o vale do Nilo, para a Mesopotâmia e para a Atlântida, que surgiu no mundo o <strong>Homo sapiens</strong>, resultado da encarnação em massa, na Terra, dos exilados da Capela, cuja presença assinalou, neste planeta, o surgimento das raças adâmicas. </p>
+<p>É natural que, em contato com a matéria mais densa, aflorassem nos primitivos habitantes do nosso orbe, sob o automatismo dos instintos, as sensações e experiências vividas pelo Princípio Espiritual na sua demorada marcha para a aquisição da consciência. Esse fato, além de lógico e natural, por corresponder ao maior e quase único patrimônio de conquistas vitais daqueles seres, era também necessário para lhes assegurar a sobrevivência no mundo das formas materiais espessas e pesadas. Compreende-se que consciências ainda frágeis, mas rebeldes, assim servidas por todo um vasto arsenal de instintos inferiores, herdados da fase animal anteriormente vivida, surgissem no mundo em tão franco estado de selvageria, então agravada pelos novos poderes da vontade.  </p>
+<p>Acresce que, acolhendo no seio de suas tabas numerosos Espíritos muito mais avançados em inteligência e em conhecimentos, porém revoltados e cruéis, sofreram-lhes a poderosa e deletéria influência moral, que ainda mais os inclinou à maldade deliberada, até mesmo através de cultos religiosos primários, sanguinolentos e perversos. Muitos, porém, dos exilados da Cabra, deixando-se tocar pelo sublime influxo das inspirações crísticas, pela saudade do seu paraíso distante e pelo sincero arrependimento de seus terríveis erros, conseguiram superar as suas imensas dificuldades psicológicas e inauguraram no mundo a era das grandes religiões.  </p>
+<p>Organizadas pelas raças adâmicas, surgem então, no cenário do mundo, as quatro grandes civilizações da Antiguidade: a ariana, a egípcia, a hebraica e a hindu. Precisamos, porém, registrar que, muito antes de surgirem os arianos, já florescia no Oriente, como a mais bela e avançada das organizações primitivas do orbe, a grande civilização da velha China.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/neanderthal-4731929_960_720.jpg" alt="" class="alignright" width="423" height="281" />
+
+<p>Das grandes organizações sociais criadas pelos excapelinos, a hindu é a mais antiga, vindo depois a egípcia, a hebréia e finalmente a ariana. Remontam a mais ou menos dez mil anos os primeiros surtos de civilização terráquea, embora, a rigor, só os acontecimentos dos últimos cinco milênios sejam convictamente registrados pela História. Em geral, as tábuas historiográficas começam as suas cronografias por volta do ano 3.000 a.C., assinalando apenas por tradição o estabelecimento do Império Tinita, inaugurado por Menés, unificador dos dois reinos egípcios. São também muito vagos os registros humanos sobre o Faraó Zoser, iniciador do Império Menfita, cuja capital foi mudada de Tinis para Mênfis. Pouco minuciosas são, por igual, as notícias sobre os semitas do Tigre-Eufrates e suas notáveis cidades de Akad, Isin e Larsa.  </p>
+<p>A imponente civilização dos sumérios também floresceu no terceiro milênio a.C., nas cidades mesopotâmicas de Erech, Ur, Eridu, Lagach, Uruk, Kish e Nipur e existem registros suficientes sobre a boa capacidade de organização política e comercial desse povo, cujos dotes técnicos e artísticos são atestados pelos canais de irrigação que construiu, por seus trabalhos em metais e pela escrita cuneiforme que desenvolveu.  </p>
+<p>Os sumérios possuíam sistema funcional de pesos e medidas e a eles, astrônomos competentes, se deve a primeira divisão do dia em 24 horas e da hora em minutos e segundos. Seu rei Hamurabi, o sexto da primeira dinastia, enérgico e sábio, promulgou, na Babilônia, o primeiro grande código humano de leis, que tanta influência iria exercer sobre a legislação mosaica.  </p>
+<p>Nessa época, a China era um pequeno império, dividido em nove províncias, sob o poder autocrático dos soberanos dinásticos da Hissia, enquanto a Ásia Central era palco de contínuas incursões de tribos mongóis e alpinas. No atual território iraniano habitavam os cassitas, os ela mitas e os mitanos, arianos protonórdicos que formaram o reino do Ela, sob o governo de CuturLagar e que tinham em Susa e Anzã as suas cidades principais. Foram esses povos rudes, armados de arco e flecha, que introduziram o cavalo na Ásia Menor. Na índia, porém, nasciam a Filosofia e a Religião, no espírito e nas vozes dos grandes iniciados.  </p>
+<p>Surgem, nos caracteres sânscritos, os Vedas (*(*) São quatro coleções de <strong><em>Mantras</em></strong> ou <em><strong>Samhitas</strong></em>, a saber: <em><strong>Big-Veda</strong>, <strong>Yajur,</strong> <strong>Sama</strong> e <strong>Atharva-Veda</strong>. Os <strong>Upanishads</strong> somente surgiriam muitíssimo depois, por volta do século VI a.C.),</em> com os seus cânticos e as suas preces de imorredoura beleza. Infelizmente, nascia também, no mundo, a dura discriminação racial, então estabelecida pela divisão da sociedade em castas. (*(*) <em>Sacerdotes e nobres (os <strong>brâmanes</strong>); guerreiros (os <strong>xátrias</strong>); mercadores (os <strong>váxias)</strong>; camponeses e trabalhadores (os <strong>sudras</strong>) e os parlas, que eram os autóctones dravinianos, de pele escura, descendentes dos <strong>primatas</strong>, aos quais os arianos recusavam qualquer tipo de direito.)</em><br><img src="http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/meditacao-universo-e-vida-07_09_2017.jpg" alt="">Na mesma faixa de tempo que estamos considerando florescia a extraordinária civilização egipciana, em cujo seio alcançaram grande desenvolvimento as atividades agrícolas e navais, o comércio, as artes, o direito, a escrita, a astronomia, a medicina e a matemática. As grandes cidades de Mênfis e Heliópolis eram os seus mais importantes centros teológicos, cujos colégios sacerdotais, dotados da mais alta cultura, exerciam ampla influência sobre todos os setores da vida social. Espíritos de notável grandeza evolutiva, os antigos egípcios construíram uma civilização muito superior ao nível daquela época e das que se lhe seguiram, terminando por deixar nas Grandes Pirâmides — monumentos de saber ainda não de todo decifrado — não apenas a lembrança dos seus sonhos e das suas esperanças, senão também roteiros valiosos para a inteligência humana dos tempos futuros. Se bem que a grande maioria daqueles seres de eleição tenha retornado a Capela, numerosas entidades daquela grei permanecem nas esferas espirituais do nosso orbe, integrando as excelsas falanges do Cristo. Lamentavelmente, alguns outros, supinamente infelizes, se transformaram, com infaustos comparsas ex-capelinos, em tenebrosos Dragões do Mal.  </p>
+<p>Enquanto isso, importantes contingentes de egressos da Capela abandonavam a Ásia, atravessavam os planaltos pérsicos e se dividiam em ramos diversos, espalhando-se em todas as direções, desde o Mar Báltico até o Mediterrâneo. Logo falaremos deles, pois se tornariam, no correr do tempo, os grandes artífices das extraordinárias civilizações arianas da Europa.  </p>
+<p>Dentre os exilados de Capela, certo grupo considerável de Espíritos se caracterizava por um conjunto muito especial de qualidades e defeitos. Unidos entre si por fortes vínculos raciais, gostos e costumes, formavam uma sociedade extremamente solidária entre os seus membros, idealista e operosa, mas de exacerbada vaidade, orgulho impenitente e fanático exclusivismo. Espíritos dotados de grande desenvolvimento intelectual, mas de insaciável apetite de posse e de poder, opuseram-se tão teimosamente à vitória da fraternidade ampla, em seu mundo de origem, que acabaram banidos para a Terra, a fim de que, no contato forçado com outros povos e sob o guante de amargas experiências, aprendessem as lições do amor e da humildade, do desprendimento e da abnegação. Falamos dos hebreus, cuja história terrena começa há quarenta séculos, quando o Patriarca Abraão, filho de Terah e descendente de Sem, deixou a cidade caldéia de Ur, levando a sua família para a Terra de Canaã, como então se chamava a Palestina, ou Terra da Púrpura, assim depois denominada por causa do corante que se passou ali a fabricar.  </p>
+<p>Por três mil anos esse povo permaneceu seminômade, vivendo basicamente de pastoreio, de agricultura de auto-sustentação e de artesanato, e em contínuos combates de sobrevivência com outros povos. Durante esse tempo cresceu em número, até abrigar todos os membros espirituais da sua raça, enquanto consolidava as suas tradições e o seu culto — o único declarada e indisfarçadamente monoteísta de todos os povos antigos. Em fins do século XVII a.C., sérias desavenças levaram os irmãos de José, filho de Jacó, neto de Abraão, a vendê-lo como escravo.  </p>
+<p>Conduzido como cativo à presença do Faraó do Egito, para quem solucionou, com seus poderes mediúnicos, o enigma de importante sonho premonitório, foi guindado, também pela competência que logo revelou, a altas funções de governo. Era José o Chanceler do Egito quando, premidos pela fome que flagelava a Palestina, muitos hebreus começaram a emigrar para a Terra dos Faraós, cuja civilização lhes oferecia condições de sobrevivência, embora encontrassem ali apenas trabalho servil e humilhantes condições de existência.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/confucius-547152_960_720.jpg" alt="" class="alignleft" width="480" height="360" />
+
+  
+  
+<p>Com esses imigrantes vieram os irmãos mais velhos de José, a quem este fez submeter a dura prova, para avaliá-los. Como eles foram capazes de arriscar a própria vida para defender a do irmão caçula, Benjamin, José os perdoou e, com a aquiescência do Faraó, acolheu com generosidade o velho Jacó e toda a sua família.  </p>
+<p>Quinhentos anos ficaram os hebreus nas terras do Egito, até que Moisés, no século XII a.C., depois de adquirir, sob a proteção de Termútis, todos os conhecimentos técnicos dos egípcios e toda a ciência iniciática do Faraó e dos grandes sacerdotes, se pôs à frente do povo israelita e o conduziu à liberdade.  </p>
+<p>Sendo, porém, como realmente foi, o maior estadista que o mundo conheceu, ao invés de marchar diretamente para a sonhada Canaã, manteve no deserto todo o povo, sob o seu comando, durante quarenta anos, a fim de substituir as gerações, educar as gerações novas, consolidar a fé monoteísta e estabelecer uma legislação capaz de assegurar para sempre a sobrevivência da raça.  </p>
+<p>Os dez mandamentos que recebeu no Sinai e promulgou para o povo são até hoje os fundamentos por excelência da mais alta filosofia moral de toda a Humanidade.  </p>
+<p>Á esse tempo, os fenícios constróem Sidon e Tiro, colonizam a costa do Mediterrâneo e inventam o alfabeto que se espalharia rapidamente por todo o Oriente Médio. Na Grécia, florescem Atenas e Esparta e surge o alfabeto grego. A Babilônia torna-se o centro comercial do Oriente. Logo, porém, essa situação seria profundamente alterada, porque os assírios subjugaram a Armênia, a Síria e o Egito, os etruscos fundaram Roma e os hebreus, que haviam conquistado Canaã, sob o comando de Josué, que venceram, com Sansão, os filisteus e depois estabeleceram o seu reino, com Saul, Davi e Salomão, entraram em guerra civil, dividiram-se nos reinos de Judá e de Israel e acabaram cativos do babilônio Nabucodonosor.  </p>
+<p>Surge então um momento histórico de excepcional beleza e crucial importância: o grande Lao-Tsé instaura na China um novo código de elevada moral, logo complementado pelo Espírito missionário de Confúcio; na índia, esplende a figura magnífica de Buda; Ciro, o Grande, liberta os hebreus, que reconstroem o seu templo; é compilado o Avesta, de Zoroastro; os patrícios fundam a República Romana e a Grécia conhece os esplendores do “Século de Péricles”.  </p>
+<p>Evidencia-se com nítida clareza a ação do Governo Espiritual do Mundo, num gigantesco esforço de preparação para o já próximo aparecimento do Senhor Jesus-Cristo sobre a face da Terra. Providências de vulto são tomadas para a unificação dos povos. Grandes luminares do Plano Maior são enviados à Crosta planetária, ininterruptamente, durante cinco séculos. Foi assim que a Humanidade recebeu, sucessivamente e dentre outras, as visitas luminosas e inspiradoras de Elias, Amos, Oséias, Jeremias, Lao-Tsé, Confúcio, Buda, Tales de Mileto, Pitágoras, Péricles, Esquilo, Anaxágoras, Hipócrates, Heródoto, Sócrates e Aristóteles. As ciências e as artes, a filosofia e a religião alcançam índices majestosos de progresso. Alexandre funda um império gigantesco, que se estende desde o Egito até a índia, universalizando os avanços e as belezas da cultura grega e estabelecendo preciosos liames de comunicação entre povos diversos e distantes.  </p>
+<p>Bastou, porém, a desencarnação de Alexandre, para que os seus generais levassem o grande império ao desmembramento. As lutas que travaram uns contra os outros resultaram na vitória de três deles, que dividiram entre si os domínios macedônios: Cassandro ficou com a Grécia; Ptolomeu, com o Egito, e Seleuco com as terras da Ásia, sob o nome genérico de Síria. Esses três reinos, assim constituídos, cairiam pouco depois, um a um, sob a dominação latina porque as forças do Grande Destino haviam decidido, no Alto, reunificar o sistema político e social do mundo, às vésperas do advento do Divino Mestre. Surgia, desse modo, sobre a face da Terra, o Império de Roma, na sua imponente expressão.  </p>
+<p>Repetindo velhos erros, os dominadores romanos não conseguiram manter-se moralmente incólumes no exercício do poder e se desbordaram em toda a sorte de desmandos. Violências desnecessárias e iníquas, perseguições e morticínios, saques e vinditas multiplicaram lágrimas e crimes. Apesar disso, a Divina Providência conseguiu restabelecer, no vasto império, a ordem e a paz, preservando as notáveis conquistas da família romana e consolidando os direitos civis, coroados pelas leis Canuléia e Ogúlnia. Então, sob o cetro de Augusto, o mundo romano descansou, reconfortado, em suave respiro de bonança. A Humanidade ia receber a visita augusta do Soberano Cristo de Deus.<br>(Áureo. <em>Universo e vida</em>. Psicografado por Hernani T. Sant’Anna. FEB. Cap.VI)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

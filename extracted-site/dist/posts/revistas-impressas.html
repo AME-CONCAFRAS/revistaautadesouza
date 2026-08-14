@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revistas impressas | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Revistas Impressas</span>
+          <h1>Revistas impressas</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-26T16:55:44 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><a href="https://www.revistaautadesouza.com/wp-content/uploads/2021/11/Revista-Mocidade-12.11.2021.pdf">Revista Auta de Souza – Mocidade Espírita</a><a href="https://www.revistaautadesouza.com/wp-content/uploads/2021/11/Revista-Mocidade-12.11.2021.pdf">Baixar</a></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/11/Captura-de-ecra-2021-11-13-140119.png" alt="" class="alignleft" width="215" height="305" />
+
+<p><strong>Mocidade Espírita</strong>  </p>
+<p>“O mundo espiritual se rejubila ante os encaminhamentos do programa da evangelização da juventude sobre a Terra. De tempos em tempos grupos de espíritos<br>reencarnam com a tarefa de evangelização da humanidade. Basta recordarmos as primeiras iniciativas, no exterior e no Brasil, que já prenunciavam o que hoje é o Instituto do Jovem no Centro Espírita. Os tempos que passamos pedem programas de renovação das mentalidades tendo o Evangelho por roteiro.” Comissão de Mocidade (Editora Auta de Souza, Revista Auta de Souza, ano 34, n. 35, p. 14)</p>
+<p><a href="http://161.35.11.199/wp-content/uploads/2020/04/Revista_Auta_de_Souza_-Conhe%C3%A7a-o-Espiritismo.pdf">Revista Auta de Souza – Conheça o Espiritismo</a><a href="http://161.35.11.199/wp-content/uploads/2020/04/Revista_Auta_de_Souza_-Conhe%C3%A7a-o-Espiritismo.pdf">Baixar</a></p>
+<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-04-26-às-16.39.29.png" alt="" class="alignleft" width="215" height="305" />
+
+<p><strong>Conheça o Espiritismo</strong><br>“Se me amais, guardai meus mandamentos; – e rogarei ao<br>meu Pai e Ele vos enviará outro Consolador, a fim de que permaneça eternamente convosco: – O Espírito de Verdade que o mundo não pode receber, porque não o vê e nem o conhece.<br>Mas, quanto a vós, ireis conhecê-Lo, porque permanecerá convosco e estará em vós. – Mas o Consolador, que é o Santo Espírito, que meu Pai enviará em meu nome, ensinar-vos-á todas as coisas e vos relembrará tudo o que vos tenho dito.” (S. João, 14:15-17, 26).</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p><a href="http://161.35.11.199/wp-content/uploads/2020/04/Revista_Auta_de_Souza_-Aborto-1.pdf">Revista Auta de Souza – Deixe-me Nascer! Aborto Não!</a><a href="http://161.35.11.199/wp-content/uploads/2020/04/Revista_Auta_de_Souza_-Aborto-1.pdf">Baixar</a></p>
+<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-04-26-às-16.45.10.png" alt="" class="alignleft" width="215" height="315" />
+
+<p>O aborto é sempre lamentável porque se já estamos na Terra com elementos<br>anticoncepcionais de aplicação suave, compreensível e humanitário, porque é que havemos de criar a matança de crianças indefesas, com absoluta impunidade, entre as paredes de nossas casas? Isto é um delito muito grave perante a Providência Divina, porque a vida não nos pertence e sim ao poder divino.”</p>
+<p>Emmanuel. Entender conversando. Psicografia de<br>Francisco Cândido Xavier. FEB, 7. Ed. P.16-17</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p><a href="http://161.35.11.199/wp-content/uploads/2020/04/REVISTA_AUTA_DE_SOUZA-Suicidio.pdf">Revista Auta de Souza – Viver vale a pena!</a><a href="http://161.35.11.199/wp-content/uploads/2020/04/REVISTA_AUTA_DE_SOUZA-Suicidio.pdf">Baixar</a></p>
+<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-04-26-às-17.01.11.png" alt="" class="alignleft" width="215" height="305" />
+
+<p>“Tem o homem o direito de dispor da sua vida?<br>‘Não; só a Deus assiste esse direito. O suicídio<br>voluntário importa numa transgressão desta lei.’”<br>(Allan Kardec, O livro dos Espíritos, pergunta 944, Editora FEB)</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>..</p>
+<p>.</p>
+<p><a href="http://161.35.11.199/wp-content/uploads/2020/05/Revista-Alcoolismo-01-09-.2-1-1.pdf">Revista Auta de Souza – Álcool, Existe limite seguro?</a><a href="http://161.35.11.199/wp-content/uploads/2020/05/Revista-Alcoolismo-01-09-.2-1-1.pdf">Baixar</a></p>
+<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-05-28-às-09.39.18.png" alt="" class="alignleft" width="215" height="305" />
+
+<p>Vivemos o momento esperado das viagens interplanetárias, das grandes descobertas científicas, da preocupação maior com a preservação da natureza e dos animais. Assim, não podemos fechar os olhos para o grande mal que destróis vidas e famílias, causa desastres incontáveis e promove o lento suicídio. Um mal que teima estar presente em tantas reuniões familiares ou sociais, às vezes disfarçado como atrativo e convidado de honra: o álcool!  </p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p><a href="http://161.35.11.199/wp-content/uploads/2020/05/Revista-Auta-de-Souza.-Culto-no-lar-1.pdf">Revista Auta de Souza – Paz em casa Paz no mundo</a><a href="http://161.35.11.199/wp-content/uploads/2020/05/Revista-Auta-de-Souza.-Culto-no-lar-1.pdf">Baixar</a></p>
+<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-05-28-às-10.06.23.png" alt="" class="alignleft" width="215" height="305" />
+
+<p>“Não haverá tranquilidade no mundo, sem que as nações pratiquem a tolerância e a fraternidade.E se a nação é conjunto de cidades, a cidade é um agrupamento de lares, tanto quanto o lar é um ninho de corações.”</p>
+<p>Reconhecemos que o lar da atualidade vive a carência do Cristo na sua intimidade. Sofrendo a família a falta dessa Divina presença como cumprir a sua missão na implantação do Reino de paz na nova Terra?<br>“Quando o ensinamento do Mestre vibra entre as quatro paredes de um templo doméstico, os pequeninos sacrifícios tecem a felicidade comum.”</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p><a href="http://161.35.11.199/wp-content/uploads/2020/06/Revista-CONCAFRAS-MUNDIAL-1.pdf">Revista Edição Especial Concafras Mundial – Paz em casa, paz no mundo.</a><a href="http://161.35.11.199/wp-content/uploads/2020/06/Revista-CONCAFRAS-MUNDIAL-1.pdf">Baixar</a></p>
+<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-05-28-às-10.22.27-1.png" alt="" class="alignleft" width="215" height="305" />
+
+<p>“A fraternidade, na rigorosa acepção do termo, resume todos os deveres dos homens, uns para com os outros; significa: devotamento, abnegação, tolerância, benevolência, indulgência, É, por excelência, a caridade evangélica e a aplicação da máxima: ‘Proceder para com os outros, como gostaríamos que os outros procedessem para conosco. É o oposto do egoísmo.”</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p>.</p>
+<p><a href="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Revista-Auta-de-Souza-ano-34-n%C2%BA-34-2021.pdf">Revista Auta de Souza – Viver vale a Pena, Suicídio Nunca!</a><a href="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Revista-Auta-de-Souza-ano-34-n%C2%BA-34-2021.pdf">Baixar</a></p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2021/04/REV-AS.png" alt="" class="alignleft" width="215" height="465" />
+
+<p>Acompanhe o relato de um suicida e descubra o que acontece com a alma após tirar a própria vida.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

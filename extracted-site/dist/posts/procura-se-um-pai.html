@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Procura-se um pai | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>Procura-se um pai</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T16:19:15 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/maos-pai-e-filho-2416718-1280-01_02_2020.jpg" alt="" class="alignright" width="406" height="273" />
+
+<p><strong>Autora:</strong> Nísia Anália</p>
+<p><strong>Cenários:</strong> Uma praça. Na sequência um quarto. No sonho: Plano Espiritual.</p>
+<p><strong>Personagens:</strong> Lucas, Camila, Médico, Construtor, dois ou mais profissionais representando os pais, professor, pai/espírito, mãe.</p>
+<p>(Entram duas crianças, brincando e depois começam a conversar)</p>
+<p>Lucas – Camila, você tem pai?<br>Camila – Claro que tenho.<br>Lucas – Como ele se chama?<br>Camila – Joaquim.<br>Lucas – Hum!!!<br>Camila – E você. Você tem pai?<br>Lucas – Não, eu não tenho pai.<br>Camila – Como? Sua mãe te fez sozinha?<br>Lucas –  Acho que quase sim…<br>Camila – Não pode ser. Todo mundo tem um pai.<br>Lucas – Será? Sendo assim, preciso encontrar o meu.<br>Camila – Bom, já vou indo coleguinha. Depois nos brincamos mais. (Sai com seu brinquedo.)</p>
+<p>Lucas – (Sozinho)- Bem, se todo mundo tem um pai, eu também tenho. Já sei, vou procurar um pai…</p>
+<p>(Sai de cena. Nesse momento entra um senhor, bem vestido, representando um médico.)</p>
+<p>Médico – Preciso atender a D. Amália no horário certo, pois depois tenho que buscar meu filho na Escola.</p>
+<p>(Entra Lucas)</p>
+<p>Lucas – Oi pai!!! Não precisa se preocupar, eu já estou aqui.<br>Médico – Pai!!! Filho?!!!<br>Lucas – Tá vendo, você é meu pai… Achei o meu pai…<br>Médico – (Consternado) – Olha menino, bem que eu adoraria ter você como filho… Mas, sinto te dizer, eu não sou o seu pai. Meu filho se chama Carlos… (Dá um abraço em Lucas e sai.)<br>Lucas – Bom, também não preciso desanimar da primeira vez… Vou continuar procurando… Êpa, vem alguém aí.</p>
+<p>(Entra um senhor representando um construtor.)</p>
+<p>Construtor – Que bom, já estamos quase acabando de construir a casa da D. Maria, assim vou receber e poderei comprar o leite para o meu filhinho…<br>Lucas – (Ouvindo) – Não precisa se preocupar papai, eu não estou com fome. Só quero o senhor!<br>Construtor – Olá, menino, quem é você? Por que você me chamou de pai?<br>Lucas – O senhor não é meu pai?<br>Construtor – (Tristonho) – Não. Meu filho se chama Jairo e é bem menor do que você. Desculpe-me.<br>Lucas – Tudo bem… É que pensei…<br>Construtor – Tenho que ir. Tomara que você encontre o seu pai.<br>Lucas – Tá bom. (falando sozinho) – Ah! Não tem problema. Não vou desistir. Sei que vou encontrar um pai para mim…</p>
+<p>(Continua essa situação, com pessoas, no mínimo mais duas representando figuras de pais. Lucas se apresenta, os pais demonstram que não são seus pais, vão saindo de cena, Lucas sempre acompanha com o olhar triste. Esse momento deve ser realizado apenas com encenações, ao som de uma música instrumental e/ou alguma que fale sobre pai. A seguir entra um professor, continuando os diálogos anteriores.)</p>
+<p>Professor – Parece que o ônibus está atrasado. Ainda bem que hoje não tenho que dar aula, assim, não preciso ter pressa. Acho até que vai dar tempo de comprar umas lembrancinhas para meus alunos, pois são como filhos.</p>
+<p>Lucas – (Que estava ouvindo) – Olá papai, não preciso de presente, preciso só do senhor!!!</p>
+<p>(Professor se assustando.)</p>
+<p>Professor – O que você disse? Quem é você? Por que me chamou de papai?<br>Lucas – Olá papai, tudo bem?<br>Professor – Olá, menino, tudo bem?<br>Lucas – Ah, não tava não. Mas agora que te encontrei, estou muito feliz!!!!<br>Professor – (consternado) – Como assim? Como é seu nome?<br>Lucas – (olhando para o público) – Ué, um pai que não sabe o nome de seu filho? Bom, vai ver que ele tem problema de memória. É melhor eu falar de uma vez. (Olha para o professor) _ Olá, muito prazer, meu nome é Lucas…<br>Professor – Olá Lucas, muito prazer. O meu nome é Luiz.<br>Lucas – Olá, papai Luiz.<br>Professor – Olha, eu não sei o que está acontecendo. Mas, vamos sentar um pouco para conversarmos.<br>Lucas – (Todo feliz) – Vamos conversar sim, Ôba!!! Mas, depois você brinca comigo?<br>Professor – Está bem. Depois eu brinco com você.<br>Lucas – Ôba, ôba, ôba.<br>Professor – Veja, Lucas, eu gostei muito de você. Quero ser um grande amigo seu, mas eu não sou seu pai…<br>Lucas – (Ficando triste) – Eu sei…<br>Professor – Você sabe? Então por que me chamou de pai?<br>Lucas – É que todo mundo tem um pai. Está chegando o dia dos pais… como eu não tenho um pai, resolvi procurar… Queria tanto um pai para abraçá-lo no dia dos pais… Na verdade queria abraçá-lo todos os dias, mas como não é possível, pelo menos no dia dos pais.<br>Professor – (Consternado) – Meu menino, não fique triste. Vou ajudá-lo a encontrar o seu pai, seu pai verdadeiro… ora, todo mundo tem um pai.<br>Lucas – Pois é, mas eu não.<br>Professor – Como assim? Conte-me essa história.<br>Lucas – Mamãe disse que meu papai morreu antes que eu saísse da sua barriga.<br>Professor – Hum!!! O que mais sua mamãe lhe falou?<br>Lucas – Como ele morreu, ela disse que ele não existe mais… Se ele não existe mais, significa que eu não tenho um pai…<br>Professor – Sua mãe acha que quando seu papai morreu, ele deixou de existir?<br>Lucas – É isso mesmo!! Ele não existe, por isso estou procurando alguém para ser meu pai.<br>Professor – E seu eu disser para você que seu papai não morreu?<br>Lucas – Não morreu? Você conhece ele? Então ele está se escondendo de mim!!! Onde ele está?<br>Professor – Calma Lucas, deixa eu lhe explicar. É que na verdade a morte não existe…<br>Lucas – A morte não existe? Então a mamãe está mentindo?<br>Professor – Sua mãe não está mentindo, é que ela certamente também não conhece algumas verdades.<br>Lucas – Fala, papai Luiz, fala…<br>Professor – Lucas, nós somos espíritos criados por Deus. O Espírito, que somos nós, jamais morre…<br>Lucas – Como assim? Então a gente fica invisível? Meu pai ficou invisível?<br>Professor – Deixa eu terminar de lhe explicar. Nós, que somos espíritos, que jamais morremos, temos um corpo, que é esse aqui (se mostra e mostra o de Lucas)… Esse corpo é que morre… Quando ele fica velho ou mesmo quando tem um problema que não tem cura, quando ele fica muito estragado… aí ele não tem conserto e o jeito é o espírito sair dele… quando o espírito sai do corpo, o corpo morre… Esse processo se chama desencarnação, ou seja, o espírito sai da carne…<br>Lucas – Mesmo!!! O Espírito, que somos nós, sai do corpo… o corpo morre … e nós não?<br>Professor – Isso mesmo!!!<br>Lucas – Então meu pai saiu do corpo, mas…ele continua existindo?  Sabe o corpo dele estava bem doente….<br>Professor – Isso mesmo, você entendeu direitinho…<br>Lucas – E onde ele está? Como eu posso encontrá-lo? Eu quero vê-lo.<br>Professor – Quando desencarnamos, vamos para um lugar chamado  Plano Espiritual… Lá no Plano Espiritual tem as Colônias Espirituais, com cidades, escolas, hospitais….<br>Lucas – E fica longe? Como eu posso ir lá? Quanto custa a passagem?<br>Professor – Calma, Lucas. Você vai aprender tudo… Sabe, além de ser professor nas Escolas, eu também sou professor num lugar muito especial…<br>Lucas – E eu posso ser seu aluno?<br>Professor – Pode sim… Esse lugar se chama Centro Espírita… Lá nós temos a Escola Espírita de Evangelização…<br>Lucas – Nossa, que legal!!! Estou com vontade de ir lá…<br>Professor – Sim, quero que você vá lá… Mas, antes quero te levar em casa… quero conhecer sua mãe. Se ela aceitar, quero explicar para ela tudo o que conversei com você. Onde você mora?<br>Lucas – (Abrindo bem os braços) – Ah! É bem ali…<br>Professor – Então vamos…<br>Lucas – Mas, o senhor não ia comprar um presente para seus filhos?<br>Professor – Terei tempo para isso… Nesse momento, outro filho está precisando mais de mim.<br>Lucas – Ôba, Vamos lá… eu vou mostrar o caminho….</p>
+<p>(Os dois saem abraçados)</p>
+<p>Narrador – Assim o Professor Luiz conheceu a mamãe do Lucas. Explicou para ela que a morte não existe… que o espírito jamais morre… Ela ficou muito feliz e o Lucas mais feliz ainda.</p>
+<p>(A seguir Lucas entra, por outro lado, abraçado à sua mãe. Ela deverá ter nas mãos O Evangelho segundo o Espiritismo e O Livro dos Espíritos.)</p>
+<p>Mãe – Meu filho me perdoe… Como eu pude pensar esse tempo todo, que com a morte tudo acabava…<br>Lucas – Ah! Mamãe, o importante foi que Deus enviou alguém para nos ajudar.<br>Mãe – Pois é, a conversa com o professor Luiz, os esclarecimentos que ele trouxe, os Livros Espíritas que ele nos emprestou, meu Deus, é como se tirasse um véu dos meus olhos…<br>Lucas- Pois é, mamãe, que maravilha! A vida continua… O papai continua vivendo…<br>Mãe – (Emocionada) –Que alegria ter aprendido essa verdade!!!<br>Lucas – Quero frequentar a Evangelização, mamãe…<br>Mãe – Eu também quero frequentar o Centro espírita. Quero estudar, aprender. Vamos juntos meu filho.<br>Lucas – Mamãe, quero lhe contar um segredo!!!<br>Mãe – Segredo? Então fala!<br>Lucas – É que é segredo, tenho que falar bem baixinho…<br>Mãe – (Rindo) – Está bem, fale bem baixinho.<br>Lucas – O professor Luiz disse que eu posso encontrar com o papai…<br>Mãe – (Assustando) – Como?<br>Lucas – Quando eu dormir… Só meu corpinho que fica aqui na cama… Eu, espírito, posso sair… e… e… encontrar com o papai. Eu vou pedir isso a Deus.<br>Mae – Peça sim, meu filho. Peça sim. E por falar em dormir, vamos já pra cama. Tivemos um dia cheio de emoções.<br>Lucas – Está bem, mamãe… Estou mesmo com muito sono (boceja).  </p>
+<p>(A mãe coloca-o na cama, dá-lhe um beijo, diz boa noite e sai de cena. Lucas, senta-se na cama e faz uma prece.)</p>
+<p>Lucas – Meu Anjinho da Guarda,<br>Peça ao Papai do Céu,<br>Pra deixar eu encontrar<br>O meu papai da Terra,<br>Que agora mora também no céu. Vou ficar muito feliz. Que assim seja.</p>
+<p>(Deita-se. Nesse momento coloca-se uma música suave, se possível pode mudar o cenário para algo mais suave. Entra alguém, representando o espírito do pai de Lucas. Suavemente ele se aproxima da cama, estende a mão, Lucas vai levantando calmamente, como se estivesse saindo do corpo, olha o pai e pergunta.)</p>
+<p>Lucas – Quem é você?<br>Pai – Filho querido, sua prece foi ouvida.<br>Lucas – (Emocionado) – O senhor é meu…<br>Pai – (Abaixando-se) – Sim, meu filho… Eu sou seu pai.<br>Lucas – (Abraçando-o) – Meu papai… Que saudade… Como eu senti sua falta…Por que o senhor nos abandonou?<br>Pai – Querido filhinho, não vamos reclamar… Aproveitemos esse momento…<br>Lucas – Papai, deixa eu lhe abraçar… como desejei esse encontro!!<br>Pai – Deus está cuidando de todos nós… Estou sempre ao seu lado e de sua mãe… Eu não abandonei vocês… Só me transferi de tarefas…<br>Lucas – Foi tão bom saber que você não deixou de existir…<br>Pai – Isso mesmo meu filho, a vida não cessa, mais tarde estaremos todos juntos novamente…<br>Lucas – Que bom… Vai ser muito bom…<br>Pai – Mas antes, você tem muitas coisas para fazer aí na terra, certo? Deus conta com você.<br>Lucas – O senhor vem me ver outras vezes?<br>Pai – Sempre estive e sempre estarei, com a permissão de Deus, ao lado de você e de sua mãe, mas agora  tenho que retornar… Seja sempre um bom menino…<br>Lucas – (Abraçando-o) – Não papai, não vá.<br>Pai – Filhinho, fique tranquilo… nos encontraremos outras vezes. Venha, vou levá-lo de volta… Que Deus lhe abençoe.</p>
+<p>(Conduz Lucas, de volta a seu corpo. Vai saindo lentamente da cena. Lucas vai acordando. Abre os olhos, dá um sorriso e chama pela mãe.)</p>
+<p>Lucas – Mamãe, mamãe!!!</p>
+<p>(A mãe entra assustada)</p>
+<p>Mãe – O que foi meu filho?<br>Lucas – Mamãe, eu sonhei com o papai… Sim era ele, sei que era ele…<br>Mãe – (Emocionada) – Eu acredito… Depois dos esclarecimentos do professor Luiz e dos livros que li… Claro que eu acredito.<br>Lucas – Acordei tão feliz mamãe…<br>Mãe – Que bom meu, filho… mas, foi somente pelo sonho?<br>Lucas – Claro, pois agora eu encontrei três pais…<br>Mãe – Três pais? Como assim?<br>Lucas – Eu procurava um pai e encontrei: o meu papai verdadeiro, o meu Papai do Céu que é Deus e também o meu papai professor Luiz!!!<br>Mãe – (Rindo e abraçando-o) – Verdade meu filho, graças a Deus.</p>
+<p>(Os dois se abraçam. Congela-se a cena, até o momento que deverão falar. Vão entrando os personagens da peça.)</p>
+<p>Médico – Pai que ama de verdade,<br>Cumpre sempre o seu papel,<br>Quando está aqui na Terra<br>Mais ainda, quando no céu!</p>
+<p>Construtor –  A maior das construções<br>Que o homem pode fazer<br>É assumir seu compromisso<br>De ajudar o filho crescer.</p>
+<p>Professor –  Que tristeza ver crianças,<br>Abandonadas por seus pais,<br>Por motivos de separações,<br>Ou, por terem negócios demais.</p>
+<p>Mãe – Homens da Terra, escutem:<br>Paternidade é uma missão<br>Cuide bem dos Filhos de Deus<br>Confiados ao seu coração.</p>
+<p>Camila e  Lucas–    Em nome de todos os filhos<br>Aos pais queremos dizer,<br>Na lavoura bendita da vida<br>Precisamos de vocês!!</p>
+<p>Todos – Feliz dia dos Pais!!!!</p>
+<p>(Cantam uma música que fala de pai)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

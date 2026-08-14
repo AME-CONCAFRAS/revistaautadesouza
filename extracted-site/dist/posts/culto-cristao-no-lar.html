@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Culto Cristão no Lar | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>Culto Cristão no Lar</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T16:39:07 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália<br><strong>Baseado no Livro:</strong> Jesus no Lar, Neio Lucio/F.C. Xavier, cap. 1. Peça para divulgação sobre a importância do Culto Cristão no Lar. Sugerimos sua apresentação em reunião de pais, reunião pública e para crianças da Evangelização</p>
+<p>(Inicia-se com uma pessoa preparando o ambiente para o Culto no Lar: água, Livros para Leitura, som de música suave. Após alguns segundos alguém bate à porta)</p>
+<p><strong>Miriam</strong> – Tomara que seja o Nívio, pois já está quase na hora do Culto.<br>(Atende a porta e é Cristina, uma amiga da família)<br><strong>Cristina</strong> – Olá D. Miriam, tudo bem? O Nívio está?<br><strong>Míriam</strong> – Olá minha filha, tudo bem. O Nívio não está, mas entre e espere-o, ele não deve demorar.<br><strong>Cristina</strong> – (Observando o ambiente preparado para o Culto) – Parece que estou atrapalhando, eu vou indo, depois eu volto.<br><strong>Míriam</strong> – Não está não, Cristina. Agora é o momento do nosso Culto no Lar, mas você pode participar.<br><strong>Cristina</strong> – Culto no Lar? O que é isso?<br><strong>Míriam</strong> – O próprio nome já diz. É o momento reservado no Lar para a oração, onde buscamos através da leitura edificante e da prece a proteção para o nosso lar.<br><strong>Cristina</strong> – Que interessante! Lá em casa estamos precisando disso, estamos com tantos problemas! Como funciona?<br><strong>Míriam</strong> – Em primeiro lugar é necessário definir um dia e horário determinado para a realização do Culto e cumprir o estabelecido, mesmo se estivermos sozinhos.<br><strong>Cristina</strong> – Então, se o Nívio não chegar a tempo, a senhora faz sozinha?<br><strong>Míriam</strong> – Claro! O Culto deve ser iniciado e encerrado com uma prece. Após a prece inicial, faz-se a leitura de um ou mais livro. O Evangelho segundo o Espiritismo e outro, os quais podem ser abertos na hora ou seguidos sistematicamente toda semana, comentando-se a lição lida. É importante falar também dos problemas ocorridos durante a semana, buscando esclarecê-los à luz do Evangelho de Jesus.<br><strong>Cristina</strong> – E esta água, para que serve?<br><strong>Míriam</strong> – Para ser fluidificada, ou seja, abençoada. Nela os mentores espirituais colocam o remédio necessário para a nossa saúde física e espiritual. É muito importante que seja colocada uma vasilha com água durante a realização do Culto. No final, todos tomam um pouco e o restante pode ir sendo consumida todos os dias.<br><strong>Cristina</strong> – Mas que ideia maravilhosa! Quem inventou o Culto Cristão no Lar? Foi lá no Centro que a senhora frequenta?<br><strong>Míriam</strong> – Não minha filha. Quem instituiu o primeiro Culto no Lar foi o próprio Cristo, quando esteve aqui na Terra,<br><strong>Cristina</strong> – Jesus?<br><strong>Míriam</strong> – Sim, sente-se aqui, que vou lhe contar como aconteceu.</p>
+<p>(Nesse momento, as duas se assentam em duas cadeiras mais afastadas do centro do palco, e quando Míriam começa a contar, entra Jesus e Simão Pedro – caracterização – e desenvolvem o diálogo descrito no Livro Jesus no Lar, lição 1)</p>
+<p><strong>Míriam</strong> – Certa vez, estando Jesus na Casa de Simão Pedro, tomou os sagrados Escritos e, como se quisesse dar um novo rumo à conversação que se fizera improdutiva e menos edificante, começou a falar com bondade.</p>
+<p>(D. Míriam cala e inicia-se o diálogo de Jesus com Simão Pedro)</p>
+<p><strong>Jesus</strong> – Simão, que faz o pescador quando se dirige para o mercado com os frutos de cada dia?<br><strong>Simão</strong> – (Pensativo) – Mestre, naturalmente, escolhemos os peixes melhores. Ninguém compra os resíduos da pesca.<br><strong>Jesus</strong> – (Sorrindo com bondade) – E o oleiro? Que faz para atender à tarefa a que se propõe?<br><strong>Simão</strong> – Certamente, Senhor, modela o barro, imprimindo-lhe a forma que deseja.<br><strong>Jesus</strong> – Muito bem, Pedro. E como procede o carpinteiro para alcançar o trabalho que pretende?<br><strong>Simão</strong> – (Com simplicidade) – Lavrará a madeira, usará o enxó e o serrote, o martelo e o formão. De outro modo, não aperfeiçoará a peça bruta.</p>
+<p><strong>Míriam</strong> – (no fundo) – Naquele momento, Jesus calou-se por alguns instantes e falou:<br><strong>Jesus</strong> – Simão, assim também é o lar diante do mundo. O berço doméstico é a primeira escola e o primeiro templo da alma. A casa do homem é a legítima exportadora de caracteres para a vida comum. Se o negociante seleciona a mercadoria, se o marceneiro não consegue fazer um barco sem afeiçoar a madeira aos seus propósitos, como esperar uma comunidade segura e tranquila sem que o LAR se aperfeiçoe?<br>A paz do mundo começa sob as telhas a que nos acolhemos. Se não aprendemos a viver em paz, entre quatro paredes, como aguardar a harmonia das nações? Se nos não habituarmos a amar o irmão mais próximo associado à nossa luta de cada dia, como respeitar o Eterno Pai que nos parece distante?</p>
+<p><strong>Míriam</strong> – Naquele momento, Jesus faz um belo convite a Simão Pedro.</p>
+<p><strong>Jesus</strong> – Pedro, acendamos aqui, em torno de quantos nos procuram a assistência fraterna, uma claridade nova. A mesa de tua casa é o lar de teu pão. Nela recebes do Senhor o alimento para cada dia. Por que não instalar ao redor dela, a sementeira da felicidade e da paz na conversação e no pensamento? O Pai que nos dá o trigo para o celeiro, através do solo, envia-nos a luz através do Céu. Se a claridade é a expansão dos raios que a constituem, a fartura começa no grão. Em razão disso, o Evangelho não foi iniciado sobre a multidão, mas sim, no singelo domicílio dos pastores e dos animais.</p>
+<p><strong>Míriam</strong> – Simão então fita Jesus com os olhos humildes e lúcidos e fala…<br><strong>Simão</strong> – Mestre, seja feito como desejas.</p>
+<p>(Neste momento os dois vão saindo, Cristina e Míriam se levantam e vão para o centro do palco, continuando o diálogo)</p>
+<p><strong>Míriam</strong> – Assim, Cristina, Jesus convidando os familiares do apóstolo à palestra edificante e à meditação elevada, desenrolou os escritos da sabedoria e abriu, na Terra, o primeiro Culto Cristão no Lar.<br><strong>Cristina</strong> – Nossa Míriam, que lindo! Parecia até que eu estava vendo Jesus e Simão Pedro conversando. Quero participar hoje do seu Culto Cristão para aprender e a partir da próxima semana, abrirei o meu em minha casa. Tenho certeza que minha família será abençoada por Jesus.<br><strong>Míriam</strong> – Isto mesmo, Cristina. O Evangelho no Lar é uma bênção para a família. Se no início eles não quiserem participar, faça você sozinha, está bem?</p>
+<p>(Neste momento entra o Nívio)</p>
+<p><strong>Nívio</strong> – Olá Cristina, que surpresa! Tudo bem?<br><strong>Cristina</strong> – Tudo muito bem.<br><strong>Nívio</strong> – Mamãe, já está na hora do culto.<br><strong>Míriam</strong> – Sim. Hoje a Cristina participará conosco.<br><strong>Nívio</strong> – Que bom! Então vamos, não podemos atrasar.<br><strong>Míriam</strong> – Vamos lá. Que bom! É o momento de recebermos Jesus em nosso lar.</p>
+<p>(Saem de cena, ao som de uma música sobre o Culto no Lar)</p>
+<p>– FIM –</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

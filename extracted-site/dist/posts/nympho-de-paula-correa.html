@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nympho de Paula Corrêa | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Missionários do bem</span>
+          <h1>Nympho de Paula Corrêa</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-22T14:54:37 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>O Sr.Nympho Corrêa nasceu aos dezenove dias do mês de julho de 1918, na pequena e calma cidade de Poconé, estado de Mato Grosso. O primogênito se seus pais tem, segundo sua mãe, Dona Tutonila, a personalidade geniosa do avô. É identificado pelos onze irmãos como cópia física fiel do pai, o Sr.Clarindo.  </p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/nympho-de-paula-correa.png" alt="" class="alignright" width="316" height="223" />
+
+<p>Da infância o Sr.Nympho traz algumas recordações, tais como: a lembrança de agradecer a Deus pela oportunidade de ter conhecido e sido abençoado por uma pessoa amiga e meiga, a preta e velha Norata, que com sua sabedoria popular e sensibilidade materna, o salvara de uma impertinente febre causada por uma pneumonia dupla. Lembra também com saudades das caminhadas que fazia próximo a Poconé em companhia de seu tio Filemaon (Tio Felé), e com o Frei Carlos Vallet para extrair ervas desse local, com as quais o frei manipulava remédios caseiros para seus fiéis.  </p>
+<p>Aos dezesseis anos conquistou seu primeiro emprego.Depois, dirige-se à Cuiabá, onde se incorpora ao Ministério da Guerra (atual Exército), onde ficou por quase dois anos no quartel. Após esse período, segue para Campo Grande.Passados alguns anos, se desvencilha do Exército, passando a ser funcionário civil do mesmo quartel.  </p>
+<p>Nesta nova fase de sua vida, conhece o Sr.Tito José Inácio, que era espírita e freqüentemente dialogava sobre temas ligados ao Espiritismo. Este mesmo senhor lhe apresentou, em sua residência, a jovem Maria do Carmo, com quem o Sr.Nympho se casaria em 5 de junho de 1943, após breve período de conhecimento, namoro e noivado, de cinco meses.<br>Dona Maria do Carmo Gomes era paulista de Santos e seguiu para Campo Grande ainda menina, em virtude da profissão do pai.  </p>
+<p>Em 1944, o casal tornou-se espírita participando ativamente do Centro Espíritas Discípulos de Jesus, ocasião em que o Sr. Nympho integra-se à Mocidade desta Instituição. Nesse mesmo ano, obtém aprovação num curso interno do quartel para auxiliar de escritório, passando a ter estabilidade profissional, ocasião em que assumiu a direção do Centro Espírita Castro Alves. Participava conjuntamente das duas casas Espíritas e com o Sr. Oli de Castro a Campanha do Quilo.  </p>
+<p>Desta época traz muitas recordações, pois sempre teve uma tendência muito grande para os trabalhos de Assistência Social, haja vista as atividades que desenvolvia, tais como: visita aos presídios e atendimento as famílias necessitadas, fornecendo ainda muitos subsídios para o desenvolvimento de outras tarefas.<br>Por motivos familiares, transfere-se para São Paulo capital, em 1952, e passou a trabalhar como escrevente e datilógrafo.  </p>
+<p>Frequentando a FEESP, funda a Campanha de Fraternidade que, após orientações vinda do médium Francisco Cândido Xavier, informando que o Espírito de Auta de Souza dirigia no Plano Maior, essa atividade, passa a denominar-se Campanha de Fraternidade Auta de Souza.  </p>
+<p>Em entrevista ao Jornal Auta de Souza, o Sr. Nympho responde que o levou a funda a Campanha:<br>“Ao chegar na Federação observamos o Diretor do Departameno de Assistência Social, José Gonçalves Pereira, dar dinheiro aos necessitados. Entretanto, sentimos que algo mais poderia ser feito. Propus mudanças e conseguimos apoio dos outros companheiros. Nunca imaginamos que o trabalho da Campanha cresceria tanto!  </p>
+<p>Com o fortalecimento e o crescimento da Campanha na Federação, chegamos a formar 10 grupos com uma média de 22 caravaneiros e secretários para dar suporte ao trabalho e auxiliar na prestação de contas.”  </p>
+<p>A Campanha expandiu-se para outros Centros Espíritas e o Sr. Nympro passou a coordenas reuniões para outros Estados. Surge a Concafras (Confraternização das campanhas de Fraternidade Auta de Souza) em 1956 com o objetivo de reunir e unificar os propósitos da Campanha.  </p>
+<p>Tornou-se conselheiro da FEESP, respondendo por esta atribuição por 8 anos; foi diretor da Campanha por 17 anos e foi um dos fundadores da Casa Transitória de São Paulo.  </p>
+<p>Da Capital paulista, deslocou-se no final de 1969, para o interior do Estado, para morar na cidade de Ribeirão Preto, planejando descansar do trabalho espírita.Sem revelar seu passado, começou a freqüentar o Centro Espírita Isabel Soares de Moraes, mas como não adiantou seu silêncio inicial, tornou-se presidente dessa instituição em menos de um ano de participação.  </p>
+<p>Por problema de saúde em sua família, devido ao clima da metrópole, 1984 mudou-se para Brasília e, chegando à Capital Federal, foi convidado para a presidência da Sociedade de Divulgação Espírita Auta de Souza.  </p>
+<p>Apresentou-se o mais rápido possível para assumir o cargo, que exerceu ate o ano de 1995, quando o transferiu ao nosso irmão João Rodarte.  </p>
+<p>Foi trabalhador assíduo da Campanha de Fraternidade Auta de Souza até o limite de suas energias, com entusiasmo, disciplina e vibração impressionantes.<br>Nympho desencarnou em Brasília, DF, no dia 22 de junho de 2007.<br>Algumas passagens da vida de sua vida narradas por ele:  </p>
+<p>**Nympho Corrêa e Chico Xavier<br>**<br>“Bem, conhecemos o Chico, em Pedro Leopoldo, em 1945, passamos uma semana, convivendo com aquele grande companheiro, aquele grande irmão, aquele coração amigo de todos; um amigo do Plano Superior da vida.  </p>
+<p>O Chico nos deu muito alento quando falava da Campanha. Ele me disse:<br>‘Continue trabalhando, meu filho, trabalhe mesmo. Porque a Campanha vai levando mensagens espíritas a todos os lares.’<br>Isso nos deu um incentivo muito grande.  </p>
+<p>Mais tarde, quando ele mudou para Uberaba, fomos muitas vezes visitá-lo com o grupo da Casa Transitória em  São Paulo, e lá montamos uma barbearia.<br>Mandamos buscar uma máquina elétrica nos Estados Unidos, mas não tínhamos nenhum barbeiro no grupo de voluntários. Então, convidamos um barbeiro velhinho que nos ensinou a cortar cabelo.  </p>
+<p>Éramos um grupo de doze companheiros entre eles o Dr. Francisco, um engenheiro, dois funcionários do Banco do Brasil, eu e mais alguns colaboradores; assim fundamos a barbearia na Casa Transitória. E achamos por bem, viajar à Uberaba para cortar o cabelo das crianças do Chico e íamos, todo mês. Quando era sábado, das dez às onze horas da manhã o Chico nos convidava para assistirmos um pequeno trabalho, uma reunião que ele fazia, onde nós podíamos ouvir Dr. Bezerra de Menezes, aquele conselho salutar, maravilhoso; pudemos ouvir também Emmanuel e outros benfeitores espíritas, dando-nos sempre aquele incentivo. O Chico Xavier foi para nós aquela alma maravilhosa que todos os brasileiros e o mundo inteiro já conhece.  </p>
+<p>Nós ficamos, após seu desencarne, saudosos daquele coração amigo, daquele sorriso tão profundo e feliz. Que Deus abençoe o Chico, proporcionando-lhe uma assistência cada vez maior. Damos graças a Deus por termos conhecido o Chico Xavier.”  
+ </p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/06/cfas.jpg" alt="" class="alignleft" width="225" height="225" />
+
+<p><strong>Nympho Corrêa em Brasília-DF</strong></p>
+<p>“Muito bem, nessa época eu me aposentei do Ministério do Exército e tínhamos também uma farmácia onde eu trabalhava nas horas de folga. Terminamos vendendo também a farmácia, porque minha esposa aconselhou-me vendê-la, pois os negócios não iam bem e corríamos o risco de falir. Eu vendi a farmácia e minha esposa ventilou a possibilidade de mudarmos para Brasília, já que nossos filhos Marilce e Flávio moravam lá. Fui na frente, aluguei uma casinha na cidade satélite Guará II. Morei dois meses naquela residência até comprar minha atual moradia, na mesma localidade.  </p>
+<p>Um fato interessante ocorreu enquanto ainda morava em Ribeirão Preto. No dia 25 de Julho de 1983 um grupo de 4 pessoas de Brasília bateu à minha porta as 02:30 h da madrugada. Eles retornavam de Santos, da prévia da Concafras. Fizemos uma reunião inédita onde me falaram da idéia de construirmos, em Brasília, um prédio que abrigasse a futura Sociedade Auta de Souza, mas não sabíamos como faríamos. No entanto, ao mudar-me para a capital, esse grupo me convidou apara assumir a presidência da Sociedade de Divulgação Espírita Auta de Souza, onde participo, até hoje, como médium, caravaneiro da Campanha de Fraternidade Auta de Souza e das atividades de assistência social, apesar das dificuldades naturais dos meus 87 anos de idade.”</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eurípedes Barsanulfo &#8211; O apóstolo da Nova Era | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Missionários do bem</span>
+          <h1>Eurípedes Barsanulfo &#8211; O apóstolo da Nova Era</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-05-23T16:45:19 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>Quando ainda reencarnado, Eurípedes Barsa­nulfo foi portador de verdadeiro medianato, porquan­to conduziu as faculdades mediúnicas, de que era ins­trumento, dentro dos postulados enobrecedores da caridade e do amor, em uma vivência aureolada de exemplos de renúncia e de abnegação, havendo sido também educador emérito. Em razão dessas suas ad­miráveis faculdades, dedicou-se a atender os porta­dores de alienação mental, psiquiátrica e obsessiva, erguendo um Hospital na cidade em que nascera, para socorrê-los. Conseguiu, naquele tempo, resultados incomuns, favorecendo os enfermos com a reconquis­ta do equilíbrio. Não obstante a terapêutica acadê­mica vigente e que ele não podia aplicar, por não ser habilitado a exercer a Medicina nessa área, era a sua própria força moral que lograva o maior número de recuperações, face à bondade que expressava em re­lação aos pacientes desencarnados, assim como a mi­sericórdia de que se utilizava para atender os pade­centes dos graves transtornos psíquicos.</p>
+<img src="http://161.35.11.199/wp-content/uploads/2020/05/Eurípedes-Barsanulfo-1-1024x576.jpg" alt="" class="alignleft" width="398" height="224" />
+
+<p>Ser interexistente, viveu como apóstolo da cari­dade, possuindo extraordinários potenciais curado­res e especial acuidade como receitista espiritual, dedicado ao socorro dos menos felizes.</p>
+<p>Nunca se negou a socorrer quem quer que fos­se, mesmo àqueles que o perseguiam de forma incle­mente, e que, ao enfermarem, não encontrando re­cursos hábeis para o reequilíbrio, buscavam-no, dele recebendo o concurso superior para o prosseguimen­to da jornada evolutiva.</p>
+<p>**A Vida no Plano Espiritual<br>**<br>Desencarnando jovem, vitimado pela epidemia da gripe espanhola, que assolou o mundo, prosseguiu como missionário de Jesus amparando milhares de vidas que se lhe vincularam, especialmente na região por onde deambulara na recente existência encerra­da.</p>
+<p>O seu nome tornou-se bandeira de esperança, e com um grupo de cooperadores devotados ao Bem, alargou o campo de trabalho socorrista, ampliando as áreas de atendimento sob a inspiração do Psicote­rapeuta por excelência.(…)</p>
+<p>Não se limitando a socorrer exclusivamente os viandantes do carro físico, acompanhou, também, após a desencarnação, muitos daqueles que lhe re­ceberam o concurso, neles constatando o estado de­plorável em que retornavam à Pátria, vencidos por perseguidores cruéis que os obsidiavam, ou vitima­dos por ideoplastias terríveis derivadas dos atos a que se entregaram, enlouquecendo de vergonha, de dor e de desespero após o portal do túmulo.</p>
+<p>Formando verdadeiras legiões de alienados mentais, que se agrediam, uns aos outros, chafurdan­do em paisagens de sombra e angústia, constituídas por abismos de sofrimentos insuportáveis, condoeu-se particularmente, por identificar que muitos deles haviam recebido o patrimônio da mediunidade ilu­minada pelas lições libertadoras do Espiritismo, mas preferiram enveredar pelos dédalos da irresponsabi­lidade, utilizando-se da superior concessão para o deleite de si mesmos e das paixões mais vis que pas­saram a cultivar. Outros tantos corromperam a pala­vra iluminativa, de que se fizeram instrumentos, uti­lizando-a para atender aos interesses escusos, ou negociar favores terrestres com desprezo pela opor­tunidade de edificação de muitas vidas que lhes aguardavam o contributo. Diversos mercadejaram os dons espirituais, tombando sob o vampirismo propi­ciado por verdugos do passado, que se compraziam em empurrá-los para mais graves despautérios, com­prometendo-lhes a reencarnação.</p>
+<p><strong>Hospital Esperança</strong></p>
+<p>Diante da massa imensa de desesperados que haviam conhecido as diretrizes para a felicidade, mediante o serviço dignificante e restaurador dos ensinamentos de Jesus, mas que preferiram os jogos doentios dos prazeres exorbitantes, o missionário compadecido buscou o apoio dos Benfeitores de mais Alto, para que conduzissem a Jesus uma proposta sua, caracterizada pelo interesse de edificação de um Nosocômio espiritual, especializado em loucura, para aqueles que desequilíbrio apresentassem após a mor­te do corpo físico, e que também serviria de Escola viva, como igualmente de laboratório, para a prepa­ração das suas reencarnações futuras em estado me­nos doloroso e com possibilidades mais seguras de recuperação.</p>
+<p>Após deferido o seu requerimento de beneficên­cia, suplicou ao nobre Espírito Agostinho de Hipona, que na Terra o houvera auxiliado e inspirado no mi­nistério abraçado, que se tornasse o intermediário das futuras necessidades da Instituição em surgimento junto ao Médico divino, a quem suplicava bênçãos em favor da obra.</p>
+<p>Havendo o sábio cristão, autor das Confissões e de outros memoráveis trabalhos, aquiescido em in­termediar os apelos do trabalhador do Bem junto ao Senhor Jesus, foi permitida a edificação do refúgio e abrigo especial para os doentes da alma, que se en­contrassem sob tormentosas alucinações nos antros escusos da erraticidade inferior.”</p>
+<p>Eurípedes providenciou a convocação de ad­miráveis psiquiatras e psicólogos desencarnados, que haviam na Terra cuidado das desafiadoras patologi­as obsessivas e auto-obsessivas, de forma que, pre­parada a equipe, foram tomados os cuidados própri­os para a edificação do Sanatório, situado nesta área distante do movimento da comunidade espiritual, a fim de que as bênçãos da Natureza contribuíssem também com elementos próprios para acalmar as suas torpes alucinações e ensejar-lhes renovação e paz.</p>
+<p>Obedecendo a um plano cuidadoso, foram er­guidos diversos blocos, que deveriam atender a pa­tologias específicas, tais como delírios graves, pos­sessões de longo porte, consciências autopunitivas, desespero por conflitos íntimos, fixações mórbidas, hebetação mental, autismo conseqüente a arrepen­dimentos tardios, esquizofrenias tenebros as, obsessões compulsivas, etc.</p>
+<p>Estas informações nos dão a dimensão perfeita da grandeza espiritual de Eurí­pedes Barsanulfo, cuja dedicação à vivência do evan­gelho, à luz do Espiritismo, dele fizera um verdadeiro apóstolo da Era Nova.</p>
+<p>Dando prosseguimento ao seu ministério de amor ao Mestre através do próximo colhido pelo vendaval da alucinação, com um grupo de abnegados mensa­geiros da luz erguera, sem medir esforços, este Nosocômio para o socorro aos enfermos da alma e o estudo preventivo da loucura, assim como das tera­pias próprias, com especificidade na área dos trans­tornos obsessivos de natureza mediúnica atormen­tada.”</p>
+<p>(Manoel P. Miranda ,Tormentos da Obsessão, psicografado por Divaldo Pereira Franco)</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

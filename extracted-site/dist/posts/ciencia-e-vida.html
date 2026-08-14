@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ciência e Vida | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Ciência e espiritismo</span>
+          <h1>Ciência e Vida</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-04-25T19:04:16 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p>Não temos a menor pretensão de parecer que sabemos mais, ou melhor, seja o que for, mas é preciso reconhecer que, defrontando realidades de outro nível, não podemos limitar-nos a premissas e conceituações ainda condicionadoras da ciência oficial, que, por exemplo, só pode considerar, até agora, como fontes luminosas, os objetos visíveis. Vivendo em plano vibratório diferenciado,é natural tenhamos outra visão da realidade global, naturalmente muito limitada, porém significativamente mais ampla.</p>
+<p>É, todavia, com grande interesse que acompanhamos o desenvolvimento da ciência terrestre, e, ainda agora, saudamos o advento da electronografia, dos cientistas Dumitrescu e Camarzan, louvando-Ihes o esforço para analisar os diversos campos elétricos e magnéticos do corpo humano. São realmente valiosos os progressos que têm sido obtidos pelos pesquisadores terrestres, sendo de nosso dever assinalar, com alegria, o êxito dos cientistas Valentina e Semyon Kírlian, da Universidade Alma Ata, que conseguiram fotografar as radiações luminosas a que os parapsicólogos atuais denominam bioplasma. Novos dados, de outros setores da Física, continuarão a abrir campos de interesse à aplicação humana e certamente não se limitarão à descoberta de “superátomos” pesados, como os que receberam, recentemente, os números atômicos 116, 124 e 126, descobertos pelos físicos Gentry e Cahill, da equipe do Professor Dirac, no Instituto de Pesquisas de Tallahassee, na Flórida.</p>
+<img src="https://concafrascms.blob.core.windows.net/revista-autadesouza-tmp-bkp/media/2020/04/Luz-02_02_2019.jpg" alt="" class="alignleft" width="572" height="429" />
+
+<p>Nosso desiderato é chamar a atenção para outros ângulos e conseqüências daquilo que o saber humano vai conquistando, na Terra, de sorte a auxiliar os companheiros em romagem na crosta planetária, no seu esforço para entender sempre melhor as realidades do espírito imortal.</p>
+<p>Assim, se é certo que a Mecânica Quântica já assentou idéias nítidas sobre a dupla natureza ondulatória-corpuscular da luz, cujas ondas há muito se verificou serem transversais e não longitudinais; se também já está claro que é na variação alternada das intensidades dos vetores campo elétrico e campo magnético que consistem as vibrações luminosas, e que circuitos elétricos oscilantes emitem ondas eletromagnéticas invisíveis; se já se sabe, além disso, que a emissão e a absorção de energia se fazem pulsativamente, por múltiplos inteiros da quantidade fundamental a que Planck denominou de quantum e que Einstein rebatizou de fóton, quando se trata de luz; apesar de tudo isso, ainda é estranho ao conhecimento da Física oficial que, além das faixas de freqüências das ondas conhecidas por radiações ultravioleta, radiações X, radiações gama e radiações cósmicas, pulsam no Universo as radiações mentais, as angélicas, as crísticas e, sobretudo, as radiações divinas. No entanto, são estas últimas as criadoras, alimentadoras, impulsionadoras e equilibradoras de tudo quanto existe.</p>
+<p>Para o homem terrestre comum, luz são as ondas eletromagnéticas visíveis, cujo comprimento varia entre 8000 A e 4000 À, dependendo do observador. Para os técnicos, são todas as radiações eletromagnéticas conhecidas, visíveis ou não ao olho humano, desde as infravermelhas até as cósmicas. Para nós, estudantes desencarnados de modesta hierarquia, são todas as oscilações eletromagnéticas que vão das aquém-infravermelhas até as além-cósmicas.</p>
+<p>Quando a Física constata que só nos meios homogêneos, e nunca nos anisótropos, a luz se propaga em linha reta em todos os sentidos; quando ressalta que, se o índice de refração do meio variar continuamente, o raio luminoso pode encurvar-se; nós acrescentamos que, mesmo quando o espírito guarda, nos tecidos da alma, barreiras de interceptação infensas à luz do bem, a divina claridade não deixa de abençoar-lhe o mundo íntimo, porque a Sabedoria Celeste dispôs que a interceptação de alguns raios de um feixe luminoso não impede que os demais prossigam livremente o seu trajeto. Isto posto, entendemos que somente quando o espírito terrestre atinge o grande equilíbrio evolutivo, sua aura consegue constituir-se em meio isótropo, onde a luz espiritual pode propagar-se, com a mesma velocidade, em todas as direções.</p>
+<p>Não ficamos, porém, nessas assertivas, pois importa considerar que, sem que sua livre adesão o coloque em condições de beneficiar–se com a luz espiritual com que a Divina Bondade permanentemente o atinge, nenhum espírito se furta às próprias trevas. Ao encontrar a superfície de separação de dois meios, o raio luminoso pode refratar-se, mas pode também ocorrer a reflexão total, e, neste último caso, nem sequer passa de um meio para outro.</p>
+<p>Chegamos, desse modo, a uma conclusão de sentido moral, que é o que acima de tudo nos importa, pois o conhecimento puro e simples, descomprometido com os augustos propósitos do Senhor, para nada de bom aproveita. Essencialmente, a Lei de Deus, que dirige a Vida em todos os planos do Universo, é uma só e puramente Amor.</p>
+<p>Irmão Áureo, <strong>Universo e Vida</strong>. Psicografia de Hernani T. Santana,  Cap. V, Tópico 5.</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>

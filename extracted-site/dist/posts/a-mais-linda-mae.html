@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A mais linda mãe | Revista Auta de Souza Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --border: #334155;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #090d16;
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 a { font-size: 1.25rem; font-weight: 700; color: #fff; text-decoration: none; }
+    header h1 span { color: var(--accent); }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover, nav a.active { color: var(--accent); }
+    main {
+      flex: 1;
+      max-width: 1100px;
+      width: 100%;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0.5rem 0;
+      color: #fff;
+    }
+    .card .meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .card a.btn {
+      align-self: flex-start;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .card a.btn:hover { text-decoration: underline; }
+    
+    /* Article view styling */
+    .article-container {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+    .article-header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .article-header h1 {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      margin: 0.75rem 0;
+      color: #fff;
+    }
+    .article-body {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #e2e8f0;
+    }
+    .article-body h1, .article-body h2, .article-body h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 1.5rem 0 1rem 0;
+      color: #fff;
+    }
+    .article-body img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 1rem 0;
+      display: block;
+    }
+    .article-body img.alignleft {
+      float: left;
+      margin: 0.5rem 1.5rem 1rem 0;
+    }
+    .article-body img.alignright {
+      float: right;
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+    .article-body img.aligncenter {
+      display: block;
+      margin: 1.5rem auto;
+    }
+    .article-body::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .article-body p { margin-bottom: 1.25rem; }
+    .article-body ul, .article-body ol { margin: 1rem 0 1.5rem 2rem; }
+    .article-body blockquote {
+      border-left: 4px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .search-box {
+      width: 100%;
+      padding: 0.8rem 1.2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #090d16;
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .search-box:focus { outline: none; border-color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><a href="../index.html">Revista Auta de Souza <span>Archive</span></a></h1>
+    <nav>
+      <a href="../index.html">Artigos (261)</a>
+      <a href="../pages.html">Páginas (7)</a>
+      <a href="../raw.html">API Dumps</a>
+    </nav>
+  </header>
+  <main>
+    
+      <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
+      <div class="article-container" style="margin-top: 1.5rem;">
+        <div class="article-header">
+          <span class="badge">Criança em cena</span>
+          <h1>A mais linda mãe</h1>
+          <div style="font-size: 0.9rem; color: var(--text-muted);">
+            Data: 2020-06-06T17:36:23 | Status: publish
+          </div>
+        </div>
+        <div class="article-body">
+          <p><strong>Autora:</strong> Nísia Anália e Laura Ferreira<br><strong>Personagens:</strong> Narrador, Taís, Carlos, Neibe, Sr. José, D. Marli, D. Joana, D. Elisângela, Mãe.</p>
+<p>(Ao som de uma música bem alegre entra o narrador)</p>
+<p><strong>Narrador:</strong> (Após cumprimentar as crianças). Que dia lindo! Por que será? Alguém sabe? (Aguarda a resposta). Isso mesmo. Por que hoje é dia das mães! Mãe é uma pessoa muito especial… Ela é a grande colaboradora para o nosso nascimento aqui na Terra. Devemos amar e respeitar muito a nossa mãe, tentando sempre ajudá-la e respeitá-la todos os dias, não apenas em seu dia. E por falar em mãe, preciso dar um grande abraço na minha, depois eu volto, está bem?</p>
+<p>(Sai de cena e entra uma menina chorando)</p>
+<p><strong>Taís</strong> – (Apenas chora. Olha para o público, faz que vai parar e começa a chorar novamente) (Após alguns minutos, entra Carlos)</p>
+<p><strong>Carlos</strong> – (Cantarolando. Ao ver a menina cumprimenta-a) – Olá menina, quem é você?</p>
+<p><strong>Taís</strong> – (Olha para ele e apenas chora)</p>
+<p><strong>Carlos</strong> – O que foi com você? Por que está chorando?</p>
+<p><strong>Taís</strong> – (Continua chorando)</p>
+<p><strong>Carlos</strong> – Se você não parar de chorar e me explicar o que está acontecendo não poderei te ajudar…</p>
+<p><strong>Taís</strong> – (Tentanto parar de chorar) – Me… me ajudar?</p>
+<p><strong>Carlos</strong> – Sim, eu quero te ajudar.</p>
+<p>(Nesse momento, entra outra menina, a Neibe)</p>
+<p><strong>Neibe</strong> – Olá Carlos, tudo bem?</p>
+<p><strong>Carlos</strong> – Comigo tudo bem, Mas…</p>
+<p><strong>Neibe</strong> – Apresente-me sua amiguinha.</p>
+<p><strong>Carlos</strong> – Estou esperando ela se apresentar para mim.</p>
+<p><strong>Neibe</strong> – Como assim?</p>
+<p><strong>Carlos</strong> – Quando cheguei aqui a encontrei chorando. Quero ajudá-la, mas ainda não disse o motivo pelo qual está chorando.</p>
+<p><strong>Taís</strong> – Eu… eu vou falar. Meu nome é Taís, saí para passear com minha mãe, as ruas estavam muito movimentadas, aí eu me perdi da mamãe! Agora não consigo encontrá-la. (começa a chorar) – Eu quero a minha mãe!</p>
+<p><strong>Neibe</strong> – Calma, calma! Nós vamos ajudá-la. Explique, como é sua mãe?</p>
+<p><strong>Taís</strong> – (toda vaidosa) – Minha mãe? Minha mãe! Bem, minha mãe é a mulher mais linda do mundo!</p>
+<p><strong>Carlos</strong> – Mais linda do mundo? Olha Taís, tudo bem que ela seja linda, mas… como ela é?</p>
+<p><strong>Taís</strong> – Eu já disse, é a mulher mais linda do mundo.</p>
+<p>(Nesse momento, entra uma mulher bem bonita, apenas observando o local)</p>
+<p><strong>Neibe</strong> – Olhe ali Taís, é aquela mulher?</p>
+<p><strong>Taís</strong> – (Olhando)- Não, não! Minha mãe é mais bonita ainda.</p>
+<p><strong>Carlos</strong> – Mais bonita? Então ela é uma artista de televisão?</p>
+<p><strong>Taís</strong> – Ela é mais bonita de que todas as artistas de televisão.</p>
+<p><strong>Neibe e Carlos</strong> – (admirados)- Hum!!</p>
+<p><strong>Carlos</strong> – Já sei! Vamos falar com o Sr. José, ele é guarda aqui desta praça, conhece muita gente. Quem sabe poderá nos ajudar.</p>
+<p><strong>Neibe</strong> – Vamos lá!</p>
+<p>(Saem de cena. A seguir entra o Sr. José)</p>
+<p><strong>Sr. José</strong> – (conversando com as plantas)- Olá minhas plantinhas, vim trazer água para vocês. Sabem que hoje é o dia das mães? A minha já está no Plano Espiritual. Sinto tanta saudade! Mas eu sei que ela continua viva, por isso oro por ela todos os dias. (começa a cantar uma música sobre mãe, enquanto agoa as plantas. Ao final da música entra Taís, Neibe e Carlos)</p>
+<p><strong>Carlos e Neibe</strong> – Olá Sr. José, como está o senhor?</p>
+<p><strong>Sr. José</strong> – Oi meus filhos, que alegria vê-los. (vê Taís)- Quem é esta garotinha linda?</p>
+<p><strong>Neibe</strong> – O nome dela é Taís.</p>
+<p><strong>Sr. José</strong> – Muito prazer Taís, tudo bem com você?</p>
+<p><strong>Taís</strong> – Bem… bem… mais ou menos.</p>
+<p><strong>Sr. José</strong> – Mais ou menos? Por que?</p>
+<p><strong>Carlos</strong> – Sr. José, a Taís se perdeu de sua mãe e agora não consegue encontrá-la. Pensamos que o senhor poderia nos ajudar.</p>
+<p><strong>Sr. José</strong> – Claro que posso! Como é a sua mãe garotinha?</p>
+<p><strong>Taís</strong> – Minha mãe é a mais linda do mundo!</p>
+<p><strong>Sr. José</strong> – É? Que legal! Mas agora me explique: ela é loira, morena, alta… como ela é?</p>
+<p><strong>Taís</strong> – Eu não sei explicar!</p>
+<p><strong>Sr. José</strong> – Bem fique calma. Vou chamar algumas mães aqui para você ver se é uma delas, está bem?</p>
+<p><strong>Taís</strong> – Está bem.</p>
+<p><strong>Sr. José</strong> – Dona Marli, Dona Marli! (entra dona Marli toda elegante)</p>
+<p><strong>D. Marli</strong> – Olá! Sou uma mãe muito rica, tenho tudo que uma filha pode querer.</p>
+<p><strong>Taís</strong> – Não, não é ela.</p>
+<p><strong>D. Marli</strong> – Se você quiser poderei ser sua mãe!</p>
+<p><strong>Taís</strong> – Obrigada, mas eu quero a minha.</p>
+<p><strong>Sr. José</strong> – Obrigada, D. Marli. (Ela sai de cena). Vou chamar outra mãe. D. Joana, D. Joana…</p>
+<p>(entra D. Joana)</p>
+<p><strong>D. Joana</strong> – Oi, tudo bem? Sabe eu sou uma mãe muito inteligente, sei tudo o que está acontecendo no mundo!</p>
+<p><strong>Taís</strong> – Não é ela. Minha mãe é mais inteligente ainda. Ela sabe o que acontece no mundo do coração.</p>
+<p>(D. Joana sai de cena)</p>
+<p><strong>Sr. José</strong> – Bom, se a sua mãe é a mais bonita, acho que já sei quem é ela. Vai ver que é a D. Elisângela.</p>
+<p><strong>Carlos e Neibe</strong> – (aliviados)- É mesmo!</p>
+<p><strong>Narrador:</strong> (Ao fundo)- Será que agora a Taís vai encontrar a sua mãe? Vamos ver!</p>
+<p><strong>Sr. José</strong> – Vou chamá-la. D. Elisângela, D. Elisângela!</p>
+<p>(Entra D. Elisângela, toda charmosa)</p>
+<p><strong>D. Elisângela</strong> – Olá, alguém me chamou?</p>
+<p>(Cria-se um clima de suspense no ar! Todos se olham. Taís começa a se aproximar de D. Elisângela. De repente, vira-se para o Sr. José e fala)</p>
+<p><strong>Taís</strong> – Não, não é ela!</p>
+<p><strong>Sr. José</strong> – Então menina, eu desisto. Não sei quem é sua mãe… (Os dois se abraçam)</p>
+<p>(Nesse momento entra uma mulher, de aspecto bem simples, chorando e falando)</p>
+<p><strong>Mulher</strong> – (Chorando)- Onde será que está o meu tesouro? A filha mais linda do mundo?</p>
+<p>(Ao ouvir esta fala, Taís vira, vê a mulher e grita)</p>
+<p><strong>Taís</strong> – Mamãe! Mamãe!</p>
+<p><strong>Mulher</strong> – Minha filha! Minha filhinha!</p>
+<p>(As duas se abraçam felizes e permanecem assim, enquanto os outros personagens falam)</p>
+<p><strong>Carlos</strong> – Mãe, a mulher mais linda para cada filho!</p>
+<p><strong>Neibe</strong> – Mesmo que essa beleza não seja a beleza do corpo, do rosto, do cabelo…</p>
+<p><strong>Sr. José</strong> – Toda mãe possui a beleza mais preciosa e importante: a beleza do coração!</p>
+<p><strong>Os três</strong> – E hoje, quando nos reunimos para comemorar o dia das mães, queremos desejar a todas vocês: muita paz, carinho e alegria.</p>
+<p><strong>Mulher e Taís</strong> – (Aproximando)- E que Maria de Nazaré, com seu coração amoroso de Mãe, as protejam sempre!</p>
+<p><strong>Todos</strong> – FELIZ DIA DAS MÃES!</p>
+
+        </div>
+      </div>
+    
+  </main>
+  <footer>
+    Standalone Static Archive &bull; Zero Server Dependencies
+  </footer>
+  <script>
+    function filterCards() {
+      const q = document.getElementById('search')?.value.toLowerCase() || '';
+      document.querySelectorAll('.card').forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(q) ? 'flex' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
