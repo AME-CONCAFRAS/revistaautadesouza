@@ -80,7 +80,7 @@ async function fixPostImageLinks() {
           totalLinksFixed++;
           const newLocalUrl = `../../media/${localRelPath.replace(/\\/g, '/')}`;
           return fullMatch.replace(originalUrl, newLocalUrl);
-        } else if (originalUrl.includes('wp-content/uploads')) {
+        } else if (!originalUrl.startsWith('../../media/')) {
           missingUrls.add(originalUrl);
         }
 
@@ -99,20 +99,25 @@ async function fixPostImageLinks() {
   console.log(`✅ Successfully normalized ${totalLinksFixed} image references to local files.`);
 
   if (missingUrls.size > 0) {
-    console.log(`⚠️ Found ${missingUrls.size} image URLs referenced in post bodies that were not in WP media catalog. Downloading missing images...`);
+    console.log(`⚠️ Found ${missingUrls.size} un-localized image URLs referenced in post bodies. Downloading missing images...`);
     let downloadedCount = 0;
     for (const missingUrl of missingUrls) {
+      if (!missingUrl || missingUrl.startsWith('data:')) continue;
       try {
-        // Replace legacy staging IP or relative URL with live site domain
         let fullUrl = missingUrl;
         if (fullUrl.includes('161.35.11.199')) {
           fullUrl = fullUrl.replace('http://161.35.11.199', 'https://www.revistaautadesouza.com');
+        } else if (fullUrl.includes('srv94.teste.website/~revistaauta')) {
+          fullUrl = fullUrl.replace('http://srv94.teste.website/~revistaauta', 'https://www.revistaautadesouza.com');
         } else if (!fullUrl.startsWith('http')) {
           fullUrl = `https://www.revistaautadesouza.com/${fullUrl.replace(/^\//, '')}`;
         }
 
         const urlObj = new URL(fullUrl);
-        const relPath = decodeURIComponent(urlObj.pathname.replace(/^\/wp-content\/uploads\//, ''));
+        let relPath = decodeURIComponent(urlObj.pathname.replace(/^\/(?:wp-content\/uploads\/|public\/imagem\/)?/, ''));
+        if (!relPath.startsWith('20')) {
+          relPath = path.join('legacy', relPath);
+        }
         const targetPath = path.join(MEDIA_DIR, relPath);
 
         await fs.mkdir(path.dirname(targetPath), { recursive: true });

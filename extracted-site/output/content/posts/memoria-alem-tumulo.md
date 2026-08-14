@@ -11,7 +11,7 @@ categories: ["Estudando o evangelho"]
 tags: ["destaque"]
 ---
 
-<img src="https://cdn.pixabay.com/photo/2014/02/02/17/41/photos-256889_960_720.jpg" alt="Fotos, Álbum, Velho, Álbum De Foto, Fotógrafo, Memória" class="alignleft" width="568" height="375" />
+<img src="../../media/legacy/photo/2014/02/02/17/41/photos-256889_960_720.jpg" alt="Fotos, Álbum, Velho, Álbum De Foto, Fotógrafo, Memória" class="alignleft" width="568" height="375" />
 
 Automaticamente, por força da lógica, elege o homem na contabilidade uma das forças de base ao próprio caminho.  
 Contas maiores legalizam as relações do comércio, e contas menores regulamentam o equilíbrio do lar.  
