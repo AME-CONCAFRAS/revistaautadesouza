@@ -361,14 +361,16 @@ async function buildStaticSite() {
 
   await fs.writeFile(path.join(DIST_DIR, 'pages.html'), pagesIndexHtml);
 
+  const PLACEHOLDER_IMAGE_URL = `${BLOB_MEDIA_BASE}imagem-nao-encontrada.jpg`;
+
   // 3. Build Individual Post HTML files
   await fs.mkdir(path.join(DIST_DIR, 'posts'), { recursive: true });
   for (const item of posts) {
     const webBody = item.body.replace(/\.\.\/\.\.\/media\//g, BLOB_MEDIA_BASE);
     let htmlContent = marked.parse(webBody);
 
-    // Strip any residual HTML img tags pointing to external non-Blob storage URLs (e.g. dead legacy portal links)
-    htmlContent = htmlContent.replace(/<img[^>]*src=["'](?!https:\/\/concafrascms\.blob\.core\.windows\.net)[^"']*["'][^>]*\/?>/gi, '');
+    // Replace any img src pointing to external un-localized URLs with the Azure Blob placeholder image
+    htmlContent = htmlContent.replace(/(<img[^>]*src=["'])(?!https:\/\/concafrascms\.blob\.core\.windows\.net)([^"']*)(["'][^>]*\/?>)/gi, `$1${PLACEHOLDER_IMAGE_URL}$3`);
 
     const postPageHtml = renderHtmlPage(item.metadata.title || item.slug, `
       <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
@@ -395,8 +397,8 @@ async function buildStaticSite() {
     const webBody = item.body.replace(/\.\.\/\.\.\/media\//g, BLOB_MEDIA_BASE);
     let htmlContent = marked.parse(webBody);
 
-    // Strip any residual HTML img tags pointing to external non-Blob storage URLs
-    htmlContent = htmlContent.replace(/<img[^>]*src=["'](?!https:\/\/concafrascms\.blob\.core\.windows\.net)[^"']*["'][^>]*\/?>/gi, '');
+    // Replace any img src pointing to external un-localized URLs with the Azure Blob placeholder image
+    htmlContent = htmlContent.replace(/(<img[^>]*src=["'])(?!https:\/\/concafrascms\.blob\.core\.windows\.net)([^"']*)(["'][^>]*\/?>)/gi, `$1${PLACEHOLDER_IMAGE_URL}$3`);
 
     const pageHtml = renderHtmlPage(item.metadata.title || item.slug, `
       <a href="../pages.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Páginas</a>
