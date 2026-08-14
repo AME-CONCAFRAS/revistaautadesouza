@@ -11,7 +11,7 @@ categories: ["Educação e espiritismo"]
 tags: []
 ---
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/05/Eurípedes-Barsanulfo-1024x576.jpg" alt="" class="alignleft" width="419" height="236" />
+<img src="../../media/2020/05/Eur%C3%ADpedes-Barsanulfo-1024x576.jpg" alt="" class="alignleft" width="419" height="236" />
 
 **O EXEMPLO DE EURÍPEDES**  
    

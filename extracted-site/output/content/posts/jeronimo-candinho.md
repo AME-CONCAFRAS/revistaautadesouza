@@ -56,7 +56,7 @@ Em 1947 foi fundado o comitê feminino Eurípedes Barsanulfo. A presidente do co
 **  
  ![](http://srv94.teste.website/~revistaauta/public/imagem/gerenciador/colegio-euripedes-barsanulfo-11_09_2017.JPG)Fundado em 1962 e inaugurado em 3 de março de 1963 por Jerônimo Candinho
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/05/Colégio-Allan-Kardec-300x107.jpg" alt="" class="alignright" width="404" height="144" />
+<img src="../../media/2020/05/Col%C3%A9gio-Allan-Kardec-300x107.jpg" alt="" class="alignright" width="404" height="144" />
 
 “(…) Dando a palavra aos médiuns videntes para que descrevessem o quadro espiritual, destacando-se uma monumental figura que representava a liberdade na pessoa de Tiradentes; sob a base do monumento foi visto também Pedro II imponentemente fardado de branco com as insígnias de marco irradiando luminosidade ladeando-o estavam Rui Barbosa, José do Patrocínio, Marechal Deodoro, Humberto de Campos e outros grandes vultos históricos, sobressaindo-se a presença do mestre Eurípedes Barsanulfo. (…)” Jerônimo Candinho
 

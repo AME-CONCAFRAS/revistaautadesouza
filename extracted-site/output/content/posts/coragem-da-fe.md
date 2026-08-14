@@ -15,7 +15,7 @@ _Todo aquele que me confessar e me reconhecer diante das pessoas, também o reco
 _Se alguém se envergonhar de mim  e de minhas palavras, o Filho do Homem se envergonhará também dele, quando vier em sua glória e na de seu Pai e dos santos anjos._ (S. Lucas, 9:26).  
  
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/05/Eurípedes-1.jpg" alt="" class="alignleft" width="348" height="348" />
+<img src="../../media/2020/05/Eur%C3%ADpedes-1.jpg" alt="" class="alignleft" width="348" height="348" />
 
   
 “A coragem de opinião sempre foi estimada entre as pessoas, pois há mérito em enfrentar perigos, perseguições, contradições e até os simples sarcasmos, aos quais se expõem, quase sempre, aqueles que não temem proclamar abertamente ideias que não são as todos. Aqui, como em tudo, o mérito é proporcional às circunstâncias e à importância do resultado. Sempre há fraqueza em recuar diante das consequências opinião própria e em renegá-la; há casos em que isso constitui extrema covardia, equiparada a fugir no momento do combate.

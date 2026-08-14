@@ -126,9 +126,9 @@ Os jovens são divididos em dois níveis:
 
 <img src="../../media/2020/05/O-jovem-e-a-doutrina.jpg" alt="" class="alignleft" width="230" height="212" />
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/05/O-jovem-e-a-família.jpg" alt="" width="289" height="265" />
+<img src="../../media/2020/05/O-jovem-e-a-fam%C3%ADlia.jpg" alt="" width="289" height="265" />
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/05/O-jovem-e-o-vícios.jpg" alt="" class="alignleft" width="276" height="254" />
+<img src="../../media/2020/05/O-jovem-e-o-v%C3%ADcios.jpg" alt="" class="alignleft" width="276" height="254" />
 
 <img src="../../media/2020/05/o-jovem-e-o-sexo.jpg" alt="" class="alignleft" width="235" height="215" />
 

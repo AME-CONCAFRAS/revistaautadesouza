@@ -46,7 +46,7 @@ Assim começou o movimento dessas cartas imortais, cuja essência espiritual pro
   
 “Em seguida, atendendo ainda a observação de Paulo, Tito falou, profundamente comovido com a interpretação dos ensinamentos do Cristo e mostrando possuir formosos dons de profecia, fazendo-se admirar pelo próprio Tiago, que o abraçou mais de uma vez.” (Emmanuel, Paulo e Estêvão, 16. ed., p. 384, 392-393).  
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/05/João-Marcos.jpg" alt="" class="alignright" width="291" height="374" />
+<img src="../../media/2020/05/Jo%C3%A3o-Marcos.jpg" alt="" class="alignright" width="291" height="374" />
 
 **JOÃO MARCOS**  
 “A mãe de João Marcos era uma das discípulas mais desassombradas e generosas. \[…\].  

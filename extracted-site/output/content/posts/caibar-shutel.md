@@ -28,7 +28,7 @@ Promovia conferências em teatros e nas praças públicas, em Matão e em cidade
 
 Fundou a empresa editora O Clarim, com oficinas próprias, Caibar Shutel, além de publicar ali alguns livros de outros escritores espíritas, escreveu e aditou desde 1911, as seguintes obras, todas de sua autoria:
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/05/Cairbar-Schutel-Médiuns-e-Mediunidades-1.jpg" alt="" class="alignright" width="314" height="448" />
+<img src="../../media/2020/05/Cairbar-Schutel-M%C3%A9diuns-e-Mediunidades-1.jpg" alt="" class="alignright" width="314" height="448" />
 
 *   Espiritismo e protestantismo
 *   Histeria e fenômenos Psíquicos

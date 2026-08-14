@@ -11,7 +11,7 @@ categories: ["Os espíritos respondem"]
 tags: ["destaque"]
 ---
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/04/Captura-de-Tela-2020-04-30-às-11.29.59.png" alt=" " class="alignleft" width="354" height="202" />
+<img src="../../media/2020/04/Captura-de-Tela-2020-04-30-a%CC%80s-11.29.59.png" alt=" " class="alignleft" width="354" height="202" />
 
 Nem sempre a obsessão se instala de chofre. Quando tal ocorre, o processo de fixação tem procedência em larga faixa de tempo, conseguida imperceptivelmente.  
 Mentes comungam com mentes que se lhes assemelham.  
