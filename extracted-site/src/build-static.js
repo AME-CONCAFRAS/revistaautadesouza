@@ -365,7 +365,10 @@ async function buildStaticSite() {
   await fs.mkdir(path.join(DIST_DIR, 'posts'), { recursive: true });
   for (const item of posts) {
     const webBody = item.body.replace(/\.\.\/\.\.\/media\//g, BLOB_MEDIA_BASE);
-    const htmlContent = marked.parse(webBody);
+    let htmlContent = marked.parse(webBody);
+
+    // Strip any residual HTML img tags pointing to external non-Blob storage URLs (e.g. dead legacy portal links)
+    htmlContent = htmlContent.replace(/<img[^>]*src=["'](?!https:\/\/concafrascms\.blob\.core\.windows\.net)[^"']*["'][^>]*\/?>/gi, '');
 
     const postPageHtml = renderHtmlPage(item.metadata.title || item.slug, `
       <a href="../index.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Artigos</a>
@@ -390,7 +393,10 @@ async function buildStaticSite() {
   await fs.mkdir(path.join(DIST_DIR, 'pages'), { recursive: true });
   for (const item of pages) {
     const webBody = item.body.replace(/\.\.\/\.\.\/media\//g, BLOB_MEDIA_BASE);
-    const htmlContent = marked.parse(webBody);
+    let htmlContent = marked.parse(webBody);
+
+    // Strip any residual HTML img tags pointing to external non-Blob storage URLs
+    htmlContent = htmlContent.replace(/<img[^>]*src=["'](?!https:\/\/concafrascms\.blob\.core\.windows\.net)[^"']*["'][^>]*\/?>/gi, '');
 
     const pageHtml = renderHtmlPage(item.metadata.title || item.slug, `
       <a href="../pages.html" style="color: var(--accent); text-decoration: none; font-weight: 500;">&larr; Voltar para Páginas</a>
