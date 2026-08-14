@@ -15,7 +15,7 @@ tags: []
 
 (Allan Kardec, O livro dos médiuns, item 131)
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/05/copo-água-bebidas-refrescantes.jpg" alt="" class="alignright" width="600" height="400" />
+<img src="../../media/2020/05/copo-%C3%A1gua-bebidas-refrescantes.jpg" alt="" class="alignright" width="600" height="400" />
 
 Você sabe a ação da água fluidificada no organismo?
 

@@ -26,7 +26,7 @@ Allan Kardec, O livro dos médiuns, 62.ed., item 56
 “Inúmeros infelizes, obstinados na ideia de fazerem justiça pelas próprias mãos ou confiados a vicioso apego, quando desafivelados do carro físico, envolvem sutilmente aqueles que se lhes fazem objeto da calculada atenção e, auto hipnotizados por imagens de afetividade ou desforço, infinitamente repetidas por eles próprios, acabam em deplorável fixação monoideística, fora das noções de espaço e tempo, acusando, passo a passo, enormes transformações na morfologia do veículo espiritual, porquanto, de órgãos psicossomáticos retraídos, por falta de função, assemelham-se a ovoides, vinculados às próprias vítimas que, de modo geral, lhes aceitam, mecanicamente, a influenciação, à face dos pensamentos de remorso ou arrependimento tardio, ódio voraz ou egoísmo exigente que alimentam no próprio cérebro, através de ondas mentais incessantes.\[…\]  
 No tocante à criatura humana, o obsessor passa a viver no clima pessoal da vítima, em perfeita simbiose mórbida, absorvendo-lhe as forças psíquicas, situação essa que, em muitos casos, se prolonga para além da morte física do hospedeiro, conforme a natureza e a extensão dos compromissos morais entre credor e devedor. 
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/05/obsessão-2.jpg" alt="" class="alignright" width="810" height="405" />
+<img src="../../media/2020/05/obsess%C3%A3o-2.jpg" alt="" class="alignright" width="810" height="405" />
 
 André Luiz, Evolução em dois mundos, 11.ed., p. 117-118  
   

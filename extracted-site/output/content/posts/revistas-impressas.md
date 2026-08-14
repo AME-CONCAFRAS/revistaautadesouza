@@ -22,7 +22,7 @@ reencarnam com a tarefa de evangelização da humanidade. Basta recordarmos as p
 
 [Revista Auta de Souza – Conheça o Espiritismo](http://161.35.11.199/wp-content/uploads/2020/04/Revista_Auta_de_Souza_-Conheça-o-Espiritismo.pdf)[Baixar](http://161.35.11.199/wp-content/uploads/2020/04/Revista_Auta_de_Souza_-Conheça-o-Espiritismo.pdf)
 
-<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-04-26-às-16.39.29.png" alt="" class="alignleft" width="215" height="305" />
+<img src="../../media/2021/04/Captura-de-Tela-2020-04-26-%C3%A0s-16.39.29.png" alt="" class="alignleft" width="215" height="305" />
 
 **Conheça o Espiritismo**  
 “Se me amais, guardai meus mandamentos; – e rogarei ao  
@@ -37,7 +37,7 @@ Mas, quanto a vós, ireis conhecê-Lo, porque permanecerá convosco e estará em
 
 [Revista Auta de Souza – Deixe-me Nascer! Aborto Não!](http://161.35.11.199/wp-content/uploads/2020/04/Revista_Auta_de_Souza_-Aborto-1.pdf)[Baixar](http://161.35.11.199/wp-content/uploads/2020/04/Revista_Auta_de_Souza_-Aborto-1.pdf)
 
-<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-04-26-às-16.45.10.png" alt="" class="alignleft" width="215" height="315" />
+<img src="../../media/2021/04/Captura-de-Tela-2020-04-26-%C3%A0s-16.45.10.png" alt="" class="alignleft" width="215" height="315" />
 
 O aborto é sempre lamentável porque se já estamos na Terra com elementos  
 anticoncepcionais de aplicação suave, compreensível e humanitário, porque é que havemos de criar a matança de crianças indefesas, com absoluta impunidade, entre as paredes de nossas casas? Isto é um delito muito grave perante a Providência Divina, porque a vida não nos pertence e sim ao poder divino.”
@@ -55,7 +55,7 @@ Francisco Cândido Xavier. FEB, 7. Ed. P.16-17
 
 [Revista Auta de Souza – Viver vale a pena!](http://161.35.11.199/wp-content/uploads/2020/04/REVISTA_AUTA_DE_SOUZA-Suicidio.pdf)[Baixar](http://161.35.11.199/wp-content/uploads/2020/04/REVISTA_AUTA_DE_SOUZA-Suicidio.pdf)
 
-<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-04-26-às-17.01.11.png" alt="" class="alignleft" width="215" height="305" />
+<img src="../../media/2021/04/Captura-de-Tela-2020-04-26-%C3%A0s-17.01.11.png" alt="" class="alignleft" width="215" height="305" />
 
 “Tem o homem o direito de dispor da sua vida?  
 ‘Não; só a Deus assiste esse direito. O suicídio  
@@ -74,7 +74,7 @@ voluntário importa numa transgressão desta lei.’”
 
 [Revista Auta de Souza – Álcool, Existe limite seguro?](http://161.35.11.199/wp-content/uploads/2020/05/Revista-Alcoolismo-01-09-.2-1-1.pdf)[Baixar](http://161.35.11.199/wp-content/uploads/2020/05/Revista-Alcoolismo-01-09-.2-1-1.pdf)
 
-<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-05-28-às-09.39.18.png" alt="" class="alignleft" width="215" height="305" />
+<img src="../../media/2021/04/Captura-de-Tela-2020-05-28-%C3%A0s-09.39.18.png" alt="" class="alignleft" width="215" height="305" />
 
 Vivemos o momento esperado das viagens interplanetárias, das grandes descobertas científicas, da preocupação maior com a preservação da natureza e dos animais. Assim, não podemos fechar os olhos para o grande mal que destróis vidas e famílias, causa desastres incontáveis e promove o lento suicídio. Um mal que teima estar presente em tantas reuniões familiares ou sociais, às vezes disfarçado como atrativo e convidado de honra: o álcool!  
   
@@ -90,7 +90,7 @@ Vivemos o momento esperado das viagens interplanetárias, das grandes descoberta
 
 [Revista Auta de Souza – Paz em casa Paz no mundo](http://161.35.11.199/wp-content/uploads/2020/05/Revista-Auta-de-Souza.-Culto-no-lar-1.pdf)[Baixar](http://161.35.11.199/wp-content/uploads/2020/05/Revista-Auta-de-Souza.-Culto-no-lar-1.pdf)
 
-<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-05-28-às-10.06.23.png" alt="" class="alignleft" width="215" height="305" />
+<img src="../../media/2021/04/Captura-de-Tela-2020-05-28-%C3%A0s-10.06.23.png" alt="" class="alignleft" width="215" height="305" />
 
 “Não haverá tranquilidade no mundo, sem que as nações pratiquem a tolerância e a fraternidade.E se a nação é conjunto de cidades, a cidade é um agrupamento de lares, tanto quanto o lar é um ninho de corações.”
 
@@ -107,7 +107,7 @@ Reconhecemos que o lar da atualidade vive a carência do Cristo na sua intimidad
 
 [Revista Edição Especial Concafras Mundial – Paz em casa, paz no mundo.](http://161.35.11.199/wp-content/uploads/2020/06/Revista-CONCAFRAS-MUNDIAL-1.pdf)[Baixar](http://161.35.11.199/wp-content/uploads/2020/06/Revista-CONCAFRAS-MUNDIAL-1.pdf)
 
-<img src="https://www.revistaautadesouza.com/wp-content/uploads/2021/04/Captura-de-Tela-2020-05-28-às-10.22.27-1.png" alt="" class="alignleft" width="215" height="305" />
+<img src="../../media/2021/04/Captura-de-Tela-2020-05-28-%C3%A0s-10.22.27-1.png" alt="" class="alignleft" width="215" height="305" />
 
 “A fraternidade, na rigorosa acepção do termo, resume todos os deveres dos homens, uns para com os outros; significa: devotamento, abnegação, tolerância, benevolência, indulgência, É, por excelência, a caridade evangélica e a aplicação da máxima: ‘Proceder para com os outros, como gostaríamos que os outros procedessem para conosco. É o oposto do egoísmo.”
 

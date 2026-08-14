@@ -13,7 +13,7 @@ tags: []
 
 Quando ainda reencarnado, Eurípedes Barsa­nulfo foi portador de verdadeiro medianato, porquan­to conduziu as faculdades mediúnicas, de que era ins­trumento, dentro dos postulados enobrecedores da caridade e do amor, em uma vivência aureolada de exemplos de renúncia e de abnegação, havendo sido também educador emérito. Em razão dessas suas ad­miráveis faculdades, dedicou-se a atender os porta­dores de alienação mental, psiquiátrica e obsessiva, erguendo um Hospital na cidade em que nascera, para socorrê-los. Conseguiu, naquele tempo, resultados incomuns, favorecendo os enfermos com a reconquis­ta do equilíbrio. Não obstante a terapêutica acadê­mica vigente e que ele não podia aplicar, por não ser habilitado a exercer a Medicina nessa área, era a sua própria força moral que lograva o maior número de recuperações, face à bondade que expressava em re­lação aos pacientes desencarnados, assim como a mi­sericórdia de que se utilizava para atender os pade­centes dos graves transtornos psíquicos.
 
-<img src="http://161.35.11.199/wp-content/uploads/2020/05/Eurípedes-Barsanulfo-1-1024x576.jpg" alt="" class="alignleft" width="398" height="224" />
+<img src="../../media/2020/05/Eur%C3%ADpedes-Barsanulfo-1-1024x576.jpg" alt="" class="alignleft" width="398" height="224" />
 
 Ser interexistente, viveu como apóstolo da cari­dade, possuindo extraordinários potenciais curado­res e especial acuidade como receitista espiritual, dedicado ao socorro dos menos felizes.
 
