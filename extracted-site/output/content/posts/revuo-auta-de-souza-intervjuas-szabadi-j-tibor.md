@@ -5,7 +5,7 @@ date: "2020-04-25T14:14:33"
 modified: "2020-04-25T14:14:33"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/04/Captura-de-Tela-2020-04-25-a%CC%80s-14.14.13.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/04/25/revuo-auta-de-souza-intervjuas-szabadi-j-tibor/"
 categories: ["Esperanto"]
 tags: []

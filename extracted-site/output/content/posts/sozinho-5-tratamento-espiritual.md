@@ -5,7 +5,7 @@ date: "2020-04-30T11:19:05"
 modified: "2020-04-30T11:19:05"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/04/Captura-de-Tela-2020-04-30-a%CC%80s-11.18.36.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/04/30/sozinho-5-tratamento-espiritual/"
 categories: ["Vídeos"]
 tags: []

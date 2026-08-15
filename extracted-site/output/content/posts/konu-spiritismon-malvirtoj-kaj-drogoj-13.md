@@ -5,7 +5,7 @@ date: "2020-04-25T13:50:28"
 modified: "2020-04-25T13:50:28"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/04/Captura-de-Tela-2020-04-25-a%CC%80s-13.22.33.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/04/25/konu-spiritismon-malvirtoj-kaj-drogoj-13/"
 categories: ["Esperanto"]
 tags: []

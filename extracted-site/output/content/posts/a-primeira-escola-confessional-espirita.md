@@ -5,7 +5,7 @@ date: "2020-05-18T21:48:00"
 modified: "2020-05-18T21:56:34"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/05/Eur%C3%ADpedes-Barsanulfo-1.jpg"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/05/18/a-primeira-escola-confessional-espirita/"
 categories: ["Educação e espiritismo"]
 tags: []

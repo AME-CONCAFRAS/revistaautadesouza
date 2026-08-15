@@ -5,7 +5,7 @@ date: "2020-06-06T18:41:51"
 modified: "2020-06-06T18:41:51"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/06/obst%C3%A1culos-da-vida-001.jpg"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/06/06/escolhemos-todas-as-nossas-provas/"
 categories: ["Os espíritos respondem"]
 tags: []

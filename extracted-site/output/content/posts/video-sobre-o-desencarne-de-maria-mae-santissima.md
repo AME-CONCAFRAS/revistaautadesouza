@@ -5,7 +5,7 @@ date: "2021-05-07T20:32:25"
 modified: "2021-07-10T17:29:16"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2021/05/Captura-de-Tela-2021-05-07-%C3%A0s-20.31.34.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2021/05/07/video-sobre-o-desencarne-de-maria-mae-santissima/"
 categories: ["Espaço do Evangelizador"]
 tags: []

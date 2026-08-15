@@ -5,7 +5,7 @@ date: "2020-06-06T16:54:47"
 modified: "2020-06-06T16:54:47"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/06/Captura-de-Tela-2020-06-06-a%CC%80s-16.54.06.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/06/06/o-livro-espirita-salvando-vidas/"
 categories: ["Criança em cena"]
 tags: []
