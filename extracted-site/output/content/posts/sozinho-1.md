@@ -11,4 +11,4 @@ categories: ["Vídeos"]
 tags: []
 ---
 
-<iframe src="https://www.youtube.com/embed/oyuDnGvjLu8?feature=oembed" title="Sozinho? Curta Metragem espírita - Bebidas alcoólicas - Alone? Spiritism Shortfilm" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>
+<iframe src="https://www.youtube.com/embed/oyuDnGvjLu8" title="Sozinho? Curta Metragem espírita - Bebidas alcoólicas - Alone? Spiritism Shortfilm" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>

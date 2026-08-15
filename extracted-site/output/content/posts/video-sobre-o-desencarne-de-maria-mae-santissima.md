@@ -11,4 +11,4 @@ categories: ["Espaço do Evangelizador"]
 tags: []
 ---
 
-<iframe src="https://www.youtube.com/embed/I8tve06iTtw?feature=oembed" title="Mae Santissima 1080p" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>
+<iframe src="https://www.youtube.com/embed/I8tve06iTtw" title="Mae Santissima 1080p" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>

@@ -25,12 +25,16 @@ const turndown = new TurndownService({
 turndown.addRule('preserveIframes', {
   filter: ['iframe'],
   replacement: (content, node) => {
-    const src = node.getAttribute('src') || '';
+    let src = node.getAttribute('src') || '';
     const title = node.getAttribute('title') || '';
     const width = node.getAttribute('width') || '100%';
     const height = node.getAttribute('height') || '400';
     if (!src) return '';
-    return `\n\n<iframe src="${src}" title="${title}" width="${width}" height="${height}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>\n\n`;
+
+    // Clean YouTube oembed tracking query parameters that trigger YouTube Error 153 in embeds
+    src = src.replace(/\?feature=oembed/g, '').replace(/\?feature=oembed&/g, '?');
+
+    return `\n\n<iframe src="${src}" title="${title}" width="${width}" height="${height}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>\n\n`;
   }
 });
 
