@@ -5,7 +5,7 @@ date: "2020-04-30T11:32:24"
 modified: "2020-04-30T11:32:24"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/04/Captura-de-Tela-2020-04-30-a%CC%80s-11.31.59.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/04/30/sozinho-2-ambiente-de-bar/"
 categories: ["Vídeos"]
 tags: []

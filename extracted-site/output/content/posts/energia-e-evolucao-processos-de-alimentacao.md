@@ -5,7 +5,7 @@ date: "2020-07-04T23:53:51"
 modified: "2020-07-04T23:58:06"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/07/Crian%C3%A7a-com-o-c%C3%A9rebro-iluminado-1.jpg"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/07/04/energia-e-evolucao-processos-de-alimentacao/"
 categories: ["Universo e vida"]
 tags: []

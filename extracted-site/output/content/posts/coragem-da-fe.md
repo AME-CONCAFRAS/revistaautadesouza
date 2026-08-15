@@ -5,7 +5,7 @@ date: "2020-05-18T22:46:11"
 modified: "2020-05-18T23:08:18"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/05/Eur%C3%ADpedes.jpg"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/05/18/coragem-da-fe/"
 categories: ["Educação e espiritismo"]
 tags: []

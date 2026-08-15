@@ -5,7 +5,7 @@ date: "2020-04-30T11:13:04"
 modified: "2020-04-30T11:13:04"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/04/Captura-de-Tela-2020-04-30-a%CC%80s-11.11.42.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/04/30/maria-feliz/"
 categories: ["História da vovó"]
 tags: []

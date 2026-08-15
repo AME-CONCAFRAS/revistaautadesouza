@@ -5,7 +5,7 @@ date: "2020-04-30T11:14:57"
 modified: "2020-04-30T11:14:57"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/04/Captura-de-Tela-2020-04-30-a%CC%80s-11.13.46.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/04/30/a-vida-de-auta-de-souza/"
 categories: ["História da vovó"]
 tags: []
