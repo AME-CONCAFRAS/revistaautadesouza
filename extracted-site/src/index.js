@@ -133,8 +133,11 @@ function generateFrontMatter(item, type, categoriesMap = {}, tagsMap = {}, media
   let featuredImage = '';
   if (item.featured_media && mediaMap[item.featured_media]) {
     const rawMediaUrl = mediaMap[item.featured_media];
-    const filename = path.basename(rawMediaUrl.split('?')[0]);
-    const localRel = fileMap.get(filename.toLowerCase());
+    const rawFilename = path.basename(rawMediaUrl.split('?')[0]);
+    const filename = decodeURIComponent(rawFilename);
+    const localRel = fileMap.get(filename.toLowerCase()) || 
+                     fileMap.get(rawFilename.toLowerCase()) || 
+                     fileMap.get(encodeURIComponent(filename).toLowerCase());
     if (localRel) {
       featuredImage = `../../media/${localRel.replace(/\\/g, '/')}`;
     }
@@ -184,8 +187,16 @@ async function runExtraction() {
       const entries = await fs.readdir(dir, { withFileTypes: true });
       for (const entry of entries) {
         const fullPath = path.join(dir, entry.name);
-        if (entry.isDirectory()) await buildFileMap(fullPath);
-        else fileMap.set(entry.name.toLowerCase(), fullPath.replace(MEDIA_DIR, '').replace(/^[/\\]/, ''));
+        if (entry.isDirectory()) {
+          await buildFileMap(fullPath);
+        } else {
+          const rel = fullPath.replace(MEDIA_DIR, '').replace(/^[/\\]/, '');
+          fileMap.set(entry.name.toLowerCase(), rel);
+          try {
+            fileMap.set(decodeURIComponent(entry.name).toLowerCase(), rel);
+            fileMap.set(encodeURIComponent(entry.name).toLowerCase(), rel);
+          } catch {}
+        }
       }
     } catch {}
   }

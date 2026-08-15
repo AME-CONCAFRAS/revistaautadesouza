@@ -5,7 +5,7 @@ date: "2021-07-10T18:47:23"
 modified: "2021-07-10T18:50:51"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2021/07/m%C3%A3os-amigas.jpg"
 original_url: "https://www.revistaautadesouza.com/index.php/2021/07/10/como-posso-afastar-pensamentos-suicidas/"
 categories: ["Os espíritos respondem"]
 tags: ["destaque"]

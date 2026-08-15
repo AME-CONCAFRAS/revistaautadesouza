@@ -5,7 +5,7 @@ date: "2020-04-25T13:55:06"
 modified: "2020-04-25T13:55:06"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/04/Captura-de-Tela-2020-04-25-a%CC%80s-13.22.33.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/04/25/konu-spiritismon-prego-12/"
 categories: ["Esperanto"]
 tags: []

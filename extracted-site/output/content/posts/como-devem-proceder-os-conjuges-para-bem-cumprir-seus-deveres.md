@@ -5,7 +5,7 @@ date: "2020-06-06T18:29:02"
 modified: "2020-06-06T18:29:02"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/06/alian%C3%A7a.jpg"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/06/06/como-devem-proceder-os-conjuges-para-bem-cumprir-seus-deveres/"
 categories: ["Os espíritos respondem"]
 tags: []

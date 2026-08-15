@@ -5,7 +5,7 @@ date: "2020-06-06T22:52:02"
 modified: "2020-07-04T11:05:36"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/06/Estou_me_sentindo_sozinha_na_multid%C3%A3o.jpg"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/06/06/o-que-pensar-quando-tudo-no-mundo-parece-contra-nos/"
 categories: ["Os espíritos respondem"]
 tags: []

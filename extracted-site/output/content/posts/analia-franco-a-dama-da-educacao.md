@@ -5,7 +5,7 @@ date: "2020-05-22T15:29:50"
 modified: "2020-05-22T15:29:50"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/05/Post-An%C3%A1lia-Franco.jpg"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/05/22/analia-franco-a-dama-da-educacao/"
 categories: ["Missionários do bem"]
 tags: []

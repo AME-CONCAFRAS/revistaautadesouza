@@ -5,7 +5,7 @@ date: "2020-04-30T11:28:30"
 modified: "2020-04-30T11:28:30"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/04/Captura-de-Tela-2020-04-30-a%CC%80s-11.27.55.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/04/30/o-tratamento-espiritual-em-palmelo/"
 categories: ["Vídeos"]
 tags: []

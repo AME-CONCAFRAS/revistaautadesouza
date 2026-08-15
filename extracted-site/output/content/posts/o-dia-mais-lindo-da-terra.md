@@ -5,7 +5,7 @@ date: "2020-04-30T11:10:28"
 modified: "2020-04-30T11:10:28"
 status: "publish"
 type: "post"
-featured_image: ""
+featured_image: "../../media/2020/04/Captura-de-Tela-2020-04-30-a%CC%80s-11.09.04.png"
 original_url: "https://www.revistaautadesouza.com/index.php/2020/04/30/o-dia-mais-lindo-da-terra/"
 categories: ["História da vovó"]
 tags: []
