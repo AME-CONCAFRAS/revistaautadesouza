@@ -11,4 +11,4 @@ categories: ["Aprenda a tocar","Vídeos"]
 tags: ["aprenda a tocar","musica","músicas espíritas","violão"]
 ---
 
-<iframe src="https://www.youtube.com/embed/96In-lLP53g?feature=oembed" title="Músicas Para O Centro - Hino A Eurípedes Barsanulfo" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>
+<iframe src="https://www.youtube.com/embed/96In-lLP53g" title="Músicas Para O Centro - Hino A Eurípedes Barsanulfo" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>
