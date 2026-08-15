@@ -11,3 +11,4 @@ categories: ["Esperanto"]
 tags: []
 ---
 
+<iframe src="https://www.youtube.com/embed/O9puXyUd_Yg?feature=oembed" title="Spiritismo en Esperanto 11 - Hejmo" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>

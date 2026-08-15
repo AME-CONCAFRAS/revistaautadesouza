@@ -9,7 +9,7 @@ const WP_API = `${WP_BASE}/index.php/wp-json/wp/v2`;
 const WP_USER = process.env.WP_ADMIN_USER;
 const WP_PASS = process.env.WP_ADMIN_PASS;
 
-const OUTPUT_DIR = path.resolve('./output');
+const OUTPUT_DIR = path.resolve('./extracted-site/output');
 const CONTENT_DIR = path.join(OUTPUT_DIR, 'content');
 const PAGES_DIR = path.join(CONTENT_DIR, 'pages');
 const POSTS_DIR = path.join(CONTENT_DIR, 'posts');
@@ -19,6 +19,19 @@ const RAW_DIR = path.join(OUTPUT_DIR, 'raw');
 const turndown = new TurndownService({
   headingStyle: 'atx',
   codeBlockStyle: 'fenced'
+});
+
+// Preserve IFRAME embedded videos (YouTube, Vimeo, etc.) in Markdown output
+turndown.addRule('preserveIframes', {
+  filter: ['iframe'],
+  replacement: (content, node) => {
+    const src = node.getAttribute('src') || '';
+    const title = node.getAttribute('title') || '';
+    const width = node.getAttribute('width') || '100%';
+    const height = node.getAttribute('height') || '400';
+    if (!src) return '';
+    return `\n\n<iframe src="${src}" title="${title}" width="${width}" height="${height}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>\n\n`;
+  }
 });
 
 // Preserve HTML figure/img alignment classes and dimensions in Markdown output

@@ -11,3 +11,4 @@ categories: ["Espaço do Evangelizador"]
 tags: []
 ---
 
+<iframe src="https://www.youtube.com/embed/8-tGqzJLsmA?feature=oembed" title="Ser feliz - Música para crianças" width="800" height="600" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>
