@@ -18,3 +18,5 @@ Li jam tradukis multajn spiritismajn librojn el Esperanto al la hungara. Pluraj 
 En la intervjuo li montras hungarlingvan ekzempleron de “La Libro de la Spiritoj”, kies hungara titolo estas “A Szellemek könyve”. ?i estas baza verko, enhavanta la principojn de la Spiritisma Doktrino.
 
 Lin intervjuis “Revuo Auta de Souza” en Brazilo.
+
+<iframe src="https://www.youtube.com/embed/qMkgd9fYkqQ?feature=oembed" title="Revuo Auta de Souza intervjuas Szabadi J. Tibor - Revista Auta de Souza" width="800" height="450" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="max-width: 100%; border-radius: 8px; margin: 1rem 0;"></iframe>

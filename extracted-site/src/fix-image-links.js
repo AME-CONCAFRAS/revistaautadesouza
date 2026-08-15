@@ -51,13 +51,12 @@ async function fixPostImageLinks() {
       const filePath = path.join(dirPath, file);
       let content = await fs.readFile(filePath, 'utf-8');
 
-      // Match markdown image links: ![](path) or <img src="path">
+      // Match markdown image links: ![](path) or <img ... src="path">
       let modified = false;
 
-      // Replace image paths in markdown
-      const updatedContent = content.replace(/(?:!\[.*?\]\((.*?)\)|src=["'](.*?)["'])/g, (fullMatch, mdUrl, htmlUrl) => {
+      const updatedContent = content.replace(/(?:!\[.*?\]\((.*?)\)|<img[^>]*src=["'](.*?)["'][^>]*\/?>)/g, (fullMatch, mdUrl, htmlUrl) => {
         const originalUrl = mdUrl || htmlUrl;
-        if (!originalUrl) return fullMatch;
+        if (!originalUrl || originalUrl.includes('youtube.com') || originalUrl.includes('vimeo.com')) return fullMatch;
 
         // Decode URI components (e.g. Eur%C3%ADpedes -> Eurípedes)
         const urlDecoded = decodeURIComponent(originalUrl);
@@ -149,9 +148,9 @@ async function processFolderWithMap(dirPath, fileMap) {
     let content = await fs.readFile(filePath, 'utf-8');
     let modified = false;
 
-    const updatedContent = content.replace(/(?:!\[.*?\]\((.*?)\)|src=["'](.*?)["'])/g, (fullMatch, mdUrl, htmlUrl) => {
+    const updatedContent = content.replace(/(?:!\[.*?\]\((.*?)\)|<img[^>]*src=["'](.*?)["'][^>]*\/?>)/g, (fullMatch, mdUrl, htmlUrl) => {
       const originalUrl = mdUrl || htmlUrl;
-      if (!originalUrl || originalUrl.includes('../../media/')) return fullMatch;
+      if (!originalUrl || originalUrl.includes('../../media/') || originalUrl.includes('youtube.com') || originalUrl.includes('vimeo.com')) return fullMatch;
 
       const urlDecoded = decodeURIComponent(originalUrl);
       const urlClean = urlDecoded.split('?')[0].split('#')[0];

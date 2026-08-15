@@ -1,0 +1,140 @@
+
+
+
+<!DOCTYPE html>
+<html lang="pt" dir="ltr">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+    <title>Eur&amp;#237;pedes</title>
+    <script src="https://app.cdn.wordwall.net/static/scripts/vendor/jquery-1-10-2.2rzqotepy6acictocepzwzw2.js" crossorigin="anonymous"></script>
+
+    <script src="https://app.cdn.wordwall.net/static/scripts/resources/strings_pt.2moqtn2cvntbqb5kwdsxsqq2.js" crossorigin="anonymous"></script>
+
+    <script src="https://app.cdn.wordwall.net/static/scripts/saltarelle/mscorlib.23haqbztvld_vmbgqmckfnw2.js" crossorigin="anonymous"></script>
+<script src="https://app.cdn.wordwall.net/static/scripts/saltarelle/linq.2cc575_28obwhfl6vvtahnq2.js" crossorigin="anonymous"></script>
+<script src="https://app.cdn.wordwall.net/static/scripts/global/cdnlinks.24k6xxcavlqmbyerk7_wxkg2.js" crossorigin="anonymous"></script>
+<script src="https://app.cdn.wordwall.net/static/scripts/saltarelle/vel-wordwall-global.2cekqaqaw9nsgf5xzlrzavg2.js" crossorigin="anonymous"></script>
+<script src="https://app.cdn.wordwall.net/static/scripts/saltarelle/vel-wordwall-global-web.2wcndnb1bkppspbhafzunqg2.js" crossorigin="anonymous"></script>
+<script src="https://app.cdn.wordwall.net/static/scripts/global/shell_startup.2yctzr642h9ktrlslbka67q2.js" crossorigin="anonymous"></script>
+
+    <script type='text/javascript'>
+window.pageData={"isEmbed":true,"isLeaderboardEnabled":true,"activityId":15504975,"activityGuid":"394590a68b474c20b758a6a331972984","activityTitle":"Eur\u00EDpedes","fontStackId":0,"authorUserId":5668499,"hasError":false,"isLoggedIn":false,"isGuest":true,"pageId":21,"userId":0,"isPro":false,"isBasic":false,"isTest":false,"languageId":1046,"localeId":1046,"languageCode":"pt","iso6391Code":"pt","guestExperimentVariations":[],"policyVersion":1,"policyTestOnly":false,"templateId":38,"themeId":1,"isCached":true};</script>
+    <script src="/scripts/global/switches_database.js"></script>
+    <script src="https://app.cdn.wordwall.net/static/scripts/saltarelle/vel-wordwall-gameengine-core.2-osvtz7bbv9mj-a6mubx8q2.js" crossorigin="anonymous"></script>
+<script src="https://app.cdn.wordwall.net/static/scripts/saltarelle/vel-wordwall-gameengine-games.2rtrlnahs6bcn9cxs1wbngw2.js" crossorigin="anonymous"></script>
+
+    <script src="https://app.cdn.wordwall.net/static/scripts/saltarelle/vel-wordwall-gameengine-view.2gngt8heg6nrprgadqvl_9g2.js" crossorigin="anonymous"></script>
+
+    <script src="https://app.cdn.wordwall.net/static/scripts/saltarelle/vel-wordwall-gameengine-application.2izpf73bl2ivjsditbjitdw2.js" crossorigin="anonymous"></script> 
+    <script src="https://app.cdn.wordwall.net/static/scripts/saltarelle/vel-wordwall-global-pages.2zbmrdkaxlcqtc0frnuxljg2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://app.cdn.wordwall.net/static/content/css/embed/embed.2def2cbz-gkw2yeuwvnwbgq2.css">
+<link rel="stylesheet" href="https://app.cdn.wordwall.net/static/content/css/theme_fonts.2gx4vdnd0fjbbfdfru0c82g2.css">
+<link rel="stylesheet" href="https://app.cdn.wordwall.net/static/content/css/global/global.2ofh26jqrlcpyhslwk4fjcw2.css">
+<link rel="stylesheet" href="https://app.cdn.wordwall.net/static/content/css/global/modal_views.2krftrxlmep-hle-z5h0fqw2.css">
+<link rel="stylesheet" href="https://app.cdn.wordwall.net/static/content/css/global/buttons.2lb33vwlrih_wfnciwvwerw2.css">
+<link rel="stylesheet" href="https://app.cdn.wordwall.net/static/content/css/vendors/fontawesome/fontawesome.2-hz3aitn7t0bfhnqcyjzjq2.css">
+<link rel="stylesheet" href="https://app.cdn.wordwall.net/static/content/css/vendors/fontawesome/regular.2vnxxzv3owuzdbm-rx1wvja2.css">
+
+    
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@getwordwall">
+<meta property="og:title" content="Eur&#xED;pedes">
+<meta property="og:site_name" content="Wordwall - Crie li&#xE7;&#xF5;es melhores mais rapidamente">
+<meta property="og:url" content="https://wordwall.net/pt/embed/394590a68b474c20b758a6a331972984?themeId=0&amp;ref=oembed">
+<meta property="og:image" content="https://screens.cdn.wordwall.net/800/394590a68b474c20b758a6a331972984">
+<meta property="og:image:width" content="800">
+<meta property="og:image:height" content="600">
+<meta property="og:type" content="article">
+<meta property="og:description" content="Anagrama - Arraste as letras at&#xE9; a posi&#xE7;&#xE3;o correta para desembaralhar a palavra ou frase.">
+<link rel="image_src" href="https://screens.cdn.wordwall.net/800/394590a68b474c20b758a6a331972984">
+<meta name="thumbnail" content="https://screens.cdn.wordwall.net/800/394590a68b474c20b758a6a331972984">
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "MediaObject",
+    "name": "Eur\u00EDpedes",
+    "description": "Anagrama - Arraste as letras at\u00E9 a posi\u00E7\u00E3o correta para desembaralhar a palavra ou frase.",
+    "thumbnailUrl": "https://screens.cdn.wordwall.net/800/394590a68b474c20b758a6a331972984",
+    "contentUrl": "https://wordwall.net/pt/embed/394590a68b474c20b758a6a331972984?themeId=0\u0026ref=oembed",
+    "dateCreated": "2021-04-30T11:13:32",
+"dateModified": "2021-04-30T11:43:24",    "interactionStatistic": [
+      {
+        "@type": "InteractionCounter",
+         "interactionType": "http://schema.org/LikeAction",
+        "userInteractionCount": "1"
+      },
+      {
+        "@type": "InteractionCounter",
+        "interactionType": "http://schema.org/ViewAction",
+        "userInteractionCount": "18"
+      }
+    ]
+}    
+</script>
+
+</head>
+<body class="embedded">
+    <div class="modal-view-wrapper js-modal-view-wrapper hidden">
+    <div class="modal-view-bg js-modal-view-bg"></div>
+    <div class="modal-view js-modal-view"></div>
+</div>
+
+    <div class="js-activity-wrapper activity-wrapper has-banner">
+        
+<div class="canvas-container">
+        <canvas class="render-canvas js-render-canvas"></canvas>
+</div>
+<div class="play-preload js-play-preload">
+    <p class="js-play-preload-loader hidden">0%</p>
+    <p class="play-log-message js-play-log-message"></p>
+</div>
+
+    </div>
+
+        <div class="embed-banner"><a href="/pt/resource/15504975/eur%C3%ADpedes?wwmethod=embed" target="_blank">Com tecnologia do Wordwall</a></div>
+
+    <script type="text/template" id="modal_template">
+    <div class="modal-view-box js-modal-view-box {1}">
+        <h1 class="header js-modal-header">
+            <span class="js-modal-header-text"></span>
+        </h1>
+        <div class="clear"></div>
+        <div class="modal-content js-modal-content {0}"></div>
+        <div class="js-modal-footer-wrapper"></div>
+        <div class="clear"></div>
+        <span class="js-close-modal-view close-modal-view">&times;</span>
+    </div>
+</script>
+
+    
+<script type="text/template" id="policy_update_warning_modal_template">
+    <div class="js-policy js-policy-warning policy policy-warning">
+        <h2>Atualiza&#xE7;&#xE3;o importante de pol&#xED;ticas</h2>
+        <p>Estamos atualizando nosso <a href ="/pt/privacy" target="_blank">Política de privacidade</a>, <a href ="/pt/terms" target="_blank">Termos de Uso</a> e <a href ="/pt/cookie-policy" target="_blank">Política de Cookies</a>. A partir de {0}, exigiremos que todos os usuários aceitem a nova política para continuar usando o Wordwall.</p>
+        <p>Quais as novas? Explicamos de forma mais clara os dados que coletamos e como os usamos, como trabalhamos com parceiros de confian&#xE7;a e como usamos IA para melhorar sua experi&#xEA;ncia. Nada muda na sua capacidade de controlar seus dados.</p>
+        <p>Se você tiver alguma preocupação, entre em contato conosco pelo <a href ="mailto:privacy@wordwall.net">privacy@wordwall.net</a> ou visite nosso <a href='https://wordwall.zendesk.com/hc/en-gb/articles/40796647768977-FAQ-Updates-to-Terms-of-Service-Privacy-Policy-and-Cookie-Use' class='' target='_blank'>artigo</a> de ajuda para mais informações.</p>
+        <button class="default-btn white large js-close-policy">Fechar</button>
+    </div>
+</script>
+
+<script type="text/template" id="policy_update_modal_template">
+    <div class="js-policy js-policy-live policy">
+        <h2>Atualiza&#xE7;&#xE3;o importante de pol&#xED;ticas</h2>
+        <p>Atualizamos nosso <a href ="/pt/privacy" target="_blank">Política de privacidade</a>, <a href ="/pt/terms" target="_blank">Termos de Uso</a> e <a href ="/pt/cookie-policy" target="_blank">Política de Cookies</a>.</p>
+        <p>Quais as novas? Explicamos de forma mais clara os dados que coletamos e como os usamos, como trabalhamos com parceiros de confian&#xE7;a e como usamos IA para melhorar sua experi&#xEA;ncia. Nada muda na sua capacidade de controlar seus dados.</p>
+        <form>
+            <label for="accept_terms">
+                <input class="js-check-policy" type="checkbox" id="accept_terms">
+                <span>Li e concordo com a Pol&#xED;tica de privacidade, Termos de Uso e Pol&#xED;tica de Cookies atualizados.</span>
+            </label>
+            <button class="default-btn large js-accept-policy" disabled>Aceitar e Continuar</button>
+        </form>
+        <p class="rights">Se optar por não aceitar, pode solicitar a exclusão da sua conta e dados entrando em contato com <a href ="mailto:privacy@wordwall.net">privacy@wordwall.net</a>. Visite nosso <a href='https://wordwall.zendesk.com/hc/en-gb/articles/40796647768977-FAQ-Updates-to-Terms-of-Service-Privacy-Policy-and-Cookie-Use' class='' target='_blank'>artigo</a> de ajuda para mais informações.</p>
+    </div>
+</script>
+
+    <script>$(document).ready(function(){new VEL.Wordwall.Global.Pages.EmbedPage().initialize();});</script>
+</body>
+</html>
